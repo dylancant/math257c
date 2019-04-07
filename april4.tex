@@ -59,7 +59,7 @@ Now we turn to some new material. We will show that $s^{-1}(0)$ is a manifold vi
   \end{equation*}
   While this definition uses the norms on $X,Y$, it is clear that it only depends on the equivalence classes of the norms.
 
-  The map $A:U\to V$ is \textbf{continuously differentiable} if $u\mapsto \d A_{u}\in \Hom(X,Y)$ is a continous function, where the latter is given the topology induced by the ``operator norm.'' The set of continously differentiable functions is denoted $C^{k}(U,V)$.
+  The map $A:U\to V$ is \textbf{continuously differentiable} if $u\mapsto \d A_{u}\in \Hom(X,Y)$ is a continous function, where the latter is given the topology induced by the ``operator norm.'' The set of continously differentiable functions is denoted $C^{1}(U,V)$.
 
   A map $A$ is $C^{k}(U,V)$, $k\ge 1$, if $\d A$ is $C^{k-1}(U,\Hom(X,Y))$.
 \end{defn}
@@ -314,7 +314,7 @@ It is clear that the unique gradient flow line starting at any point $\Phi(x)\in
   Assuming this result, we can complete the proof of the lemma. If $\gamma$ is a gradient flow line starting in $U$ and $\gamma$ converges to $0$, then clearly $\gamma$ cannot leave $U'$. Look at the set of times $t$ so that $\gamma(t)\in \Phi$. Since $\gamma\to 0$, we know that $\gamma(t)$ is eventually in $\Phi$, so this set of times is non-empty. Either (case 1) $\gamma(0)\in \Phi$, or (case 2) there is some time $t>\delta$ so $\gamma(t)\in \Phi$ and $\gamma(t-\delta)\not\in \Phi$. However, since $\gamma(t)\in \Phi\cap U'$, we conclude that the flow line through $\gamma(t)$ can be extended backwards in time by amount $\delta$ \emph{while remaining on $\Phi$}. Therefore $\gamma(t-\delta)\in \Phi$, and so case 2 cannot happen. It follows that $\gamma(0)\in \Phi$, and since $\gamma(0)\in U$, $\gamma(0)\in \Phi\cap U$. We have shown that every flow line starting in $U$ converging to $0$ must start on $\Phi\cap U$, as desired.
 \end{proof}
 \begin{cor}
-  Let $S$ denote the stable set of $0$, and let $U$ be the open set furnished by the preceding lemma. Then $S\cap U=\Phi\cap U$, and so we have shown that $S$ is a manifold near $0$. The dimension of $S\cap U$ is equal to $\dim \Phi=p$, the Morse index of the critical point. \hfill $\square$
+  Let $S$ denote the stable set of $0$, and let $U$ be the open set furnished by the preceding lemma. Then $S\cap U=\Phi\cap U$, and so we have shown that $S$ is a manifold near $0$. The dimension of $S\cap U$ is equal to $\dim \Phi=n-p$, where $p$ is the Morse index of the critical point. \hfill $\square$
 \end{cor}
 
 Here are the two exercises used in the proof of Lemma \ref{lemma:apr4_5}.
