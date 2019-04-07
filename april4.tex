@@ -1,0 +1,391 @@
+\documentclass{amsart}
+
+\usepackage{preamble}
+
+\begin{document}
+The goal of this lecture is to complete the proof of the ``local stable manifold theorem.'' Recall the setting:
+
+(i) $\varphi:\R^{n}\to \R$ is a Morse function with exactly one critical point at $0\in \R^{n}$,
+
+(ii) $g$ is a Riemannian metric on $\R^{n}$,
+
+(iii) $\grad_{\varphi,g}=:\grad$ is the gradient vector field associated to $g$ and $\varphi$ -- recall that $\grad$ is determined by the relation $g(\grad,X)=\d\varphi(X)$, for all vector fields $X$.
+
+(iv) The stable set $S$ is defined to be the set of all $x\in \R^{n}$ so that the negative gradient flow line starting at $x$ converges to $0$.
+
+\begin{clear}{Local Stable Manifold Theorem}
+  There is an open neigborhood $U$ around $0$ so that $U\cap S$ is a smooth submanifold of $U$.
+\end{clear}
+
+Recall the stategy for proving this theorem. We identify $S$ with the set of gradient flow lines $\R_{\ge 0}\to \R^{n}$ converging to $0$, and make the following crucial observation: If $\gamma\in W^{1,2}(\R_{\ge 0},\R^{n})$ satisfies the following equation
+\begin{equation*}\tag{$\ast$}
+  \gamma'(t)+\grad\circ \gamma=0,
+\end{equation*}
+then $\gamma$ is $C^{\infty}$ smooth, and conversely, if $\gamma$ is a gradient flow line converging to $0$, then $\gamma$ lies in $W^{1,2}(\R_{\ge 0},\R^{n})$ and $\gamma$ satisfies ($\ast$). In other words, if we define
+\begin{equation*}
+  s:W^{1,2}(\R_{\ge 0},\R^{n})\to L^{2}(\R_{\ge 0},\R^{n}) \text{ by }s(\gamma)=\gamma'(t)+\grad\circ \gamma,
+\end{equation*}
+then $s^{-1}(0)=S$. This was established in the previous lecture. Here are three exercises related to the content of the previous lecture.
+\begin{xca}[Rellich Embedding]
+  Let $\gamma\in C^{\infty}_{c}$. Prove that for $t\ge 0$
+  \begin{equation*}
+    \gamma(t)e^{-t}=\int_{t}^{\infty}\gamma(s)e^{-s}-\gamma'(s)e^{-s}\,ds,
+  \end{equation*}
+  and deduce that
+  \begin{equation*}
+    \abs{\gamma(t)}\le \sqrt{2}\norm{\gamma}_{W^{1,2}([t,\infty),\R^{n})}
+  \end{equation*}
+  In particular, 
+  \begin{equation*}\tag{$\star$}
+    \norm{\gamma}_{C^{0}}\le \sqrt{2}\norm{\gamma}_{W^{1,2}}.
+  \end{equation*}
+  By density of $C^{\infty}_{c}$ functions in $W^{1,2}(\R_{\ge 0},\R^{n})$, prove that $W^{1,2}(\R_{\ge 0},\R^{n})\subset C^{0}(\R_{\ge 0},\R^{n})$. Moreover, conclude that $\abs{\gamma(t)}\to 0$ as $t\to\infty$. Applying the bound ($\star$) to the derivatives of $\gamma$, conclude that $$W^{k,2}(\R_{\ge 0},\R^{n})\subset C^{k-1}(\R_{\ge 0},\R^{n}),$$
+  and that $\norm{\gamma}_{C^{k-1}}\le C\norm{\gamma}_{W^{k,2}}$.
+\end{xca}
+\begin{xca}
+  Show that if $X:\R^{n}\to \R^{n}$ is a $C^{0,1}$ function (i.e.\ Lipshitz), and $X(0)=0$, then the map $\gamma\mapsto X\circ \gamma$ sends $L^{2}(\R_{\ge 0},\R^{n})$ to $L^{2}(\R_{\ge 0},\R^{n})$. 
+  
+  More generally, if $X$ is a $C^{k,1}$ function with $X(0)=0$, then $\gamma\mapsto X\circ \gamma$ sends $W^{k,2}(\R_{\ge 0},\R^{n})$ to $W^{k,2}(\R_{\ge 0},\R^{n})$. Hint: for both claims, it suffices to prove it first for smooth $\gamma$, and then use the density of smooth functions in $W^{k,2}(\R_{\ge 0},\R^{n})$.  
+\end{xca}
+\begin{xca}
+  Conclude that if $\gamma\in W^{k,2}$ satisfies the gradient flow line equation ($\ast$), then $\gamma\in W^{k+1,2}$. Conclude that if $\gamma\in W^{1,2}$ satisfies ($\ast$), then $\gamma\in W^{k,2}$ for all $k$. By the Rellich embedding $W^{k,2}\subset C^{k-1}$, conclude that $W^{1,2}$ solutions of ($\ast$) are $C^{\infty}$ smooth. 
+\end{xca}
+
+Now we turn to some new material. We will show that $s^{-1}(0)$ is a manifold via the inverse function theorem for Banach spaces.
+\begin{defn}
+  Let $U\subset X$ and $V\subset Y$ be open subspaces of Banach spaces $X,Y$. A map $A:U\to V$ is \textbf{differentiable} at $u\in U$ provided there is a bounded linear transformation $\d A_{u}:X\to Y$ so that
+  \begin{equation*}
+    \lim_{\xi\to 0}\frac{\norm{A(u+\xi)-A(u)-\d A_{u}(\xi)}_{Y}}{\norm{\xi}_{X}}=0.
+  \end{equation*}
+  While this definition uses the norms on $X,Y$, it is clear that it only depends on the equivalence classes of the norms.
+
+  The map $A:U\to V$ is \textbf{continuously differentiable} if $u\mapsto \d A_{u}\in \Hom(X,Y)$ is a continous function, where the latter is given the topology induced by the ``operator norm.'' The set of continously differentiable functions is denoted $C^{k}(U,V)$.
+
+  A map $A$ is $C^{k}(U,V)$, $k\ge 1$, if $\d A$ is $C^{k-1}(U,\Hom(X,Y))$.
+\end{defn}
+\begin{plainbox}
+  In the appendix to this lecture, we define the terms \textbf{Banach manifold} and the \textbf{tangent bundle} of a Banach manifold.
+\end{plainbox}
+
+\begin{clear}{Inverse Function Theorem}
+  Let $X,Y$ be Banach manifolds, and suppose $A:X\to Y$ is a $C^{k}$ map so that $\d A_{x}$ is an isomorphism (i.e.\ is continuous in the natural topologies on $TX_{x}$ and $TY_{A(x)}$). Then there are neighborhoods $U\ni x$ and $V\ni y$ so that $A$ maps $U$ to $V$ diffeomorphically. 
+\end{clear}
+
+
+The derivatives of the vector field $\grad$ appear in the statement of the next claim. Thinking of $\grad$ is a function $\R^{n}\to \R^{n}$, it certainly has a derivative $\d\grad_{x}:\R^{n}\to \R^{n}$ at all points $x\in \R^{n}$ (warning: here we are \emph{not} thinking of $\grad$ as a map $\R^{n}\to T\R^{n}$ when we take its derivative). Similarly, we will denote the (symmetric) second derivative matrix by
+\begin{equation*}
+  \d\d\grad_{x}:\R^{n}\ocross \R^{n}\to \R^{n}.
+\end{equation*}
+This is not a coordinate invariant notion.
+
+It is clear that if $x,y$ are two points of $\R^{n}$, then
+\begin{equation*}
+  \grad(x+y)-\grad(x)=\left[\int_{0}^{1}\d\grad_{x+sy}\,ds\right]\cdot y,
+\end{equation*}
+where we interpret the expression in the braces as a matrix $\R^{n}\to \R^{n}$. 
+
+\begin{claim}\label{claim:apr4_2}
+  The map $s:W^{1,2}(\R_{\ge 0},\R^{n})\to L^{2}(\R_{\ge 0},\R^{n})$ defined by $s(\gamma)=\gamma'+\grad\circ \gamma$ is a $C^{1}$ map, and it's derivative is given by
+  \begin{equation*}
+    \d s_{\gamma}(\eta)(t)=\eta'(t)+\d \grad_{\gamma(t)}\cdot \eta(t)
+  \end{equation*}
+\end{claim}
+\begin{proof}
+  % We claim that the derivative of $s$ at a flow line $\gamma$ is the linear function
+  % \begin{equation*}
+  %   \eta\in W^{1,2}\mapsto \d s_{\gamma}(\eta)=\eta'+\d\grad_{\gamma}\cdot \eta.
+  % \end{equation*}
+  % To prove this, w
+  We begin by computing
+  \begin{equation*}
+    s(\gamma+\eta)(t)-s(\gamma)(t)=\eta'(t)+\grad(\gamma(t)+\eta(t))-\grad(\gamma(t))=\eta'(t)+\left[\int_{0}^{1}\d\grad_{\gamma(t)+s\eta(t)}\,ds\right]\cdot \eta(t).
+  \end{equation*}
+  Hence,
+  \begin{equation*}
+    s(\gamma+\eta)(t)-s(\gamma)(t)-\d s_{\gamma}(\eta)=\left[\int_{0}^{1}\d\grad_{\gamma(t)+s\eta(t)}-\d\grad_{\gamma(t)}\,d s\right]\cdot \eta(t).
+  \end{equation*}
+  It follows that
+  \begin{equation*}
+    \norm{s(\gamma+\eta)(t)-s(\gamma)(t)-\d s_{\gamma}(\eta)}_{L^{2}}\le \norm{\int_{0}^{1}\d\grad_{\gamma(t)+s\eta(t)}-\d\grad_{\gamma(t)}\,d s}_{C^{0}}\norm{\eta}_{L^{2}}.
+  \end{equation*}
+  We compute
+  \begin{equation*}
+    \int_{0}^{1}\d\grad_{\gamma(t)+s\eta(t)}-\d\grad_{\gamma(t)}\,d s=\left[\int_{0}^{1}\int_{0}^{1}s\d\d\grad_{\gamma(t)+rs\eta(t)}\,dr\,ds \right]\cdot \eta(t),
+  \end{equation*}
+  and hence
+  \begin{equation*}
+    \norm{\int_{0}^{1}\d\grad_{\gamma(t)+s\eta(t)}-\d\grad_{\gamma(t)}\,d s}_{C^{0}}\le \norm{\int_{0}^{1}\int_{0}^{1}s\d\d\grad_{\gamma(t)+rs\eta(t)}\,dr\,ds}_{C^{0}}\norm{\eta}_{C^{0}}.
+  \end{equation*}
+  Since $\d\d\grad$ is a continous function, and $\gamma(t)+rs\eta(t)$ is a bounded function of $t$ (i.e.\ for $\norm{\eta}_{C^{0}}\le 1$, we can suppose that $\norm{\gamma+rs\eta}_{C^{0}}\le R$ for some large $R$) we conclude some $C$ independent of $t$ and $\eta$, $\norm{\eta}_{C^{0}}\le 1$, so that
+  \begin{equation*} \norm{\int_{0}^{1}\int_{0}^{1}s\d\d\grad_{\gamma(t)+rs\eta(t)}\,dr\,ds}_{C^{0}}\le C,
+  \end{equation*}
+  and hence
+  \begin{equation*}
+    \norm{s(\gamma+\eta)(t)-s(\gamma)(t)-\d s_{\gamma}(\eta)}_{L^{2}}\le C\norm{\eta}_{L_{2}}\norm{\eta}_{C^{0}}\le C'\norm{\eta}_{W^{1,2}}^{2},
+  \end{equation*}
+  where we have used the fact that $\norm{-}_{C^{0}}\le c\norm{-}_{W^{1,2}}$ and $\norm{-}_{L^{2}}\le \norm{-}_{W^{1,2}}$. It follows that $s$ is differentiable and its derivative at $\gamma$ is $\d s_{\gamma}$.
+
+  It is easy to show that $\d s_{\gamma}$ is a bounded function $W^{1,2}\to L^{2}$. Finally we show that $\gamma\to \d s_{\gamma}$ is continuous.
+
+  Given two curves $\gamma_{1},\gamma_{2}$, we compute
+  \begin{equation*}
+    \d s_{\gamma_{1}+\gamma_{2}}(\eta)-\d s_{\gamma_{1}}(\eta)=\d \grad_{\gamma_{1}(t)+\gamma_{2}(t)}\cdot \eta(t)-\d\grad_{\gamma_{1}(t)}\cdot \eta(t).
+  \end{equation*}
+  Arguing as we did above, we conclude
+  \begin{equation*}
+    \d s_{\gamma_{1}+\gamma_{2}} (\eta)-\d s_{\gamma_{1}}(\eta)=\left[\int_{0}^{1}\d\d\grad_{\gamma_{1}(t)+s\gamma_{2}(t)}\,ds\cdot \gamma_{2}(t)\right]\cdot \eta(t),
+  \end{equation*}
+  and similarly to the computations above we conclude
+  \begin{equation*}
+    \norm{\d s_{\gamma_{1}+\gamma_{2}}(\eta)-\d s_{\gamma_{1}}(\eta)}_{L^{2}}\le \norm{\int_{0}^{1}\d\d\grad_{\gamma_{1}(t)+s\gamma_{2}(t)}\,ds}_{C^{0}}\norm{\gamma_{2}(t)}_{W^{1,2}}\norm{\eta(t)}_{W^{1,2}}.
+  \end{equation*}
+  We thereby obtain an estimate on the operator norm
+  \begin{equation*}
+    \norm{\d s_{\gamma_{1}+\gamma_{2}}-\d s_{\gamma_{1}}}\le C\norm{\gamma_{2}(t)}_{W^{1,2}},
+  \end{equation*}
+  where, for $\gamma_{2}$ close to $\gamma_{1}$, $C$ depends only on $\norm{\gamma_{1}}_{C^{0}}$ and $\norm{\d\d\grad}_{C^{0}(B)}$ for some large ball~$B$. It follows that
+  \begin{equation*}
+    \lim_{\gamma_{2}\to 0}\norm{\d s_{\gamma_{1}+\gamma_{2}}-\d s_{\gamma_{1}}}=0,
+  \end{equation*}
+  and so we have shown that $\gamma\to \d s_{\gamma}$ is continuous. This completes the proof of the claim. 
+\end{proof}
+\begin{xca}
+  Prove that $\d s_{\gamma}:W^{1,2}\to L^{2}$ is a bounded linear operator. Hint: if $M$ is a bounded continuous matrix valued function, and $\eta$ is in $L^{2}$, then $\norm{M\eta}_{L^{2}}\le \norm{M}_{C^{0}}\norm{\eta}_{L^{2}}$.
+\end{xca}
+
+
+Our plan now is to show that the derivative of $s$ at the zero solution $0\in W^{1,2}$ is a Fredholm operator. In fact, we will be able to show that $\d s_{0}$ is a surjective operator, and we will be able to explicitly identify the kernel of $\d s_{0}$ as the finite dimensional space spanned the positive eigenvalues of the Hessian of $\varphi$.
+
+\begin{defn}
+  The \textbf{Hessian} of a function $\varphi:\R^{n}\to \R$ at $x$ is the bilinear form made of the second partial derivatives $\text{Hess}_{x}=\bd_{i}\bd_{j}\varphi(x)\d x_{i}\ocross \d x_{j}$. If $x$ is a critical point, then $\text{Hess}_{x}$ is coordinate independent.
+
+  In the presence of the metric $g$, we can define an endomorphism $\text{Hess}^{g}_{x}:\R^{n}\to \R^{n}$ by
+  \begin{equation*}
+    g(-,\text{Hess}^{g}_{x}(-))=\text{Hess}_{x}(-,-).
+  \end{equation*}
+\end{defn}
+\begin{lemma}
+  Let $\grad=\grad_{\varphi,g}$ be the gradient vector field of $\varphi$, and suppose $0$ is a critical point of $\varphi$. Then
+  \begin{equation*}
+    \d\grad_{0}=\Hess_{0}^{g}\in \Hom(\R^{n},\R^{n}).
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  Let $g=\sum_{k,j}g_{kj}\d x^{k}\ocross \d x^{j}$, and write $\text{grad}=\sum_{k}a_{k}\bd_{k}$. Then
+  \begin{equation*}
+    \bd_{j}\varphi=g(\text{grad},\bd_{j})=\sum_{k}a_{k}g_{kj}\implies \bd_{i}\bd_{j}\varphi=\sum_{k}g_{kj}\bd_{i}a_{k}+\sum_{k}a_{k}\bd_{i} g_{kj}.
+  \end{equation*}
+  Evaluating at $x=0$, where $a\equiv 0$, we conclude
+  \begin{equation*}\tag{1}
+    \bd_{i}\bd_{j}\varphi(0)=\sum_{k}g_{kj}\bd_{i}a_{k}=g(\bd_{j},\d \grad_{0}(\bd_{i}))
+  \end{equation*}
+  Now we compute
+  \begin{equation*}\tag{2} g(\bd_{j},\text{Hess}^{g}_{0}(\bd_{i}))=\text{Hess}_{0}(\bd_{i},\bd_{j})=\bd_{i}\bd_{j}\varphi(0),
+  \end{equation*}
+  comparing (1) and (2), we conclude that $\d\grad_{0}=\text{Hess}^{g}_{0}$, as desired.  
+\end{proof}
+
+Now the fact that $\varphi$ is a Morse function says precisely that $\text{Hess}_{0}$ is a non-degenerate bilinear form. It follows that $\text{Hess}^{g}_{0}$ is a $g$-self-adjoint operator, and hence has an eigenbasis $v_{1},\cdots,v_{n}$, with eigenvalues $\lambda_{1},\cdots,\lambda_{n}$, where we suppose that
+\begin{equation*}
+  \lambda_{1}\le \cdots\le \lambda_{p}<0<\lambda_{p+1}\le \cdots\le \lambda_{n}.
+\end{equation*}
+The number $p$ is precisely the \textbf{Morse index} of the critical point (i.e.\ the index of the bilinear form $\text{Hess}_{0}$). Let's agree to call $H_{+}$ the subspace spanned by $v_{p+1},\cdots,v_{n}$.
+
+  Define a map $F:W^{1,2}(\R_{\ge 0},\R^{n})\to L^{2}(\R_{\ge 0},\R^{n})\oplus H_{+}$ by
+  \begin{equation*}
+    F(\gamma)=(s(\gamma),\pi_{+}\gamma(0)).
+  \end{equation*}
+  Note that evaluating a curve $\gamma$ at $0$ is a continuous linear map, and hence $\gamma\mapsto \pi_{+}\gamma(0)$ is a smooth function $W^{1,2}(\R_{\ge 0},\R^{n})\to H_{+}$.
+
+\begin{prop} $\d F_{0}$ is an isomorphism $W^{1,2}\to L^{2}\oplus H_{+}$.
+\end{prop}
+\begin{proof}
+  It suffices to prove that $\d F_{0}$ is a bijection, thanks to the open mapping theorem. The derivative of $F$ at $0$ is given by the formula
+  \begin{equation*}
+    \d F_{0}(\eta)=(\eta'+\text{Hess}_{0}\cdot \eta\,,\,\pi_{+}\eta(0)).
+  \end{equation*}
+  This follows from Claim \ref{claim:apr4_2}, and the fact that $\eta\mapsto \pi_{+}\eta(0)$ is linear.
+
+  First we prove that $\d F_{0}$ is injective. It is convenient to write $\eta$ as $\eta=\sum \eta_{i}v_{i}$, where the $\eta_{i}$ are now $W^{1,2}$ functions $\R_{\ge 0}\to \R$. Suppose that $\d F_{0}(\eta)=0$. This is equivalent to
+  \begin{equation*}
+    \eta_{i}'(t)=-\lambda_{i}\eta_{i}(t)\text{ for $i=1,\cdots,n$}\text{ and }\eta_{p+1}(0)=\cdots=\eta_{n}(0).
+  \end{equation*}
+  Simple elliptic bootstrapping proves that $\eta_{1},\cdots,\eta_{n}$ are $C^{\infty}$ functions. In fact, it is clear that
+  \begin{equation*}
+    \eta_{i}(t)=\eta_{i}(0)e^{-\lambda_{i}t}.
+  \end{equation*}
+  Since $\eta_{i}$ is assumed to be integrable, we must have $\eta_{1}(0)=\cdots=\eta_{p}(0)=0$, otherwise $\eta$ would blow up exponentially. Since we assume $\eta_{p+1}(0)=\cdots=\eta_{n}(0)=0$, we conclude that $\eta$ is identically $0$. It follows that $\d F_{0}$ is injective. 
+  
+  Now we prove that $\d F_{0}$ is surjective. Given $\xi\in L^{2}$ and $c_{p+1},\cdots,c_{n}\in H_{+}$, we want to define $\eta$ so that
+  \begin{equation*}
+    \eta_{i}(t)+\lambda_{i}\eta_{i}(t)=\xi_{i}(t),
+  \end{equation*}
+  and $\eta_{i}(0)=c_{i}$ for $i>p$. Define
+  \begin{equation*}
+    \eta_{i}(t)=-e^{-\lambda_{i}t}\int_{t}^{\infty}e^{\lambda_{i}s}\xi_{i}(s)\,ds\text{ for $i=1,\cdots,p$},
+  \end{equation*}
+  and define
+  \begin{equation*}
+    \eta_{i}(t)=e^{-\lambda_{i}t}c_{i}+e^{-\lambda_{i}t}\int_{0}^{t}e^{\lambda_{i}s}\xi_{i}(s)\,ds\text{ for $i=p+1=\cdots=n$.}
+  \end{equation*}
+  We check that this is well-defined, i.e.\ the resulting $\eta$ is indeed in $W^{1,2}$. First we will check that $\eta$ is in $L^{2}$. Let $\rho$ be some test function. Then for $i=1,\cdots,p$, we compute
+  \begin{equation*}
+    \int_{0}^{\infty}\eta_{i}(t)\rho(t)\,dt=-\int_{0}^{\infty}\int_{t}^{\infty}e^{\lambda_{i}(s-t)}\rho(t)\xi_{i}(s)\,ds\,dt=-\int_{0}^{\infty}\int_{0}^{\infty}e^{\lambda_{i}z}\rho(t)\xi_{i}(z+t)\,dz\,dt.
+  \end{equation*}
+  where have made the change of coordinates $z=s-t$. Now we switch the order of integration:
+  \begin{equation*}    \int_{0}^{\infty}\int_{0}^{\infty}e^{\lambda_{i}z}\rho(t)\xi_{i}(z+t)\,dz\,dt=\int_{0}^{\infty}e^{\lambda_{i}z}\int_{0}^{\infty}\rho(t)\xi_{i}(z+t)\,dt\,dz.
+  \end{equation*}
+  We estimate
+  \begin{equation*}
+    \abs{\int_{0}^{\infty}\rho(t)\xi_{i}(z+t)\,dt}\le \norm{\rho}_{L^{2}}\norm{\xi_{i}}_{L^{2}},
+  \end{equation*}
+  and hence
+  \begin{equation*}
+    \abs{\int_{0}^{\infty}\eta_{i}(t)\rho(t)\,dt}= \abs{\int_{0}^{\infty}e^{\lambda_{i}z}\int_{0}^{\infty}\rho(t)\xi_{i}(z+t)\,dt\,dz}\le \norm{e^{\lambda_{i}z}}_{L^{1}}\norm{\rho}_{L^{2}}\norm{\xi_{i}}_{L^{2}}=C\norm{\rho}_{L^{2}}.
+  \end{equation*}
+  Since $\lambda_{i}<0$, the $L^{1}$ norm of $e^{\lambda_{i}z}$ is finite. We conclude that $\eta_{i}$ is in $L^{2}$ since pairing it with test functions defines a bounded transformation $L^{2}\to L^{2}$ (here we use reflexivity of $L^{2}$).
+
+  \begin{clear}{Remark}
+    It is easy to show that $\eta$ is given by a convolution of $\xi$ with an integrable kernel. It follows that $\eta$ is in $L^{2}$ by Young's inequality. Our argument essentially reproves Young's inequality in our specific setting. 
+  \end{clear}
+
+  \begin{xca}
+    Prove that $\eta_{i}$ is in $L^{2}$ for $i=p+1,\cdots,n$.   
+  \end{xca}
+
+  Having established that $\eta$ is in $L^{2}$, we check that $\eta_{i}'+\lambda_{i}\eta_{i}=\xi_{i}$ holds weakly in $L^{2}$. Suppose $i=1,\cdots,p$. To check that an equation holds weakly, we pair with a test function $\rho$. By definition of ``weak'' we have
+  \begin{equation*}
+    \int_{0}^{\infty}(\eta_{i}'(t)+\lambda_{i}\eta_{i}(t))\rho(t)\,dt=\int_{0}^{\infty}\eta_{i}(t)(\lambda_{i}\rho(t)-\rho'(t))\,dt.
+  \end{equation*}
+  We write
+  \begin{equation*}
+    \int_{0}^{\infty}\eta_{i}(t)(\lambda_{i}\rho(t)-\rho'(t))\,dt=\int_{0}^{\infty}\int_{t}^{\infty}e^{\lambda_{i}(s-t)}\xi_{i}(s)(\rho'(t)-\lambda_{i}\rho(t))\,ds\,dt.
+  \end{equation*}
+  Now we change the order of integration:
+  \begin{equation*}   \int_{0}^{\infty}\int_{t}^{\infty}e^{\lambda_{i}(s-t)}\xi_{i}(s)(\rho'(t)-\lambda_{i}\rho(t))\,ds\,dt=\int_{0}^{\infty}\xi_{i}(s)e^{\lambda_{i}s}\left[\int_{0}^{s}e^{-\lambda_{i}t}(\rho'(t)-\lambda_{i}\rho(t))\,dt\right]\,ds.
+  \end{equation*}
+  We compute
+  \begin{equation*}
+    \int_{0}^{s}e^{-\lambda_{i}t}(\rho'(t)-\lambda_{i}\rho(t))\,dt=\int_{0}^{s}\ud{}{t}\left[e^{-\lambda_{i}t}\rho(t)\right]\,dt=e^{-\lambda_{i}s}\rho(s),
+  \end{equation*}
+  where we use the fact that $\rho$ is a test function, and hence is compactly supported in $(0,\infty)$. It follows that
+  \begin{equation*}
+    \int_{0}^{\infty}(\eta_{i}'(t)+\lambda_{i}\eta_{i}(t))\rho(t)\,dt=\int_{0}^{\infty}\xi_{i}(s)e^{\lambda_{i}s}\left[\int_{0}^{s}e^{-\lambda_{i}t}(\rho'(t)-\lambda_{i}\rho(t))\,dt\right]\,ds=\int_{0}^{\infty}\xi_{i}(s)\rho(s)\,ds,
+  \end{equation*}
+  which demonstrates that $\eta_{i}'+\lambda_{i}\eta=\xi_{i}$ holds weakly (for $i=1,\cdots,p$).
+  \begin{xca}
+    Show that $\eta_{i}'+\lambda_{i}\eta_{i}=\xi_{i}$ holds weakly for $i=p+1,\cdots,n$.
+  \end{xca}
+  Now since $\eta_{i}$ and $\xi_{i}$ are in $L^{2}$, and $\eta_{i}'=\xi_{i}-\lambda_{i}\eta_{i}$, we conclude that the weak derivative of $\eta_{i}$ is in $L^{2}$ and hence $\eta_{i}$ is in $W^{1,2}$.
+
+  Finally, it is clear that $\eta_{i}(0)=c_{i}$ for $i=p+1,\cdots,n$. Thus it follows that $\d F_{0}\eta=(\xi,c)$, and hence $\d F_{0}$ is surjective. This completes the proof that $\d F_{0}$ is an isomorphism.  
+\end{proof}
+
+By the inverse function theorem, it follows that $F$ is a $C^{1}$ diffeomorphism in some neighborhood of $0$. In fact, one can show without too much additional work that the map $s$ is $C^{\infty}$ (because $\grad$ is a smooth vector field). For the details involved, the reader is referred to Chris Wendl's ``Lectures on Holomorphic Curves,'' pages 85-87. It then follows that $F$ is a smooth diffeomorphism on some neighborhood of $0$.
+
+Consider the composite function
+\begin{equation*}
+  \begin{tikzcd}
+    H_{+}\arrow[r]\arrow[rrr,out=-30,in=210,"\Phi",swap]&0\oplus H_{+}\arrow[r,"F^{-1}"]&W^{1,2}(\R_{\ge 0},\R^{N})\arrow[r,"\text{ev}_{0}"]&\R^{n}
+  \end{tikzcd}
+\end{equation*}
+The map $\Phi$ is smooth and defined on small some disk $D(r)\subset H_{+}$. Since $\pi_{+}\Phi(x)=x$, we conclude that $\Phi$ is a section of the orthogonal projection $\pi_{+}$ (over $D(r)$), and hence $\Phi$ defines a smooth submanifold of $\R^{n}$ (a graph over $D(r)$).
+
+It is clear that the unique gradient flow line starting at any point $\Phi(x)\in \Phi$ converges to $0$ (by our construction). Indeed, the flow line starting at $\Phi(x)$ is $F^{-1}(0,x)$. The next lemma will establish that the graph $\Phi$ is precisely the stable set near $0$.
+
+
+\begin{lemma}\label{lemma:apr4_5}
+  There is a neighborhood $U$ of $0$ so that any flow line starting in $U$ and converging to $0$ actually starts on $\Phi\cap U$.
+\end{lemma}
+\begin{proof}
+  First we claim that any trajectory $\gamma:\R_{\ge 0}\to \R^{n}$ converging to $0$ satisfies $\gamma(t)\in \Phi$ for $t$ sufficiently large. We will use the result that any gradient flow line converging to $0$ is automatically in $W^{1,2}$ (cf.\ Exercise \ref{xca:apr4_3}).
+
+  Consider the elements $\gamma_{T}\in W^{1,2}(\R_{\ge 0},\R^{n})$ given by $\gamma_{T}(t)=\gamma(t+T)$. It is clear that $\gamma_{T}$ is still a gradient flow line, and moreover, that $\norm{\gamma_{T}}_{W^{1,2}}\to 0$ as $T\to\infty$, since
+  \begin{equation*}
+    \norm{\gamma_{T}}_{W^{1,2}}=\norm{\gamma|_{[T,\infty)}}_{W^{1,2}}.
+  \end{equation*}
+
+  Since our map $F$ is a diffeomorphism on a small neighborhood of $0$, we conclude that $\gamma_{T}$ eventually enters the domain where $F$ is a diffeomorphism, and hence $\gamma_{T}=F^{-1}(0,x)$ for some $x$ (here $x$ depends on $T$). Therefore $\gamma_{T}(0)\in \Phi$, hence $\gamma(T)\in \Phi$. This proves that $\gamma$ eventually enters $\Phi$.
+
+  Next, pick a bounded open set $U'$ of $0$ with the property that so that $\closure{\Phi \cap U'}\subset \Phi$. By compactness of $\closure{\Phi\cap U'}\subset \Phi$, it follows that there is $\delta>0$ so that for every $x\in \Phi\cap U'$, the flow line through $x$ can be defined on $[-\delta,\infty)$, and that this flow line remains on $\Phi$. In other words, we can extend the flow line backwards in time by $\delta$, while remaining on the graph $\Phi$.
+  
+  To establish the conclusion of the lemma, we will use the following we claim: there is a smaller open set $U\subset U'$ with the following property: every trajectory which starts in $U$ either remains in $U'$ forever, or leaves $U'$ and never comes back inside $U$ (a similar statement is proved on page 50 of Milnor's notes on the h-cobordism theorem). This claim is proved in Exercise \ref{xca:apr4_4}.
+
+  Assuming this result, we can complete the proof of the lemma. If $\gamma$ is a gradient flow line starting in $U$ and $\gamma$ converges to $0$, then clearly $\gamma$ cannot leave $U'$. Look at the set of times $t$ so that $\gamma(t)\in \Phi$. Since $\gamma\to 0$, we know that $\gamma(t)$ is eventually in $\Phi$, so this set of times is non-empty. Either (case 1) $\gamma(0)\in \Phi$, or (case 2) there is some time $t>\delta$ so $\gamma(t)\in \Phi$ and $\gamma(t-\delta)\not\in \Phi$. However, since $\gamma(t)\in \Phi\cap U'$, we conclude that the flow line through $\gamma(t)$ can be extended backwards in time by amount $\delta$ \emph{while remaining on $\Phi$}. Therefore $\gamma(t-\delta)\in \Phi$, and so case 2 cannot happen. It follows that $\gamma(0)\in \Phi$, and since $\gamma(0)\in U$, $\gamma(0)\in \Phi\cap U$. We have shown that every flow line starting in $U$ converging to $0$ must start on $\Phi\cap U$, as desired.
+\end{proof}
+\begin{cor}
+  Let $S$ denote the stable set of $0$, and let $U$ be the open set furnished by the preceding lemma. Then $S\cap U=\Phi\cap U$, and so we have shown that $S$ is a manifold near $0$. The dimension of $S\cap U$ is equal to $\dim \Phi=p$, the Morse index of the critical point. \hfill $\square$
+\end{cor}
+
+Here are the two exercises used in the proof of Lemma \ref{lemma:apr4_5}.
+\begin{xca}\label{xca:apr4_3}
+  Let $\grad:\R^{n}\to \R^{n}$ be the gradient vector field. We will use the fact that $\grad(0)=0$ and $\d \grad_{0}$ is an isomorphism. Suppose that $\gamma:\R_{\ge 0}\to \R^{n}$ is a flow line converging to $0$.
+
+  (a) Prove that $\gamma$ is in $L^{2}$ if and only if $\grad\circ \gamma$ is in $L^{2}$. Hint: show that $$\abs{\gamma(t)}<c\abs{\grad\circ \gamma(t)}$$ for $t$ sufficiently large, for some $c>0$.
+
+  (b) Prove that $\grad\circ \gamma$ is in $L^{2}$ using the relation
+  \begin{equation*}
+    \ud{}{t}(\varphi\circ \gamma)=-g(\grad\circ \gamma,\grad\circ \gamma).
+  \end{equation*}
+
+  (c) Now that we know that $\gamma$ is in $L^{2}$, conclude that $\gamma'$ is also in $L^{2}$ using the gradient flow line equation.
+
+  (d) Conclude that any flow line $\gamma$ converging to $0$ is actually in $W^{1,2}$.
+\end{xca}
+\begin{xca}\label{xca:apr4_4}
+  Given a bounded open neighborhood $U'$ of $0$, one can always find a smaller open set $U\subset U'$ so that every trajectory $\gamma$ starting in $U$ either remains in $U'$, or leaves $U'$ and never returns to $U$.
+
+  (a) Pick $U''$ compactly supported in $U'$ around $0$ so that $g(\grad,\grad)>b$ on $U'\setminus U''$. Pick $U_{\epsilon}\subset U''$ so that $\max_{U_{\epsilon}} \varphi-\min_{U_{\epsilon}}\varphi<\epsilon$. Using the fact that
+  \begin{equation*}
+    \ud{}{t}\varphi(t)=-g(\grad,\grad),
+  \end{equation*}
+  conclude that any trajectory starting and ending in $U_{\epsilon}$ must spend time less than $b^{-1}\epsilon$ in $U'\setminus U''$.
+
+  (b) Since $\bd U''$ is compact and contained in $U'$, conclude a minimum amount of time needed to flow from $\bd U''$ to $\R^{n}\setminus U'$.
+
+  (c) Conclude that we can pick $\epsilon$ small enough so that any flow starting and ending in $U_{\epsilon}$ cannot leave $U'$. Taking $U=U_{\epsilon}$ proves the claim. 
+\end{xca}
+
+\section*{\textbf{Appendix}}
+
+\begin{defn}
+  For $k\ge 1$, a $C^{k}$ \textbf{Banach manifold} $\mathscr{X}$ is a topological space covered by open sets homeomorphic to open subsets of Banach spaces, where the transitions functions are $C^{k}$ maps. More precisely, a Banach manifold comes equipped with a maximal atlas of coordinate charts: $c:U_{c}\subset \mathscr{X}\to c(U)\subset X_{c}$, where $X_{c}$ is a Banach space, $c:U_{c}\to c(U)$ is homeomorphism onto an open set, and so that the transition homeomorphism
+  \begin{equation*}
+    \rho_{21}=c_{2}\circ c_{1}^{-1}:c_{1}(U_{1}\cap U_{2})\to c_{2}(U_{1}\cap U_{2})
+  \end{equation*}
+  is a $C^{k}$ map.
+
+  We define a continuous map $A:\mathscr{X}\to \mathscr{Y}$ between $C^{k}$ Banach spaces to be $C^{r}$ ($r\le k$) if $c_{2}\circ A\circ c_{1}^{-1}$ is a $C^{k}$ map, for all choices of coordinates $c_{1},c_{2}$ around $x$ and $A(x)$ respectively. 
+\end{defn}
+\begin{defn}[the tangent bundle]
+  For the purposes of this defintiion, let's agree to say that a Banach space is a topological vector space equipped with an equivalence class of complete metrics defining its topology.
+  
+  For $k\ge 1$, let $\text{BMan}_{k}$ be the category of $C^{k}$ Banach manifolds, with $C^{k}$ maps between them, let $\text{BSpace}_{k}$ be the category of Banach spaces with $C^{k}$ maps between them, and let $\text{Bun}_{k}$ be the category of Banach space bundles over Banach manifolds. A morphism in $\text{Bun}_{k}$ between bundles $E_{1}\to B_{1}$ and $E_{2}\to B_{2}$ is a pair $(f,F)$ such that $f:B_{1}\to B_{2}$ is a $C^{k}$ map and $F$ is a $C^{k-1}$ section of the Banach space bundle $\Hom(B_{1},f^{*}E_{2})\to B_{1}$.
+
+  There is a functor $\tau:\text{BSpace}_{k}\to \text{Bun}_{k}$ sending a Banach space $X$ to the trivial bundle $\tau(X)=X\cross X\to X$, and which sends a morphism $f:X\to Y$ to the pair $(f,\d f)$, where $\d f$ is the $C^{k-1}$ section of $\Hom(\tau(X),f^{*}\tau(Y))=\Hom(X,Y)\cross X\to X$.
+
+  The tangent bundle functor $T:\text{BMan}_{k}\to \text{Bun}_{k}$, is defined by three axioms:
+
+  (i) We require $T(f:X\to Y)=(f,\d f)$, i.e.\ $T(f)$ is a bundle map ``over $f$'' (where we abuse notation and use the symbol $\d$ for $T$ as well as for $\tau$). 
+
+  (ii) The following diagram should commute up to a natural isomorphism $T\circ j\to \tau$:
+  \begin{equation*}
+    \begin{tikzcd}
+      \text{BSpace}_{k}\arrow[r,"\tau"]\arrow[d,"j"]&\text{Bun}_{k}\\
+      \text{BMan}_{k}\arrow[ru,"T",swap,out=0,in=-90]&
+    \end{tikzcd}
+  \end{equation*}
+  where $j$ is the obvious inclusion functor $\text{BSpace}_{k}\to \text{BMan}_{k}$. This natural isomorphism should be thought of as part of the data of $T$.
+
+  (iii) If $i:U\to M$ is the inclusion of an open set, then the map $\d i:TU\to i^{*}TM$ is an isomorphism.
+
+  It is not very hard to show that this determines $T$ up to unique natural isomorphism, i.e.\ if $T'$ is another such functor then there is a unique natural isomorphism $T\to T'$ so that
+  \begin{equation*}
+    \begin{tikzcd}
+      \tau\arrow[r]\arrow[d]&T'\circ j\\
+      T\circ j\arrow[ru]
+    \end{tikzcd}
+  \end{equation*}
+  commutes.
+\end{defn}
+\end{document}

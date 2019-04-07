@@ -1,0 +1,664 @@
+\usepackage{amsmath,amsfonts,amsthm,mathtools,xparse,amstext}
+
+\usepackage{graphicx}
+
+\usepackage{tikz}
+\usetikzlibrary{calc,decorations.pathmorphing,patterns,cd,arrows.meta}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.3}
+
+\setlength{\jot}{11pt}
+\usepackage{setspace}
+\setstretch{1.3}
+\usepackage[cal=dutchcal,
+calscaled=0.94,
+bb=ams,
+%frak=euler,
+%frakscaled=.97,
+scr=euler]{mathalfa}
+%\newcommand{\frak}[1]{\mathfrak{#1}}
+
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+
+\usepackage{amssymb}
+
+\usepackage[margin=1.45 in,top=1.2in, bottom=1.4 in]{geometry}
+
+\usepackage[shortlabels]{enumitem}
+\setlist[enumerate]{leftmargin=1.0cm}
+\usepackage{tabu}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+\newcommand{\A}{\mathbb{A}}
+\newcommand{\V}{\mathrm{V}}
+\newcommand{\G}{\mathrm{G}}
+\newcommand{\GL}{\mathrm{GL}}
+
+\renewcommand{\H}{\mathrm{H}}
+\newcommand{\Top}{\mathrm{Top}}
+\newcommand{\Ch}{\mathrm{Ch}}
+\renewcommand{\d}{\mathrm{d}}
+\renewcommand{\P}{\mathbb{P}}
+
+
+\DeclareMathOperator{\tr}{\mathrm{tr}}
+
+
+
+\newcommand{\conj}[1]{\overline{#1}}
+\renewenvironment{cases}{\left\{\begin{aligned}}{\end{aligned}\right.}
+
+\newcommand{\rel}{\mathord{\sim}}
+
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\braces}[1]{\left(#1\right)}
+\newcommand{\bd}{\partial}
+\newcommand{\closure}[1]{\overline{#1}}
+\renewcommand{\hat}[1]{\widehat{#1}}
+\newcommand{\ud}[2]{\frac{d#1}{d#2}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\ip}[1]{\left\langle#1\right\rangle}
+
+
+
+% \NewDocumentCommand{\colim}{e{_^}}{%
+%   \mathop{\mathrm{colim}}\displaylimits
+%     \IfValueT{#1}{_{#1}}
+%     \IfValueT{#2}{^{#2}}  
+%   }%
+%   \NewDocumentCommand{\holim}{e{_^}}{%
+%   \mathop{\mathrm{holim}}\displaylimits
+%     \IfValueT{#1}{_{#1}}
+%     \IfValueT{#2}{^{#2}}  
+%   }%
+%   \NewDocumentCommand{\hofib}{e{_^}}{%
+%   \mathop{\mathrm{hofib}}\displaylimits
+%     \IfValueT{#1}{_{#1}}
+%     \IfValueT{#2}{^{#2}}  
+%   }%
+%   \NewDocumentCommand{\fib}{e{_^}}{%
+%   \mathop{\mathrm{fib}}\displaylimits
+%     \IfValueT{#1}{_{#1}}
+%     \IfValueT{#2}{^{#2}}  
+%   }%
+  
+% \DeclareMathOperator{\hocolim}{\mathrm{hocolim}}
+
+
+% \newcommand{\rest}{\mathbin{\upharpoonright}}
+\DeclareMathOperator{\coker}{\mathrm{coker}}
+\DeclareMathOperator{\im}{\mathrm{im}}
+\DeclareMathOperator{\Hom}{\mathrm{Hom}}
+\DeclareMathOperator{\Aut}{\mathrm{Aut}}
+\DeclareMathOperator{\End}{\mathrm{End}}
+\newcommand{\grad}{\mathrm{grad}}
+\newcommand{\Hess}{\mathrm{Hess}}
+\newcommand{\id}{\mathrm{id}}
+%\DeclareMathOperator{\Spec}{\mathrm{Spec}}
+%\DeclareMathOperator{\spec}{\mathrm{spec}}
+%\DeclareMathOperator{\Proj}{\mathrm{Proj}}
+%\newcommand{\varchi}{\tikz[baseline={(0,-0.09)}]{\node[inner
+%    sep=0,outer sep=0] at(0,0){$\chi$};}}
+
+%
+%
+%
+% \renewcommand{\c}{\mathrm{c}}
+% \newcommand{\ev}{\mathrm{ev}}
+% \newcommand{\pr}{\mathrm{pr}}
+% \newcommand{\U}{\mathbb{U}}
+% \renewcommand{\V}{\mathbb{V}}
+% \newcommand{\F}{\mathrm{F}}
+\newcommand{\op}{\mathrm{op}}
+%\DeclareMathOperator{\ho}{\mathrm{ho}}
+
+
+%
+%
+%
+\newenvironment{dmatrix}{\left[\,\begin{matrix}}{\end{matrix}\,\right]}
+
+%
+%
+%
+%in line tikz?
+
+\renewcommand{\setminus}{\mathbin{\tikz[baseline={(0,0.033)}]{\draw[line width=0.4, rounded corners=0.5,line cap=round,scale=0.7]
+    (0,0.3)--(0.25,0.1);}}}
+
+\newcommand{\intprod}{\mathbin{{\tikz{\draw
+    (-0.1,0)--(0.1,0)--(0.1,0.2)}\hspace{0.5mm}}}}
+
+
+%
+%
+%
+% Inline arrow commands
+
+% \newcommand{\hook}{\hspace{1mm}\tikz{\draw[arrows={Hooks[line cap=round,right,scale=0.9]->}] (-0.12,0)--(0.20,0)}\hspace{1mm}}
+
+% \newcommand{\epic}{\hspace{1mm}\tikz{\draw[line cap=round,arrows={->[sep=-0.3mm]>}]
+%     (-0.1,0)--(0.20,0)}\hspace{1mm}}
+
+% \newcommand{\isom}{{\hspace{1mm}\tikz{\draw[->,white]
+%     (-0.1,0)--node[scale=0.7,above=0.2] 
+%     {$\sim$}({0.29+0.11*\widthof{$\sim$}/\widthof{a}},0);
+% \draw[line cap=round]
+%     (-0.1,0)--node[scale=0.7,above=0.2] 
+%     {$\sim$}({0.29+0.11*\widthof{$\sim$}/\widthof{a}},0)}\hspace{1mm}}}
+
+
+% \newcommand{\actsby}{\hspace{1mm}\tikz{\draw[arrows={|-[scale=0.7]>},line width=0.45pt]
+%     (-0.1,0) arc (180:0:0.135 and 0.16)}\hspace{1mm}}
+% \newcommand{\actson}{\hspace{1mm}\tikz[baseline={(0,-0.023)}]{\draw[line cap=round,arrows={-[scale=0.7]>},line width=0.45pt]
+%     (170:0.1) arc (177:0:0.135 and 0.16)}\hspace{0.8mm}}
+
+% \newcommand{\To}[1]{{\hspace{1mm}\tikz{\draw[line cap=round,->]
+%     (-0.1,0)--node[scale=0.7,above=0.2] 
+%     {$#1$}({0.29+0.11*\widthof{$#1$}/\widthof{a}},0)}\hspace{1mm}}}
+
+% \newcommand{\Mapsto}[1]{{\hspace{1mm}\tikz{\draw[|->]
+%     (-0.1,0)--node[scale=0.7,above=0.2] 
+%     {$#1$}({0.29+0.11*\widthof{$#1$}/\widthof{a}},0)}\hspace{1mm}}}
+
+% \newcommand{\Hook}[1]{\hspace{1mm}\tikz{\draw[arrows={H
+%       ooks[line cap=round,right,scale=0.9]->}]
+%     (-0.12,0)--node[scale=0.7,above=0.2]
+%     {$#1$}({0.29+0.11*\widthof{$#1$}/\widthof{a}},0)}\hspace{1mm}}
+
+% \newcommand{\Epic}[1]{\hspace{1mm}\tikz{\draw[arrows={->[sep=-0.3mm]>}]
+%     (-0.1,0)--node[scale=0.7,above=0.2,pos=0.45]
+%     {$#1$}({0.29+0.11*\widthof{$#1$}/\widthof{a}},0)}\hspace{1mm}}
+
+\DeclareRobustCommand{\cubeqed}{%
+    \tikz{%
+      \draw (0,0)--(0.2,0)--(0.2,0.2)--(0,0.2)--(0,0);
+      \draw (0.28,0.08)--(0.28,0.28)--(0.08,0.28);
+      \draw (0.2,0)--(0.28,0.08);
+      \draw (0.2,0.2)--(0.28,0.28);
+      \draw (0,0.2)--(0.08,0.28);     
+  }%
+}
+% \DeclareRobustCommand{\indicator}{%
+%     \tikz{%
+%        \draw(0,0)--(0.15,0);
+%        \draw (0.05,0)--(0.05,0.215);
+%        \draw (0.1,0)--(0.1,0.235) arc (-60:-90:0.2);
+%   }%
+%}
+%\DeclareRobustCommand{\indicator}{\mathbf{1}}
+
+
+% % 
+% %
+% %
+% % Division symbol a|b
+
+% \makeatletter
+% \def\localbig#1#2{%
+%   \sbox\z@{$#1
+%     \sbox\tw@{$#1()$}%
+%     \dimen@=\ht\tw@\advance\dimen@\dp\tw@
+%     \nulldelimiterspace\z@\left#2\vcenter to1.2\dimen@{}\right.
+%   $}\box\z@}
+% \makeatletter
+% \newcommand{\divides}{\mathrel{\mathpalette\dividesaux\relax}}
+% \newcommand{\ndivides}{\mathrel{\mathpalette\ndividesaux\relax}}
+% \newcommand{\dividesaux}[2]{\mbox{$#1\localbig{#1}|$}}
+% \newcommand{\ndividesaux}[2]{%
+%   \mkern.5mu\ooalign{\hidewidth$#1\localbig{#1}|$\hidewidth\cr$#1\nmid$\cr}}
+
+%
+%
+%
+% Environment definitions
+
+\usepackage{thmtools}
+\usepackage{mdframed}
+
+
+\newenvironment{plainbox}{\begin{mdframed}[%backgroundcolor=canadagrey, %
+  innertopmargin =7pt , splittopskip = \topskip, % 
+  skipbelow= 5pt, skipabove=5pt, %
+  topline=true,bottomline=true,leftline=true,rightline=true]
+}{\end{mdframed}
+}
+
+
+\declaretheoremstyle[
+%spaceabove=\topsep, spacebelow=\topsep,
+headfont=\normalsize\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=0.5em,
+]{theoremstyle}
+
+\declaretheorem[
+   style=theoremstyle,name=Theorem]{thm}
+\declaretheorem[
+    style=theoremstyle,name=Lemma,sibling=thm]{lemma}
+\declaretheorem[
+    style=theoremstyle,name=Proposition,sibling=thm]{prop}
+\declaretheorem[
+    style=theoremstyle,name=Claim,sibling=thm]{claim}
+\declaretheorem[
+    style=theoremstyle,name=Corollary,sibling=thm]{cor}
+
+
+\declaretheorem[
+name=,style=theoremstyle]{prethmclear}
+\newenvironment{thmclear}[1]
+  {\renewcommand\theprethmclear{#1}\prethmclear}
+  {\endprethmclear}
+
+\declaretheoremstyle[
+%spaceabove=\topsep, spacebelow=\topsep,
+headfont=\normalsize\normalfont\bfseries,
+notefont=\normalsize\normalfont\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=0.5em,
+]{proofstyle}
+
+\declaretheorem[
+style=proofstyle,name=Solution,numbered=no,qed=$\cubeqed$]{soln}
+
+
+\declaretheorem[
+style=proofstyle,name=Proof,numbered=no,qed=$\square$]{preproof}
+\renewenvironment{proof}
+  {\renewcommand\thepreproof{}\preproof}
+  {\endpreproof}
+
+\declaretheoremstyle[
+%spaceabove=\topsep, spacebelow=\topsep,
+headfont=\normalsize\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=0.5em,
+]{definitionstyle}
+
+\declaretheorem[
+name=Definition,style=definitionstyle,sibling=thm]{defn}
+
+\declaretheorem[
+name=Example,style=definitionstyle,sibling=thm]{example}
+
+\declaretheorem[
+name=Remark,style=definitionstyle,sibling=thm]{remark}
+
+\declaretheorem[
+name=,style=definitionstyle]{preclear}
+\newenvironment{clear}[1]
+  {\renewcommand\thepreclear{#1}\preclear}
+  {\endpreclear}
+
+\declaretheorem[
+name=,style=proofstyle,qed=$\square$]{preclearproof}
+\newenvironment{clearproof}[1]
+  {\renewcommand\thepreclearproof{#1}\preclearproof}
+  {\endpreclearproof}
+
+\declaretheoremstyle[
+%spaceabove=\topsep, spacebelow=\topsep,
+headfont=\normalsize\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=0.5em,
+]{problemstyle}
+
+\declaretheorem[style=problemstyle,name=Problem]{innercustomprob}
+\newenvironment{prob}[1]
+  {\renewcommand\theinnercustomprob{#1}\innercustomprob}
+  {\endinnercustomprob}
+% \declaretheorem[style=problemstyle,name=Question]{innercustomquestion}
+% \newenvironment{question}[1]
+%   {\renewcommand\theinnercustomquestion{#1}\innercustomquestion}
+%   {\endinnercustomquestion}
+
+\declaretheoremstyle[
+%spaceabove=\topsep, spacebelow=\topsep,
+headfont=\normalfont\bfseries,
+notefont=\mdseries, notebraces={(}{)},
+bodyfont=\normalfont,
+postheadspace=0.5em,
+]{exercisestyle}
+\declaretheorem[style=exercisestyle,name=Exercise]{xca}
+
+
+% \definecolor{canadagrey}{gray}{0.95}
+% \declaretheoremstyle[
+% headfont=\normalfont\bfseries,
+% notefont=\mdseries, notebraces={(}{)},
+% bodyfont=\normalfont,
+% postheadspace=0.5em,
+% preheadhook={\begin{mdframed}[backgroundcolor=canadagrey, %
+%   innertopmargin =10pt , splittopskip = \topskip, % 
+%   skipbelow= 5pt, skipabove=5pt, %
+%   topline=true,bottomline=true,leftline=true,rightline=true]},
+% postfoothook=\end{mdframed}
+% ]{greystyle}
+% \declaretheorem[name=,style=greystyle]{pregreybox}
+% \newenvironment{greybox}[1]
+%   {\renewcommand\thepregreybox{#1}\pregreybox}
+%   {\endpregreybox}
+
+% \definecolor{aliceblue}{rgb}{0.94, 0.97, 1.0}
+% \declaretheoremstyle[
+% headfont=\normalfont\bfseries,
+% notefont=\mdseries, notebraces={(}{)},
+% bodyfont=\normalfont,
+% postheadspace=0.5em,
+% preheadhook={\begin{mdframed}[backgroundcolor=aliceblue, %
+%   innertopmargin =10pt , splittopskip = \topskip, % 
+%   skipbelow= 5pt, skipabove=5pt, %
+%   topline=true,bottomline=true,leftline=true,rightline=true]},
+% postfoothook=\end{mdframed}
+% ]{bluestyle}
+% \declaretheorem[
+% name=,style=bluestyle]{prebluebox}
+% \newenvironment{bluebox}[1]
+%   {\renewcommand\theprebluebox{#1}\prebluebox}
+%   {\endprebluebox}
+
+
+%
+%
+%
+% Tikz decoration commands
+
+\usetikzlibrary{decorations.markings}
+
+\makeatletter
+% overwrite the number parsing macro from pgflibrarydecorations.markings
+\def\pgf@lib@dec@parsenum#1{%
+    \gdef\pgf@lib@dec@computed@width{0 pt}%
+    \tsx@pgf@lib@dec@parsenum#1+endmarker+%
+    \ifdim\pgf@lib@dec@computed@width<0pt\relax%
+        \pgfmathparse{\pgfdecoratedpathlength\pgf@lib@dec@computed@width}
+        \edef\pgf@lib@dec@computed@width{\pgfmathresult pt}%
+    \fi%
+}
+
+\def\tsx@pgf@lib@dec@parsenum@endmarker{endmarker}
+
+% this is iterated over all numbers that are summed
+\def\tsx@pgf@lib@dec@parsenum#1+{
+    \def\temp{#1}%
+    \ifx\temp\tsx@pgf@lib@dec@parsenum@endmarker%
+    \else%
+        \tsx@pgf@lib@dec@parsenum@one{#1}%
+        \expandafter\tsx@pgf@lib@dec@parsenum%
+    \fi%
+}
+
+% calculate the length for each number
+\def\tsx@pgf@lib@dec@parsenum@one#1{%
+  \pgfmathparse{#1}%
+  \ifpgfmathunitsdeclared%
+    \pgfmathparse{\pgf@lib@dec@computed@width + \pgfmathresult pt}%
+  \else%
+    \pgfmathparse{\pgf@lib@dec@computed@width + \pgfmathresult*\pgfdecoratedpathlength*1pt}%
+  \fi%
+  \edef\pgf@lib@dec@computed@width{\pgfmathresult pt}%
+}
+\makeatother
+
+\tikzset{->>>>-/.style={decoration={
+      markings,
+      mark={at position 0.5 +6 pt with {\arrow{>>>>}}},
+    },
+    postaction={decorate}}}
+
+\tikzset{->>>-/.style={decoration={
+      markings,
+      mark={at position 0.5 +4.5 pt with {\arrow{>>>}}},
+    },
+    postaction={decorate}}}
+
+
+\tikzset{->>-/.style={decoration={
+      markings,
+      mark={at position 0.5 +3 pt with {\arrow{>>}}},
+    },
+    postaction={decorate}}}
+
+\tikzset{->-/.style={decoration={
+      markings,
+      mark={at position 0.5 +1.6 pt with {\arrow{>}}},
+    },
+    postaction={decorate}}}
+
+\tikzset{point/.style={draw, circle, inner sep=#1 pt, fill}}
+
+\usetikzlibrary{calc,intersections}
+
+
+%
+%
+%
+%
+\newcommand{\wedgepop}[1]{  
+  \tikz[baseline={(0.1,0.035)},scale=0.8]{\draw[line
+    width=0.4, rounded corners=0.5, line cap=round,scale=1.2]
+    (0,0)--(0.1,0.29)--(0.2,0); 
+    \node[scale=0.7,inner sep=0,outer
+    sep=0] at (0.22,0.29) [right] {$#1$};     
+    % \node[white,xscale=-1,scale=0.7,inner sep=0,outer
+    %   sep=0] at (0.04,0.29) [right] {$#1$};
+    }
+  }
+
+  
+
+  
+% \newcommand{\inop}{
+%     \mathbin{
+%       \tikz[baseline={(0,-0.09)},scale=0.2ex]{       
+%         \draw[line width=0.3, rounded corners=0.5,line cap=round] (60:0.1) arc
+%         (60:300:0.1);
+%         \draw[line width=0.3, rounded corners=0.5,line
+%         cap=round] (-0.1,0)--({0.1*cos(60)},0);
+%       }
+%   }
+% }
+
+  
+  
+  \newcommand{\bigdsumop}{\tikz[baseline={(0,-0.12)}]{\draw[line
+      width=0.4, scale=1] (0,0)
+      circle (0.17); \draw[rounded corners=0.5,line
+      cap=round](0,0.17)--(0,-0.17); \draw[rounded corners=0.5,line
+      cap=round](0.17,0)--(-0.17,0);
+
+      \useasboundingbox (-0.18,-0.18)--(0.18,0.18);
+    }}
+  
+  
+  \newcommand{\bigocrossop}{\tikz[baseline={(0,-0.12)}]{\draw[line
+    width=0.4, scale=1] (0,0)
+    circle (0.17); \draw[rounded corners=0.5,line cap=round,rotate=45](0,0.12)--(0,-0.12); \draw[rounded corners=0.5,line cap=round,rotate=45](0.12,0)--(-0.12,0);
+  }}
+
+
+
+
+
+
+
+
+
+\NewDocumentCommand{\wedgep}{e{^_}}{%
+  {\mathop{\wedgepop{\IfValueT{#1}{#1}}}\displaylimits\IfValueT{#2}{_{#2\hspace{2.5pt}}}}
+}%
+\NewDocumentCommand{\Sym}{e{^_}}{%
+  \mathop{\mathrm{Sym}\IfValueT{#1}{^#1}}\displaylimits\IfValueT{#2}{_{#2\hspace{2.5pt}}}
+}%
+
+
+\NewDocumentCommand{\bigocross}{e{_^}}{%
+  {\mathop{\bigocrossop}\displaylimits
+    \IfValueT{#1}{_{#1}}
+    \IfValueT{#2}{^{#2}}}
+  }%
+
+\NewDocumentCommand{\bigdsum}{e{_^}}{%
+  {\mathop{\bigdsumop}\displaylimits
+    \IfValueT{#1}{_{#1}}
+    \IfValueT{#2}{^{#2}}}\,
+  }%
+
+
+\NewDocumentCommand{\dsum}{e{_^}}{%
+  \mathbin{\mathop{\dsumop}\displaylimits
+    \IfValueT{#1}{_{#1}}
+    \IfValueT{#2}{^{#2}}
+  }
+}%
+\makeatletter
+\newcommand\dsumop{\mathbin{\mathrel{\mathchoice
+  {\hbox{\fontsize{\tf@size}{\tf@size}\selectfont\@dsumop}}
+  {\hbox{\fontsize{\tf@size}{\tf@size}\selectfont\@dsumop}}
+  {\hbox{\fontsize{\sf@size}{\sf@size}\selectfont\@dsumop}}
+  {\hbox{\fontsize{\ssf@size}{\ssf@size}\selectfont\@dsumop}}
+}}}
+\newcommand\@dsumop{%
+  \begin{tikzpicture}[baseline={($(current bounding
+      box.south)+(0,0.05ex)$)}]{
+      \draw[line width=0.06ex] (0,0) circle (0.8ex);
+      \draw[rounded corners=0.5,line cap=round,rotate=0,line
+      width=0.06ex](0,0.6ex)--(0,-0.6ex);     
+      \draw[line width=0.06ex,rounded corners=0.5,line
+      cap=round,rotate=0](0.6ex,0)--(-0.6ex,0);
+    }
+    \end{tikzpicture}%      
+  }
+  
+ \NewDocumentCommand{\ocross}{e{_^}}{%
+    \mathbin{\mathop{\ocrossop}\displaylimits
+      \IfValueT{#1}{_{#1}}
+      \IfValueT{#2}{^{#2}}
+    }
+  }%
+  \makeatletter
+\newcommand\ocrossop{\mathbin{\mathrel{\mathchoice
+  {\hbox{\fontsize{\tf@size}{\tf@size}\selectfont\@ocrossop}}
+  {\hbox{\fontsize{\tf@size}{\tf@size}\selectfont\@ocrossop}}
+  {\hbox{\fontsize{\sf@size}{\sf@size}\selectfont\@ocrossop}}
+  {\hbox{\fontsize{\ssf@size}{\ssf@size}\selectfont\@ocrossop}}
+}}}
+\newcommand\@ocrossop{%
+  \begin{tikzpicture}[baseline={($(current bounding
+      box.south)+(0,0.25ex)$)}]{
+      \draw[line width=0.06ex] (0,0) circle (0.8ex);
+      \draw[rounded corners=0.5,line cap=round,rotate=45,line
+      width=0.06ex](0,0.6ex)--(0,-0.6ex);     
+      \draw[line width=0.06ex,rounded corners=0.5,line
+      cap=round,rotate=45](0.6ex,0)--(-0.6ex,0);
+    }
+    \end{tikzpicture}%      
+  }
+
+ \NewDocumentCommand{\hocross}{e{_^}}{%
+    \mathbin{\mathop{\hocrossop}\displaylimits
+      \IfValueT{#1}{_{#1}}
+      \IfValueT{#2}{^{#2}}
+    }
+  }%
+  \makeatletter
+\newcommand\hocrossop{\mathbin{\mathrel{\mathchoice
+  {\hbox{\fontsize{\tf@size}{\tf@size}\selectfont\@hocrossop}}
+  {\hbox{\fontsize{\tf@size}{\tf@size}\selectfont\@hocrossop}}
+  {\hbox{\fontsize{\sf@size}{\sf@size}\selectfont\@hocrossop}}
+  {\hbox{\fontsize{\ssf@size}{\ssf@size}\selectfont\@hocrossop}}
+}}}
+
+  \newcommand\@hocrossop{%
+  \begin{tikzpicture}[baseline={($(current bounding
+      box.south)+(0,0.25ex)$)}]{
+      \draw[line width=0.06ex] (0,0) circle (0.8ex);
+      \draw[rounded corners=0.5,line cap=round,rotate=45,line
+      width=0.18ex](0,0.6ex)--(0,-0.6ex);     
+      \draw[line width=0.18ex,rounded corners=0.5,line
+      cap=round,rotate=45](0.6ex,0)--(-0.6ex,0);
+    }
+    \end{tikzpicture}%      
+  }
+
+   
+
+  \newcommand{\cross}{\times}
+
+
+
+  %
+  %
+  %
+  % big sum op
+    
+  \newcommand{\bigsumop}{\tikz[baseline={(0,-0.12)}]{ \draw[rounded
+      corners=0.5,line cap=round,line width=0.7pt](0,0.14)--(0,-0.14);
+      \draw[line width=0.7pt, rounded corners=0.5,line cap=round](0.14,0)--(-0.14,0);
+    }}
+\NewDocumentCommand{\bigsum}{e{_^}}{%
+    {\mathop{\bigsumop}\displaylimits
+      \IfValueT{#1}{_{#1}}
+      \IfValueT{#2}{^{#2}}}\,
+  }%
+  %
+  %
+  %
+  \newcommand{\disj}{\sqcup}
+    \newcommand{\Disjop}{\tikz[baseline={(0,-0.11)},yscale=1]{
+
+    \useasboundingbox (-0.14,-0.14)--(0.14,0.145);
+    \draw[line width=0.5pt, rounded corners=0.5,line cap=round](0.12,-0.14)--(-0.12,-0.14);
+    \draw[rounded
+    corners=0.5,line cap=round,line width=0.7pt](0.1,-0.135)--(0.1,0.14);
+    \draw[rounded
+    corners=0.5,line cap=round,line width=0.7pt](-0.1,-0.135)--(-0.1,0.14);
+
+    \draw[line width=0.5pt, rounded corners=0.5,line cap=round](0.12,0.145)--(0.08,0.145);
+
+      \draw[line width=0.5pt, rounded corners=0.5,line cap=round](-0.12,0.145)--(-0.08,0.145);
+}}
+\NewDocumentCommand{\Disj}{e{_^}}{%
+    {\mathop{\Disjop}\displaylimits
+      \IfValueT{#1}{_{#1}}
+      \IfValueT{#2}{^{#2}}}\,
+  }%
+
+  \newcommand{\Prodop}{\tikz[baseline={(0,-0.11)},yscale=1]{
+
+    \useasboundingbox (-0.14,-0.14)--(0.14,0.145);
+    \draw[line width=0.5pt, rounded corners=0.5,line cap=round](0.12,0.145)--(-0.12,0.145);
+    \draw[rounded
+    corners=0.5,line cap=round,line width=0.7pt](0.1,-0.135)--(0.1,0.14);
+    \draw[rounded
+    corners=0.5,line cap=round,line width=0.7pt](-0.1,-0.135)--(-0.1,0.14);
+
+    \draw[line width=0.5pt, rounded corners=0.5,line cap=round](0.12,-0.14)--(0.08,-0.14);
+
+      \draw[line width=0.5pt, rounded corners=0.5,line cap=round](-0.12,-0.14)--(-0.08,-0.14);
+}}
+\NewDocumentCommand{\Prod}{e{_^}}{%
+    {\mathop{\Prodop}\displaylimits
+      \IfValueT{#1}{_{#1}}
+      \IfValueT{#2}{^{#2}}}\,
+  }%
+
+  %
+  %
+  %
