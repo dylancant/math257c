@@ -1,5 +1,5 @@
 \usepackage{amsmath,amsfonts,amsthm,mathtools,xparse,amstext}
-
+\usepackage{hyperref}
 \usepackage{graphicx}
 
 \usepackage{tikz}
@@ -112,6 +112,38 @@ scr=euler]{mathalfa}
 %\DeclareMathOperator{\Proj}{\mathrm{Proj}}
 %\newcommand{\varchi}{\tikz[baseline={(0,-0.09)}]{\node[inner
 %    sep=0,outer sep=0] at(0,0){$\chi$};}}
+
+
+%    sarah's commands
+\newcommand{\nc}{\newcommand}
+
+\nc{\excise}[1]{}
+
+\nc{\f}[2]{\frac{#1}{#2}}
+\nc{\df}[2]{\dfrac{#1}{#2}}
+
+\nc{\arr}{\rightarrow}
+
+\nc{\rt}[1]{\sqrt{#1}}
+
+\nc{\ov}[1]{\overline{#1}}
+
+\nc{\dlim}[1]{\lim\limits_{#1}}
+\nc{\limto}[2]{\dlim{{#1} \arr {#2}}}
+
+\nc{\sumto}[2]{\sum\limits_{#1}^{#2}}
+\nc{\prodto}[2]{\prod\limits_{#1}^{#2}}
+
+\nc{\dint}{\displaystyle\int}
+\nc{\ep}{\epsilon}
+
+\renewcommand{\th}{^{\text{th}}}
+
+\nc{\oo}{\infty}
+\DeclareMathOperator{\gr}{grad}
+
+
+
 
 %
 %
