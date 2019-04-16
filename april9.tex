@@ -1,0 +1,190 @@
+\documentclass[11pt]{article}
+\usepackage{amssymb, amsmath}
+\textheight9in \textwidth6in
+
+\hoffset-0.6in \voffset -1in
+
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Mat}{\mathrm{Mat}}
+\newcommand{\Sym}{\mathrm{Sym}}
+\newcommand{\Ind}{\mathrm{Ind}}
+\newcommand{\coker}{\mathrm{coker}}
+
+\newcommand\inner[2]{\langle #1, #2 \rangle}
+
+
+\newtheorem{thm}{Theorem}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{exe}[thm]{Exercise}
+\newtheorem{eg}[thm]{Example}
+
+\title{Lecture 3: Overview of Index Theorem for elliptic operators}
+\author{Ipsita Datta}
+\date{11 April 2019}
+
+\begin{document}
+
+\maketitle 
+
+%\section*{Lecture 3: Overview of Index Theorem for elliptic operators}
+\section*{Elliptic operators}
+We will always be looking at linear differential operators. We build on the difficulty of the operators and domains.
+
+\subsection*{Constant coefficient operators on vector-valued functions on $\R^n$}
+We consider $D: (\R^n, \R^m) \to (\R^n, \R^m) $ given by
+$$Du = \sum\limits_{|\alpha \leq k} A_\alpha \frac{\partial^{|\alpha|} u }{\partial x^\alpha}$$ where $A_\alpha \in \Mat (m,n)$.
+
+ \begin{defn} 
+ \begin{enumerate}
+ \item[a.]
+ The {\it total symbol} of $D$ is defined as $$\sigma_t(\xi) = \sum\limits_{|\alpha \leq k} A_\alpha \xi^\alpha \hspace{0.5in} \mbox{   for $\xi = (\xi_1, \dots, \xi_n)$.} $$ %for $\xi = (\xi_1, \dots, \xi_n)$.
+ \item[b.]
+ The principal symbol is given by $$\sigma_p (\xi) = \sum_{|\alpha| = k} A_\alpha \xi^\alpha \hspace{0.5in} \mbox{   for $\xi = (\xi_1, \dots, \xi_n)$.}$$.
+ \end{enumerate}
+\end{defn}
+
+One motivation for this definition comes from looking at the Fourier transform.
+Note 
+\begin{align*}
+\widehat{Du} = \sigma_t (i \xi) \hat{u} \implies Du = \int e^{ix \cdot \xi} \sigma_t(i \xi) d\xi.
+\end{align*}
+Thus, we ``turned" a differential operator into an integral operator.
+
+Ellipticity of $D$ have different meanings in different contexts but it always has something to do with $\sigma_{t,p} (\xi)$ being invertible outside of $\xi = 0$. An example of such a condition is
+\begin{align*} \label{cond:star} \tag{$\star$}
+|\sigma_t(\xi)| \geq c|\xi|^n \mbox{ for all $x \in \R^n_{\xi}$}.
+\end{align*}
+This is possibly relevant for Schwarz spaces.
+%\eqref{eq:einstein}
+
+The fundamental solution of $D$ is a $G:\R^n \to \R^m$ satisfying $DG = \delta$.
+By taking Fourier transform we get $\widehat{DG} = 1$, equivalently $\sigma_t(i \xi) \hat{G} = 1$. 
+Ellipticity conditions let you ``divide" by the symbol to obtain a tempered distribution 
+$G = \left( \frac{1}{\sigma_t(\xi)}\right)^\vee $ which solves $DG = \delta$. Similarly, for a function $f:\R^n \to \R^m$ we can obtain a tempered distribution $G = \left( \frac{1}{\sigma_t(\xi)}\right)^\vee \ast f $ which solves $DG = f$.
+
+\begin{exe}
+Find a condition on the total symbol $\sigma_t (\xi)$ so that $$D: \mathcal{S} \to \mathcal{S}$$ ($\mathcal{S}$ representing Schwarz functions) is bijective. What fails with \eqref{cond:star}.
+\end{exe}
+
+\subsection*{Variable coefficient operators on $\R^n$}
+We consider $D$ almost the same as above but now $A_\alpha$ depends on $x \in \R^n$. So, in the definition of the differential operator and the symbols we replace $A_\alpha$ by $A_\alpha(x)$. Then the symbol also depends on $x \in \R^n$ and we denote it by $\sigma_{t,p}(x, \xi)$.
+
+Notice that under a change of coordinates $x \mapsto x'$, $\sigma_p( \cdot , x)$ transforms to $\sigma_p(\cdot, x')$ as a section of $\Sym(T^* \R^n) \otimes \Mat (m,n)$. For example,
+\begin{align*}
+\frac{\partial}{\partial x_i} = \sum_j \frac{\partial x'_j}{\partial x_i} \frac{\partial}{\partial x'_j},\\
+dx_i = \sum_j  \frac{\partial x'_j}{\partial x_i} dx_j.
+\end{align*}
+In contrast $\sigma_t$ does not transform so nicely because lower order terms appear. For example,
+\begin{align*}
+\frac{\partial}{\partial x_i}\frac{\partial}{\partial x_k} = \sum_{j,l} \frac{\partial x'_j}{\partial x_i}\frac{\partial}{\partial x'_j}\left(\frac{\partial x'_l}{\partial x_k} \frac{\partial}{\partial x'_l}\right) = \left( \sum_{j,l} \frac{\partial x'_j}{\partial x_i}\frac{\partial x'_l}{\partial x_k} \frac{\partial}{\partial x'_j} \frac{\partial}{\partial x'_l}\right) + (\mbox{first order terms}).
+\end{align*}
+Ellipticity can be defined similar to the constant coefficient case, but we will not do it here because it will confuse us.
+
+\subsection*{Operators on a closed manifold}
+Consider a closed manifold $M$ and vector bundles $E, F$ over $M$. Assume $\dim E = \dim F$. $D: C^\infty (M,E) \to C^\infty (M,F)$ is a differential operator if it looks like a differential operator on trivializations (plus some assumptions about locality). For $D$, $\sigma_{p,D} : \Sym^n (T^* M) \otimes F \to F$ is the principal symbols glued together. (Note that there exists a coordinate free definition.)
+
+\begin{defn}$D$ is elliptic if $\sigma_{p,D} (v,\dots , v)$ for $v \in T_m M, m \in M$ is invertible for $v \neq 0$. 
+\end{defn}
+
+\begin{thm}
+If $D$ as above is elliptic, then it has finite dimensional kernel and cokernel.
+\end{thm}
+We will not be proving this which is standard but non-trivial. It is crucial to this theorem that $M$ is closed.
+
+\begin{defn}
+In this case, we define index of an elliptic operator  $D$ as $$\Ind(D) = \dim (\ker D) -  \dim ( \coker D).$$
+\end{defn}
+
+\section*{Index of elliptic operators}
+
+\subsection*{Closed manifolds}
+
+\begin{thm} 
+\begin{enumerate}
+\item[a.] Index of an elliptic operator (on a closed manifold) only depends on its principal symbol.
+\item[b.] Index is constant on the connected components of the space of elliptic operators.
+\end{enumerate}
+\end{thm}
+
+\noindent {\bf Gelfand(1960)} proposed computing the index of an elliptic operator as a homotopical invariant of its symbol.
+
+\noindent {\bf Atiyah--Singer (1963)} announce they did it! The story of index calculations continues to much later.
+
+\begin{eg}
+Consider an oriented and closed manifold $M$ with a Riemannian metric. Then the hodge star is defined and we get
+$$ d + d^\star : \Omega^{even}(M) \to \Omega^{odd} (M)$$
+is an elliptic differential operator. (Exercise: check!)
+
+Let $\mathcal{H}$ denote the subspace of $\Omega^* (M)$ of harmonic forms. Note that $\omega \in \Omega^k(M)$ is harmonic if and only if $$d\omega = d^\star\omega = 0.$$
+\noindent {\bf Fact:} Every de Rham cohomology class has exactly one harmonic representative. 
+Using this fact we can conclude
+\begin{align*}
+\ker (d + d^\star) &= \mathcal{H}^{even},\\
+\coker (d + d^\star ) &= \ker (\mathcal{H}^{odd} \to \mathcal{H}^{even}) = \mathcal{H}^{odd},\\
+\Ind (d + d^\star) & = \dim (\mathcal{H}^{even}) - \dim (\mathcal{H}^{odd}) = \chi (M).
+\end{align*}
+The topological side of Atiyah-Singer index theorem computes
+\begin{align*}
+\chi(M) = \int\limits_M K
+\end{align*}
+where $K$ is the Euler form of $TM$ constructed from curvature (generalised Gaussian curvature, constructed via Chern-Weil theory).
+\end{eg}
+
+General form of the index is given by
+\begin{align*}
+\Ind (D) = \int\limits_M ch(\sigma_{p,D}) Td(M)
+\end{align*}
+where $ch(D)$ and $Td(M)$ are cohomology classes. The classes are not always easy to compute.
+
+Later work showed that, for example for Dirac operators (which are most fundamental of elliptic operators), it is possible to construct special representatives like de Rham representatives. (One proof uses ``heat kernel" techniques.)
+
+\subsection*{What about manifolds with boundary?}
+
+Suppose $X$ is a compact manifold with boundary $\partial X = Y$. Let $E$ and $F$ be vector bundles over $X$. For $D: C^\infty (X,E) \to C^\infty (X, F)$ elliptic, Fredholmness fails. (For example, $\bar{\partial} : C^\infty(\mathbb{D}, \C) \to C^\infty(\mathbb{D}, \C)$ does not have a finite kernel.)
+
+To solve this issue we need appropriate boundary conditions.
+
+One {\bf candidate} would be local boundary conditions like restricting to a subspace of $C^\infty (X,E)$ consisting of sections $f$ such that $f$ and/or its derivatives are prescribed point wise. (For example Dirichlet or von Neumann conditions.) It is not impossible to work with local boundary conditions. Sometimes it is possible to find nice local boundary conditions that lead to Fredholm operators. In fact, one can remove the ``sometimes." But from the point of index theory we are unsure how nice the conditions can be. (Refer: ``On general boundary value problems for elliptic operators" by Schulze et. al. if interested.)
+
+Possibly one of the main insights of Atiyah--Patodi--Singer is that one could consider global boundary conditions for the index theory to work well.
+
+\begin{thm}{\bf(Atiyah--Patodi--Singer I)}\\
+Consider $X, Y, E, F$ and $D$ as above.
+
+{\bf Assume}
+\begin{enumerate}
+\item[a.] $D$ first order.
+\item[b.] In a neighbourhood $I_u \times Y$ of $Y$ (where parameter $u$ is decreasing towards $\partial X = Y$), $D$ should look like
+$$D = \sigma_0 (\frac{\partial}{\partial u } + A)$$ where $\sigma$ is a bundle homeomorphism $E|_Y \to F|_Y$ ($E|_{I \times Y}$ is pullback from $E|_Y$, similar for $F$) and $A$ is self-adjoint (with respect to inner product $\inner{s}{s'} = \int\limits_Y h(s(y), s'(y)) dy, s, s' \in C^\infty (X,E)$). Note here $h$ is a fixed Hermitian metric on $E$ and $dy$ is with respect to a fixed measure on $Y$.
+
+{\bf Let} $C^\infty (X,E,P)$ denote the sections $f$ such that the projection of $f|_Y$ to the non-negative eigenspace of $A$ is zero.
+
+{\bf Then} $D: C^\infty(X,E,P) \to C^\infty(X,F)$ is Fredholm.
+Moreover
+$$\Ind (D) = \int\limits_X \alpha_0(x) dx - \frac{h + \eta(0)}{2} ,$$
+where
+\begin{enumerate}
+\item[(i)] $\alpha_0 (x)$ is the constant term in the asymptotic expansion (as $t \to 0$) of $$\sum e^{-t\nu'} |\phi'_\mu(x)|^2 - \sum e^{-t\mu''} |\phi''_\mu(x)|^2,$$
+where $\mu', \phi'_\mu, (resp. \,\, \mu'', \phi''_\mu)$ denote the eigenvalues of $D^\ast D (resp. \,\, DD^\ast)$ on the double of $X$. Note that $D$ and $D^\ast$ naturally extend to operators on the double of $X$ using special form of $D$ near $\partial$.
+\item[(ii)] $h = \dim \ker A$.
+\item[(iii)] $\eta(s) = \sum\limits_{\lambda \neq 0} {\rm sign} (\lambda) |\lambda|^{-s},$ where $\lambda$ runs over eigenvalues of $A$. Here $\eta(s)$ converges absolutely for $Re(s) \gg 1$ and extends to a meromorphic function on the entire plane with finite value at $s=0$.
+\end{enumerate}
+\end{enumerate}
+\end{thm}
+
+\noindent{\bf Remark} Turns out this case is not the most important for us, so don't worry too much about it. Next time we cover spectral flows, which is more important for us.
+
+
+\begin{eg}
+Let us consider $\bar{\partial}: C^\infty (\mathbb{D}, \C) \to C^\infty (\mathbb{D}, \C)$ given by $$\bar{\partial} = \frac{d}{dt} - A$$ where $-A: C^\infty(S^1, \C) \to  C^\infty(S^1, \C); e^{2\pi i n\theta} \mapsto 2 \pi n e^{2\pi i n\theta}$  for $e^t$ radial coordinates and $e^{i\theta}$ angular coordinates.
+Then  $C^\infty (\mathbb{D}, \C, P)$ consists of those sections which have only negative Fourier coefficients. So, no holomorphic functions are in $C^\infty (\mathbb{D}, \C, P)$. Also, we can compute $\eta(s) = 0$ as $Re(s) \gg 1$ implies $\eta(0) = 0$.
+
+\end{eg}
+
+
+
+
+
+
+\end{document}
