@@ -24,6 +24,7 @@
     "mdframed")
    (TeX-add-symbols
     '("wedgepop" 1)
+    '("inner" 2)
     '("ip" 1)
     '("pd" 2)
     '("ud" 2)
@@ -58,6 +59,8 @@
     "id"
     "nc"
     "gr"
+    "Ind"
+    "Mat"
     "op"
     "intprod"
     "cubeqed"

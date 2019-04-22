@@ -5,6 +5,7 @@
     "latex2e"
     "april2"
     "april4"
+    "april11"
     "amsart"
     "amsart10"
     "preamble"))
