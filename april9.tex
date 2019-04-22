@@ -1,182 +1,136 @@
-\documentclass[11pt]{amsart}
-\usepackage{preamble}
+\section*{\textbf{April 9 (Daren)}}
 
-\newcommand{\Ind}{\mathrm{Ind}}
-\newcommand{\Mat}{\mathrm{Mat}}
-
-\newcommand\inner[2]{\langle #1, #2 \rangle}
-
-
-
-
-
-\title{Lecture 3: Overview of Index Theorem for elliptic operators}
-\author{Ipsita Datta}
-\date{11 April 2019}
-
-\begin{document}
-
-\maketitle 
-
-\section*{\textbf{April 11 (Ipsita)}}
-%\section*{Lecture 3: Overview of Index Theorem for elliptic operators}
-\section*{Elliptic operators}
-We will always be looking at linear differential operators. We build on the difficulty of the operators and domains.
-
-\subsection*{Constant coefficient operators on vector-valued functions on $\R^n$}
-We consider $D: (\R^n, \R^m) \to (\R^n, \R^m) $ given by
-$$Du = \sum\limits_{|\alpha \leq k} A_\alpha \frac{\partial^{|\alpha|} u }{\partial x^\alpha}$$ where $A_\alpha \in \Mat (m,n)$.
-
- \begin{defn} 
- \begin{enumerate}
- \item[a.]
- The {\it total symbol} of $D$ is defined as $$\sigma_t(\xi) = \sum\limits_{|\alpha \leq k} A_\alpha \xi^\alpha \hspace{0.5in} \mbox{   for $\xi = (\xi_1, \dots, \xi_n)$.} $$ %for $\xi = (\xi_1, \dots, \xi_n)$.
- \item[b.]
- The principal symbol is given by $$\sigma_p (\xi) = \sum_{|\alpha| = k} A_\alpha \xi^\alpha \hspace{0.5in} \mbox{   for $\xi = (\xi_1, \dots, \xi_n)$.}$$.
- \end{enumerate}
-\end{defn}
-
-One motivation for this definition comes from looking at the Fourier transform.
-Note 
-\begin{align*}
-\widehat{Du} = \sigma_t (i \xi) \hat{u} \implies Du = \int e^{ix \cdot \xi} \sigma_t(i \xi) d\xi.
-\end{align*}
-Thus, we ``turned" a differential operator into an integral operator.
-
-Ellipticity of $D$ have different meanings in different contexts but it always has something to do with $\sigma_{t,p} (\xi)$ being invertible outside of $\xi = 0$. An example of such a condition is
-\begin{align*} \label{cond:star} \tag{$\star$}
-|\sigma_t(\xi)| \geq c|\xi|^n \mbox{ for all $x \in \R^n_{\xi}$}.
-\end{align*}
-This is possibly relevant for Schwarz spaces.
-%\eqref{eq:einstein}
-
-The fundamental solution of $D$ is a $G:\R^n \to \R^m$ satisfying $DG = \delta$.
-By taking Fourier transform we get $\widehat{DG} = 1$, equivalently $\sigma_t(i \xi) \hat{G} = 1$. 
-Ellipticity conditions let you ``divide" by the symbol to obtain a tempered distribution 
-$G = \left( \frac{1}{\sigma_t(\xi)}\right)^\vee $ which solves $DG = \delta$. Similarly, for a function $f:\R^n \to \R^m$ we can obtain a tempered distribution $G = \left( \frac{1}{\sigma_t(\xi)}\right)^\vee \ast f $ which solves $DG = f$.
-
-\begin{xca}
-Find a condition on the total symbol $\sigma_t (\xi)$ so that $$D: \mathcal{S} \to \mathcal{S}$$ ($\mathcal{S}$ representing Schwarz functions) is bijective. What fails with \eqref{cond:star}.
-\end{xca}
-
-\subsection*{Variable coefficient operators on $\R^n$}
-We consider $D$ almost the same as above but now $A_\alpha$ depends on $x \in \R^n$. So, in the definition of the differential operator and the symbols we replace $A_\alpha$ by $A_\alpha(x)$. Then the symbol also depends on $x \in \R^n$ and we denote it by $\sigma_{t,p}(x, \xi)$.
-
-Notice that under a change of coordinates $x \mapsto x'$, $\sigma_p( \cdot , x)$ transforms to $\sigma_p(\cdot, x')$ as a section of $\Sym(T^* \R^n) \otimes \Mat (m,n)$. For example,
-\begin{align*}
-\frac{\partial}{\partial x_i} = \sum_j \frac{\partial x'_j}{\partial x_i} \frac{\partial}{\partial x'_j},\\
-dx_i = \sum_j  \frac{\partial x'_j}{\partial x_i} dx_j.
-\end{align*}
-In contrast $\sigma_t$ does not transform so nicely because lower order terms appear. For example,
-\begin{align*}
-\frac{\partial}{\partial x_i}\frac{\partial}{\partial x_k} = \sum_{j,l} \frac{\partial x'_j}{\partial x_i}\frac{\partial}{\partial x'_j}\left(\frac{\partial x'_l}{\partial x_k} \frac{\partial}{\partial x'_l}\right) = \left( \sum_{j,l} \frac{\partial x'_j}{\partial x_i}\frac{\partial x'_l}{\partial x_k} \frac{\partial}{\partial x'_j} \frac{\partial}{\partial x'_l}\right) + (\mbox{first order terms}).
-\end{align*}
-Ellipticity can be defined similar to the constant coefficient case, but we will not do it here because it will confuse us.
-
-\subsection*{Operators on a closed manifold}
-Consider a closed manifold $M$ and vector bundles $E, F$ over $M$. Assume $\dim E = \dim F$. $D: C^\infty (M,E) \to C^\infty (M,F)$ is a differential operator if it looks like a differential operator on trivializations (plus some assumptions about locality). For $D$, $\sigma_{p,D} : \Sym^n (T^* M) \otimes F \to F$ is the principal symbols glued together. (Note that there exists a coordinate free definition.)
-
-\begin{defn}$D$ is elliptic if $\sigma_{p,D} (v,\dots , v)$ for $v \in T_m M, m \in M$ is invertible for $v \neq 0$. 
-\end{defn}
-
-\begin{thm}
-If $D$ as above is elliptic, then it has finite dimensional kernel and cokernel.
-\end{thm}
-We will not be proving this which is standard but non-trivial. It is crucial to this theorem that $M$ is closed.
-
-\begin{defn}
-In this case, we define index of an elliptic operator  $D$ as $$\Ind(D) = \dim (\ker D) -  \dim ( \coker D).$$
-\end{defn}
-
-\section*{Index of elliptic operators}
-
-\subsection*{Closed manifolds}
-
-\begin{thm} 
-\begin{enumerate}
-\item[a.] Index of an elliptic operator (on a closed manifold) only depends on its principal symbol.
-\item[b.] Index is constant on the connected components of the space of elliptic operators.
-\end{enumerate}
-\end{thm}
-
-\noindent {\bf Gelfand(1960)} proposed computing the index of an elliptic operator as a homotopical invariant of its symbol.
-
-\noindent {\bf Atiyah--Singer (1963)} announce they did it! The story of index calculations continues to much later.
-
-\begin{example}
-Consider an oriented and closed manifold $M$ with a Riemannian metric. Then the hodge star is defined and we get
-$$ d + d^\star : \Omega^{even}(M) \to \Omega^{odd} (M)$$
-is an elliptic differential operator. (Exercise: check!)
-
-Let $\mathcal{H}$ denote the subspace of $\Omega^* (M)$ of harmonic forms. Note that $\omega \in \Omega^k(M)$ is harmonic if and only if $$d\omega = d^\star\omega = 0.$$
-\noindent {\bf Fact:} Every de Rham cohomology class has exactly one harmonic representative. 
-Using this fact we can conclude
-\begin{align*}
-\ker (d + d^\star) &= \mathcal{H}^{even},\\
-\coker (d + d^\star ) &= \ker (\mathcal{H}^{odd} \to \mathcal{H}^{even}) = \mathcal{H}^{odd},\\
-\Ind (d + d^\star) & = \dim (\mathcal{H}^{even}) - \dim (\mathcal{H}^{odd}) = \chi (M).
-\end{align*}
-The topological side of Atiyah-Singer index theorem computes
-\begin{align*}
-\chi(M) = \int\limits_M K
-\end{align*}
-where $K$ is the Euler form of $TM$ constructed from curvature (generalised Gaussian curvature, constructed via Chern-Weil theory).
-\end{example}
-
-General form of the index is given by
-\begin{align*}
-\Ind (D) = \int\limits_M ch(\sigma_{p,D}) Td(M)
-\end{align*}
-where $ch(D)$ and $Td(M)$ are cohomology classes. The classes are not always easy to compute.
-
-Later work showed that, for example for Dirac operators (which are most fundamental of elliptic operators), it is possible to construct special representatives like de Rham representatives. (One proof uses ``heat kernel" techniques.)
-
-\subsection*{What about manifolds with boundary?}
-
-Suppose $X$ is a compact manifold with boundary $\partial X = Y$. Let $E$ and $F$ be vector bundles over $X$. For $D: C^\infty (X,E) \to C^\infty (X, F)$ elliptic, Fredholmness fails. (For example, $\bar{\partial} : C^\infty(\mathbb{D}, \C) \to C^\infty(\mathbb{D}, \C)$ does not have a finite kernel.)
-
-To solve this issue we need appropriate boundary conditions.
-
-One {\bf candidate} would be local boundary conditions like restricting to a subspace of $C^\infty (X,E)$ consisting of sections $f$ such that $f$ and/or its derivatives are prescribed point wise. (For example Dirichlet or von Neumann conditions.) It is not impossible to work with local boundary conditions. Sometimes it is possible to find nice local boundary conditions that lead to Fredholm operators. In fact, one can remove the ``sometimes." But from the point of index theory we are unsure how nice the conditions can be. (Refer: ``On general boundary value problems for elliptic operators" by Schulze et. al. if interested.)
-
-Possibly one of the main insights of Atiyah--Patodi--Singer is that one could consider global boundary conditions for the index theory to work well.
-
-\begin{thm}{\bf(Atiyah--Patodi--Singer I)}\\
-Consider $X, Y, E, F$ and $D$ as above.
-
-{\bf Assume}
-\begin{enumerate}
-\item[a.] $D$ first order.
-\item[b.] In a neighbourhood $I_u \times Y$ of $Y$ (where parameter $u$ is decreasing towards $\partial X = Y$), $D$ should look like
-$$D = \sigma_0 (\frac{\partial}{\partial u } + A)$$ where $\sigma$ is a bundle homeomorphism $E|_Y \to F|_Y$ ($E|_{I \times Y}$ is pullback from $E|_Y$, similar for $F$) and $A$ is self-adjoint (with respect to inner product $\inner{s}{s'} = \int\limits_Y h(s(y), s'(y)) dy, s, s' \in C^\infty (X,E)$). Note here $h$ is a fixed Hermitian metric on $E$ and $dy$ is with respect to a fixed measure on $Y$.
-
-{\bf Let} $C^\infty (X,E,P)$ denote the sections $f$ such that the projection of $f|_Y$ to the non-negative eigenspace of $A$ is zero.
-
-{\bf Then} $D: C^\infty(X,E,P) \to C^\infty(X,F)$ is Fredholm.
-Moreover
-$$\Ind (D) = \int\limits_X \alpha_0(x) dx - \frac{h + \eta(0)}{2} ,$$
-where
-\begin{enumerate}
-\item[(i)] $\alpha_0 (x)$ is the constant term in the asymptotic expansion (as $t \to 0$) of $$\sum e^{-t\nu'} |\phi'_\mu(x)|^2 - \sum e^{-t\mu''} |\phi''_\mu(x)|^2,$$
-where $\mu', \phi'_\mu, (resp. \,\, \mu'', \phi''_\mu)$ denote the eigenvalues of $D^\ast D (resp. \,\, DD^\ast)$ on the double of $X$. Note that $D$ and $D^\ast$ naturally extend to operators on the double of $X$ using special form of $D$ near $\partial$.
-\item[(ii)] $h = \dim \ker A$.
-\item[(iii)] $\eta(s) = \sum\limits_{\lambda \neq 0} {\rm sign} (\lambda) |\lambda|^{-s},$ where $\lambda$ runs over eigenvalues of $A$. Here $\eta(s)$ converges absolutely for $Re(s) \gg 1$ and extends to a meromorphic function on the entire plane with finite value at $s=0$.
-\end{enumerate}
-\end{enumerate}
-\end{thm}
-
-\noindent{\bf Remark} Turns out this case is not the most important for us, so don't worry too much about it. Next time we cover spectral flows, which is more important for us.
+	Today we will talk about index of operators of certain simple form on cylinders, following Kronheimer-Mrowka.
+\newline
+		
+		
+		\textbf{Two warnings:}\\
+		\begin{enumerate}
+			\item Index theory is for linear operators, but we will deal with non-linear operators later. What we want to compute indices of are the linearisations of the non-linear operators at the solutions of the non-linear equations.
+			\item Index theory, and more generally Fredholm theory, is generally done in the setting of Hilbert space $W^{k,2}$. \\
+			For $J$-holomorphic curve related problems, we will need to use $W^{k,p}$ spaces where $p>2$, for the following reason:
+			 \begin{itemize}
+			 	\item we need $kp >2$, so that
+			 	 \begin{itemize}
+			 	 	\item the definition of the relevant completion in this non-linear case requiresthis.
+			 	 	\item $W^{k,p}$ is closed under multiplication.
+			 	 	\item $W^{k,p}\hookrightarrow C^0$ compactly.
+			 	 \end{itemize}
+			 	\item k=1, because of elliptic regularity.
+			 \end{itemize}
+			 Hence, the following results, especially the ones regarding Fredholmness of operators, are not good enough for what we need later.
+		\end{enumerate}
+		
+		\textbf{Quick reminders on Fredholm operators:}
+		\vspace{5mm}
+		$H_1,H_2$ are Hilbert spaces.
+		\begin{itemize}
+			\item \textbf{Definition}: A bounded operator $F: H_1\rightarrow H_2$ is called \textit{Fredholm} if its kernel and cokernel are both finite dimensional and it has closed range. The \textit{index} of $F$ is $\text {dim ker}(F) - \text{dim coker}(F)$.
+			\item \textbf{Definition}: A bounded operator $F: H_1\rightarrow H_2$ is called \textit{compact} if it is the limit of a sequence of finite rank operators in the operator norm. Equivalently, if it maps bounded set $B$ in $H_1$ to precompact set $F(B)$ in $H_2$.
+			 \item 	\textbf{Lemma}: $F: H_1\rightarrow H_2$ is Fredholm if and only if $\exists P: H_1\rightarrow H_2$, such that $PF -id_{H_1}$ and $FP - id_{H_2}$ are compact operators. Such $P$ is called a parametrix of $F$.
+			 \item \textbf{Lemma}: If $F_t$ is a continuous family of Fredholm operators for $t\in[0,1]$, then $ind(F_0) = ind(F_1)$.
+			
+		\end{itemize}
+	\vspace{5mm}
+		\textbf{Main proposition today:}\\
+		\vspace{5mm}
+		Let $Y$ be a closed manifold, $Z = \mathbb{R}\times Y$, where $t$ is the coordinate in the $\mathbb{R}$-direction. $E\rightarrow Y $ is a vector bundle, with an Euclidean metric on the fiber. The pullback of $E$ to $Z$ along projection to $Y$ is called $E$ again.
+		\vspace*{5mm} 
+		
+		
+		
+			\textbf{Proposition 14.2.1}(in Kronheimer-Mrowka): Let $L_0$ be a first-order, self-adjoint elliptic operator acting
+			on sections of a vector bundle $E \rightarrow Y$ , and let $h_t$ be a time-dependent bounded
+			operator on $L^2(Y,E)$, varying continuously in the operator norm topology
+			and equal to constants $h_{\pm}$ on each ends. Suppose $L_0 + h_{\pm}$ are \textit{hyperbolic}. Then the operator
+		\[Q = \dfrac{d}{dt} + L_0 + h_{t} : L^2_1(Z,E) \rightarrow L^2(Z,E)\]
+			is Fredholm and has index equal to the \textit{spectral flow} of the path of operators
+			$L_0+h_t$, where $L^2_1(Z,E) = W^{1,2}(Z,E)$.
+			\vspace{5mm}
+		
+		\textbf{Definition}: An operator $L$ is called \textit{hyperbolic} if it has no eigenvalue on the imaginary axis.\\
+		\vspace{5mm}
+		\textbf{Definition}: For a family of operators $L_0+h_t$ satisfying the condition in the proposition, the \textit{spectral flow} is defined as the \textbf{net} number of eigenvalues whose real part changing from negative to positive. \\
+		\vspace{5mm }To be more precise, first deform the path $L_0 + h_t$ so that it is smooth over $(0,1)$. Then consider the set $S = \{(t,\lambda)\text{ } | \text{ }\lambda \in Spec(L_0+h_t)\}$. By spectrum theory, the spectrum of $L_0+h_t$ is discrete, and the generalized eigenspaces are finite dimensional. (See Lemma 12.2.4 in K-W). We say $(t,\lambda)$ is a \textit{simple point} if the generalized $\lambda$-eigenspace of $L_0+h_t$ is 1-dimensional. At simple points, $S$ is a smooth 1-manifold, on which $t$ is a local coordinate; we use the coordinate $t$ to orient $S$ at such points. In the space of bounded operators on $L_2$, the set of those $h$ for which the spectrum of $L_0+h$ has a non-simple eigenvalue lying on the imaginary axis is a locally finite union of submanifolds of codimension at least 2.(see Lemma 12.2.4 again) The path $h_t$ can therefore be moved so that the intersection of $S$ with $(0, 1)\times i\mathbb{R}$ consists entirely of simple points; and any two such paths can be joined by a homotopy of paths with the same property. For such a path, we define the spectral flow as the intersection number of $S$ with $(0, 1)\times i\mathbb{R}$. From this perspective, we can see the the spectral flow depends only on the starting and ending points $h_{\pm}$. \\
+		\vspace{5mm}
+		Lemma 12.2.4 in K-W says the following: \\
+		\vspace{5mm}
+		\textbf{Lemma 12.2.4} If $L=L_0+h:$  $L^2_1(Y,E) \rightarrow L^2(Y,E)$ satisfies the condition in the previous proposition, then 
+		\begin{itemize}
+		    \item There  are  only  finitely  many  eigenvalues  of  the  complexification  $L\otimes {\mathbb{C}}$ in  any  compact  subset  of  the  complex  plane $\mathbb{C}$,  and  the  generalized  eigenspaces  of  the  complexification  are  finite-dimensional. All  the generalized eigenvectors belong to $L^2_1(Y,E)$.
+		    \item If $h$, like $L_0$, is self-adjoint, then the eigenvalues are real, and there is a complete orthonormal system of eigenvectors ${e_n}$in $L^2(Y,E)$. The span of the eigenvectors is dense in $L^2_1(Y,E)$.
+		    \item If $h$ is not self-adjoint, the imaginary parts of the eigenvalues $\lambda$ of $L\otimes 1_{\mathbb{C}}$ are bounded by the $L_2$-operator norm of $(h-h^*)/2$.
+		\end{itemize}
+		\vspace{5mm}
+		$\textbf{Proof of the proposition:}$ \\
+		\vspace{5mm}
+		\textbf{Step 1:} We consider the translational invariant case, $e.g.$ when $h_t=h, \forall t$. In this case, the spectral flow is obviously 0, so we need to show the index of $D$ is 0. Assume $E$ is a complex vector bundle, (for the general case, note that $C^{\infty}(E)$ are the real sections of $C^{\infty}(E\otimes\mathbb{C})$, and the Fourier transform that we will do below sends them to sections that are fixed under some other involution). \\
+		\vspace{2mm}
+		Let $F_1$ be the completion of $C_c^{\infty}(E\otimes\mathbb{C})$, the space of compactly supported smooth sections of $E\otimes\mathbb{C}$, with respect to the norm \[ \left\lVert \hat{u}\right\rVert^2 = \sum^1_{i=0} \int^{\infty}_{-\infty} \|\xi\|^{2(1-i)} \left\lVert \hat{u}\right\rVert^2_{L^2_1(\{\xi\}\times Y)} d\xi  \]
+		
+		Consider the Fourier transform of sections of $E\rightarrow \mathbb{R}_t\times Y$ with respect to the $t$-variable. \[\hat{u}(\xi,y) =  \int^{\infty}_{-\infty} e^{-it\xi} u(t,y)dt \]
+		The Fourier transform sends $L^2(Z,E) $ to $L^2(Z,E)$, and $L^2_1(Z,E)$ to $F_1$. The Fourier transform of $D= \dfrac{d}{dt} + L_0 + h$ is $\hat{D} = L_0 + h + i\xi$ :    $F_1 \rightarrow L^2(Z,E)$.  We will show $\Hat{D}$ is invertible. \\
+		\vspace{5mm} Let's consider what the operator does on each slice first. \\
+		Let $\hat{D}_{\xi} = L_0 + h +i\xi : $  $L^2_1(Y,E) \rightarrow L^2(Y,E)$ for $\xi \in \mathbb{R}$. By hyperbolicity of the operator $L_0+h$, $\Hat{D}_{\xi}$ is injective. (This doesn't hold in the general case, where we only know the hyperbolicity at two ends ) Moreover, by standard elliptic theory on closed manifolds, $\hat{D}_{\xi}$ is Fredholm. By invariance of index under deformation, we have ind($\Hat{D}_{\xi}) = $ ind($L_0$), and \begin{align*}
+		    \text{ind}(L_0) & = \text{dim Ker}(L_0) - \text{dim Coker}(L_0)  \\
+		                    & = \text{dim Ker}(L_0) - \text{dim Ker }(L_0^*)\\
+		                    & = \text{dim Ker}(L_0) - \text{dim Ker}(L_0) =0
+		\end{align*}
+		Therefore, $\Hat{D}_{\xi}$ is invertible. \\
+		
+		\vspace{5mm} Then, we define the inverse $\hat{D}^{-1}$: $C^{\infty}(Z,E) \rightarrow L^2_{1,loc}(Z,E)$ by applying $(L_0+h+i\xi)^{-1}$  slicewise. We need to give a bound of $F_1$-norm of $(L_0+h+i\xi)^{-1}(f)$ in terms of $L^2$-norm of $f$, so that we can extend it to a bounded operator from $L^2(Z,E) $ to $F_1$. (Check Lemma 14.1.3 in K-W for details) \\ 
+		
+		\vspace{5mm}
+		\textbf{Step 2}: For the general case $D=\dfrac{d}{dt}+h_t+L_0$, we show $D$ is Fredholm first, using the \textit{parametrix gluing technique.} (which is important in index theory)\\
+		\vspace{2mm}
+	    Choose $a'<a<b<b' $ in $\mathbb{R}$, such that $h(t)=h_-$ for $t<a$, $h(t) = h_+ $  for $t >b$.\\
+	    \vspace{2mm}
+	    Choose partition of unity $\eta_{\pm} :\mathbb{R} \rightarrow [0,1] $, such that $\eta_-+\eta_+=1$,  $ \eta_-(t) =1$ for $t \leq a$, and $\eta_+(t) = 1$ for $t\geq b $. \\
+	    \vspace{2mm}
+	    Choose bump functions $\gamma_{\pm}$, such that $\gamma_-(t) = 1 $ for $t \leq b$, and $\gamma_+(t) =0$ for $t \geq b'$. Similarly, $\gamma_+(t)  = 0 $ for $t\leq a'$, and $\gamma_+(t) =1$ for $t \geq a$. \\
+	    \newpage
+		Let $G_{\pm}: L^2(Z,E) \rightarrow L^2_1(Z,E)$ be the inverse of $D_{\pm}= \dfrac{d}{dt} +L_0+h_{\pm}$ as in Step 1. Define \[P : L^2(Z,E) \rightarrow L^2_1(Z,E) \]\[
+		e \text { }\rightarrow \text{ } \gamma_-G_-\eta_-e + \gamma_+G_+\eta_+e\]
+		
+		Claim: $P$ is a parametrix for $D$.
+		Proof: We compute $DP$ explicitly. 
+		\begin{align*}
+		    DPe = & D(\sum \gamma_{\pm}G_{\pm}\eta_{\pm}e)\; \; \; \; \; \;  \text{       (summing over + and -)} \\
+		    & = \sum \gamma'_{\pm}G_{\pm}\eta_{\pm}e + \sum \gamma_{\pm}D(G_{\pm}\eta_{\pm}e) \\
+		    & = \sum \gamma'_{\pm}G_{\pm}\eta_{\pm}e +  \sum \gamma_{\pm}(D-D_{\pm})G_{\pm}\eta_{\pm}e + e \;  \; \; \; \text{(As } D_+G_+ = D_-G_- = id\text {, and} \gamma_-\eta_-+\gamma_+\eta_+ =1 )\\
+		    & = e + \sum (\gamma'_{\pm}+ \gamma_{\pm}(h-h_{\pm}))G_{\pm}\eta_{\pm}e\\
+		\end{align*}
+		Therefore $id-DP$ is compact, as the maps $G_{\pm}\eta_{\pm} : \; L^2(Z,E) \rightarrow L^2_1(Z,E) $ are bounded, and $\gamma'_{\pm}+ \gamma_{\pm}(h-h_{\pm})$ factor through $L^2_1(Z,E) \hookrightarrow L^2_c(Z,E)$, which is compact by Rellich embedding theorem.\\
+		\vspace{5mm}
+		
+		We will start with Step 3 in the next lecture, which does the actual computation of index.
+		
+		
+		
+		
+		
+	
+		
+		
 
 
-\begin{example}
-Let us consider $\bar{\partial}: C^\infty (\mathbb{D}, \C) \to C^\infty (\mathbb{D}, \C)$ given by $$\bar{\partial} = \frac{d}{dt} - A$$ where $-A: C^\infty(S^1, \C) \to  C^\infty(S^1, \C); e^{2\pi i n\theta} \mapsto 2 \pi n e^{2\pi i n\theta}$  for $e^t$ radial coordinates and $e^{i\theta}$ angular coordinates.
-Then  $C^\infty (\mathbb{D}, \C, P)$ consists of those sections which have only negative Fourier coefficients. So, no holomorphic functions are in $C^\infty (\mathbb{D}, \C, P)$. Also, we can compute $\eta(s) = 0$ as $Re(s) \gg 1$ implies $\eta(0) = 0$.
+% \documentclass[12pt, letterpaper]{article}
+% \usepackage[utf8]{inputenc}
+% \usepackage{amsmath,amssymb}
+% \usepackage[a4paper,margin=2cm]{geometry}
+% \usepackage{graphicx}
+% \usepackage{verbatim}
+% \usepackage{float}
+% \usepackage{wrapfig}
+% \usepackage{tikz-cd}
 
-\end{example}
+% \usepackage{makecell}
 
+% \begin{document}
+% 	\title{Lecture 4 Index of certain operators on cylinders}
+% 	\date{April 16, 2019}
+% 	\maketitle
 
-
-
-
-
-\end{document}
+	
+		
+% 	\end{document}
