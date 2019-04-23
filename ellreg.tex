@@ -1,0 +1,2183 @@
+\section*{\textbf{Appendix: Elliptic regularity for first order
+    operators}}
+\subsection*{First order operators}
+\begin{defn}
+  Let $E_{1},E_{2}$ be complex vector bundles over $Y$.
+  
+  A first order differential operator is a $\C$-linear map
+  \begin{equation*}
+    L:\Gamma(E_{1})\to \Gamma(E_{2})
+  \end{equation*}
+  with the property that for all $\C$-valued functions $f$
+  \begin{equation*}
+    [L,f]=L\circ f-f\circ L:\Gamma(E_{1})\to \Gamma(E_{2})
+  \end{equation*}
+  is given by a tensor, i.e.\ is induced by a section of $\Hom_{\C}(E_{1},E_{2})$. In this definition we use the fact that $\Gamma(E_{i})$ are modules over the ring $\Omega^{0}(\C)$.  
+\end{defn}
+\begin{xca}
+  Prove that first order differential operators are \textbf{local} in the sense that if $s\in \Gamma(E_{1})$ is supported in a closed set $K$, then $L(s)$ is also supported in $K$.
+
+  Use this to show that $L$ is induced by a map of sheaves $\Gamma(E_{1};-)\to \Gamma(E_{2};-)$.
+\end{xca} 
+\begin{example}[The structure of differential operators]
+  Let $s_{1},\cdots,s_{n}$ and $r_{1},\cdots,r_{m}$ be local frames for $\Gamma(E_{1})$ and $\Gamma(E_{2})$, respectively. Let $x_{1},\cdots,x_{d}$ be local coordinates on the base. If $L$ is a first order differential operator then
+  \begin{equation*}
+    L(\sum_{i=1}^{n}a_{i}s_{i})=\sum_{i=1}^{n}[L,a_{i}]s_{i}+a_{i}Ls_{i}.
+  \end{equation*}
+  We can compute the tensor $[L,a_{i}]_{x}\in \Hom(E_{1,x},E_{2,x})$ using the following trick. Near a given point $p_{0}$, say $x(p_{0})=c$ we can write
+  \begin{equation*}
+    a_{i}(p)=a_{i}(p_{0})+\sum_{j=1}^{n}b_{ij}(p)(x_{j}(p)-c_{j}),
+  \end{equation*}
+  for some smooth functions $b_{ij}$. Moreover it is clear that
+  \begin{equation*}
+    \d a_{i}(p_{0})=\sum_{j}b_{ij}(p_{0})\d x_{j}(p_{0})\iff \pd{a_{i}}{x_{j}}=b_{ij}(p_{0}).
+  \end{equation*}
+  Now near $p_{0}$ write
+  \begin{equation*}
+    \begin{aligned}
+      [L,a_{i}]=[L,a_{i}(p_{0})]+\sum_{j=1}^{n}[L,b_{ij}(x_{j}-c_{j})]&=0+\sum_{j=1}^{n}b_{ij}[L,x_{j}-c_{j}]+[L,b_{ij}](x_{j}-c_{j})\\
+      &=\sum_{j=1}^{n}b_{ij}[L,x_{j}]+[L,b_{ij}](x_{j}-c_{j})
+    \end{aligned}
+      \end{equation*}
+  Evaluating this tensor at $p_{0}$ yields (recall $x_{j}(p_{0})=c_{j}$) 
+  \begin{equation*}
+    [L,a_{i}](p_{0})=\sum_{j=1}^{n}b_{ij}(p_{0})[L,x_{j}]=\sum_{j=1}^{n}\pd{a_{i}}{x_{j}}(p_{0})[L,x_{j}].
+  \end{equation*}
+  But $p_{0}$ was arbitrary. It follows that
+  \begin{equation*}
+    L(s)=L(\sum_{i=1}^{n}a_{i}s_{i})=\sum_{i,j}\pd{a_{i}}{x_{j}}[L,x_{j}]s_{i}+a_{i}L(s_{i}).
+  \end{equation*}
+  In the presence of a connection, we can use the above to say that locally
+  \begin{equation*}
+    L(s)=A(\nabla s)+B(s),
+  \end{equation*}
+  where $A,B$ are tensors:
+  \begin{equation*}
+    A\in \Gamma \Hom(\Hom(TY,E_{1}),E_{2}) \text{ and }B\in \Gamma\Hom(E_{1},E_{2}).
+  \end{equation*}
+  We claim this actually holds globally. To see this, cover $Y$ by a locally finite open cover $\set{U_{\alpha}}$, with associated partition of unity $\set{\rho_{\alpha}}$. Assume that for sections $s_{\alpha}$ supported in $U_{\alpha}$ we have
+  \begin{equation*}
+    L(s_{\alpha})=A_{\alpha}(\nabla s_{\alpha})+B_{\alpha}(s_{\alpha}).
+  \end{equation*}
+  Then for any $s$
+  \begin{equation*}
+    L(s)=L(\sum_{\alpha}\rho_{\alpha}s)=\sum_{\alpha}A_{\alpha}(\rho_{\alpha}\nabla s+\d \rho_{\alpha}\ocross s)+B_{\alpha}(\rho_{\alpha}s)=A(\nabla s)+B(s),
+  \end{equation*}
+  provided we define
+  \begin{equation*}
+    A=\sum_{\alpha}\rho_{\alpha}A_{\alpha}\text{ and }B=\sum_{\alpha}A_{\alpha}(\d\rho_{\alpha}\ocross -)+\rho_{\alpha}B_{\alpha}(-).
+  \end{equation*}
+  By local finiteness, $A,B$ are well-defined sections of the appropriate bundles. We have shown
+\end{example}
+\begin{thm}
+  Let $L$ be a first order differential operator $E_{1}\to E_{2}$. Let $\nabla$ be a connection on $E_{1}$. Then there are sections $A,B$ of $\Hom(\Hom(TY,E_{1}),E_{2})$ and $\Hom(E_{1},E_{2})$, respectively, so that
+  \begin{equation*}
+    L(s)=A(\nabla s)+B(s).
+  \end{equation*}
+\end{thm}
+\begin{xca}
+  Prove that $A,B$ are uniquely determined by $L$. Hints: pick $s_{0}\in E_{1,p_{0}}$ and a section $s$ so $s(p_{0})=s_{0}$, and so $\nabla s$ vanishes at $p_{0}$ (this can be achieved by parallel-transporting along radial lines). Conclude that $B$ is completely determined by $L$.
+
+  Now for any element $\theta\in \Hom(TY,E_{1})$, extend $\theta$ to a section of $\Omega^{1}(E_{1})$. Then we can construct a section $s$ (in a neighborhood of $p_{0}$) by parallel transporting along radial lines so that
+  \begin{equation*}
+    \bd_{r}\intprod \nabla s=\bd_{r}\intprod \theta,
+  \end{equation*}
+  where $\bd_{r}$ is the radial vector field. A-priori $s$ is smooth
+  when pulled back to the blow up $\S^{d-1}\cross [0,\infty)$. It can
+  be shown that $s$ is smooth when considered as a section on
+  $\R^{d}$. The key is that its (covariant) partial derivatives exist
+  and are continuous functions on $\R^{d}$, and agree with $\theta$ at
+  $p_{0}$. Then, conclude that $A_{p_{0}}((\nabla s)_{p_{0}})=A_{p_{0}}(\theta)$. Conclude that $A$ is determined by $L$.
+\end{xca}
+\clearpage
+
+
+\subsection*{Sobolev embedding/compactness theorems}
+\begin{defn}
+  Let $g$ be a Riemannian metric on $Y$, an oriented Riemannian manifold (potentially with boundary), let $\ip{-,-}$ be an inner product on $E$ (anti-linear in the first factor). Let $\nabla$ denote the Levi-Civita connection on $TY$, and also a connection on $E$ compatible with its metric (where there is hopefully no chance of confusion).
+
+  For codimension $0$ submanifolds with boundary $U$, we define the space $L^{p}(U,E_{1})$ by duality: $L^{p}(U,E_{1})$ consists of distributions $C^{\infty}_{c}(\text{int}(U),E_{1})\to \C$ satisfying the estimate
+  \begin{equation*}
+    \varphi \in L^{p}(U,E_{1})\implies \abs{(\varphi,f)}\le C_{\varphi}\left[\int_{U}\abs{f}^{q}\,\dVol_{g}\right]^{1/q},
+  \end{equation*}
+  where $\abs{f}=\ip{f,f}^{1/2}$, and $q$ is the H\"older conjugate to $p$. We define the $L^{p}$ norm on $L^{p}(U,E_{1})$ by duality:
+  \begin{equation*}
+    \norm{\varphi}_{L^{p}}=\sup\set{\abs{(\varphi,f)}: f\in C^{\infty}_{c}(\text{int}(U),E_{1})\text{ and }\left[\int_{U}\abs{f}^{q}\,\dVol_{g}\right]^{1/q}=1}.
+  \end{equation*}
+  \begin{xca}
+    Let $\varphi$ be a continuous section of $E_{1}$ compactly supported in $\closure{U}$. It is clear that
+    \begin{equation*}
+      \left[\int_{U}\abs{\varphi}^{p}\,\dVol_{g}\right]^{1/p}<\infty.
+    \end{equation*}
+    Then $\varphi$ induces an element of $L^{p}(U,E_{1})$ by
+    \begin{equation*}
+      (\varphi,f)=\int_{U}\ip{\varphi(x),f(x)}\dVol_{g}(x),
+    \end{equation*}
+    and
+    \begin{equation*}
+      \norm{\varphi}_{L^{p}(U,E_{1})}= \left[\int_{U}\abs{\varphi}^{p}\,\dVol_{g}\right]^{1/p}.
+    \end{equation*}
+    Hint: without loss, suppose that the integrals of $\abs{\varphi}^{p}$ and $\abs{f}^{q}$ are $1$. Estimate
+    \begin{equation*}
+      \abs{\ip{\varphi(x),f(x)}}\le \abs{\varphi(x)}\abs{f(x)}\le \frac{1}{p}\abs{\varphi(x)}^{p}+\frac{1}{q}\abs{f(x)}^{q},
+    \end{equation*}
+    to conclude that $\norm{\varphi}_{L^{p}}\le 1$. For the converse, consider smooth approximations (i.e.\ use convolution) to 
+    \begin{equation*}
+      \frac{\varphi}{\epsilon+\abs{\varphi}^{2-p}}
+    \end{equation*}
+    and show that
+    \begin{equation*}
+      \norm{\varphi}_{L^{p}}\ge \int\abs{\varphi}^{p}\frac{\abs{\varphi}^{2}}{\epsilon\abs{\varphi}^{p}+\abs{\varphi}^{2}}\dVol_{g}.
+    \end{equation*}
+    By continuity of the integral $C^{0}\to \R$ (on the support of $\varphi$) conclude that
+    \begin{equation*}
+      \norm{\varphi}_{p}\ge 1.
+    \end{equation*}
+    (where we are still assuming we normalized $\varphi$ so $\abs{\varphi}^{p}$ had integral $1$).
+  \end{xca}
+  \begin{thm}
+    The continuous sections compactly supported in $\text{int}(U)$ are dense in $L^{p}(U,E_{1})$. 
+  \end{thm}
+  \begin{clear}{Remark}
+    This is a fairly deep theorem.
+  \end{clear}
+  \begin{cor}
+    Using convolution, prove that $C^{\infty}_{c}(\text{int}(U),E_{1})$ is dense in $L^{p}(U,E_{1})$. Conclude that the dual of $L^{p}(U,E_{1})$ is naturally identified with $L^{q}(U,E_{1})$. More precisely, there is a unique pairing
+    \begin{equation*}
+      (\varphi,f)\in L^{p}\cross L^{q}\mapsto \C
+    \end{equation*}
+    extending the pairing of $L^{p}$ on $C^{\infty}$ and vice-versa, so that
+    \begin{equation*}
+      \abs{(\varphi,f)}\le \norm{\varphi}_{L^{p}}\norm{f}_{L^{q}},
+    \end{equation*}
+    and that this pairing establishes the bijection $(L^{p})^{*}\simeq L^{q}$.
+  \end{cor}  
+\end{defn}
+\begin{defn}[The adjoint of a tensor]
+  Let $E,F$ be bundles with metrics denoted $\ip{-,-}$. We obtain a metric on $\Hom(E,F)$ by identifying $\Hom(E,F)\simeq \Hom(E,\C)\ocross F$. The induced norm is equivalent to the operator norm
+  \begin{equation*}
+    \abs{\Phi}_{\text{oper}}=\sup\set{\abs{\Phi(x)}_{F}:\abs{x}_{E}=1}.
+  \end{equation*}
+  Given a smooth section $\Phi\in \Hom(E,F)$, we observe that
+  \begin{equation*}
+    \int \ip{\Phi(e),f}\d\Vol=\int \ip{e,\Phi^{*}(f)}\d\Vol,
+  \end{equation*}
+  where $\Phi^{*}$ is the pointwise adjoint. Therefore we can define the evaluation of $\Phi$ on an $E$-valued distribution via duality: for distributions valued in $E$, let $\Phi(e)$ be the distribution satisfying
+  \begin{equation*}
+    (\Phi(e),f)=(e,\Phi^{*}(f)).
+  \end{equation*}
+\end{defn}
+\begin{xca}
+  If $f$ is in $L^{p}(E)$, and $\Phi$ is a smooth section of $\Hom(E,F)$ so that $\abs{\Phi}<C$ is uniformly bounded on $Y$, then $\Phi(f)$ is in $L^{p}(E)$, and moreover
+  \begin{equation*}
+    \norm{\Phi(f)}_{L^{p}}\le C\norm{f}_{L^{p}}.
+  \end{equation*}
+  Hint: use the fact that $L^{p}$ norm is defined by duality.
+\end{xca}
+\begin{xca}
+  If $f$ is a continuous section of $E$, show that the weak definition of $\Phi(f)$ agrees with the definition of $\Phi(f)$ as a continuous section.
+\end{xca}
+\begin{defn}[connections and metrics on induced bundles]
+  Let $\nabla$ be a connection on $E$ and also denote the Levi-Civita connection on $(Y,g)$. Suppose that $\nabla$ is compatible with $\ip{-,-}$. We define a metric on $\Hom(TM^{\ocross k},E)\simeq T^{*}M^{\ocross k}\ocross E$ by
+  \begin{equation*}
+    \ip{\theta_{1}\ocross\cdots\ocross \theta_{k}\ocross e, \theta_{1}'\ocross\cdots\ocross \theta_{k}'\ocross e'}=g(\theta_{1},\theta_{1}')\cdots g(\theta_{k},\theta_{k}')\ip{e,e'}.
+  \end{equation*}
+  We define a connection by
+  \begin{equation*}
+    \nabla(\theta_{1}\ocross \cdots \ocross \theta_{k}\ocross e)=\theta_{1}\ocross \cdots\ocross\theta_{k}\ocross \nabla e +\sum_{i} \theta_{1}\ocross \cdots \ocross \nabla \theta_{i}\ocross \cdots \theta_{k}\ocross e.
+  \end{equation*}
+  \begin{xca}
+    Check that the induced connection on $(T^{*}M)^{\ocross k}\ocross E$ is compatible with the metric.
+  \end{xca}
+\end{defn}
+\begin{defn}[the adjoint of the covariant derivative]
+  Suppose that we have a local orthonormal frame $y_{1},\cdots,y_{n}$ of $TY$. Let $\theta_{i}=g(y_{i},-)$.
+  
+  For smooth compactly supported sections $s\in \Gamma(E)$, $\lambda\ocross r\in \Gamma(\Hom(TM,E))$ we compute $\nabla s=\sum \theta_{i}\ocross\nabla_{y_{i}}s$ and hence
+  \begin{equation*}
+    \ip{\nabla s,\lambda\ocross r}=\sum_{i}g(\theta_{i},\lambda)\ip{\nabla_{y_{i}}s,r}=\sum_{i}g(\theta_{i},\lambda)(y_{i}\intprod \d\ip{s,r})-g(\theta_{i},\lambda)\ip{s,\nabla_{y_{i}}r},
+  \end{equation*}
+  so
+  \begin{equation*}
+    (\nabla s,\lambda\ocross r)=\int X_{\lambda}\intprod \d\ip{s,r}\dVol_{g}-\ip{s,\nabla_{X_{\lambda}}r}\dVol_{g},
+  \end{equation*}
+  where $X_{\lambda}=\sum_{i}g(\theta_{i},\lambda)y_{i}$ ($X_{\lambda}$ is the $g$-``dual'' of $\lambda$).
+
+  A bit of differential form gymnastics produces
+  \begin{equation*}
+    \begin{aligned}
+      0&=X_{\lambda}\intprod (\d\ip{s,r}\wedge \dVol)=(X_{\lambda}\intprod \d \ip{s,r})\dVol-\d\ip{s,r}(X_{\lambda}\intprod \dVol)\\
+      0&=(X_{\lambda}\intprod \d\ip{s,r})\dVol-\d(\ip{s,r}(X_{\lambda}\intprod \d\Vol))+\ip{s,r}\text{div}(X_{\lambda})\d\Vol,
+    \end{aligned}
+  \end{equation*}
+  whre $\text{div}(X_{\lambda})\dVol=\d(X_{\lambda}\intprod\dVol)$. Since the integral of a compactly supported exact form is $0$, we conclude
+  \begin{equation*}
+    (\nabla s,\lambda\ocross r)=\int \ip{s,\text{div}(X_{\lambda})r -\nabla_{X_{\lambda}}r}\dVol_{g}.
+  \end{equation*}
+  Conclude that $\nabla_{X}$ has formal adjoint
+  \begin{equation*}\tag{$\ast$}
+    \nabla^{*}:\lambda\ocross r\mapsto \text{div}(X_{\lambda})r-\nabla_{X_{\lambda}}r.
+  \end{equation*}
+  One can easily check that this is a first order differential operator. While we proved this under the assumption that it has an orthonormal coordinate frame, it is clear that $X_{\lambda}$ doesn't actually depend on the particular orthonormal coordinate frame, and hence $\nabla^{*}$ defined in $(\ast)$ is the adjoint of $\nabla$ on any bundle $E$.
+\end{defn}
+\begin{defn}
+  Let $\varphi$ be a distribution $C^{\infty}(\text{int}(U), E)\to \C$. The weak derivative $\nabla \varphi$ is the distribution valued in the bundle $\Hom(TM,E)$ defined by
+  \begin{equation*}
+    (\nabla \varphi,\Phi)=(\varphi,\nabla^{*}\Phi),
+  \end{equation*}
+  where $\Phi\in \Gamma\Hom(TM,E)$ is a test function.
+
+  Given a smooth vector field $X$, we can consider the tensor
+  \begin{equation*}
+    X\intprod(-):\Gamma\Hom (TM,E)\to \Gamma E.
+  \end{equation*}
+  This defines a distributional evaluation $\Hom(TM,E)\to E$. In this fashion, we can define the evaluations $\nabla_{X}\varphi$ for any distribution $\varphi$.
+  \begin{xca}
+    Show that
+    \begin{equation*}
+      (\nabla_{X}\varphi,\rho)=(\varphi,\nabla_{X}^{*}\rho),
+    \end{equation*}
+    where
+    \begin{equation*}
+      \nabla_{X}^{*}\rho=\text{div}(X)\rho-\nabla_{X}\rho.
+    \end{equation*}    
+  \end{xca}  
+\end{defn}
+
+
+\begin{defn}[Sobolev Spaces]
+  Let $U$ be a codimension 0 submanifold of $Y$. We define the space $W^{k,p}(U,E)$ by recursion $    W^{0,p}(U,E)=L^{p}(U,E)$, and $W^{k,p}(U,E)$ consists of all distributions $\varphi$ whose weak derivative $\nabla \varphi$ lies in $W^{k-1,p}(U,\Hom(TY,E))$.
+
+  If the tangent bundle of $U$ has global orthonormal frame $y_{1},\cdots,y_{n}$, it is equivalent to suppose that
+  \begin{equation*}
+    \nabla_{y_{1}}\varphi,\cdots,\nabla_{y_{n}}\varphi\in W^{k-1,p}(U,E),
+  \end{equation*}
+  Indeed the decomposition
+  \begin{equation*}
+    \nabla\varphi=\sum_{i}\theta_{i}\ocross\nabla_{y_{i}}\varphi
+  \end{equation*}
+  identifies $\Hom(TY,E)$ with $E^{\oplus n}$ isometrically, and so the induced ``weak'' identification induces an isometry on $L^{p}$. We put a metric on $W^{k,p}(U,E)$ via it's inclusion into
+  \begin{equation*}\tag{$\ast$}
+    W^{k,p}(E)\to L^{p}(E)\oplus L^{p}(\Hom(TM,E))\oplus \cdots \oplus L^{p}(\Hom(TM^{\ocross k},E)).
+  \end{equation*}
+  \begin{xca}
+    Prove that the inclusion in ($\ast$) is a closed inclusion. Hint: arguing by induction, it suffices to show that if
+    \begin{equation*}
+      u_{n}\to u_{\infty}\text{ in $W^{k-1,p}$}\text{ and }\nabla u_{n}\to w_{\infty}\text{ in $W^{k-1,p}$},
+    \end{equation*}
+    then $\nabla u_{\infty}=w_{\infty}$. It will follow that $u_{n}\to u_{\infty}$ in $W^{k,p}$. The following estimate
+    \begin{equation*}
+      (\nabla u_{\infty}-w_{\infty},\varphi)=(u_{\infty}-u_{n},\nabla^{*}\varphi)+(\nabla u_{n}-w_{\infty},\varphi)
+    \end{equation*}
+    and taking the limit $n\to\infty$ proves that $\nabla u_{\infty}=w_{\infty}$. 
+  \end{xca}
+  \begin{xca}
+    For $p\in (1,\infty)$, we have shown that $L^{p}$ is reflexive. It follows that $L^{p}\oplus \cdots \oplus L^{p}$ is reflexive. Conclude that $W^{k,p}$ is reflexive. Hint: this is an exercise in applying the Hahn-Banach theorem. 
+  \end{xca}
+  \begin{defn}
+    It is clear that smooth compactly supported functions induce elements of $W^{k,p}(U,E)$. We define
+    \begin{equation*}
+      W^{k,p}_{0}(U,E)=\text{closure of smooth compactly supported functions in $W^{k,p}(U,E)$}.
+    \end{equation*}
+    Warning: $W^{k,p}_{0}$ is generally not equal to $W^{k,p}$. It turns out that $W^{k,p}_{0}$ is much better behaved (in certain regards) compared to $W^{k,p}$.
+  \end{defn}
+\end{defn}
+\begin{thm}
+  Let $E$ be a vector bundle on $Y$, and let $g,\ip{-,-},\nabla$ and $g',\ip{-,-}',\nabla'$ be two sets of data. Suppose that we can uniformly bound the $C^{\infty}$ distance between the two sets of data, i.e.\
+  \begin{equation*}
+ \norm{g-g'}_{C^{\infty},g}+\norm{\ip{-,-}-\ip{-,-}'}_{C^{\infty},\ip{-,-}}+\norm{\nabla-\nabla'}_{C^{\infty},g,\ip{-,-}}<\infty,
+  \end{equation*}
+  (recall that the difference of two connections is a tensor, and hence it makes sense to talk about its $C^{\infty}$ norm). Then we have an equality of sets
+  \begin{equation*}
+    W^{k,p}(Y,g,\ip{-,-},\nabla)=W^{k,p}(Y,g',\ip{-,-},\nabla')\text{ and similarly for $W^{k,p}_{0}$}.  \end{equation*}
+  and moreover the two norms on $W^{k,p}$ are comparable.\hfill$\square$
+\end{thm}
+\begin{thm}
+  Let $U\subset Y$ be a codimension $0$ manifold with boundary. Then there is an extension (isometric) embedding
+  \begin{equation*}
+    \text{ext}:W^{k,p}_{0}(U,E)\to W^{k,p}_{0}(Y,E),
+  \end{equation*}
+  defined in the obvious way on smooth functions and extended by density. There is also a restriction
+  \begin{equation*}
+    \text{res}:W^{k,p}(Y,E)\to W^{k,p}(U,E),
+  \end{equation*}
+  and $\text{res}\circ \text{ext}=\id$.
+\end{thm}
+\begin{cor}
+  Let $Y$ be compact with boundary. Let $f:Y\to Z$ be a smooth
+  embedding of a codimension $0$ submanifold with boundary, and let
+  $F:E_{1}\to f^{*}E_{2}$ be a bundle isomorphism. Then there is a
+  bounded extension
+  \begin{equation*}
+    W^{k,p}_{0}(Y,E_{1},g_{Y},\ip{-,-}_{Y},\nabla_{Y})\to W^{k,p}_{0}(Y,E_{2},g_{Z},\ip{-,-}_{Z},\nabla_{Z}),
+  \end{equation*}
+  and a bounded restriction
+  \begin{equation*}
+    W^{k,p}(Y,E_{2},g_{Z},\ip{-,-}_{Z},\nabla_{Z})\to W^{k,p}(Y,E_{1},g_{Y},\ip{-,-}_{Y},\nabla_{Y}),
+  \end{equation*}
+  so that the restriction composed with the extension is the identity. 
+\end{cor}
+\begin{clear}{Remark}
+  These results allow us freedom to change the data defining the Sobolev norms, without actually changing the topology of the space $W^{k}_{0}(Y,E)$. We remark that some form of compactness on $Y$ is crucial. 
+\end{clear}
+\begin{lemma}
+  Let $\rho$ be a smooth section of $\Hom(E,F)$. If $u$ is in $W^{k,p}(Y,E)$ (resp.\ $W^{k,p}_{0}$), then 
+  \begin{equation*}
+    \rho(u)\in W^{k,p}(Y,F)\text{ resp.\ $W^{k,p}_{0}$}
+  \end{equation*}
+  and
+  \begin{equation*}
+    \norm{\rho(u)}_{W^{k,p}(Y,F)}\le C(\rho)\norm{u}_{W^{k,p}(Y,E)},
+  \end{equation*}
+  where $C(\rho)$ depends on the sizes of the first $k$ derivatives of $\rho$.
+\end{lemma}
+\begin{proof}
+  Argue by induction.
+  \begin{equation*}
+    \nabla \rho(u)=\nabla \text{ev}(\rho\ocross u)=\text{ev}(\nabla \rho\ocross u)+\text{ev}(\rho\ocross \nabla u),
+  \end{equation*}
+  to conclude that
+  \begin{equation*}
+    \norm{\nabla(\rho(u))}_{W^{k-1,p}}\le C(\nabla \rho)\norm{u}_{W^{k-1,p}}+C(\rho)\norm{\nabla u}_{W^{k-1,p}}.
+  \end{equation*}
+\end{proof}
+
+\begin{clear}{Sobolev Embedding}
+  Let $Y^{d}$ be compact with boundary. Let $E$ be a vector bundle on $Y$. Suppose that $k>\ell$ and
+  \begin{equation*}
+    k-\frac{p}{d}\ge \ell-\frac{r}{d}.
+  \end{equation*}
+  Then the inclusion of test functions into $W^{\ell,r}_{0}$ extends to a bounded inclusion
+  \begin{equation*}
+    W^{k,p}_{0}(Y,E)\subset W^{\ell,r}_{0}(Y,E).
+  \end{equation*}
+\end{clear}
+\begin{proof}
+  First we claim that is suffices to prove it locally. To see this, cover $Y$ by finitely many open sets $U_{\alpha}$ where it is known that inclusion extends to a bounded inclusion $$W^{k,p}_{0}(U_{\alpha},E)\to W^{\ell,r}_{0}(U_{\alpha},E).$$
+
+  Fix a partition of unity $\rho_{\alpha}$. Then for any $u$ smooth and compactly supported in $Y$, we have
+  \begin{equation*}
+    \norm{u}_{W^{k,p}}\le \sum_{\alpha} C_{\alpha}\norm{\rho_{\alpha}u}_{W^{\ell,r}}\le \sum_{\alpha}C_{\alpha}'\norm{u}_{W^{\ell},r}=C(\set{U_{\alpha},\rho_{\alpha}})\norm{u}_{W^{\ell,r}},
+  \end{equation*}
+  as desired.
+
+  To prove it locally, note that it does not depend on the data used to define the norms. Thus we may suppose that $U=B(r)\subset \R^{d}$, $E=\C^{n}$ is a trivial bundle, and the metrics/connections are all the standard ones. The following tricky lemma is the key result
+  \begin{lemma}[Gagliardo-Nirenberg Inequality]
+    Let $u\in W^{1,1}_{0}(\R^{d},\C^{n})$. Then $u\in L^{d/(d-1)}$ and
+    \begin{equation*}
+      \norm{u}_{L^{d/(d-1)}}\le \left[\prod_{1}^{d}\norm{\bd_{i}u}_{L^{1}}\right]^{1/d}.
+    \end{equation*}
+  \end{lemma}
+  Assuming this technical lemma, we can complete the proof. First we prove the following
+
+  \begin{claim}
+    Let $p<d$ and define $p^{*}>p$ by
+    \begin{equation*}
+      1-\frac{d}{p}=\frac{d}{p^{*}}.
+    \end{equation*}
+    Then there is constant $C_{p}$ so that for all $u\in W^{1,p}_{0}$, $u\in L^{p^{*}}$ and
+    \begin{equation*}
+      \norm{u}_{L^{p^{*}}}\le C_{p}\norm{\nabla u}_{L^{p}}.
+    \end{equation*}
+    \begin{proof}     
+  Suppose that $u$ is a test function, and consider $v_{\epsilon}=(\epsilon+\abs{u}^{2})^{(s-1)/2}u$, where $s>1$ will be specified later. Then
+  \begin{equation*}
+    \bd_{i}v_{\epsilon}=\frac{(s-1)}{2} (\epsilon+\abs{u}^{2})^{(s-3)/2}\sum_{j}u_{j}\bd_{i}u_{j} u+(\epsilon+\abs{u}^{2})^{(s-1)/2}\bd_{i}u,
+  \end{equation*}
+  hence
+  \begin{equation*}
+    \abs{\bd_{i}v_{\epsilon}}\le (\frac{(s-1)}{2}(\epsilon+\abs{u}^{2})^{(s-3)/2}\abs{u}^{2}+(\epsilon+\abs{u}^{2})^{(s-1)/2})\abs{\nabla u}.
+  \end{equation*}
+  Applying the lemma yields
+  \begin{equation*}
+    \left[\int (\epsilon+\abs{u}^{2})^{(s-1)d/2(d-1)}\abs{u}^{d/(d-1)}\d\Vol\right]^{(d-1)/d}\le \left[\prod_{1}^{d}\int\abs{\bd_{i}v_{\epsilon}}\d\Vol\right]^{1/d}.
+  \end{equation*}
+  Applying monotone convergence theorem proves
+  \begin{equation*}    \left[\int\abs{u}^{sd/(d-1)}\d\Vol\right]^{(d-1)/d}\le C_{s}\int \abs{u}^{s-1}\abs{\nabla u}\d\Vol.
+  \end{equation*}
+  Now suppose that $p<d$ and $p^{*}$ is defined by
+  \begin{equation*}
+    1-\frac{d}{p}=-\frac{d}{p^{*}}\implies p^{*}p-dp^{*}=-dp\implies p^{*}=\frac{dp}{d-p}.
+  \end{equation*}
+  Pick $s$ so that
+  \begin{equation*}
+    \frac{sd}{d-1}=p^{*}.
+  \end{equation*}
+  Then we conclude that
+  \begin{equation*}
+    \norm{u}_{L^{p^{*}}}^{s}\le C_{s}\int \abs{u}^{s-1}\norm{\nabla u}\dVol.
+  \end{equation*}
+  Let $q$ be Hold\"er conjugate to $p$. Then
+  \begin{equation*}
+    \norm{u}_{L^{p^{*}}}^{s}\le C_{s}\left[\int \abs{u}^{(s-1)q}\dVol\right]^{1/q}\norm{\nabla u}_{L^{p}}.
+  \end{equation*}
+  Now since
+  \begin{equation*}
+    \frac{s}{d-1}=p^{*}\implies (s-1)q=(d-1)p^{*}q-q\implies (s-1)q=\frac{d-1}{d-p}pq-q=\frac{d}{d-p}(pq-q)=p^{*}.
+  \end{equation*}
+  Therefore
+  \begin{equation*}
+    \norm{u}_{L^{p^{*}}}^{s}\le C_{s}\norm{u}_{L^{p^{*}}}^{p^{*}/q}\norm{\nabla u}_{L^{p}}\implies \norm{u}_{L^{p^{*}}}^{s-p^{*}/q}\le C_{s}\norm{\nabla u}_{L^{p}}.
+  \end{equation*}
+  However, the reader can easily check that $s-p^{*}/q=1$. Therefore
+  \begin{equation*}
+    \norm{u}_{L^{p^{*}}}\le C_{p}\norm{\nabla u}_{L^{p}},
+  \end{equation*}
+  as desired. Since this holds for test functions, it extends to $W^{1,p}_{0}$ by density. \end{proof}
+\end{claim}
+
+Now we can complete the proof. Suppose that
+\begin{equation*}
+  1-\frac{d}{p}\ge -\frac{d}{r}.
+\end{equation*}
+Define $r^{*}$ by
+\begin{equation*}
+  1-\frac{d}{r^{*}}=-\frac{d}{r}.
+\end{equation*}
+Then $r^{*}\le p$ and $r^{*}<d$. Therefore we can apply our claim to conclude
+\begin{equation*}
+  \norm{u}_{L^{r}}\le C_{r}\norm{\nabla u}_{L^{r^{*}}}.
+\end{equation*}
+Since we are on a bounded domain,
+\begin{equation*}
+  \norm{\nabla u}_{L^{r^{*}}}\le C\norm{\nabla u}_{L^{p}},
+\end{equation*}
+as desired. The constant $C$ depends on $r,p$ and the domain. We conclude a continuous embedding:
+\begin{equation*}
+  W^{1,p}(B)\subset L^{r}(B).
+\end{equation*}
+Now suppose that $k-d/p\ge \ell-d/r$. Pick $r_{0},\cdots,r_{k-\ell}=r$ so that
+\begin{equation*}
+  k-d/r_{0}=(k-1)-d/r_{1}=\cdots=\ell-\frac{d}{r}.
+\end{equation*}
+Then by using the result for $k=1$ conclude
+\begin{equation*}
+  W^{k,r_{0}}_{0}(B)\subset W^{k-1,r_{1}}_{0}\cdots \subset W^{\ell,r}_{0}(B).
+\end{equation*}
+Since $p\ge r_{0}$, conclude the bounded inclusion
+\begin{equation*}
+  W^{k,p}_{0}(B)\subset W^{\ell,r_{0}}_{0}(B).
+\end{equation*}
+This completes the proof of the Sobolev embedding theorem. 
+\end{proof}
+\begin{xca}
+  Using the Gagliardo-Nirenberg inequality for $u\in W^{1,1}_{0}(B)$
+  \begin{equation*}
+    C^{-1}\norm{u}_{L^{1}}\le \norm{u}_{L^{d/(d-1)}}\le \norm{\nabla u}_{L^{1}},
+  \end{equation*}
+  prove that $1\not\in W^{1,1}_{0}(B)$.
+\end{xca}
+\begin{thm}[Rellich-Kondrachov compactness]
+  Suppose that $k>\ell$ and $k-d/p>\ell-d/r$, and $Y^{d}$ is a compact manifold with boundary, then the Sobolev embedding
+  \begin{equation*}
+    W^{k,p}_{0}(Y,E)\subset W^{\ell,r}_{0}(Y,E)
+  \end{equation*}
+  is a compact inclusion.  
+\end{thm}
+\begin{proof}
+  As in the proof of the Sobolev embedding theorem, we will reduce the theorem to a local computation in $\R^{d}$.
+
+  Suppose that the theorem holds locally, i.e.\ we can cover $Y$ by finitely many open sets $U_{\alpha}$ where it is know that the inclusion
+  \begin{equation*}
+    W^{k,p}_{0}(U_{\alpha},E)\subset W^{\ell,r}_{0}(U_{\alpha},E)
+  \end{equation*}
+  is compact. Let $u_{n}$ be a bounded sequence in $W^{k,p}_{0}(Y,E)$. If $\set{\rho_{\alpha}}$ is a partition of unity, then $\rho_{\alpha}u_{n}$ is a bounded sequence in $W^{k,p}_{0}(U_{\alpha},E)$, and hence, after a subsequence, converges to something $u_{\infty,\alpha}\in W^{\ell,r}_{0}(U_{\alpha},E)$. Then
+  \begin{equation*}
+    \norm{u_{n}-\sum_{\alpha}u_{\infty,\alpha}}_{W^{\ell,r}(Y)}\le \sum_{\alpha}\norm{\rho_{\alpha}u_{n}-u_{\infty,\alpha}}_{W^{\ell,r}(Y)}=\sum_{\alpha}\norm{\rho_{\alpha}u_{n}-u_{\infty,\alpha}}_{W^{\ell,r}(U_{\alpha})}\to 0.
+  \end{equation*}
+  Therefore it suffices to prove the theorem locally. We may therefore suppose that $E$ is trivial and $Y=B(1)$ is a ball in $\R^{n}$ with the standard metric, connection, etc.
+
+  We can also reduce to the case $k=1$, because if we know that $W^{1,p}_{0}\subset W^{0,r}_{0}$ is compact when $1-d/p>-d/r$, then we also know $W^{k,p}_{0}\subset W^{k-1,r}_{0}$ when $k-d/p>(k-1)-d/r$, and by finding $r_{1},\cdots,r_{n}=r$ so that
+  \begin{equation*}
+    k-d/p>(k-1)-d/r_{1}>\cdots>\ell-d/r,
+  \end{equation*}
+  we conclude the result for $W^{k,p}_{0}\subset W^{\ell,r}_{0}$.
+
+  The strategy of proof is the following: if $\mathscr{E}$ is a uniformly bounded family of functions in $W^{1,p}_{0}(B(1))$, and $\rho_{\delta}$ is a mollifying function, we will show that there is a universal bound
+  \begin{equation*}
+    \norm{u-\rho_{\delta}\ast u}_{L^{r}}<c(\delta),\text{ $c(\delta)\to 0$ as $\delta\to 0$, for all $u\in \mathscr{E}$}.
+  \end{equation*}
+  We will then show that the family of smooth functions $\rho_{\delta}\ast \mathscr{E}$ is bounded and equicontinuous (and are all supported in $B(1+\delta)$). By Arz\'ela-Ascoli, we conclude that $\rho_{\delta}\ast\mathscr{E}$ is pre-compact in $C^{0}(B(1+\delta))$ topology, and hence also in $L^{q}(B(1))$.
+
+  Now pick $\epsilon>0$. Choose $\delta$ so $c(\delta)<\epsilon/3$. Since $\rho_{\delta}\ast \mathscr{E}$ is compact, we can find elements $v_{1},\cdots,v_{n}\in \mathscr{E}$ so that the $\epsilon/2$ balls around $\rho_{\delta}\ast v_{i}$ cover $\rho_{\delta}\ast\mathscr{E}$. Since
+  \begin{equation*}
+    \norm{\mathscr{E}-\rho_{\delta}\ast\mathscr{E}}
+    _{L^{q}}<\epsilon/3,
+  \end{equation*}
+  we conclude that the $\epsilon$ balls around $v_{i}$ cover $\mathscr{E}$, and since $\epsilon$ was arbitrary, we conclude $\mathscr{E}$ is pre-compact. Any sequence in a pre-compact space inside of a Banach space converges after taking a subsequence, and so we conclude the compactness statement.
+
+  It suffices to prove the two claims:
+  \begin{claim}\label{claim:20}
+    If $1-d/p>-d/q$, and $\mathscr{E}$ is bounded in $W^{1,p}_{0}(B(1))$, then there is a uniform bound
+    \begin{equation*}      \norm{v-\rho_{\delta}\ast v}_{L^{q}}<c(\delta)\text{ for all $v\in \mathscr{E}$},
+    \end{equation*}
+    and $c(\delta)\to 0$ as $\delta\to 0$.
+  \end{claim}
+  \begin{claim}\label{claim:21}
+    The family $\rho_{\delta}\ast \mathscr{E}$ is equicontinuous. 
+  \end{claim}
+\end{proof}
+In order to prove Claim \ref{claim:20}, we introduce some results about convolution. We define the \textbf{translation} operator on smooth functions by
+\begin{equation*}
+  \tau_{h}(f)(x)=f(x+h).
+\end{equation*}
+It is clear that $\tau_{h}^{*}=\tau_{-h}$. It is readily checked that
+\begin{equation*}\tag{$\ast$}
+  \norm{\tau_{h}f}_{W^{k,p}(B)}\le \norm{f}_{W^{k,p}},
+\end{equation*}
+and hence $\tau_{h}$ extends by density to $W^{k,p}_{0}(B)$. Moreover, for all $u\in W^{k,p}_{0}(B)$ we have $\tau_{h}u\to u$ in $W^{k,p}$ norm, as $h\to 0$.
+
+We define the \textbf{convolution} of $u$ with a bump function $\rho_{\delta}=\delta^{-d}\rho(\delta^{-1} x)$ by
+\begin{equation*}
+  u\ast\rho_{\delta}(x)=\int_{\R^{d}} \rho_{\delta}(y)\tau_{-y}u(x)\,\dVol(y).
+\end{equation*}
+This is well-defined for smooth compactly functions. By pairing with a test-function $v$, we conclude that
+\begin{equation*}
+  \begin{aligned}
+    (u\ast\rho_{\delta},v)&=\int_{\R^{d}} \int_{\R^{d}} \rho_{\delta}(y)u(x-y)v(x)\d\Vol(y)\d\Vol(x)\\
+    &=\int_{\R^{d}}\rho_{\delta}(y)\int_{\R^{d}}u(x-y)v(x)\d\Vol(x)\d\Vol(y)\\
+    &\le \norm{u}_{L^{p}}\norm{v}_{L^{q}},
+  \end{aligned}
+\end{equation*}
+hence $\norm{u\ast\rho_{\delta}}_{L^{p}}\le \norm{u}_{L^{p}}$. Therefore convolution extends to a bounded map $L^{p}\to L^{p}$.
+
+It is clear that $\nabla(u\ast\rho_{\delta})=(\nabla u)\ast\rho_{\delta}$ (for smooth $u$) and hence 
+\begin{equation*}
+  \norm{u\ast\rho_{\delta}}_{W^{k,p}}\le \norm{u}_{W^{k,p}},
+\end{equation*}
+and this estimate shows that $\rho_{\delta}\ast(-)$ extends to a bounded map $W^{k,p}_{0}\to W^{k,p}_{0}$.
+
+We can compute
+\begin{equation*}
+  \rho_{\delta}\ast u(x)=\int \rho_{\delta}(y)u(x-y)\d\Vol(y)=\int \rho_{\delta}(x-y)u(y)\dVol(y),
+\end{equation*}
+and so
+\begin{equation*}
+  \nabla (\rho_{\delta}\ast u)=(\nabla \rho_{\delta})\ast u.
+\end{equation*}
+Consequently,
+\begin{equation*}
+  \norm{\nabla (\rho_{\delta}\ast u)}_{C^{0}}\le \norm{\nabla \rho_{\delta}}_{C^{0}}\norm{u}_{L^{1}}\le \norm{\nabla \rho_{\delta}}_{C^{0}}\norm{u}_{L^{p}}.
+\end{equation*}
+It follows that $\rho_{\delta}\ast u$ is differentiable if $u\in L^{p}$ (by density, and completeness of $C^{1}$ topology) and that
+\begin{equation*}
+  \nabla(\rho_{\delta}\ast u)=(\nabla \rho_{\delta})\ast u. 
+\end{equation*}
+Consequently $\rho_{\delta}\ast u$ is $C^{\infty}$ if $u\in L^{p}$.
+
+\begin{lemma}
+  Suppose that $1-d/p>-d/r$. Define $p^{*}$ by
+  \begin{equation*}
+    1-d/p\ge -d/p^{*}>-d/r. 
+  \end{equation*}
+  This can always be achieved. Since $1\ge 1/r>1/p^{*}$, there is $\alpha>0$ so that
+  \begin{equation*}
+    \frac{1}{r}=\alpha+\frac{1-\alpha}{p^{*}}.
+  \end{equation*}
+  We claim that there is a constant $C$ so that for all $u\in W^{1,p}_{0}(B)$,
+  \begin{equation*}
+    \norm{\tau_{h}u-u}_{L^{r}(\R^{d})}\le C\abs{h}^{\alpha}\norm{u}_{W^{1,p}(B)}.
+  \end{equation*}
+\end{lemma}
+\begin{proof}
+  It suffices to prove this when $u\in C^{\infty}_{0}(B)$. Then we compute
+  \begin{equation*}
+    \abs{\tau_{h}u(x)-u(x)}\le \abs{h}\int_{0}^{1}\abs{\nabla u(x+th)}\d t,
+  \end{equation*}
+  hence
+  \begin{equation*}
+    \norm{\tau_{h}u-u}_{L^{1}}\le \abs{h}\int_{0}^{1}\int_{\R^{d}}\abs{\nabla u(x+th)}\dVol\,\d t\le \abs{h}\norm{\nabla u}_{W^{1,p}}\text{Vol}(B)^{1/q},
+  \end{equation*}
+  where we use the fact that $\nabla u(x+th)$ is supported in $B(1)-th$.
+  
+  Now we compute
+  \begin{equation*}
+    \abs{\tau_{h}u-u}^{r}=\abs{\tau_{h}u-u}^{\alpha r}\abs{\tau_{h}u-u}^{(1-\alpha)r},
+  \end{equation*}
+  and then apply H\"older's inequality, with $1/\beta$, $1/(1-\beta)$, to obtain
+  \begin{equation*}
+   \int \abs{\tau_{h}u-u}^{r}\le \left[\int\abs{\tau_{h}u-u}^{\frac{\alpha r}{\beta}}\dVol\right]^{\beta}\left[\int\abs{\tau_{h}u-u}^{\frac{(1-\alpha) r}{1-\beta}}\dVol\right]^{1-\beta}.
+  \end{equation*}
+  Pick $\beta=\alpha r$, so that $1-\beta=\frac{(1-\alpha)r}{p^{*}}$, to obtain
+  \begin{equation*}
+    \norm{\tau_{h}u-u}_{L^{r}}\le \norm{\tau_{h}u-u}_{L^{1}}^{\alpha }\norm{\tau_{h}u-u}_{L^{p^{*}}}^{1-\alpha}.
+  \end{equation*}
+  Using Sobolev embedding for $1-d/p\ge -d/p^{*}$, we conclude
+  \begin{equation*}
+    \norm{\tau_{h}u-u}_{L^{p^{*}}}^{1-\alpha}\le C\norm{u}_{W^{1,p}}^{1-\alpha}.
+  \end{equation*}
+  We also have our previous estimate
+  \begin{equation*}
+    \norm{\tau_{h}u-u}_{L^{1}}^{\alpha}\le C\abs{h}^{\alpha}\norm{u}_{W^{1,p}}^{\alpha}.
+  \end{equation*}
+  Therefore
+  \begin{equation*}
+    \norm{\tau_{h}u-u}_{L^{r}}\le C\abs{h}^{\alpha}\norm{u}_{W^{1,p}},
+  \end{equation*}
+  as desired.  
+\end{proof}
+\begin{lemma}[Claim \ref{claim:20}]
+  For $u\in W^{1,p}_{0}(B)$, we have
+  \begin{equation*}
+    \norm{u-\rho_{\delta}\ast u}_{L^{q}}\le C\abs{\delta}^{\alpha}\norm{u}_{W^{1,p}},    
+  \end{equation*}
+  for some $C$ and $\alpha>0$, dependent only $p,r,B,d$.
+\end{lemma}
+
+\begin{proof}
+  We compute
+  \begin{equation*}
+    u-\rho_{\delta}\ast u=\int_{\R^{d}}\rho_{\delta}(y) (u-\tau_{-y}u)\dVol(y).
+  \end{equation*}
+  Pair this with a test-function $\varphi$ to conclude
+  \begin{equation*}
+    (u-\rho_{\delta}\ast u,\varphi)=\int_{\R^{d}}\rho_{\delta}(y)\int_{\R^{d}}\varphi(x)(u(x)-u(x-y))\d\Vol(x)\d\Vol(y).
+  \end{equation*}
+  This produces the estimate
+  \begin{equation*}
+    \abs{(u-\rho_{\delta}\ast u,\varphi)}\le \int_{\R^{d}}\rho_{\delta}(y)\norm{u-\tau_{-y}u}_{L^{r}}\dVol(y)\norm{\varphi}_{L^{s}},
+  \end{equation*}
+  where $s$ is conjugate to $r$. Since $\rho_{\delta}(y)$ vanishes for $\abs{y}>\delta$, we conclude
+  \begin{equation*}
+    \int_{\R^{d}}\rho_{\delta}(y)\norm{u-\tau_{-y}u}_{L^{r}}\dVol(y)\le C\abs{\delta}^{\alpha}\norm{u}_{W^{1,p}},    
+  \end{equation*}
+  hence
+  \begin{equation*}
+    \norm{u-\rho_{\delta}\ast u}_{L^{q}}\le C\abs{\delta}^{\alpha}\norm{u}_{W^{1,p}}.
+  \end{equation*}
+  As a corollary, if $\mathscr{E}$ is a bounded set in $W^{1,p}_{0}$, then we conclude
+  \begin{equation*}
+    \text{sup}_{\mathscr{E}}\norm{u-\rho_{\delta}\ast u}\le c(\delta)\ \ \text{where $c(\delta)\to 0$ as $\delta\to 0$.}
+  \end{equation*}
+\end{proof}
+\begin{lemma}[Claim \ref{claim:21}]
+  Let $u\in W^{1,p}_{0}(B(1))$, then the smooth section $u\ast \rho_{\delta}$ is supported in $B(1+\delta)$, and 
+  \begin{equation*}\tag{$1$}
+    \norm{u\ast \rho_{\delta}}_{C^{0}}\le C(\delta)\norm{u}_{W^{1,p}(B)},
+  \end{equation*}
+  and 
+  \begin{equation*}\tag{$2$}
+    \norm{\tau_{h}(u\ast \rho_{\delta})-(u\ast \rho_{\delta})}_{C^{0}}\le C(\delta) \abs{h}^{\alpha}\norm{u}_{W^{1,p}(B)},
+  \end{equation*}
+  for some $\alpha>0$. As a corollary, if $\mathscr{E}$ is a bounded set in $W^{1,p}_{0}(B(1))$, then $\rho_{\delta}\ast \mathscr{E}$ is a bounded equicontinuous family of functions supported on $B(1+\delta)$.
+\end{lemma}
+\begin{proof}
+  It suffices to prove the two estimates for test $u$. We compute
+  \begin{equation*}
+    \abs{u\ast \rho_{\delta}(x)}\le \int \abs{u(x-y)}\abs{\rho_{\delta}(y)}\,\d\Vol(y)\le \norm{u}_{L^{p}}\norm{\rho_{\delta}}_{L^{q}}=C(\delta)\norm{u}_{W^{1,p}}.
+  \end{equation*}
+  For (2), we compute
+  \begin{equation*}
+    \tau_{h}(u\ast \rho_{\delta})(x)-u\ast\rho_{\delta}(x)=\int (u(x+h-y)-u(x-y))\rho_{\delta}(y)\d\Vol(y)\le \norm{\tau_{h}u-u}_{L^{r}}\norm{\rho_{\delta}}_{L^{s}}.
+  \end{equation*}
+  Using our previous deduction,
+  \begin{equation*}
+    \norm{\tau_{h}u-u}_{L^{r}}\le C\abs{h}^{\alpha}\norm{u}_{W^{1,p}},
+  \end{equation*}
+  for some $\alpha>0$. Hence
+  \begin{equation*}
+    \norm{\tau_{h}(u\ast \rho_{\delta})-u\ast\rho_{\delta}}_{C^{0}}\le C(\delta) \abs{h}^{\alpha}\norm{u}_{W^{1,p}}.
+  \end{equation*}
+  This completes the proofs of Claims \ref{claim:20} and \ref{claim:21}, and hence completes the proof of the Rellich compactness theorem.
+\end{proof}
+
+\begin{clear}{Morrey embedding}
+  The goal of this section is to prove that $W^{k,p}_{0}$ functions automatically have a certain degree of H\"older continuity.
+
+  % \begin{defn}
+  %   A distribution $u$ is said to be in $W^{k,p}_{\text{loc}}(U)$ if $u$ is in $W^{k,p}(V)$ for each $V$ so that $\closure{V}\subset \text{int}(U)$. Convergence in $W^{k,p}_{\text{loc}}$ is convergence on $W^{k,p}(V)$ for each $\closure{V}\subset \text{int}(U)$.
+  % \end{defn}
+  \begin{defn}
+    The H\"older space $C^{0,\alpha}(\R^{d},\C^{n})$ is defined by
+    \begin{equation*}
+      u\in C^{0,\alpha}\iff \norm{\tau_{h}u-\tau u}_{C^{0}}\le C\abs{h}^{\alpha}\text{ for $\abs{h}<1$}.
+    \end{equation*}
+    Defining
+    \begin{equation*}
+      [u]_{\alpha}=\sup_{0<\abs{h}<1}\frac{\norm{\tau_{h}u-\tau u}_{C^{0}(U)}}{\abs{h}^{\alpha}},
+    \end{equation*}
+    then $\norm{u}_{C^{0,\alpha}}=\norm{u}_{C^{0}}+[u]_{\alpha}$ is a complete metric on $C^{0,\alpha}$.
+
+    We define $C^{k,\alpha}$ by recursion: $C^{k,\alpha}$ consists of all $C^{k}$ functions whose first derivative is $C^{k-1,\alpha}$.
+  \end{defn}
+\end{clear}
+\begin{thm}[Morrey Embedding]
+  If $k>\ell$, $\alpha\in (0,1)$, and $k-d/p\ge \ell+\alpha$, then the inclusion of test functions into $C^{\ell,\alpha}$ extends to a continuous extension $W^{k,p}_{0}(B)\subset C^{\ell,\alpha}$. Consequently, $W^{k,p}_{0}(B)$ functions are represented by $\ell$ times differentiable functions.  
+\end{thm}
+\begin{proof}
+  First we claim that it suffices to prove the case $k=1$, $\ell=0$. To see why, observe that if we know it for $1-d/p\ge \alpha$, then if $u\in W^{k,p}$, all the first $k-1$ derivatives of $u$ are in $W^{1,p}$ and hence in $C^{0,\alpha}$. It follows that $u$ is $C^{k-1,\alpha}$. Therefore
+  \begin{equation*}
+    W^{k,p}\subset C^{k-1,\alpha}.
+  \end{equation*}
+  Now if $p<d$, then we can find $p<p^{*}<\infty$ so that
+  \begin{equation*}
+    k-d/p=(k-1)-d/p^{*}.
+  \end{equation*}
+  By continuing, we conclude that we can find $\ell <j\le k$ so that
+  \begin{equation*}
+    k-d/p=j-d/p^{*}\ge \ell+\alpha,
+  \end{equation*}
+  where $p^{*}\ge d$. To see why $\ell<j$, observe that if not, then we would conclude $\alpha<0$. Since $p^{*}\ge d$, we can find $\beta\in [0,1)$ so that
+  \begin{equation*}
+    j-d/p^{*}=(j-1)+\beta\ge \ell+\alpha.
+  \end{equation*}
+  To see why $\beta\ne 1$, use $p^{*}<\infty$. If $\beta\ne 0$, then by applying the composite $W^{k,p}\subset W^{j,p^{*}}\subset C^{j-1,\beta}\subset C^{\ell,\alpha}$, we conclude the desired result.
+
+  If $\beta=0$, then we need to a bit more careful. We essentially are in the case when $p=d$ and
+  \begin{equation*}
+   k-d/p\ge \ell+\alpha, 
+ \end{equation*}
+ so $k-2\ge \ell$, since $\alpha>0$. Since $\alpha<1$, the inequality is strict:
+ \begin{equation*}
+   k-d/p>\ell+\alpha.
+ \end{equation*}
+ Then we can find $d<p^{*}<\infty$ so
+ \begin{equation*}
+   k-d/p>k-1-d/p^{*}=k-2+\beta>\ell+\alpha,
+ \end{equation*}
+ where $\beta>0$, and then use the inclusion $W^{k,p}\subset W^{k-1,p^{*}}\subset W^{k-2,\beta}\subset W^{\ell,\alpha}$.
+ 
+  Now we prove the case when $k=1$, and $1-d/p\ge \alpha$.
+  \begin{prop}
+    Let $u$ be a smooth function (not necessarily a test function). There is a constant $C$ depending only on $d$ (and not the radius $r$, etc) so that
+    \begin{equation*}
+      \norm{u(z)-\bar{u}(x)}_{C^{0}(B(x;r))}\le C(d)\int_{B(x;r)}\frac{\abs{\nabla u(y)}}{\abs{z-y}^{d-1}}\dVol(y)
+    \end{equation*}
+    where $\bar{u}(x,r)$ denotes the average of $u$ over $B(x;r)$.
+  \end{prop}
+  \begin{proof}
+    This is a fairly straightforward computation using the fundamental theorem of calculus. We compute
+    \begin{equation*}
+      u(z_{2})-u(z_{1})=\int_{0}^{\abs{z_{2}-z_{1}}}\nabla u(z_{1}+t\frac{z_{2}-z_{1}}{\abs{z_{2}-z_{1}}})\frac{z_{2}-z_{1}}{\abs{z_{2}-z_{1}}}\d t.
+    \end{equation*}
+    Integrating over $z_{2}$, and dividing by the volume of the ball, yields
+    \begin{equation*}
+      \bar{u}(x)-u(z_{1})=\frac{1}{\text{Vol}}\int_{B(x;r)}\int_{0}^{\abs{z_{2}-z_{1}}}\nabla u(z_{1}+t\frac{z_{2}-z_{1}}{\abs{z_{2}-z_{1}}})\frac{z_{2}-z_{1}}{\abs{z_{2}-z_{1}}}\d \Vol(z_{2})\d t.
+    \end{equation*}
+    Introduce polar coordinates $z_{2}=z_{1}+\rho \theta$, where $\rho$ ranges from $0$ to $\ell(\theta)<2r$. 
+    \begin{equation*}
+      \bar{u}(x)-u(z_{1})=\frac{1}{\text{Vol}}\int_{\S^{d-1}}\int_{0}^{\ell(\theta)}\int_{0}^{\rho}\nabla u(z_{1}+t\theta)\theta \rho^{d-1}\,\d t\,d\rho\,\d\theta.
+    \end{equation*}
+    The region $\set{(\rho,t):t<\rho, \rho<\ell(\theta)}$ can be reparametrized to give
+    \begin{equation*}
+      \bar{u}(x)-u(z_{1})=\frac{1}{\text{Vol}}\int_{\S^{d-1}}\int_{0}^{\ell(\theta)}\frac{u(z_{1}+t\theta)}{t^{d-1}}t^{d-1}\int_{t}^{\ell(\theta)}\rho^{d-1}\d\rho\,\d t\,d\theta.
+    \end{equation*}
+    Changing back to regular coordinates $y=z_{1}+t\theta$, we conclude,
+    \begin{equation*}
+      \abs{\bar{u}(x)-u(z_{1})}\le \frac{D^{d}}{\Vol\,d}\int\frac{\abs{\nabla u(y)}}{\abs{y-z_{1}}^{d-1}}\d\Vol(y),
+    \end{equation*}
+    Where $D$ is the diameter of the ball. Note that $D^{d}/\Vol$ is a constant independent of $r$. This completes the proof of the proposition.
+  \end{proof}
+  
+  Now suppose that $u$ is a test function on $B(1)$. For each $z\in B$, we use the previous proposition to conclude
+  \begin{equation*}
+    \abs{u(z)}\le \abs{\bar{u}}+C \int_{B}\frac{\abs{\nabla u(y)}}{\abs{y-z}^{d-1}}\d\Vol(y).
+  \end{equation*}
+  We can estimate $\bar{u}\le C\norm{u}_{L^{p}}$. Now apply H\"older's inequality with $p,q$ to conclude
+  \begin{equation*}
+    \abs{u(z)}\le C\norm{u}_{L^{p}}+\norm{\nabla u}_{L^{p}}\left[\int \frac{1}{\abs{y-z}^{(d-1)q}}\d\Vol\right]^{1/q}.
+  \end{equation*}
+  We conclude
+  \begin{equation*}
+    \int \frac{1}{\abs{y-z}^{(d-1)q}}\d\Vol=C\int_{0}^{1}\rho^{(d-1)(1-q)}d\rho.
+  \end{equation*}
+  We compute
+  \begin{equation*}
+    1-\frac{d}{p}>\alpha\implies 1-d+\frac{d}{q}>\alpha\implies (q-1)(1-d)+1>q\alpha,
+  \end{equation*}
+  which implies $\rho^{(d-1)(1-q)}$ is integrable over $[0,1]$, and hence:
+  \begin{equation*}\tag{1}
+    \abs{u(z)}\le C(d,p)\norm{u}_{W^{1,p}}.
+  \end{equation*}
+  This proves that $W^{1,p}(B)$ functions satisfy a uniform $C^{0}$ bound. We now to establish oscillation estimates to conclude that $W^{1,p}(B)$ functions lie in $C^{0,\alpha}$. As before, let $u$ be a test function supported in $B$. Pick $x\in B$. For $z\in B_{r}(x)$, we apply the proposition to conclude
+  \begin{equation*}
+    \abs{u(z)-\bar{u}}\le C\int_{B_{r}(x)}\frac{\abs{\nabla u(y)}}{\abs{z-y}^{d-1}}\d\Vol(y).
+  \end{equation*}
+  We conclude, for $r<1$,
+  \begin{equation*}
+    \abs{u(z)-\bar{u}}\le C\norm{\nabla u}_{L^{p}}\int_{0}^{r}\rho^{(d-1)(1-q)}\,d\rho\le C\norm{\nabla u}_{L^{p}}r^{\alpha},
+  \end{equation*}
+  This was independent of $x$, and hence:
+  \begin{equation*}
+    \abs{u(z_{1})-u(z_{2})}\le 2C\norm{\nabla u}_{L^{p}}\abs{z_{1}-z_{2}}^{\alpha}.
+  \end{equation*}
+  Thus, combined with (1), we conclude
+  \begin{equation*}\tag{2}
+    \norm{u}_{C^{0,\alpha}}\le C\norm{u}_{W^{1,p}}.
+  \end{equation*}
+  This proves that $W^{1,p}$ includes into $C^{0,\alpha}$, as desired.  
+\end{proof}
+\begin{xca}
+  If $k+\beta>\ell+\alpha$, use Arz\'ela Ascoli to conclude $C^{k,\beta}(B)\subset C^{\ell,\alpha}(B)$ is a compact inclusion, where $C^{k,\beta}(B)$ are the $C^{k,\beta}$ functions which vanish outside of $B$.
+\end{xca}
+\begin{xca}[Morrey compactness]
+  If $k-d/p>\ell+\alpha$, $\alpha\in [0,1)$, then the inclusion
+  \begin{equation*}
+    W^{k,p}_{0}(B)\subset C^{\ell,\alpha}
+  \end{equation*}
+  is compact. 
+\end{xca}
+\begin{cor}
+  Let $Y$ be a compact manifold with boundary, and suppose $k-d/p>\ell$. Then the inclusion of test sections of $E$ into $C^{\ell}(E)$ extends to a compact inclusion of $$W^{k,p}_{0}(Y,E)\subset C^{\ell}(E).$$
+\end{cor}
+\begin{proof}
+  As usual, it suffices to prove this locally. However, locally, it is a consequence of the Morrey embedding theorem, and the previous exercise.
+\end{proof}
+\begin{example}
+  Let $Y$ be a Riemann surface. Then Sobolev class functions $W^{1,p}(Y,\C^{n})$ are automatically continuous provided $p>2$. This is a crucial fact when trying to define $W^{1,p}$ Sobolev spaces of maps $Y\to M$, where $M$ is another manifold.
+\end{example}
+\begin{clear}{Remark}
+  The two results: (i) Sobolev embedding/Rellich compactness and (ii) Morrey embedding/compactness are fundamental results in the study of partial differential operators on manifolds.
+\end{clear}
+\begin{xca}
+  Let $f\in W^{k,p}(Y,E)$, where we do not assume that $f\in W^{k,p}_{0}(Y,E)$. Suppose that $k-p/d>\ell$. Prove that $f$ is of class $C^{\ell}$.
+
+  Hint: First prove that $\rho f\in W^{k,p}_{0}(Y,E)$, if $\rho$ is compactly supported in the interior of $Y$. Conclude that $f$ is a sum of smooth sections, and hence is smooth. 
+\end{xca}
+\clearpage
+
+\subsection*{Elliptic operators}
+
+\begin{defn}
+  Let $E_{i}\to Y$, $i=1,2$, be vector bundles over $Y$. Given a differential operator $L:E_{1}\to E_{2}$, we can consider the assignment
+  \begin{equation*}
+    f\in \Gamma(\C)\mapsto [L,f]\in \Gamma\Hom(E_{1},E_{2}).
+  \end{equation*}
+  This assignment is actually a first-order linear differential operator $\C\to \Hom(E_{1},E_{2})$. In fact, there exists a unique tensor $\sigma:T^{*}M\to \Hom(E_{1},E_{2})$ so that
+  \begin{equation*}
+    [L,f]=\sigma(\d f).
+  \end{equation*}
+  This tensor $\sigma$ is called the \textbf{symbol} of $L$. To see why there exists such a tensor $\sigma$, we review some results proved in the first section.
+
+  \begin{xca}
+    Prove that $[L,-]$ is a first order linear differential operator $f\mapsto [L,f]$. Hint: $[L,\varphi f]-\varphi[L,f]=[L,\varphi]f$.    
+  \end{xca}
+  \begin{xca}
+    Since $\d$ is a connection on the trivial bundle $\C$, we already proved that we can express
+    \begin{equation*}
+      [L,f]=A(\d f)+B(f)
+    \end{equation*}
+    for some tensors $A$ and $B$. Use this to prove that $B=0$.
+
+    We proved that $A:T^{*}Y\to \Hom(E_{1},E_{2})$ and $B:\C\to \Hom(E_{1},E_{2})$ are uniquely determined by $L$. Conclude that there is unique tensor $\sigma$ so that $[L,f]=\sigma(\d f)$.
+  \end{xca}
+  \end{defn}
+  \begin{defn}
+    A first order operator $L:E_{1}\to E_{2}$ is called elliptic if its symbol $\sigma$ maps $(T^{*}Y)^{\cross}$ into $\GL(E_{1},E_{2})$. Note that this forces $\dim E_{1}=\dim E_{2}$.    
+  \end{defn}
+  \begin{example}
+    Let $Y$ be a manifold with $\dim Y\ge 2$. There are no elliptic first order operators on the trivial bundle $\R$. To see why, note that $\Hom(\R,\R)$ is one-dimensional, while $T^{*}Y$ is greater than $2$ dimensional, so the tensor $\sigma:T^{*}Y\to \Hom(\R,\R)$ must have some kernel. This is not true for higher order operators. This partially explains the prevalence of \emph{second} order operators when working with real-valued functions.
+  \end{example}
+  \begin{example}
+    Let $\dim M>n$. Then there are no first order differential operators from $E_{1}\to E_{2}$, if $\dim E_{1}=\dim E_{2}=n$.
+
+    To see why, consider the space $\Hom(E_{1},E_{2})\simeq \R^{n\cross n}$, and consider a $>n$-dimensional subspace $\Pi$ of $\R^{n\cross n}$. Suppose that $\Pi$ doesn't touch the singular set. Then we can find matrices $A_{0},\cdots,A_{n}$ so that
+    \begin{equation*}
+      \sum_{i}x_{i}A_{i}\text{ is non-singular }
+    \end{equation*}
+    for every $x_{0},\cdots,x_{n}$, not all $0$. In particular, for any vector $v$,
+    \begin{equation*}
+      \sum_{i}x_{i}A_{i}v\ne 0\text{ for all $x_{0},\cdots,x_{n}$}.
+    \end{equation*}
+    But this implies that we have found a linearly independent set with $>n$ elements in $E_{2}$, contrary to the requirement that $\dim E_{1}=\dim E_{2}=n$.
+  \end{example}
+  \begin{example}
+    As a corollary to the previous example, consider a $>2$ dimensional manifold $X$ with almost complex structure $J$. The equation for holomorphic functions $X\to \C$ is not elliptic, because $\dim X>\dim \C=2$.
+  \end{example}
+    \begin{clear}{Constant coefficient first-order elliptic operators on $\T^{d}$}
+    Let $\C^{n}\to \T^{d}$ be a trivial line bundle endowed the the standard metric $\ip{-,-}$, and suppose that $\T^{d}$ has the Euclidean metric $g$ and connection $\nabla$ inherited from $\R^{d}$. The trivial bundle has connection $\nabla=\d$ (let's agree to use the symbols $\nabla$ and $\d$ interchangeably for sections of a trivial bundle).
+
+    We have shown that any first order operator is of the form
+    \begin{equation*}
+      Lu=A(\nabla u)+B(u),
+    \end{equation*}
+    Observe that
+    \begin{equation*}
+      L(fu)-fLu=A(\d f\ocross u).
+    \end{equation*}
+    Therefore
+    \begin{equation*}
+      \sigma(\d f)=A(\d f\ocross -).
+    \end{equation*}
+    Now recall that
+    \begin{equation*}
+      \nabla u=\d x_{i}\ocross \pd{u}{x_{i}},
+    \end{equation*}
+    and hence
+    \begin{equation*}
+      L(u)=\sum_{i}\sigma(\d x_{i})\pd{u}{x_{i}}+B(u)=\sum_{i}A_{i}\pd{u}{x_{i}}+B u.
+    \end{equation*}
+  \end{clear}
+  \begin{example}
+    Let $\sigma:T^{*}\T^{2}\to \Hom(\R^{2n},\R^{2n})$ by the symbol
+    \begin{equation*}
+      \sigma(a\d x+b\d y)=a+bJ,
+    \end{equation*}
+    where $J$ is a complex structure. This is clearly elliptic, because
+    \begin{equation*}
+      (a+bJ)^{-1}=\frac{a-bJ}{a^{2}+b^{2}}.
+    \end{equation*}
+    This induces a partial differential operator on $\R^{2n}\to \R^{2n}$ by
+    \begin{equation*}
+      \conj{\bd}_{U}(u)=\ud{u}{x}+J\ud{u}{y}.
+    \end{equation*}
+  \end{example}
+  \begin{defn}
+    We say that a differential operator $L:\C^{n}\to \C^{n}$ on the torus $\T^{d}$ has \textbf{constant coefficients}, provided
+    \begin{equation*}
+      Lu=A(\d u)+B(u)
+    \end{equation*}
+    where $A,B$ are constant tensors. The goal of the next section is to prove the interior elliptic estimates for constant coefficient linear elliptic operators on $\T^{d}$.
+  \end{defn}
+  \clearpage
+
+  \subsection*{Interior elliptic estimates}
+  Here is the general statement we will ultimately prove.
+  \begin{thm}[Interior elliptic estimates]
+    Let $L$ be a first-order elliptic operator $E_{1}\to E_{2}$, and let $Y$ be a compact manifold with boundary. For all $p\in (1,\infty)$, and all $k=1,2,\cdots$, there is constant $C=C(p,k)$ so that
+    \begin{equation*}
+      \norm{u}_{W^{k,p}(Y,E_{1})}\le C\left[\,\norm{L u}_{W^{k-1,p}(Y,E_{2})}+\norm{u}_{L^{p}(Y,E_{1})}\,\right].
+    \end{equation*}
+    for all $u\in W^{k,p}_{0}(Y,E_{1})$. 
+  \end{thm}
+  \begin{clear}{Remark}
+    These estimates are called \textbf{interior} because they deal with the space $W^{k,p}_{0}$, which is the closure of $C^{\infty}_{c}(\text{int}(Y),E)$ in $W^{k,p}$. We still require $Y$ to be compact.
+  \end{clear}
+  \begin{xca}
+    Let $L$ be a first order differential operator on $Y$. The very first thing to observe (which we have not said yet) is that linear differential operators extend to all distributions via duality -- this is possible since every operator has an adjoint (which is immediate since $L=A\circ \nabla+B$, where $A,\nabla,B$ all have adjoints). Moreover, $A,\nabla,B$ all extend to distributions, and the extensions satisfy
+    \begin{equation*}
+      L=A\circ \nabla+B.
+    \end{equation*}
+
+    By the $W^{\bullet,p}$ boundedness properties of $\nabla$ and tensors, we conclude a constant $C=C(L,k)$ so
+    \begin{equation*}
+      \norm{Lu}_{W^{k-1,p}}\le C\norm{u}_{W^{k,p}}.
+    \end{equation*}
+  \end{xca}
+
+  Suppose that $L$ is constant coefficients on $\T^{d}$. We will prove that the elliptic estimates hold for $L$ using Fourier analysis on $\T^{d}$. We recall the necessary definitions.
+
+  Define $e_{\ell}=\exp(i\ip{\ell,-}):\T^{d}\simeq \R^{d}/\Z^{d}\to \C$, for $\ell\in \Z^{d}$. Then $e_{\ell}$ are test functions which are orthonormal with respect to the $L^{2}$ inner product.
+  \begin{thm}
+    If $f\in L^{2}(\T^{d},\C^{n})$, then
+    \begin{equation*}\tag{$\ast$}
+      f=\sum_{\ell\in \Z}(e_{\ell},f) e_{\ell}.
+    \end{equation*}
+    Here the pairing $(e_{\ell},f)$ is vector valued.
+  \end{thm}
+  \begin{proof}
+    This is standard, by now. By continuity of both sides, it suffices to prove it for smooth~$f$. It is clear that the set of linear combinations of $e_{k}$ is an  unital algebra closed under conjugation, and moreover the algebra seperates points in the sense that for any two points $x,y$ we can find a function $\varphi$ in the algebra generated by $e_{k}$ so that $\varphi(x)\ne \varphi(y)$. Then by the Stone-Weierstrass theorem, the span of $\set{e_{k}}$ is dense in $C^{0}$. Since the $C^{0}$ norm controls the $L^{2}$ norm, and $C^{0}$ is dense in $L^{2}$, we conclude $e_{\ell}$ are dense in $L^{2}$, and hence they form an orthonormal basis for the Hilbert space $L^{2}$.
+
+    To prove that ($\ast$) holds, we apply the fact that $e_{\ell}$ are a basis to each of the component functions of $f$. 
+  \end{proof}
+  \begin{prop}
+    Suppose that a section $f$ has a weak derivative $\nabla f\in \Hom(\C^{n},\C^{n})$. Then
+    \begin{equation*}
+      (\d x_{j}\ocross s_{i}e_{\ell},\nabla f)=(\nabla^{*}(\d x_{j}\ocross s_{i}e_{\ell}),f)=-i\ell_{j}(e_{\ell},f_{i}),
+    \end{equation*}
+    where $s_{1},\cdots,s_{n}$ be an orthonormal frame $\C^{n}$, and $f_{i}$ denotes $\ip{s_{i},f}$.
+    
+    We remark that the sections $\d x_{j}\ocross s_{i}e_{\ell}$ form an orthonormal basis for $L^{2}(T^{*}\T^{d})$, since they are certainly orthonormal and contain a generating set of smooth sections 
+    \begin{equation*}
+      \d x_{j}\ocross u,
+    \end{equation*}
+    where $u$ is a smooth $\C^{n}$ valued function in the closure of their span.
+    
+    As a consequence, if $f\in W^{1,2}$, then
+    \begin{equation*}
+      \norm{\nabla f}_{L^{2}}^{2}=\sum_{\ell}\abs{\ell}^{2}\abs{(e_{\ell},f)}^{2}<\infty.
+    \end{equation*}
+    Conversely, if $f$ is a distribution and the Fourier coefficients of $\nabla f$ are in $\ell^{2}$, then $f$ is $W^{1,2}$. Note that $(e_{\ell},f)$ is a vector, and so $\abs{(e_{\ell},f)}$ is measured using the inner product on $\C^{n}$.
+  \end{prop}
+  \begin{proof}
+    Since $f$ is a distribution, $(e_{0},f)<\infty$, and hence the sum
+    \begin{equation*}
+      \sum_{\ell}\abs{\ell}^{2}\abs{(e_{\ell},f)}^{2}<\infty
+    \end{equation*}
+    implies that $\norm{f}_{L^{2}}<\infty$, and so $f$ is represented by a $L^{2}$ function. By assumption that the fourier series for the distribution $\nabla f$ converges, we conclude that $\nabla f$ is an $L^{2}$ section of $\Hom(T\T,\C^{n})$, and hence $f$ is in $W^{1,2}$. We also observe that
+    \begin{equation*}
+      \norm{f}_{W^{1,2}}^{2}=\sum_{\ell}(1+\abs{\ell}^{2})\abs{(e_{\ell},f)}^{2}.
+    \end{equation*}
+  \end{proof}
+  More generally, the sections
+  \begin{equation*}
+    \d x_{j_{1}}\ocross\cdots\ocross \d x_{j_{k}}\ocross e_{\ell}\, s_{i}
+  \end{equation*}
+  form an orthonormal basis for $L^{2}(\Hom(TM^{\ocross k},\C^{n}))$. It is easy to check that
+  \begin{equation*}
+    \nabla^{*}(\d x_{j_{1}}\ocross \d x_{j_{2}}\ocross \cdots\ocross \d x_{j_{k}}\ocross e_{\ell}\, s_{i})=\d x_{j_{2}}\ocross \cdots\ocross\d x_{j_{k}} \ell_{j_{1}}\,e_{\ell}\,s_{i},
+  \end{equation*}
+  (i.e.\ this can be figured out fairly easily remembering our general formula for the adjoint of a connection). Therefore, if $f$ is a section of $\C^{n}$, then the coefficients of $\nabla^{k}f$ are
+  \begin{equation*}
+    (\d x_{j_{1}}\ocross \d x_{j_{2}}\ocross \cdots\ocross \d x_{j_{k}}\ocross e_{\ell}\, s_{i},\nabla^{k}f)=\ell_{j_{1}}\cdots\ell_{j_{k}}(e_{\ell},\ip{s_{i},f}).
+  \end{equation*}
+  Therefore
+  \begin{equation*}
+    \norm{\nabla^{k}f}_{L^{2}}^{2}=\sum\abs{\ell}^{2k}\abs{(e_{\ell},f)}^{2}.
+  \end{equation*}
+  Hence for $f\in W^{k,2}$, we have
+  \begin{equation*}    \norm{f}_{W^{k,2}}^{2}=\sum_{\ell}(1+\abs{\ell}^{2}+\cdots+\abs{\ell}^{2k})\abs{(e_{\ell},f)}^{2}.
+  \end{equation*}
+
+  Now suppose that $L$ is an first-order elliptic operator with constant coefficients,
+  \begin{equation*}
+    L(u)=A(\nabla u)+B(u).
+  \end{equation*}
+  We compute
+  \begin{equation*}
+    (e_{\ell} s_{i},L(u))=(e_{\ell} s_{i},A(\nabla u)+B(u))=(\nabla^{*}A^{*}(e_{\ell} s_{i})+B^{*}(e_{\ell} s_{i}),u),
+  \end{equation*}
+  where, recall, $s_{1},\cdots,s_{n}$ are the constant orthonormal frame for $\C^{n}$. Since $A$ is constant, so is $A^{*}$, and hence
+  \begin{equation*}
+    \nabla^{*}e_{\ell} A^{*}(s_{i})=-e_{\ell}\,i\ell\intprod A^{*}(s_{i})+e_{\ell} \nabla^{*}A^{*}(s_{i})
+  \end{equation*}
+  \begin{xca}
+    Prove this relation by exploring the commutator $[\nabla^{*},e_{\ell}]$.
+  \end{xca}
+  Then, we conclude
+  \begin{equation*}
+    (e_{\ell} s_{i},L(u))=(-e_{\ell}\,i\ell\intprod A^{*}(s_{i})+e_{\ell} \nabla^{*}A^{*}(s_{i})+e_{\ell}B(s_{i}),u).
+  \end{equation*}
+  Since $(e_{\ell},L(u))=(e_{\ell}s_{i},L(u))s_{i}$, conclude
+  \begin{equation*}
+    (e_{\ell},L(u))=\sum_{i}(-e_{\ell},\ip{i\ell\intprod A^{*}(s_{i}),u})s_{i}+(e_{\ell},\ip{\nabla^{*}A^{*}(s_{i})+B(s_{i}),u})s_{i}.
+  \end{equation*}
+  \begin{xca}
+    If $s$ is a constant section, then $(e_{\ell},\ip{s,u})=\ip{s,(e_{\ell},u)}$.
+  \end{xca}
+  We therefore obtain the nice formula
+  \begin{equation*}
+    (e_{\ell},L(u))=\sum_{i}\ip{i\ell\intprod A^{*}(s_{i}),\hat{u}(\ell)}+\ip{\nabla^{*}A^{*}(s_{i})+B(s_{i}),\hat{u}(\ell)}s_{i}.
+  \end{equation*}
+  We conclude
+  \begin{equation*}
+    \sum_{i,\ell}\abs{\ip{\ell\intprod A^{*}(s_{i}),\hat{u}(\ell)}}^{2}\le \norm{L(u)}_{L^{2}}^{2}+c\norm{u}_{L^{2}}^{2}.
+  \end{equation*}
+  To conclude the elliptic estimate for $W^{1,2}$, we will try to bound
+  \begin{equation*}
+    \sum_{\ell}\abs{\ell}^{2}\abs{\hat{u}(\ell)}^{2}\le C \sum_{i,\ell}\abs{\ip{\ell\intprod A^{*}(s_{i}),\hat{u}(\ell)}}^{2}.
+  \end{equation*}
+  \begin{claim}
+    There is a constant $c$ so that for all vectors $v$
+    \begin{equation*}
+      c\abs{\ell}^{2}\abs{v}^{2}\le \sum_{i}\abs{\ip{\ell\intprod A^{*}(s_{i}),v}}^{2}.
+    \end{equation*}
+    This is where ellipticity of $L$ comes in. 
+  \end{claim}
+  \begin{proof}
+    Since $L$ is elliptic, the map $v\mapsto A(\ell\ocross v)$ is an isomorphism for each non-zero $\ell$. 
+
+    The adjoint of $A$ is defined by formally taking the adjoint of the map
+    \begin{equation*}
+      A:\Hom(TM,\C^{n})\to \C^{n},
+    \end{equation*}
+    so
+    \begin{equation*}
+      \ip{A(\ell\ocross v),s_{i}}=\ip{\ell\ocross v,A^{*}(s_{i})}=\ip{v,\ell\intprod A^{*}(s_{i})}.
+    \end{equation*}
+    Therefore we conclude that
+    \begin{equation*}
+     v \mapsto \ip{v,\ell\intprod A^{*}(s_{i})}s_{i}
+    \end{equation*}
+    is an injection. Define $c$ by
+    \begin{equation*}
+      c=\inf_{\abs{v}=\abs{\ell}=1}\sum_{i}\abs{\ip{v,\ell\intprod A^{*}(s_{i})}}^{2},
+    \end{equation*}
+    and note that $c$ is the infimum of a continuous function on a compact set. Since $c$ is never vanishing we conclude $c(v)>0$. By bilinearity, we conclude
+    \begin{equation*}
+      c\abs{\ell}^{2}\abs{v}^{2}\le \sum_{i}\abs{\ip{v,\ell\intprod A^{*}(s_{i})}}^{2}.
+    \end{equation*}
+    Here it was useful to temporarily allow $\ell$ to be a non-integer. This completes the proof.
+  \end{proof}
+  \begin{cor}[interior estimates for $p=2$]
+    Let $L$ be a constant coefficient first order elliptic operator on the torus. Then for all $u\in W^{1,2}$, we have
+    \begin{equation*}
+      \norm{u}_{W^{1,2}}\le C\left[\,\norm{Lu}_{L^{2}}+\norm{u}_{L^{2}}\,\right].
+    \end{equation*}
+  \end{cor}
+  \begin{xca}
+    Prove that the interior elliptic estimates for the trivial
+    complex bundle $\C^{n}$ imply the interior estimates for the
+    trivial real bundle $\R^{n}$.
+  \end{xca}
+  
+  We will see later that the interior elliptic estimates + a general elliptic regularity theorem are enough to construct a parametrix (in general). We can be more explicit in the constant coefficient case and explicitly describe a parametrix. We have shown above that
+  \begin{equation*}
+    (e_{\ell},L(u))=\sum_{i}\ip{i\ell\intprod A^{*}(s_{i}),\hat{u}(\ell)}s_{i}+\ip{\nabla^{*}A^{*}(s_{i})+B(s_{i}),\hat{u}(\ell)}s_{i}.
+  \end{equation*}
+  Consider
+  \begin{equation*}
+    v\mapsto \sum_{i}\ip{i\ell\intprod A^{*}(s_{i}),v}s_{i}+\sum_{i}\ip{\nabla^{*}A^{*}(s_{i})+B(s_{i}),v}s_{i}.
+  \end{equation*}
+  as a map $\C^{n}\to \C^{n}$. We have shown that the norm (squared) of the first term is bounded below by $c\abs{\ell}^{2}\abs{v}^{2}$. It is clear that the norm of the second term is bounded above by $C\abs{v}$, and hence for all but finitely many $\ell$, the map
+  \begin{equation*}
+    v\mapsto \sum_{i}\ip{i\ell\intprod A^{*}(s_{i}),v}s_{i}+\sum_{i}\ip{\nabla^{*}A^{*}(s_{i})+B(s_{i}),v}s_{i}.
+  \end{equation*}
+  is invertible. Indeed, by pick $\ell$ sufficiently large, we may suppose that there is a neighborhood of infinity $\Lambda\subset \Z^{d}$ so that
+  \begin{equation*} 
+    \abs{\ell}\abs{v}<C\abs{\sum_{i}\ip{i\ell\intprod A^{*}(s_{i}),v}s_{i}+\sum_{i}\ip{\nabla^{*}A^{*}(s_{i})+B(s_{i}),v}s_{i}},
+  \end{equation*}
+  for all $\ell\in \Lambda$, and all $v$. Given any collection of vectors $b_{\ell}$, we can find unique $a_{\ell}$, for $\ell\in \Lambda$ so that
+  \begin{equation*}
+    (e_{\ell},L(a_{\ell}))=b_{\ell},
+  \end{equation*}
+  and moreover,
+  \begin{equation*}\tag{$\ast$}
+    \abs{a_{\ell}}\le C\frac{\abs{b_{\ell}}}{\ell}\text{ for $\ell\in \Lambda$}.
+  \end{equation*}
+  Suppose now that $w=\sum_{\ell}b_{\ell}e_{\ell}$, and $w$ lies in $L^{2}$. Let $\Pi$ be finite dimensional subspace spanned by $e_{\ell}$, $\ell\not\in \Lambda$.
+
+  Define
+  \begin{equation*}
+    u:=P(w)=\sum_{\Lambda}a_{\ell}e_{\ell}\text{ so that }L(u)-w\text{ lies in $\Pi$}.
+  \end{equation*}
+  This prescription defines a bounded linear map $L^{2}\to W^{1,2}$, since we have shown ($\ast$).
+
+  Note that $LP(w)=w-F(w)$, where $F$ is a finite rank operator (projection onto $\Pi$). Similarly, observe that $PL(u-F(u))=u-F(u)$, so
+  \begin{equation*}
+    PL(u)=u-G(u),
+  \end{equation*}
+  where $G$ is some other finite rank operator. Therefore we have inverted $L$ up to finite rank operators. Observe that
+  \begin{equation*}
+    \norm{u}_{W^{1,2}}\le \norm{u-G(u)}_{W^{1,2}}+\norm{G(u)}_{W^{1,2}}\le C\norm{Lu}_{L^{2}}+\norm{G(u)}_{W^{1,2}}.
+  \end{equation*}
+  Note that for $u$ restricted to the orthogonal complement of $\ker G$, we know that $G$ is continuous with respect to any topology on it's finite rank target. We therefore have
+  \begin{equation*}
+    \norm{G(u)}_{W^{1,2}}\le C\norm{u}_{L^{2}},
+  \end{equation*}
+  for $u\perp \ker G$, and hence this holds for all $u$. Thus we conclude
+  \begin{equation*}
+    \norm{u}_{W^{1,2}}\le C\left[\,\norm{Lu}_{L^{2}}+\norm{u}_{L^{2}}\,\right].
+  \end{equation*}
+  Thus we see that the existence of a parametrix implies the interior estimates.         
+\begin{thm}
+  Let $L$ be a first order constant coefficient elliptic operator on $\T^{d}$. Then for all $u\in W^{1,p}$, and all $p>0$, we have
+  \begin{equation*}
+    \norm{u}_{W^{1,p}}\le C\left[\,\norm{Lu}_{L^{p}}+\norm{u}_{L^{p}}\,\right].
+  \end{equation*}  
+\end{thm}
+\begin{remark}
+  We won't prove this theorem, because I think it is quite hard. Even for the standard Cauchy-Riemann operator $\bd_{x}+i\bd_{y}$, I think one needs to use ``Calderon-Zygmund'' theory.
+
+  One method to prove it would be to try to show that our parametrix $P$ is bounded from $L^{p}\to W^{1,p}$, but this seems hard.
+
+  However, assuming this theorem, we can prove the interior elliptic estimates in general without too much additional work.
+
+  It is desirable to have the elliptic estimates for $p>2$, because the Sobolev spaces $W^{1,p}(\Sigma,-)$ are made of continuous functions when $p>2$ -- this is important for developing the non-linear theory. We could try to develop the non-linear theory using the spaces $W^{2,2}(\Sigma,-)$. One meta-reason this is difficult is that ``the first estimate is the hardest to establish,'' and it is generally easier to establish estimates which begin with lower regularity.
+
+  Note that the spaces $W^{1,2}(\S^{1},-)$ and $W^{1,2}([0,1],-)$ consist of continuous function (when $p=2$). This implies that non-linear theory for elliptic equations on one-dimensional manifolds can be approached using the $W^{k,2}$ spaces. Non-linear elliptic equations on one-dimensional manifolds can be thought of as the theory of ordinary differential equations.
+\end{remark}
+\begin{xca}
+  Construct a parametrix $P:L^{2}(\T^{2})\to W^{1,2}(\T^{2})$ for the constant coefficient elliptic differential operator
+  \begin{equation*}
+    u\mapsto \conj{\bd} u=u_{x}+iu_{y}.
+  \end{equation*}
+  Hint: the fourier coefficients of $Lu$ are
+  \begin{equation*}
+    (e_{\ell},Lu)=i(\ell_{1}+i\ell_{2})\hat{u}(\ell).
+  \end{equation*}
+  Therefore we can invert $L$ whenever $\ell\ne 0$. Conclude a unique parametrix $P:L^{2}\to W^{1,2}$ so that
+  \begin{equation*}
+    u-LPu=\int u\,\d\Vol,
+  \end{equation*}
+  and so that
+  \begin{equation*}
+    u-PLu=\int u\,\d\Vol.
+  \end{equation*}
+  Conclude that the index of $\conj{\bd}$ is $0$.
+\end{xca}
+
+\begin{clear}{Interior elliptic estimates in the non-constant
+    coefficient case}  
+First we will generalize to the case when we have a differential operator on the torus which does not have constant coefficients. Write
+\begin{equation*}
+  L(u)=A(\nabla u)+B(u).
+\end{equation*}
+Recall that we are trying to prove
+\begin{equation*}
+  \norm{u}_{W^{1,p}}\le C\left[\norm{Lu}_{L^{p}}+\norm{u}_{L^{p}}\right].
+\end{equation*}
+Since
+\begin{equation*}
+  \norm{A(\nabla u)}_{L^{p}}\le \norm{L(u)}_{L^{p}}+C\norm{u}_{L^{p}},
+\end{equation*}
+it suffices to bound $\norm{\nabla u}_{L^{p}}$ by $\norm{A(\nabla u)}_{L^{p}}$.
+
+Now cover $\T^{d}$ by $N^{d}$ overlapping squares $U_{\alpha}$ of size $(2/N)^{d}$, and let $x_{\alpha}\in U_{\alpha}$ be the center of the square.
+
+Let $L_{\alpha}(u)=A_{\alpha}(\nabla u)+B_{\alpha}(u)$. This defines a constant coefficient differential operator on the entire torus $\T^{d}$.
+
+Choose a partition of unity $\rho_{\alpha}$ for $U_{\alpha}$, with the property that
+\begin{equation*}
+  \abs{\nabla \rho_{\alpha}}<CN,
+\end{equation*}
+where $C$ is independent of $N$.
+
+Suppose we can prove that
+\begin{equation*}\tag{$\ast$}
+  \norm{\rho_{\alpha}u}_{W^{1,p}}\le C_{\alpha}\left[\norm{L\rho_{\alpha}u}_{L^{p}}+\norm{u}_{L^{p}}\right]
+\end{equation*}
+
+Then we estimate
+\begin{equation*}
+  \norm{u}_{W^{1,p}}\le \sum_{\alpha}\norm{\rho_{\alpha}u}_{W^{1,p}}\le \sum_{\alpha}C_{\alpha}\left[\norm{L\rho_{\alpha}u}_{L^{p}}+\norm{u}_{L^{p}}\right].
+\end{equation*}
+Now write
+\begin{equation*}
+  L\rho_{\alpha}u=\rho_{\alpha}Lu+[L,\rho_{\alpha}]u
+\end{equation*}
+and thereby conclude
+\begin{equation*}
+  \norm{L\rho_{\alpha}u}_{L^{p}}+\norm{u}_{L^{p}}\le \norm{\rho_{\alpha}Lu}_{L^{p}}+\norm{[L,\rho_{\alpha}]u}_{L^{p}}+\norm{u}_{L^{p}}\le \left[\norm{Lu}_{L^{p}}+c(N)\norm{u}_{L^{p}}\right].
+\end{equation*}
+The constant $c(N)$ may be quite large (it involves the derivatives of $\rho_{\alpha}$, which are bounded by $N$). We ultimately conclude
+\begin{equation*}
+  \norm{u}_{W^{1,p}}\le C(N) \left[\norm{Lu}_{L^{p}}+\norm{u}_{L^{p}}\right],
+\end{equation*}
+for some large constant $C(N)$. Therefore it suffices to prove that ($\ast$) holds for some finite $N$.
+
+Now is where we use the constant coefficient operators $L_{\alpha}$. Consider the operators $L_{x}=A_{x}(\nabla u)+B_{x}(u)$ as $x$ ranges over $\T^{d}$. Each one satisfies an estimate of the form
+\begin{equation*}
+  \norm{u}_{W^{1,p}}\le C_{x}(\norm{L_{x}u}_{L^{p}}+\norm{u}_{L^{p}}).
+\end{equation*}
+We claim that there is a constant $C$ independent of $x$ so that
+\begin{equation*}
+  \norm{u}_{W^{1,p}}\le C(\norm{L_{x}u}_{L^{p}}+\norm{u}_{L^{p}})
+\end{equation*}
+holds for all $x$. This is a compactness argument. To see why, observe that for each $x\in \T^{d}$, there is a ball $B$ around $x$ and a constant $C$ so that $y\in B$ implies
+\begin{equation*}
+  \norm{u}_{W^{1,p}}\le C(\norm{L_{y}u}_{L^{p}}+\norm{u}_{L^{p}}).
+\end{equation*}
+Then by covering $\T^{d}$ by finitely many such balls and taking the maximum of the constants $C$ proves the claim.
+
+We know that
+\begin{equation*}
+  \norm{\rho_{\alpha}u}_{W^{1,p}}\le C(\norm{L_{\alpha}\rho_{\alpha}u}_{L^{p}}+\norm{u}_{L^{p}})\le C(\norm{L\rho_{\alpha}u}_{L^{p}}+\norm{(L_{\alpha}-L)\rho_{\alpha}u}_{L^{p}}+\norm{u}_{L^{p}}).
+\end{equation*}
+We estimate
+
+\begin{equation*}
+  \begin{aligned}
+    \norm{(L_{\alpha}-L)\rho_{\alpha}u}_{L^{p}}\le \frac{1}{N}\norm{L}_{C^{1}}\norm{\rho_{\alpha}u}_{W^{1,p}}.
+  \end{aligned}
+\end{equation*}
+Combining everything, we obtain
+\begin{equation*}
+  \norm{\rho_{\alpha}u}_{W^{1,p}}\le C\left[\norm{L\rho_{\alpha}u}+\frac{\norm{L}_{C^{1}}}{N}\norm{\rho_{\alpha}u}_{W^{1,p}}+C(N)\norm{u}_{L^{p}}\right].
+\end{equation*}
+Picking $N$ large enough so $C\norm{L}_{C^{1}}/N<1/2$, we conclude
+\begin{equation*}
+  \norm{\rho_{\alpha}u}_{W^{1,p}}\le 2C\left[\norm{L\rho_{\alpha}u}+C(N)\norm{u}_{L^{p}}\right],
+\end{equation*}
+as desired. This completes the proof of the elliptic estimates for
+first order operators on $\T^{d}$.
+\end{clear}
+
+We can now complete the proof of the interior elliptic estimates:
+\begin{thm}[interior elliptic estimates for $W^{1,p}$]
+  Let $Y$ be a compact manifold with boundary, and let $L$ be a first
+  order elliptic operator $E_{1}\to E_{2}$. There is a constant $C(p)$
+  so that for all $u\in
+  W^{1,p}_{0}(Y,E_{1})$, we have
+  \begin{equation*}
+    \norm{u}_{W^{1,p}}\le C(\norm{Lu}_{L^{p}}+\norm{u}_{L^{p}}).
+  \end{equation*}
+\end{thm}
+\begin{proof}
+  First we show that it holds locally on $Y$. Cover $Y$ by finitely many compact
+  balls (or half balls) with boundary $U_{\alpha}$, each equipped with an embedding
+  $\varphi_{\alpha}:U_{\alpha}\to \T^{d}$ trivializing $E_{1},E_{2}$.
+
+  Using the connection and metric $U_{\alpha}$ inherits from
+  $\T^{d}$ and the trivial bundle on $\T^{d}$, we can write
+  \begin{equation*}
+    L=A_{\alpha}(\nabla u_{\alpha})+B_{\alpha}(u_{\alpha})\text{ for
+      $u_{\alpha}\in W^{1,p}_{0}(U_{\alpha})$.}
+  \end{equation*}
+  The tensors $A_{\alpha},B_{\alpha}$ are defined on the codimension
+  $0$ image of $U_{\alpha}$ in $\T^{d}$. Taking a tubular
+  neighborhood of $U_{\alpha}\subset \T^{d}$, we can extend
+  $A_{\alpha},B_{\alpha}$ smoothly to global sections on $\T^{d}$ of the appropriate
+  bundles. Then we conclude for $u\in W^{1,p}_{0}(U_{\alpha})\subset W^{1,p}_{0}(\T^{d})$ 
+  \begin{equation*}\tag{$\ast$}
+    \norm{u}_{W^{1,p}}\le C(\norm{Lu}_{L^{p}}+\norm{u}_{L^{p}}),
+  \end{equation*}
+  this implies the same result when we use the norms that
+  $W^{1,p}_{0}(B_{\alpha})$ inherits from $W^{1,p}_{0}(Y)$, since the
+  Sobolev norms defined on a compact manifold do not depend on the
+  metric/connection data used (up to norm equivalence).
+
+  Now let $\rho_{\alpha}$ be a partition of unity for the balls
+  $U_{\alpha}$. We estimate
+  \begin{equation*}
+    \norm{u}_{W^{1,p}}\le
+    \sum_{\alpha}\norm{\rho_{\alpha}u}_{W^{1,p}}\le C\sum_{\alpha} \norm{\rho_{\alpha}Lu}_{p}+\norm{[L,\rho_{\alpha}]u}_{L^{p}}+\norm{\rho_{\alpha}u}_{L^{p}},
+  \end{equation*}
+  for some large $C$ (the maximum of the constants we were
+  guaranteed in ($\ast$)). We can estimate the three terms appearing
+  in the sum
+  \begin{equation*}
+    \begin{aligned}
+      \sum_{\alpha}\norm{\rho_{\alpha}Lu}_{L^{p}}&\le (\text{number of
+        balls})\norm{Lu}_{L^{p}}\\
+      \sum_{\alpha}\norm{[L,\rho_{\alpha}]u}_{L^{p}}&\le
+      \left[\sum_{\alpha}\norm{[L,\rho_{\alpha}]}_{C^{0}}\right]\norm{u}_{L^{p}}\\
+      \sum_{\alpha}\norm{\rho_{\alpha}u}_{L^{p}}&\le (\text{number of
+        balls})\norm{u}_{L^{p}},
+    \end{aligned}    
+  \end{equation*}
+  we conclude for $u\in W^{1,p}_{0}$ that
+  \begin{equation*}
+    \norm{u}_{W^{1,p}}\le C(\norm{Lu}_{L^{p}}+\norm{u}_{L^{p}}).
+  \end{equation*}
+  This completes the proof.    
+\end{proof}
+\begin{xca}
+  Prove that if $u\in W^{1,p}_{0}(Y)$ then
+  $\rho_{\alpha}u\in W^{1,p}_{0}(B_{\alpha})$. Hint: the boundary case
+  requires some proof since, since $\rho_{\alpha}$ is potentially
+  non-vanishing on the boundary face $B_{\alpha}\cap \bd Y$.
+\end{xca}
+
+\subsection*{Elliptic bootstrapping}
+
+\begin{thm}
+  Let $u\in L^{p}(Y)$ be supported away from $\bd Y$, and suppose that
+  $Lu\in L^{p}(Y)$ (where $Lu$ is defined by duality using the adjoint
+  $L^{*}$). Then $u\in W^{1,p}_{0}(Y)$. 
+\end{thm}
+\begin{clear}{Remark}
+  Here $u$ being ``supported away from $\bd Y$'' is equivalent to the existence
+  of a bump function $\rho$ supported in $\text{int}(Y)$ so that $\rho
+  u=u$.
+\end{clear}
+\begin{clear}{Remark}
+  The idea for the proof (in the case when $Y=B(1)$) will be to consider the convolutions
+  $\rho_{\delta}\ast u$ (which are well defined elements of
+  $W^{1,p}_{0}(B(1))$ for $\delta$ sufficiently small because of our
+  assumption on the support of $u$). If we can show that
+  $\rho_{\delta}\ast u$ is uniformly bounded in $W^{1,p}_{0}$, then
+  reflexivity of $W^{1,p}_{0}$, and the fact that $\rho_{\delta}\ast
+  u\to u$ in $L^{p}$, we can deduce that $u$ is in fact in
+  $W^{1,p}_{0}$.
+\end{clear}
+\begin{defn}
+  Let $T_{\delta}u=\rho_{\delta}\ast u$, i.e.
+  \begin{equation*}
+    T_{\delta}(u)=\int_{\R^{d}} u(y)(\tau^{-x}\rho_{\delta})(y)\,\d y,
+  \end{equation*}
+  where $\rho:B(1)\to [0,\infty)$ is a radially symmetric bump
+  function with integral $1$. This formula uses the antipodal symmetry of
+  $\rho_{\delta}$.
+
+  This defines a continuous linear
+  map $L^{p}(B(1))\to C^{\infty}(B(1+\delta))$, and moreover
+  \begin{equation*}
+    \rho_{\delta}\ast u\to u\text{ in $L^{p}$}.
+  \end{equation*}
+\end{defn}
+
+The key part of the proof is the following ``commutator estimate''
+\begin{lemma}
+  Let $L$ be a first order differential operator on $\R^{d}$. There is
+  a constant $C$ independent of $\delta$ so that for all $u\in L^{p}(B(1))$ we have
+  \begin{equation*}
+    \norm{[L,T_{\delta}]u}_{L^{p}}\le C\norm{u}_{L^{p}}.
+  \end{equation*}
+\end{lemma}
+\begin{proof}[of lemma]
+    We will prove the case when $L=A(\nabla u)$. The reader can prove
+    the case $L=B(u)$, and thereby obtain it for all first order
+    differential operators. Let $g$ be a test section in $L^{q}$.
+
+    We compute
+    \begin{equation*}
+      \ip{A(\nabla T_{\delta}(u)),g}=\ip{T_{\delta}(\nabla
+        u),A^{*}g}=\int \ip{\nabla u(y), \tau^{-x}\rho_{\delta}(y)A^{*}_{x}g(x)}\,\d y.
+    \end{equation*}
+    Using the adjoint of $\nabla$ (with respect to the $y$-variable,
+    we consider $x$ to be fixed for the moment), we conclude
+    \begin{equation*}
+     \ip{LT_{\delta}u,g}=\ip{A(\nabla T_{\delta}(u)),g}=\int \ip{u(y), \tau^{-x}[\nabla^{*},\rho_{\delta}]A^{*}_{x}g(x)}\,\d y,
+   \end{equation*}
+   where we use the fact that $\nabla$ commutes with $\tau^{-x}$ and
+   that $\nabla^{*}A^{*}_{x}g(x)=0$, since we consider $x$ fixed.
+
+   \begin{xca}
+     Prove that the symbol of $\nabla^{*}:\Hom(TM,\R^{n})\to \R^{n}$ is
+     \begin{equation*}
+       [\nabla^{*},f]=\text{grad}(f)\intprod (-).
+     \end{equation*}
+     This is a tensor, and hence $\nabla^{*}$ is a first order
+     operator.          
+   \end{xca}
+   \begin{xca}
+     Prove that if $w$ is a constant section of $\Hom(TM,\R^{n})$,
+     then $\nabla^{*}w=0$. Hint:
+     \begin{equation*}
+       \int \ip{\nabla^{*}w,u}\dVol=\int \ip{w,\nabla u}\d\Vol
+     \end{equation*}
+     Write
+     \begin{equation*}
+       w=\sum \d x_{i}\ocross v_{i}\text{ and }\nabla u=\sum \d
+       x_{i}\ocross \pd{u}{x_{i}}.
+     \end{equation*}
+     Conclude that
+     \begin{equation*}
+       \int \ip{w,\nabla u}\d\Vol=\sum_{i}\int
+       \ip{v_{i},\pd{u}{x_{i}}}\,\d\Vol=0,
+     \end{equation*}
+     since $v_{i}$ are constant (use compatibility of the connection
+     with $\ip{-,-}$). 
+   \end{xca}
+   Continuing with the proof of the claim, we now explore the term
+   $T_{\delta}Lu$.
+   \begin{equation*}
+     \begin{aligned}
+     \ip{T_{\delta}Lu,g}&=\int_{\R^{d}}\ip{A_{y}\nabla_{y}u,\tau^{-x}\rho_{\delta}(y)g(x)}\d
+     y
+     \\
+     &=\int_{\R^{d}}\ip{u,\tau^{-x}[\nabla^{*},\rho_{\delta}]A^{*}_{y}g(x)}\d
+     y+\int_{\R^{d}}\ip{u,\,\tau^{-x}\rho_{\delta}\cdot \nabla^{*}(A^{*}_{y}\cdot
+       g(x))}\d y.
+     \end{aligned}
+   \end{equation*}
+   Therefore
+   \begin{equation*}
+     \ip{T_{\delta}Lu-LT_{\delta}u,g}=\int_{\R^{d}}\ip{u,\tau^{-x}[\nabla^{*},\rho_{\delta}](A^{*}_{y}-A^{*}_{x})g(x)}\d
+     y+\int_{\R^{d}}\ip{u,\,\tau^{-x}\rho_{\delta}\cdot \nabla^{*}(A^{*}_{y}\cdot
+       g(x))}\d y.    
+   \end{equation*}
+   Taking absolute values produces
+   \begin{equation*}\tag{$\ast$}
+     \abs{\ip{T_{\delta}Lu-LT_{\delta}u,g}}\le
+       \left[\norm{\rho_{\delta}}_{C^{1}}\cdot
+       \text{osc}(A^{*};\delta)\abs{g(x)}+\norm{A^{*}}_{C^{1}}\abs{g(x)}\,\right]\int_{x+B(\delta)}\abs{u(y)}\,\d
+         y.
+     \end{equation*}
+     where
+     \begin{equation*}
+       \text{osc}(A^{*};\delta)=\sup_{\abs{x-y}<\delta}\abs{A^{*}(y)-A^{*}(x)}.
+     \end{equation*}
+     Integrating ($\ast$) over $B(1)$ conclude
+     \begin{equation*}
+       \abs{(T_{\delta}Lu-LT_{\delta}u,g)}\le \left[\norm{\rho_{\delta}}_{C^{1}}\text{osc}(A^{*};\delta)+\norm{A^{*}}_{C^{1}}\right]\norm{\int_{x+B(\delta)}u(y)\,\d y}_{L^{p}}\norm{g}_{L^{q}},
+     \end{equation*}
+     and hence, conclude
+     \begin{equation*}
+       \norm{[T_{\delta},L]u}_{L^{p}}\le C\left[\norm{\rho_{\delta}}_{C^{1}}\text{osc}(A^{*};\delta)+\norm{A^{*}}_{C^{1}}\right]\norm{u}_{L^{p}},
+     \end{equation*}
+     where we have used the (easy) fact that
+     \begin{equation*}
+       \norm{\int_{x+B(\delta)}u(y)\,\d y}_{L^{p}}\le \norm{u}_{L^{p}}.
+     \end{equation*}
+     This can be proved by pairing with a test function. Now observe
+     that $\text{osc}(A^{*};\delta)<\norm{A^{*}}_{C^{1}}\delta$, and
+     $\norm{\rho_{\delta}}_{C^{1}}=\delta^{-1}\norm{\rho_{1}}_{C^{1}}$, so
+     \begin{equation*}
+       \norm{[T_{\delta},L]u}_{L^{p}}\le C(1+\norm{\rho_{1}}_{C^{1}})\norm{A^{*}}_{C^{1}}\norm{u}_{L^{p}}.
+     \end{equation*}
+     This proves the claim, as we can take $C$ to be
+     $C(1+\norm{\rho_{1}}_{C^{1}})\norm{A^{*}}_{C^{1}}$ which does not
+     depend on $\delta$.     
+   \end{proof}
+
+   Now we can prove the theorem.
+   \begin{proof}
+     We are given $u,Lu\in L^{p}$ and we know that $u$ is supported
+     away from the boundary, and we want to show that $u\in
+     W^{1,p}_{0}$.
+
+     First suppose that $u$ is supported in $B(r)\subset B(1)$ for
+     some $r<1$. For $\delta<r$, $\rho_{\delta}\ast u$ is supported in
+     $B(1)$. We compute
+     \begin{equation*}
+       L(\rho_{\delta}\ast u)=\rho_{\delta}\ast (L u)+[L,T_{\delta}]u,
+     \end{equation*}
+     and hence
+     \begin{equation*}\tag{$\ast$}
+       \norm{L(\rho_{\delta}\ast u)}_{L^{p}}\le \norm{Lu}_{L^{p}}+C\norm{u}_{L^{p}},
+     \end{equation*}
+     where the constant $C$ is given by our ``commutator estimate.''
+
+     By the interior elliptic estimates applied to $\rho_{\delta}\ast
+     u\in W^{1,p}_{0}$, together with ($\ast$) we conclude
+     \begin{equation*}
+       \norm{\rho_{\delta}\ast u}_{W^{1,p}}\le C(\norm{Lu}_{L^{p}}+\norm{u}_{L^{p}}).
+     \end{equation*}
+     Therefore $\rho_{\delta}\ast u$ is uniformly bounded in
+     $W^{1,p}_{0}$. It follows (by reflexivity of $W^{1,p}_{0}$) that
+     $\rho_{\delta}\ast u$ converges weakly in $W^{1,p}_{0}$ (after
+     taking a subsequence). Since we know that $\rho_{\delta}\ast u$
+     converges to $u$ in $L^{p}$, we conclude that $u$ must be equal
+     to the weak limit of $\rho_{\delta}\ast u$ in $W^{1,p}_{0}$, and
+     hence $u$ is in $W^{1,p}_{0}$, as desired.
+
+     More generally, suppose that $u$ is defined on an arbitrary
+     compact manifold with boundary~$Y$. Since the support of $u$ is
+     separated from the boundary, we can find balls
+     $$B_{1}(1),\cdots,B_{n}(1)\subset \text{int}(Y)$$ so that the balls
+     $B_{1}(r),\cdots,B_{n}(r)$ cover the support of $u$. Picking a
+     partition of unity $\rho_{1},\cdots,\rho_{n}$ so $\rho_{i}$ is
+     supported in $B_{i}(r)$, conclude that
+     \begin{equation*}
+       L\rho_{i}u=\rho_{i}Lu+[L,\rho_{i}]u\in L^{p}\implies
+       \rho_{i}u\in W^{1,p}_{0}\implies u\in W^{1,p}_{0}.
+     \end{equation*}     
+     This proves the theorem.     
+   \end{proof}
+   \subsection*{Differentiating the equation}
+   The goal of this section will be to prove the following
+   result
+   \begin{thm}[interior bootstrapping]
+     Let $Y$ be a compact manifold with boundary, and $L:E_{1}\to
+     E_{2}$ a first order elliptic operator. Then for sections $u$
+     supported away from $\bd Y$ we have
+     \begin{equation*}
+       u\in L^{p}(Y)\text{ and }Lu\in W^{k,p}_{0}(Y)\implies u\in W^{k+1,p}_{0}(Y).
+     \end{equation*}
+   \end{thm}
+   
+   The key idea needed to prove this is described in the following exercise:
+   \begin{xca}
+     If $L$ is elliptic, then there exists an elliptic first order operator $$L':\Hom(TM,E_{1})\to
+     \Hom(TM,E_{2})$$ so that
+     \begin{equation*}
+       \nabla L(u)=L'(\nabla u)+\text{first order operator}.
+     \end{equation*}
+     Hint: writing $L(u)=A(\nabla u)+B(u)$, observe that
+     \begin{equation*}
+       \nabla L(u)=A(\nabla \nabla u)+B(\nabla u)+\nabla A (\nabla
+       u)+\nabla B(u),
+     \end{equation*}
+     therefore we can define
+     \begin{equation*}
+       L'(\Phi)=A(\nabla \Phi)+B(\Phi).
+     \end{equation*}
+     We claim that $L'$ is still elliptic. To see why, compute
+     \begin{equation*}
+       [L',f](\Phi)=A(\d f \ocross \Phi),
+     \end{equation*}
+     and since $A(\xi\ocross -):E_{1}\to E_{2}$ is an isomorphism if
+     $\xi\ne 0$, we conclude the induced map on $\Hom(TM,E_{1})\to
+     \Hom(TM,E_{2})$ is still an isomorphism.
+
+     We adopt the convention that we have chosen
+     extensions of $L$ to elliptic operators $$\Hom(TM^{\ocross
+       n},E_{1})\to \Hom(TM^{\ocross n}E_{2})$$ so that $[L,\nabla]$ is a
+     first order operator. 
+   \end{xca}
+   \begin{proof}[interior bootstrapping]
+     We will prove that
+     \begin{equation*}\tag{$\ast$}
+       u\text{ supported away from $\bd Y$ and $u,Lu\in
+         W^{k,p}_{0}$}\implies\text{ $u\in W^{k+1,p}_{0}$}.
+     \end{equation*}
+     by induction. We already know it for $k=0$. Now suppose that
+     $u,Lu\in W^{k,p}_{0}$. Then $\nabla u\in W^{k-1,p}_{0}$, and
+     \begin{equation*}
+       L'\nabla u=\nabla L u+[L',\nabla]u\in W^{k-1,p}_{0}.
+     \end{equation*}
+     Since $L'$ is elliptic, and we suppose that we know the $k-1$
+     case of ($\ast$) for all elliptic operators (in particular, for $L'$), we conclude that
+     \begin{equation*}
+       \nabla u\in W^{k,p}_{0},
+     \end{equation*}
+     and hence $u\in W^{k+1,p}_{0}$, as desired. This proves ($\ast$)
+     for all $k$. It is clear that knowing $(\ast)$ for all $k$
+     implies
+     \begin{equation*}
+       u\in L^{p}(Y)\text{ and }Lu\in W^{k,p}_{0}(Y)\implies u\in W^{k+1,p}_{0}(Y).
+     \end{equation*}
+     for sections $u$
+     supported away from $\bd Y$. This completes the proof.
+   \end{proof}
+
+   Using the same ``differentiating the equation'' trick, we can
+   upgrade the interior elliptic estimates:
+   \begin{thm}[interior elliptic estimates, for all $k$]
+     Let $L$ be an elliptic differential operator. There is a constant
+     $C_{k}$ (depending on $L$ and $k$) so that for all
+     $u\in W^{k+1,p}_{0}(Y)$ we have
+     \begin{equation*}\tag{$\ast$}
+       \norm{u}_{W^{k+1,p}}\le C_{k}(\norm{Lu}_{W^{k,p}}+\norm{u}_{L^{p}}).
+     \end{equation*}
+   \end{thm}
+   \begin{proof}
+     The case when $k=0$ is already known. Suppose we have found
+     constants $C_{i}$ so that ($\ast$) holds for $i<k$.
+
+     Let $u\in W^{k+1,p}_{0}(Y)$. Then $\nabla u\in W^{k,p}_{0}(Y)$,
+     and hence we can apply the $k-1$ elliptic estimate to $\nabla u$
+     \begin{equation*}
+       \norm{\nabla u}_{W^{k,p}}\le C_{k-1}(\norm{L'\nabla
+         u}_{W^{k-1,p}}+\norm{\nabla u}_{L^{p}}).
+     \end{equation*}
+     It follows that
+     \begin{equation*}
+       \begin{aligned}
+       \norm{\nabla u}_{W^{k,p}}&\le C_{k-1}(\norm{\nabla
+         (Lu)}_{W^{k-1,p}}+\norm{[L,\nabla]u}_{W^{k-1,p}}+\norm{\nabla
+         u}_{L^{p}})\\
+       &\le
+       C'(\norm{Lu}_{W^{k,p}}+\norm{u}_{W^{k,p}}+\norm{u}_{W^{1,p}})\\
+       &\le C_{k}(\norm{Lu}_{W^{k,p}}+\norm{u}_{L^{p}}),
+     \end{aligned}     
+   \end{equation*}
+   where we have used the fact that $[L,\nabla]$ is first order
+   operator, and then used the $0,k-1$ cases of the elliptic
+   estimates. It is clear that constant $C_{k}$ does not depend on the
+   $u$ we started with. This completes the proof.   
+ \end{proof}
+ \subsection*{Local elliptic regularity}
+ \begin{defn}
+   Let $Y$ be a potentially non-compact manifold. We define
+   \begin{equation*}\tag{$\ast$}
+     W^{k,p}_{\text{loc}}(Y)=\lim W^{k,p}(Z)\text{ where $Z$ compactly
+       supported in $\text{int}(Y)$}.
+   \end{equation*}
+   Note that the set $W^{k,p}_{\text{loc}}(Y)$ can be thought of as
+   a subset of distributions $C^{\infty}_{c}(Y,E_{1})\to \R$ (or
+   $\C$). The definition in $(\ast)$ also tells us the topology of
+   $W^{k,p}_{\text{loc}}(Y)$.
+ \end{defn}
+ \begin{thm}\label{thm:localellipticregularity}
+   Let $L$ be an elliptic first order operator on $Y$ (potentially
+   non-compact). Then
+   \begin{equation*}\tag{1}
+     u\in L^{p}_{\text{loc}}(Y)\text{ and }Lu\in
+     W^{k,p}_{\text{loc}}(Y)\iff u\in W^{k+1,p}_{\text{loc}}(Y)
+   \end{equation*}
+   and the map
+   \begin{equation*}\tag{2}
+     u\in W^{k+1,p}_{\text{loc}}(Y)\to u\cross Lu\in
+     L^{p}_{\text{loc}}(Y)\cross W^{k,p}_{\text{loc}}(Y),
+   \end{equation*}
+   is a closed embedding.
+ \end{thm}
+ \begin{clear}{Remark}
+   The fact that (2) defines a closed embedding is closely related to
+   the interior elliptic estimates.
+ \end{clear}
+ \begin{proof}
+   The proof of (1) is quite easy, since we already know a similar
+   statement in the interior case. Here is the argument: if $u\in
+   L^{p}_{\text{loc}}$ and $Lu\in W^{k,p}_{\text{loc}}$, then for any
+   test function $\rho$ we have
+   \begin{equation*}\tag{$\ast$}
+     \rho u\in L^{p}\text{ and }L\rho u=\rho Lu+[L,\rho]u\in L^{p},
+   \end{equation*}
+   (since $[L,\rho]$ is a tensor with compact support, $[L,\rho]u\in
+   L^{p}$). By interior bootstrapping we conclude $\rho u\in
+   W^{1,p}_{0}$. By taking a locally finite partition of unity, we
+   conclude $u\in W^{1,p}_{\text{loc}}$. Now we repeat the argument,
+   but now that we know that $u\in W^{1,p}_{\text{loc}}$, we can conclude
+   that $L\rho u\in W^{1,p}_{0}$, and hence conclude $\rho u\in
+   W^{2,p}_{0}$, etc. We conclude that (1) holds.
+
+   To prove (2), we will use the interior elliptic estimates. It is
+   easy to show that $W^{k,p}_{\text{loc}}$ is a metrizable space, and
+   hence to prove that the map in (2) is a closed embedding, it
+   suffices to consider sequences of elements. Let $u_{n}$ be a
+   sequence in $W^{k+1,p}_{\text{loc}},$ and suppose that
+   $u_{n}\to u_{\infty}$ in $L^{p}_{\text{loc}}$ and $Lu_{n}$
+   converges in $W^{k,p}_{\text{loc}}$. Let $\rho$ be some bump
+   function, say $\rho=1$ on the compact set $Z$. By the interior
+   elliptic estimates we conclude that $\rho u_{n}$ is Cauchy in
+   $W^{1,p}$, and hence $u_{n}$ converges in 
+   $W^{1,p}_{\text{loc}}$. By repeating the argument, conclude that
+   $\rho u_{n}$ is Cauchy in $W^{2,p}$, etc. Ultimately deduce that
+   $u_{n}$ converges in $W^{k+1,p}_{\text{loc}}$. This completes the proof.         
+ \end{proof}
+ \begin{defn}
+   We define the topology on the space $C^{\infty}$ by a limit 
+   \begin{equation*}
+     C^{\infty}_{\text{loc}}(Y)=\lim_{k\to\infty}C^{k}_{\text{loc}}(Y),
+   \end{equation*}
+   where $\text{loc}$ indicates that we are not thinking of $C^{k}$ as
+   a normed space, but rather as the limit of the normed spaces
+   $C^{k}(Z)$ as $Z$ ranges over compact subdomains of $Y$.
+
+   An easy consequence of the Morrey embedding theorem, we conclude
+   that
+   \begin{equation*}\tag{$\ast$}
+     C^{\infty}_{\text{loc}}(Y)\simeq \lim_{k}W^{k,p}_{\text{loc}}(Y).
+   \end{equation*}
+ \end{defn}
+ \begin{thm}
+   Let $Y$ be a manifold, and let $L$ be a first order elliptic
+   operator on $Y$. Then the map
+   \begin{equation*}
+     u\in C^{\infty}_{\text{loc}}(Y)\mapsto u\cross Lu\in
+     L^{p}_{\text{loc}}\cross C^{\infty}_{\text{loc}}(Y)
+   \end{equation*}
+   is a closed embedding. 
+ \end{thm}
+ \begin{proof}
+   Let $u_{n}\in C^{\infty}_{\text{loc}}(Y)$ be a sequence so that
+   $u_{n}$ converges in $L^{p}_{\text{loc}}$ and $Lu_{n}$ converges in
+   $C^{\infty}_{\text{loc}}$.
+
+   Clearly $Lu_{n}$ converges in $W^{k,p}_{\text{loc}}$, for every
+   $k$, and hence $u_{n}$ converges in $W^{k,p}_{\text{loc}}$ for
+   every $k$ by Theorem \ref{thm:localellipticregularity}. By
+   ($\ast$), we conclude that $u_{n}$ converges in
+   $C^{\infty}_{\text{loc}}$, as desired.
+ \end{proof}
+ \begin{example}
+   Let $u_{n}$ be a sequence of holomorphic functions in $D(1)$ so
+   that $u_{n}$ converges to $u_{\infty}$ in $L^{p}$. Then
+   $u_{\infty}$ is $C^{\infty}$ smooth, holomorphic, and $u_{n}\to
+   u_{\infty}$ converges in $C^{\infty}_{\text{loc}}$.
+
+   To see that $u_{\infty}$ is $C^{\infty}$ smooth, use the fact that
+   $u\in C^{\infty}_{\text{loc}}\mapsto u\cross \conj\bd u\in
+   L^{p}\cross C^{\infty}_{\text{loc}}$ is a closed
+   embedding. Therefore the sequence $u_{n}$ of holomorphic functions
+   converges in $C^{\infty}_{\text{loc}}$. The limit must obviously
+   equal $u$, and hence $u\in C^{\infty}_{\text{loc}}$ and
+   $u_{n}\to u$ in $C^{\infty}_{\text{loc}}$. It is now clear that $u$
+   is holomorphic.
+ \end{example}
+  \subsection*{Fredholm theory of elliptic operators on closed
+   manifolds.}
+ In this section we will work with $p=2$. It will simplify things without
+ any loss of generality concerning the final statement we will prove.
+
+ Consider an elliptic operator $L:E_{1}\to E_{2}$ on a closed manifold
+ and its adjoint $$L^{*}:E_{2}\to E_{1},$$ and consider the spaces
+ $W^{k,2}(E_{i})$, $k=0,1,2,\cdots.$%  We define $W^{\infty,2}=\lim
+ % W^{k,2}$, so $W^{\infty,2}\simeq C^{\infty}$.
+ 
+ Let's agree to write $L_{k}$ for the induced map $W^{k+1,2}\to
+   W^{k,2}$.
+ \begin{lemma}
+   The map $L_{k}$ has closed range and the kernel of $L_{k}$ is finite dimensional.
+ \end{lemma}
+ \begin{proof}
+   Since
+   \begin{equation*}
+     \norm{u}_{W^{k+1,2}}\le C_{k}(\norm{Lu}_{W^{k}}+\norm{u}_{L^{p}}),
+   \end{equation*}
+   we can easily deduce that $L_{k}$ has finite kernel and closed
+   range. We leave the proof to the reader, with the hint that to
+   prove first that $L$ has finite dimensional kernel, and then to
+   consider $L$ restricted to a complement of the kernel.
+ \end{proof}
+ 
+ \begin{lemma}
+   The cokernel of $L_{k}$ is
+   canonically identified with $\Hom(\ker L^{*}_{0},\R)$ via the $L^{2}$
+   inner product, and so the cokernel of $L_{k}$ is also finite
+   dimensional. In other words:
+   \begin{equation*}
+     \im L_{k}=(\ker L^{*}_{0})^{\perp}\cap W^{k,2}.
+   \end{equation*}
+ \end{lemma}
+ \begin{proof}
+   It is clear that if $w=Lu$ for $u\in W^{k+1,2}$, then $w\in (\ker
+   L^{*}_{0})^{\perp}$. The reverse inclusion is a bit deeper. Suppose
+   that $w\in (\ker L^{*}_{0})^{\perp}\cap W^{k,2}$.
+
+   First we will prove that $w\in \im L_{0}$ (i.e.\ there is a
+   $W^{1,2}$ section $u$ so $L_{0}u=w$). 
+
+   Let's suppose that $w\not\in \im L_{0}$ in search of a
+   contradiction. Since $\im L_{0}$ has closed range in $L^{2}$, we
+   can find a section $v$ so that $(w,v)\ne 0$, but $(\im
+   L_{0},v)=0$. It follows that $L^{*}v=0$ weakly and hence by
+   elliptic regularity, $v$ is of class $W^{1,2}$ and
+   $v\in \ker L^{*}_{0}$, contradicting the fact that $w\in (\ker
+   L_{0}^{*})^{\perp}$. Therefore $w=Lu$ for $u\in W^{1,2}$. By
+   elliptic regularity, since $u\in L^{p}$ and $Lu\in W^{k,2}$, we
+   conclude $u\in W^{k+1,2}$, and hence $w\in \im L_{k}$, as desired.   
+ \end{proof}
+ 
+ \begin{prop}
+   For all $k$,
+   \begin{equation*}
+     \ker L_{k}=\set{u\in C^{\infty}:Lu=0}=\set{u\in L^{2}:Lu=0\text{ weakly}}.
+   \end{equation*}
+ \end{prop}
+ \begin{proof}
+   It is clear that
+   \begin{equation*}
+     \set{u\in C^{\infty}:Lu=0}\subset \ker L_{k}\subset \set{u\in L^{2}:Lu=0\text{ weakly}}.
+   \end{equation*}
+   Therefore it suffices to show that
+   \begin{equation*}
+     \set{u\in L^{2}:Lu=0\text{ weakly}}\subset \set{u\in C^{\infty}:Lu=0}.
+   \end{equation*}
+   This is a straightforward consequence of elliptic regularity:
+   \begin{equation*}
+     u\in L^{2}_{\text{loc}}\text{ and }Lu\in
+     C^{\infty}_{\text{loc}}\implies u\in C^{\infty}_{\text{loc}}.
+   \end{equation*}
+   This completes the proof.
+ \end{proof}
+ \begin{cor}
+   Let $L$ be a first order elliptic operator on a closed manifold
+   $Y$. There are canonical $L^{2}$-orthogonal decompositions
+   \begin{equation*}
+     W^{k,2}(E_{2})=\im L_{k}\oplus \ker L^{*}\text{ and
+     }W^{k,2}(E_{1})=\im L^{*}_{k}\oplus \ker L,
+   \end{equation*}
+   including the case when $k=\infty$ (where $W^{\infty,2}=C^{\infty}$).   
+ \end{cor}
+ \begin{proof}
+   We already know that $\ker L^{*}\subset W^{k,2}(E_{2})$ and $\ker
+   L\subset W^{k,2}(E_{1})$ for all $k$. To prove that
+   \begin{equation*}
+     W^{k,2}(E_{2})=\im L_{k}\oplus \ker L^{*},
+   \end{equation*}
+   it suffices to observe that if $u\in W^{k,2}(E_{2})$ is orthogonal
+   to $\ker L^{*}$, then $u\in \im L_{k}$.
+
+   Now when $k=\infty$, we once again notice that it suffices to prove
+   that if $u\in C^{\infty}(E_{2})$, and $u\perp \ker L^{*}$, then
+   $u\in \im L$. This is easy, since we know that $u=Lw$ for some
+   $w\in W^{1,2}$, and hence by regularity $w$ is actually in
+   $C^{\infty}(E_{2})$, as desired. This completes the proof.
+ \end{proof}
+ We may care about similar decompositions of $W^{k,p}$ in the case
+ when $p\ne 2$. A very similar argument proves the following:
+ \begin{thm}
+   Consider the split injections
+   \begin{equation*}
+     \ker L\to W^{k,p}(E_{1})\text{ and }\ker L^{*}\to W^{k,p}(E_{2}),
+   \end{equation*}
+   where the splittings are given by the $L^{2}$ orthogonal
+   projections, i.e.
+   \begin{equation*}
+     u\mapsto (u,v_{1})v_{1}+\cdots+(u,v_{n})v_{n}.
+   \end{equation*}
+   These splittings are obviously continuous in the $W^{k,p}$
+   topology. With respect to these splittings, we have
+   \begin{equation*}
+     W^{k,p}(E_{2})=\im L_{k}\oplus \ker L^{*}\text{ and }W^{k,p}(E_{1})=\im L_{k}^{*}\oplus \ker L.
+   \end{equation*}
+ \end{thm}
+
+ 
+ \begin{example}
+   Consider $L=\conj\bd$ on $\T^{2}$. As we have seen, this is an
+   elliptic operator, and $L^{*}=-\bd$. It is easy to show using
+   Fourier coefficients that
+   \begin{equation*}
+     \ker L=\ker L^{*}=\C\text{ (the constants)}.
+   \end{equation*}
+   As corollary of the preceding decomposition theorem, we conclude
+   that for $u\in W^{k,p}$
+   \begin{equation*}
+     \text{if $\int u\,\dVol=0$ then $u=\conj\bd w$ for unique $W^{k+1,p}$ satisfying
+       $\int w\, \dVol=0$}.
+   \end{equation*}
+   
+   As a consequence, we can prove the following local surjectivity
+   result: the map of sheaves
+   \begin{equation*}
+     \conj\bd:W^{k+1,p}_{\text{loc}}\to W^{k,p}_{\text{loc}}.
+   \end{equation*}
+   is locally surjective (on any Riemann surface).
+
+   \begin{proof}
+     It suffices to prove that for $w\in W^{k,p}_{\text{loc}}(D(1))$,
+     we can find $u\in W^{k+1,p}_{\text{loc}}(D(r))$ so $\conj\bd u=w$
+     on $D(r)$. Let $\rho$ be a bump function equal to $1$ on a
+     neighborhood of $D(r)$ and which is supported in $D(1)$. Then
+     $\rho u\in W^{k,p}_{0}(D(1))$. By embedding $D(1)$ in the torus,
+     it follows that there is a $W^{k+1,p}(\T^{2})$ section $v$ so
+     that
+     \begin{equation*}
+       \conj\bd v=\rho u+c
+     \end{equation*}
+     for some constant $c$. Let $\varphi(z)=cz$ on a neighborhood of
+     $D(r)$. Then
+     \begin{equation*}
+       \conj\bd(v-\rho \varphi)=u\text{ on $D(r)$},
+     \end{equation*}
+     as desired.    
+   \end{proof}  
+ \end{example}
+  \begin{example}[the parametrix]
+   Consider the splitting
+   \begin{equation*}
+     W^{k,p}(E_{2})=\im L_{k}\oplus \ker L^{*}.
+   \end{equation*}
+   Let's define $p$ to be the projection onto $\ker L^{*}$, and $q$
+   to be the projection onto $\ker L$, then
+   \begin{equation*}
+     P_{k}=(1-q)\circ L_{k}^{-1}\circ (1-p)
+   \end{equation*}
+   is well-defined: i.e.\ there is a unique element in
+   $u\in W^{k+1,p}(E_{2})$ so that $u\perp \ker L$ and $L_{k}u=(1-p)w$
+   for each $w\in W^{k,p}(E_{2})$. The open mapping theorem guarantees
+   that $P_{k}$ is continuous, i.e.\ $L_{k}^{-1}$ is continuous on
+   $(\ker L^{*})^{\perp}\to (\ker L)^{\perp}$.
+
+   It is clear, by uniqueness, that $P_{k}=P_{k+1}$ on $W^{k+1,p}\subset
+   W^{k,p}$. Therefore we obtain a well-defined continuous map
+   $P:C^{\infty}\to C^{\infty}$ which equals $P_{k}$ on
+   $W^{k,p}$. Note that
+   \begin{equation*}
+     \begin{aligned}
+       1-PL&=\text{ projection onto $\ker L$}\\
+       1-LP&=\text{ projection onto $\ker L^{*}$}.
+     \end{aligned}
+   \end{equation*}
+ \end{example}
+ \subsection*{Homotopy invariance of the Fredholm index.}
+ Let $L:E_{1}\to E_{2}$ be an elliptic operator on a closed manifold
+ $Y$. Define the index of $L$ to be $\dim \ker L-\dim \ker L^{*}$.
+
+ The goal of this section will be to show that the index is
+ constant on a continuously varying family of elliptic operators.
+
+ More generally, if $X,Y$ are any Banach spaces, consider the space
+ $\mathscr{F}(X,Y)$ of operators $L:X\to Y$, equipped with the distance
+ induced by the operator norm
+ \begin{equation*}
+   d(L,L')=\norm{L-L'}
+ \end{equation*}
+ and which satisfy the Fredholm condition:
+ \begin{equation*}
+   L\text{ has finite dimensional kernel, closed image, and finite dimensional cokernel}.
+ \end{equation*}
+ \begin{thm}
+   The index function $\mathscr{F}(X,Y)\to \Z$ is continuous. 
+ \end{thm}
+ There is a slight trick to the proof. It is useful to introduce one
+ concept related to Fredholm maps.
+ \begin{defn}
+   Let $L:X\to Y$ be a bounded linear operator. A
+   \textbf{regularization} of $L$ is the data of two finite
+   dimensional vector spaces and maps $a,b,c$ so that
+   \begin{equation*}\tag{$\ast$}
+    \begin{dmatrix}
+       L&a\\
+       b&c
+     \end{dmatrix}:X\oplus V\to Y\oplus W
+   \end{equation*}
+   is an isomorphism.
+ \end{defn}
+ \begin{prop}
+   A map $L:X\to Y$ is Fredholm if and only if it admits a regularization.
+ \end{prop}
+ \begin{proof}
+   Suppose $L$ is Fredholm. Take $V=\coker L$, $W=\ker L$. Choosing a
+   splitting $j$ of $\pi:Y\to \coker L$ and a splitting $p$ of $i:\ker
+   L\to X$ gives a map
+   \begin{equation*}
+     \begin{dmatrix}
+       L&j\\
+       p&0
+     \end{dmatrix}
+     :X\oplus \coker L\to Y\oplus \ker L
+   \end{equation*}
+   which the reader can check is bijective, and hence is an
+   isomorphism.
+
+   Conversely, suppose that $L$ admits a regularization of the form
+   ($\ast$). Since ($\ast$) is an isomorphism, the map $x\in X\mapsto
+   Lx\cross bx\in Y\cross W$ is a closed embedding, and hence we
+   conclude a bound
+   \begin{equation*}\tag{$1$}
+     \norm{x}_{X}\le C(\norm{Lx}_{Y}+\norm{bx}_{W}).
+   \end{equation*}
+   Since $x\mapsto bx$ is a finite rank operator (in particular, is
+   compact), ($1$) implies that $L$ has finite dimensional kernel
+   and closed image.
+
+   We will prove that $\coker L$ is finite dimensional arguing by
+   contradiction. Suppose that $\coker L$ is infinite
+   dimensional. Then we can find unit vectors $y_{1},y_{2},y_{3},\cdots$ in
+   $Y$ so that $$\norm{y_{i}-\im
+     L-\text{span}(y_{1},\cdots,y_{i-1})}>1/2.$$
+
+   Since $(\ast)$ is an isomorphism, we can find vectors $x_{i},v_{i}$
+   so $\norm{x_{i}}+\norm{v_{i}}$ is bounded so that
+   \begin{equation*}
+     Lx_{i}+a(v_{i})=y_{i}\implies \norm{a(v_{i})-a(v_{j})}>1/2\text{
+       for all $i\ne j$},
+   \end{equation*}
+   in particular
+   \begin{equation*}\tag{2}
+     \norm{a}\norm{v_{i}-v_{j}}>1/2\text{ for all $i\ne j$}.
+   \end{equation*}
+   Since any bounded ball in $V$ is precompact, a subsequence of
+   $v_{1},v_{2},\cdots$ must converge, contradicting (2). Therefore
+   $\coker L$ is finite dimensional.   
+ \end{proof}
+ \begin{prop}
+   Suppose that $L:X\to Y$ admits a regularization $a,b,c,V,W$. There
+   is $\epsilon>0$ so that any map $L'$ within $\epsilon$ of $L$
+   is also regularized by $a,b,c,V,W$.
+ \end{prop}
+ \begin{proof}
+   This is easy, since we know that being an isomorphism is open
+   condition in the space of maps, so that there is $\epsilon$ so that
+   \begin{equation*}
+     \norm{\Lambda-
+       \begin{dmatrix}
+         L&a\\
+         b&c
+       \end{dmatrix}
+}<\epsilon\implies \Lambda\text{ is an isomorphism}.
+\end{equation*}
+In particular, if $\norm{L'-L}<\epsilon$, then 
+\begin{equation*}
+  \norm{\begin{dmatrix}
+         L'&a\\
+         b&c
+       \end{dmatrix}-\begin{dmatrix}
+         L&a\\
+         b&c
+       \end{dmatrix}}<\epsilon\implies \begin{dmatrix}
+         L'&a\\
+         b&c
+       \end{dmatrix}\text{ is an isomorphism}.
+     \end{equation*}
+     As a corollary, the space of Fredholm maps $\mathscr{F}(X,Y)$ is
+     open in the operator norm.
+   \end{proof}
+   \begin{prop}
+     Let $L:X\to Y$ be a Fredholm operator and suppose
+     $a,b,c,V,W$ is a regularization for $L$. Then
+     \begin{equation*}
+       \dim \ker L-\dim \coker L=\dim W-\dim V.
+     \end{equation*}     
+   \end{prop}
+   \begin{proof}
+     Since $X$ is Fredholm, we can split $X,Y$ as follows
+     \begin{equation*}
+       X=X'\oplus \ker L\text{ and }Y=\im L\oplus \coker L,
+     \end{equation*}
+     where $X'$ is complimentary to $\ker L$, and so that
+     $L'=L|_{X'}:X'\to \im L$ is an isomorphism. Then the matrix of
+     the regularization takes the form
+     \begin{equation*}
+       R=
+       \begin{dmatrix}
+         L'&0&a_{1}\\
+         0&0&a_{2}\\
+         b_{1}&b_{2}&c
+       \end{dmatrix}:X'\oplus \ker L\oplus V\to \im L\oplus \coker
+       L\oplus W
+     \end{equation*}
+     We will construct an isomorphism $\varphi:\ker L\oplus V\to \coker
+     L\oplus W$. We begin by computing
+     \begin{equation*}
+              \begin{dmatrix}
+         L'&0&a_{1}\\
+         0&0&a_{2}\\
+         b_{1}&b_{2}&c
+       \end{dmatrix}
+       \begin{dmatrix}
+         x\\k\\v
+       \end{dmatrix}
+=       \begin{dmatrix}
+         L'x+a_{1}(v)\\0\\0
+       \end{dmatrix}+
+       \begin{dmatrix}
+         0\\
+         \alpha(x,k,v)\\
+         \beta(x,k,v)
+       \end{dmatrix}.
+     \end{equation*}
+     Motivated by this computation, define $x(v)\in X'$ \emph{uniquely} by the
+     equation $L'x(v)+a_{1}(v)=0$. Then define $\varphi$ by
+     \begin{equation*}
+       \varphi
+       \begin{dmatrix}
+         k\\v
+       \end{dmatrix}
+       =R
+       \begin{dmatrix}
+         x(v)\\k\\v
+       \end{dmatrix}=\begin{dmatrix}
+         0\\
+         \alpha(x(v),k,v)\\
+         \beta(x(v),k,v)
+         \end{dmatrix}
+       \end{equation*}    
+     We claim that $\varphi$ is a bijection. Injectivity is easy: if
+     $\varphi(k,v)=0$, then
+     \begin{equation*}
+       R
+       \begin{dmatrix}
+         x(v)\\k\\v
+       \end{dmatrix}=0\implies
+       \begin{dmatrix}
+         k\\v
+       \end{dmatrix}=0.
+     \end{equation*}
+     Conversely, since $R$ is surjective, there is some $x,k,v$ so
+     that
+     \begin{equation*}
+       R \begin{dmatrix}
+         x\\k\\v
+       \end{dmatrix}=
+       \begin{dmatrix}
+         0\\a\\b
+       \end{dmatrix}\implies x=x(v)\implies \varphi
+       \begin{dmatrix}
+         k\\v
+       \end{dmatrix}=
+       \begin{dmatrix}
+         a\\b
+       \end{dmatrix}.
+     \end{equation*}
+     Therefore $\varphi$ is an isomorphism $\ker L\oplus V\to \coker
+     L\oplus W$. It follows that
+     \begin{equation*}
+       \dim \ker L+\dim V=\dim \coker L+\dim W\implies \dim \ker
+       L-\dim \coker L=\dim W-\dim V,
+     \end{equation*}
+     as desired.
+   \end{proof}
+   \begin{thm}[homotopy invariance of the Fredholm index]
+     Let $X,Y$ be Banach spaces and consider the space
+     $\mathscr{F}(X,Y)$ of Fredholm
+     maps $X\to Y$. Then the index function $\mathscr{F}(X,Y)\to \Z$
+     defined by
+     \begin{equation*}
+       \text{index}(L)=\dim \ker L-\dim \coker L
+     \end{equation*}
+     is continuous.
+   \end{thm}
+   \begin{proof}
+     If $L$ has index $n$, then we can regularize $L$ to an isomorphism
+     \begin{equation*}
+       \begin{dmatrix}
+         L&a\\
+         b&c
+       \end{dmatrix}:X\oplus V\to Y\oplus W.
+     \end{equation*}
+     In particular
+     \begin{equation*}\tag{1}
+       \text{index}(L)=\dim W-\dim V
+     \end{equation*}
+     
+     For $L'$ sufficiently close to $L$, we know that
+     \begin{equation*}
+       \begin{dmatrix}
+         L'&a\\
+         b&c
+       \end{dmatrix}:X\oplus V\to Y\oplus W.
+     \end{equation*}
+     is still an isomorphism. It follows that
+     \begin{equation*}\tag{2}
+       \text{index}(L')=\dim W-\dim V
+     \end{equation*}
+     Comparing (1) and (2), we see that
+     $\text{index}(L)=\text{index}(L')$, as desired.
+   \end{proof}
+   \begin{cor}
+     Let $L_{t}$ be a continuous family of Elliptic operators on a
+     closed manifold $Y$. It is easy to show that $L_{t}$ is
+     continuous in the operator norm topology on $W^{1,p}(Y)\to
+     L^{p}(Y)$. It follows that
+     \begin{equation*}
+       \text{index}(L_{1})=\text{index}(L_{0}).
+     \end{equation*}
+   \end{cor}

@@ -1,5 +1,5 @@
 (TeX-add-style-hook
- "main"
+ "ellreg"
  (lambda ()
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
@@ -8,16 +8,9 @@
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
-   (TeX-run-style-hooks
-    "latex2e"
-    "april2"
-    "april4"
-    "april11"
-    "april16"
-    "april18"
-    "ellreg"
-    "amsart"
-    "amsart10"
-    "preamble"))
+   (LaTeX-add-labels
+    "claim:20"
+    "claim:21"
+    "thm:localellipticregularity"))
  :latex)
 
