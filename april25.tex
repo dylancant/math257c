@@ -1,0 +1,121 @@
+\documentclass{amsart}
+\usepackage{preamble}
+
+\begin{document}
+\section*{\textbf{April 25 (Dylan/Lie)}}
+
+Back to Morse theory to complete the analytic program. Recall the
+outline we intend to follow. The reader is encouraged to read the
+first section of Schwarz's book for more details on this outline.
+
+\begin{enumerate}
+\item Functional setup.
+\item Fredholm/index theory.
+\item Transversality.
+\item Compactness.
+\item Gluing
+\item Orientation (not today).
+\end{enumerate}
+
+Let's recall the setting: suppose that $M$ is a closed manifold, $f$
+is a Morse function, and $g$ is a Riemannian metric on $M$. The last
+time we were considering this setup, we proved the ``local stable
+manifold theorem.'' In this lecture, we intend to prove a more
+``global'' theorem -- we will explore the moduli space of flow lines
+joining two critical points of $f$ in $M$. 
+
+Let $\grad$ denote the gradient with respect to $g$ of the Morse
+function $f$. A \textbf{flow line} $\gamma:\R\to M$ is a $C^{\infty}$
+function satisfying
+\[
+  \gamma'+\grad_f\circ \gamma=0.
+\]
+If $x,y$ are critical points of $f$, and $\gamma$ is a flow line
+satisfying the asymptotic conditions $\gamma(-\infty)=x$,
+$\gamma(\infty)=y$, then we call $\gamma$ a \textbf{connecting trajectory}.
+
+Define the moduli space of (parametrized) flow lines joining $x$ to $y$ $$\M(x,y)=\{\text{connecting trajectories between x and y}\}.$$ This space $\M$
+is what we will study using analysis techniques. Unfortunately,
+because translation reparametrization preserves connecting
+trajectories, $\M(x,y)$ is infinite (if it is non-empty), so
+ultimately we will want to consider the quotient
+\begin{equation*}
+  \hat{\mathscr{M}}=\mathscr{M}/\R.
+\end{equation*}
+These moduli spaces feature in the definition of the ``Morese
+complex;'' one can define a chain complex $(CM_\ast,\bd)$ (over
+$\Z/2\Z$), which is freely generated in each degree
+$$CM_{i}:=\Z/2\Z\,\langle \text{\text{critical points of Morse index
+  i}}\rangle,$$ and whose boundary map $\bd$ is defined by ``counting flow lines''
+$$\bd:CM_{i+1}\to CM_i:\langle \bd x,y\rangle=\#\hat{\M}(x,y).$$
+
+\begin{clear}{Remark}
+Without continuation maps, homotopies between continuation maps etc,
+the theory is incomplete. We won't consider these ideas yet -- for now
+we are preoccupied with establishing foundations for the construction
+of the prerequisite moduli spaces.
+\end{clear}
+
+1) Need to construct a Banach bundle $\E\to\P$ where $\P$ is a Banach manifold and a section $s$ and such that $s^{-1}(0)=M(x,y)$.
+
+$\P$ is a Banach manifold of pathes $x\to y$. The charts of $\P$ looks llike the following:
+
+Assume $\gamma:\R\to  M$ smooth for simplicity with some kind of asymptotics condition at $\pm\infty$ which makes them converge to $x$ and $y$.
+
+$U\subset X(\gamma^*TM)$ open where $X$ denotes a Banach space containing $C_c(\R;\gamma^*TM)$ (I assume they are dense).
+
+$\implies U\xrightarrow{arrow}\P$. Moreover the aymptotic condition that $\gamma$ satisfied should also be satified for smooth paths inside the image of $U$.
+
+Two solutions:
+
+\begin{enumerate}
+
+\item Schwarz's book: roughly, replace the domain $\R$ with $[-1,1]$, noting that $(-1,1)$ is diffeomorphic to $\R$ and use the smooth structure on $[-1,1]$, asyptotic condition is now $-1\mapsto x, +1\mapsto y$.
+
+\[
+X=H_\R^{1,2}(\gamma^* small enough disk in TM)
+\]
+
+
+\item Floer's approach: Use slightly modified Sobolev norm.
+$W^{k,p,\sigma,\sigma_+}(\R_t,\R):=\{f\in W^{k,p}_{loc}|\norm{f}_{k,p,\sigma,\sigma_+}<\infty\}$
+
+$\norm{f}_{k,p,\sigma,\sigma_+}=\norm{exp((\beta(t)\sigma_++\beta(-t)\sigma_-)t)\cdot f}_{k,p}$
+
+This is a Banach space.
+
+Aymptotic condition near $\pm\infty$ is $\gamma$ should be given by exponentiating a family of vector of at $TM_x$ on $(-\infty, \rho)$. and satisfy true exponential decay condition for some $\sigma_-<0$.
+
+The above characterization of chart of Banach space gives tangent spaces of pathes that satisfy the aymptotic condition. (Need Proof).
+
+\end{enumerate}
+
+The vector bundle is locally just $W^{k-1,p,\sigma,\sigma_+}(\R_t,\R)$ and the section goes as $\bd/\bd t+\grad\circ$
+
+2) With a lot of pain, most previous work generalize here. But the linearization is a little more involved because because we are exponentiallly sections not just adding them: the right operator is $\bd/\bd t+\Gamma$ the Christoffel symbols are involved.
+
+3) Consequences of parametric transversality theorem for Banach manifolds.
+
+\begin{prop}
+$G,M$ Banach manifolds, $E\to M$ is a Banach space bundle. $\varphi:G\times M\to E$ smooth $G$-parametric sections (Family of sections, try to find a generic one such that intersection with $0$ is a true manifold), there is a countable trivialization, i.e.
+\[
+\{(U,\psi|U\subset M open, \psi:E|_{U}\to E_u\times U\}
+\]
+such that for every member:
+\begin{itemize}
+\item $0$ is a regualr value of $pr\circ\psi\circ\varphi:G\times U\to E_u$
+\item $pr\circ\psi\circ\varphi_g:U\to E_u$ is a Fredholm map of Banach manifold (All tangent map are) of index $r$ for every $g\in G$.
+
+\end{itemize}
+
+Then there is a $G$-set (Baire set) $\Sigma\subset G$ such that $Z_g=\{\varphi_g(m)=0\}$ is a closed submanifold of $M$ for $g\in\Sigma$ 
+
+For us, $G=$ Banach manifold of Riemannian metric, If we choose $G$ large enough, 1 is indeed satified but it is not a general theorem, need to make computations.
+
+
+
+
+
+\end{prop} 
+
+\end{document}

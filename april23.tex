@@ -1,0 +1,308 @@
+\section*{\textbf{April 23 (Lie/Dylan)}}
+Consider the set up we were considering last time. On the manifold
+$\S^{1}\cross \R$, with coordinates $(t,s)$, we considered the
+differential operator $$D=\frac{\bd}{\bd s}+J_0\frac{\bd}{\bd t}+S,$$
+on the trivial bundle $\R^{2n}$, where $S(s,t)$ is a smooth family of
+symmetric matrices $\R^{2n}\to \R^{2n}$ which is constant as $s\to \pm \infty$, and $J_{0}$
+is the ``standard complex structure,''
+\begin{equation*}
+  J_{0}=\text{diag}(
+ \begin{dmatrix}
+    0&-1\\1&0
+  \end{dmatrix},\cdots, \begin{dmatrix}
+    0&-1\\1&0
+  \end{dmatrix}
+).
+\end{equation*}
+Since this differential operator is of the form
+\begin{equation*}
+  D=\text{time ($s$) derivative}+\text{self adjoint elliptic operator}+\text{lower order perturbation},
+\end{equation*}
+our previous analysis about such operators establishes the following fact
+\begin{clear}{Fact}
+  Suppose that $A(\pm \infty)$ has no imaginary eigenvalues.
+  
+  Considered as a map $D:W^{1,2}(\S^{1}\cross \R,\R^{2n})\to
+  L^{2}(\S^{1}\cross \R,\R^{2n})$, $D$ is Fredholm, and its index is
+  equal to the spectral flow index of the family of elliptic operators
+  \begin{equation*}
+    A(s)=J_0\frac{\bd}{\bd t}+S\text{ on $\S^{1}$}.
+  \end{equation*}
+\end{clear}
+The main goal of this lecture is to compute the spectral flow index in
+terms of Maslov index of a certain family of symplectic matrices. To
+begin, let's determine the eigenvectors of $A(s)$ corresponding to the
+eigenvalue $0$. It is clear that a section $\varphi:S^1\to \R^{2n}$ is
+in the kernel of $A$
+\begin{equation*}\tag{$\ast$}
+J_0\frac{\bd\varphi}{\bd t} +S(s,t)\varphi(t)=0\iff \varphi'(t)=J_0S(s,t)\varphi(t).
+\end{equation*}
+Define $\Psi(s,t)\in \text{Sp}(2n)$ by solving the ordinary
+differential equation
+\begin{equation*}
+  \pd{}{t}\Psi(s,t)=J_{0}S(s,t)\Psi(s,t)\text{ and }\Psi(s,0)=\id.
+\end{equation*}
+Note that $\Psi$ is defined on $\R\cross \R$ (i.e.\ it is probably not
+periodic in the $t$ direction). To see that $\Psi$ is symplectic,
+observe that $\Psi$ is symplectic at $t=0$ and
+\begin{equation*}
+  \pd{}{t}\Psi^{T}J_{0}\Psi=\Psi^{T}SJ_{0}^{T}J_{0}\Psi+\Psi^{T}J_{0}J_{0}S\Psi=0.
+\end{equation*}
+It is clear that
+\begin{equation*}
+  \varphi(t)=\Psi(s,t)\varphi(0)\text{ is the unique solution to
+    ($\ast$) with initial condition $\varphi(0)$}.
+\end{equation*}
+Most likely, $\varphi$ will not be periodic. Since we require the
+domain of $\varphi$ to be $\S^{1}=\R/\Z$, we obtain the bijection
+\begin{equation*}
+  \varphi\in \text{kernel of $A(s)$}\mapsto \varphi(0)\in \ker(1-\Psi(s,1)).
+\end{equation*}
+As a corollary of this discussion, we conclude
+\begin{equation*}
+  A(\pm \infty)\text{ is hyperbolic}\iff \ker(1-\Psi(\pm \infty,1))=0.
+\end{equation*}
+To see why, observe that $A$ is self-adjoint (because $S$ is
+symmetric) and hence $A(\pm \infty)$ can only have imaginary
+eigenvalues if $A(\pm \infty)$ has non-zero kernel.
+
+\begin{claim}
+  The spectral flow index of $A(s)$ is the signed intersection number
+  of $\psi(1,s), s\in \R$ with the Maslov cycle.
+\end{claim}
+
+Before we prove the claim, we will explore the
+Maslov cycle $C$ in a bit more depth. Recall its definition
+\begin{defn}
+  The \textbf{Maslov cycle} $C$ is the subset of $\Sp(2n)$ consisting
+  of the matrices with $1$ as an eigenvalue. It has the following properties:
+
+  (i) $C$ is a codimension 1 \textbf{stratified submanifold} of
+  $\Sp(2n)$, in the sense that it can be written as a union of
+  (non-closed) submanifolds
+  \begin{equation*}
+    C=C_{1}\cup C_{2}\cup C_{3}\cup \cdots,
+  \end{equation*}
+  where $\dim C_{k+1}<\dim C_{k}$ and $\bd{C_{k}}\subset
+  C_{k+1}\cup C_{k+2}\cdots$ (here $\bd$ denotes the ``topological'' boundary). We say that $C$ is ``codimension $1$''
+  because the ``top strata'' $C_{1}$ is codimension $1$ inside
+  $\Sp(2n)$. 
+  
+  (ii) The singularities of $C$ have codimension $\ge 2$ inside of
+  $C$, in the sense that
+  \begin{equation*}
+    \dim C_{2}<\dim C_{1}-1.
+  \end{equation*}
+  This is important for obtaining a well-defined intersection number
+  with $C$.
+\end{defn}
+\begin{defn}
+  Let $\gamma:[0,1]\to \Sp(2n)$ be a smooth path which is
+  \textbf{regular} in the sense $\gamma$ has isolated intersections
+  with $C$, $\gamma(0),\gamma(1)\not\in C$, and whenever $\gamma(t)\in C$, the
+  bilinear pairing
+  \begin{equation*}\tag{1}
+    B_{t}^{\text{mc}}=\ip{-,V-}\text{ is non-degenerate
+      $\ker(1-\gamma(t))\ocross\ker(1-\gamma(t))\to \R$}.
+  \end{equation*}
+  where $J_{0}V\gamma(t)=\gamma'(t)$ for a \emph{symmetric} matrix
+  $V$. It is clear that $B_{t}$ is symmetric. We define the
+  \textbf{intersection number} of $\gamma$ with $C$ by the formula
+  \begin{equation*}
+    \#(\gamma\cap C)=\sum_{t}\text{signature}(B^{\text{mc}}_{t}).
+  \end{equation*}
+  This sum is finite since $B_{t}=0$ if $\gamma(t)\not\in C$ (and we
+  have supposed isolated intersections). The bilinear form $B_{t}^{\text{mc}}$ is
+  called the \textbf{crossing form}.
+  \begin{thm}
+    Suppose that $\gamma_{0},\gamma_{1}$ are homotopic regular
+    paths, where we require the homotopy $\gamma_{t}$ to always
+    satisfy $\gamma_{t}(0),\gamma_{t}(1)\not\in C$. Then $$\#(\gamma_{0}\cap C)=\#(\gamma_{1}\cap C).$$
+  \end{thm}
+\end{defn}
+\begin{xca}[stratifications]
+  In this exercise we will stratify the set of singular matrices
+  $\R^{n\cross m}$, $m\le n$, to give some idea of how one might
+  stratify $C$. Let $\Sigma_{k}=\set{A:\dim \ker A=k}$, so that
+  $\Sigma_{1}\cup \cdots \cup \Sigma_{m}$ is the set of singular
+  matrices. We will prove that each $\Sigma_{i}$ is a manifold, and
+  compute their codimensions inside of $\R^{n\cross m}$.
+
+  Pick an $\ell$-dimensional subspace $\Lambda\subset \R^{m}$, and
+  consider the open set $U_{\Lambda}$ of matrices which are injective
+  on $\Lambda$. We can form an $n-\ell$-dimensional bundle $\Phi$ on $U$
+  whose fiber at $A$ is $\R^{n}/A(\Lambda)$. The restriction of $A$ to
+  $\Lambda^{\perp}$ gives a section $s$ of $\Hom(\Lambda^{\perp},\Phi)$,
+  and we make the crucial observation that $s=0$ if and only if $A$
+  has rank equal to exactly $\ell$ (this only holds on
+  $U_{\Lambda}$).
+
+  Moreover, the section $s$ is transverse to
+  $0$. This is fairly easy to see, since, we can arbitrarily perturb $A$ on
+  $\Lambda^{\perp}$. Therefore we have locally expressed the set of
+  matrices of rank $\ell$ as the zero locus of the section of an
+  $(m-\ell)(n-\ell)$ dimensional bundle.
+
+  Since $\dim \ker A+\text{rank}(A)=m$, we conclude that $k=m-\ell$,
+  and hence we have locally expressed the matrices of corank $k$ as
+  the zero locus of a transverse section of a $k(n-m+k)$ dimensional
+  bundle. It follows that
+  \begin{equation*}
+    \Sigma_{k}\text{ has codimension $k(n-m+k)$ inside of $\Hom(\R^{m},\R^{n})$}.
+  \end{equation*}
+  If $m=n$, then $\Sigma_{k}$ has codimension $k^{2}$. 
+\end{xca}
+\begin{clear}{Remark}
+  We leave it to the reader to ponder how similar ideas may be used to
+  obtain a stratification of $C$ with the advertised properties.
+\end{clear}
+\begin{xca}[intersection numbers]
+  Let $C=C_{1}\cup C_{2}\cup \cdots$ be a closed stratified
+  submanifold of $M$, and suppose $\text{codim}(C_{1})=k$ and
+  $\dim C_{2}<\dim C_{1}+1$. Suppose the top face $C_{1}$ has a
+  co-orientation
+
+  Given a compact oriented $k$-dimensional manifold $(N,\bd N)$ and a map
+  \begin{equation*}\tag{$\ast$}
+    f:(N,\bd N)\to (M,M\setminus C)
+  \end{equation*}
+  show that the intersection number of $f$ with $C$ is well-defined if
+  we follow the recipe:
+
+  Homotope $f$ through maps of the form ($\ast$) so that $f$
+  becomes disjoint from $C_{2}\cup C_{3}\cup \cdots$, and so that $f$
+  is transverse to the top stata $C_{1}$, and then count the number of
+  intersection points, with signs according to the orientation on $N$
+  and the coorientation on $C_{1}$.
+
+  Why is the assumption that $\dim C_{2}<\dim C_{1}+1$ necessary? Give
+  an example of a stratified submanifold where this assumption fails,
+  and where a homotopy invariant intersection number cannot be defined.
+\end{xca}
+
+We can also define a crossing form for the spectral flow
+\begin{defn}
+  Let $A(s)$ be a one parameter family of self-adjoint
+  operators. Define the crossing form at time $s$ by
+  \begin{equation*}
+    B^{\text{sf}}_{s}=\int_{\S^{1}}\langle-,\pd{A}{s}(-)\rangle\d t\text{ on $\ker A(s)$}.
+  \end{equation*}
+\end{defn}
+\begin{claim}
+  The bijection
+  \begin{equation*}
+    \varphi\in \ker A(s)\mapsto \varphi(0)\ker(1-\Psi(1,s))
+  \end{equation*}
+  respects the crossing forms $B^{\text{sf}}$ and $B^{\text{mc}}$.
+\end{claim}
+\begin{proof} Fix some $s_{0}\in \R$ and compute
+
+  \begin{equation*}\tag{1}
+    \begin{aligned}
+B^{\text{sf}}_{s_{0}}(\varphi)=\int_{S^1}\langle \varphi,\frac{\bd A}{\bd s}(s_0)\varphi\rangle dt
+ &=\int_{S^1}\langle\varphi,\frac{\bd S}{\bd s}(s_0)\varphi\rangle dt\\
+ &=\int_{S^1}\langle\Psi(s_0,t)\varphi(0),\frac{\bd S}{\bd
+   s}(s_0)\Psi(s_0,t)\varphi(0)\rangle \\
+ &=\int_{S^1}\langle\varphi(0), \Psi^{*}(s_0,t)\frac{\bd S}{\bd s}(s_0)\Psi(s_0,t)\varphi(0)\rangle.          
+    \end{aligned}
+  \end{equation*}
+
+
+Now define $\hat{S}(s,t)$ to be the tangent vector of $\Psi(s,t)$ in the
+$s$-direction; more precisely, we use the identification of the
+tangent space at $\Psi(s,t)$ with the tangent space at $1\in \Sp(2n)$:
+\[
+\frac{\bd\Psi}{\bd s}=J_0\hat{S}\Psi.
+\] 
+By definition, the Maslov cycle crossing form on $\ker(1-\Psi(1,s_{0}))$ is 
+\begin{equation*}\tag{2}
+\begin{split}
+  B^{\text{mc}}_{s_{0}}(\varphi(0))=\langle\varphi(0),\hat{S}(s_0,1)\varphi(0)\rangle&=\langle\Psi(s_0,1)\varphi(0), \hat{S}(s_0,1)\Psi(s_0,1)\varphi(0)\rangle\\
+&=\langle\varphi(0),\Psi^*(s_0,1)\hat{S}(s_0,1)\Psi(s_0,1)\varphi(0)\rangle\\
+&=\int_{S^1}\langle\varphi(0),\frac{\bd}{\bd t}(\Psi^*(s_0,t)\hat{S}(s_0,t)\Psi(s_0,t))\varphi(0)\rangle
+\end{split}
+\end{equation*}
+
+since $\hat{S}(s,0)=0$ as $\Psi(s,0)$ is identically $1$.
+
+We claim that
+\begin{equation}
+  \tag{$\ast$}
+  \frac{\bd}{\bd t}(\Psi^*\hat{S}\Psi)=\Psi^*\frac{\bd S}{\bd s}\Psi  
+\end{equation}
+
+To see this, we simply compute
+
+\[
+\begin{split}
+\text{LHS}&=\frac{\bd \Psi^*}{\bd t}\hat{S}\Psi+\Psi^*\frac{\bd}{\bd t}(\hat{S}\Psi)\\
+&=-\Psi^*SJ_0\hat{S}\Psi-\Psi^*J_0\frac{\bd}{\bd t}((J_0\hat{S}\Psi)\\
+&=-\Psi^*SJ_0\hat{S}\Psi-\Psi^*J_0\frac{\bd}{\bd t}\frac{\bd}{\bd s}\Psi\\
+&=-\Psi^*SJ_0\hat{S}\Psi-\Psi^*J_0\frac{\bd}{\bd s}J_0S\Psi\\
+&=-\Psi^*SJ_0\hat{S}\Psi+\Psi^*\frac{\bd}{\bd s}(S\Psi)\\
+&=-\Psi^*SJ_0\hat{S}\Psi+\Psi^*\frac{\bd S}{\bd
+  s}\Psi+\Psi^*SJ_0\hat{S}\Psi\\
+&=\text{RHS},
+\end{split}
+\]
+as desired. Comparing (1) and (2), and using ($\ast$), completes the
+proof of the claim.
+\end{proof}
+
+\begin{xca}
+Check that in the generic situation, the sign of the intersection of
+the spectral flow with the zero line is given by the sign of the
+$B^{\text{sf}}$ crossing form.
+\end{xca}
+
+
+To finish the proof of the computation of spectral flow index,
+consider the contractible loop of sympletic matrices $\Psi_{-}=\Psi(-\infty,t)$,
+$\Psi(s,1)$, $\Psi_{+}(+\infty,t)$. The additivity of the
+Conley-Zehnder index applied to this path produces
+\[
+\mu_{CZ}(\Psi_-)+\mu_{CZ}(\Psi(s,1))-\mu_{CZ}(\Psi_+)=0
+\]
+which gives spectral flow index $\mu_{CZ}(\Psi_+)-\mu_{CZ}(\Psi_-)$.
+
+\begin{clear}{Maslov cycle in $\Sp(2)$.}
+  Recall the polar decomposition: for any matrix $A\in GL_n(\R)$ there is
+unique $U\in O(n)$ and $P$ positive definite symmetric matrix such
+that $A=UP$.
+\begin{claim}
+  Let $A\in Sp(2n)$ and $A=UP$ be its polar decompostion. Then
+  $J_0U=UJ_0$, i.e.\ $U\in U(n)=O(2n)\cap \mathrm{GL}_{n}(\C)$. 
+\end{claim}
+\begin{proof}
+$-J_0AJ_0=(A^*)^{-1}=UP^{-1}$
+$-J_0AJ_0=J_0UJ_0J_0PJ_0$ is also a polar decompostion except that $J_0PJ_0$ is negative definite now 
+$\langle J_0PJ_0v,v\rangle=-\langle PJ_0v, J_0v\rangle<0$. By changing
+signs, we see that we have another polar decomposition. Since there is
+a unique polar decomposition, we conclude $-J_0UJ_0=U$.
+\end{proof}
+Using this polar decomposition (and recalling that
+$\Sp(2)=\text{SL}_{2}(\R)$), we obtain the diffeomorphism
+$$\mathrm{SL}_{2}(\R)\cong \mathrm{SO}(2)\times \text{symmetric
+  positive definite matrices of determinant 1}\cong S^1\times \R^2.$$
+This can also be seen by recalling the transitive group action of
+$\mathrm{SL}_{2}(\R)$ on the upper half-plane by M\"obius
+transformations. Thus $\mathrm{SL}_2(\R)$ is an open solid torus.
+
+We can be quite explicit about the Maslov cycle in this low
+dimensional case. If $A$ is a symplectic matrix, we compute
+\begin{equation*}
+  \det(1-A)=2-\text{tr}(A),
+\end{equation*}
+and hence $C=\set{A:\text{tr}(A)=2}$. 
+\end{clear}
+\begin{xca}
+  Let $C$ be the Maslov cycle in $\Sp(2)$. Prove that
+  $C_{1}=\set{A:\dim \ker(1-A)=1}$ is cut transversally by the
+  function $A\mapsto \det(1-A)$. Prove that
+  $C_{2}=\set{A:\dim\ker(1-A)=2}$ is $\set{1}$. Thus we have a
+  stratification
+  \begin{equation*}
+    C=C_{1}\cup \set{1}.
+  \end{equation*}
+  What does the Maslov cycle look like in a neighborhood of $1$?
+\end{xca}

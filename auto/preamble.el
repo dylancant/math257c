@@ -3,6 +3,13 @@
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("mathalfa" "cal=dutchcal" "calscaled=0.94" "bb=ams" "scr=euler") ("geometry" "margin=1.45in" "top=1.2in" "bottom=1.4in") ("enumitem" "shortlabels")))
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "amsmath"
     "amsfonts"
@@ -64,6 +71,9 @@
     "dVol"
     "Vol"
     "T"
+    "M"
+    "E"
+    "Sp"
     "op"
     "intprod"
     "cubeqed"

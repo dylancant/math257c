@@ -1,0 +1,32 @@
+;; RefTeX parse info file
+;; File: /Users/dylan/Documents/GitHub/math257c/april23.tex
+;; User: dylan (Dylan Cant)
+
+(set reftex-docstruct-symbol '(
+
+
+(xr nil "\\\\\\\\\\\\")
+
+(index-tags)
+
+(is-multi nil)
+
+(bibview-cache)
+
+(master-dir . "/Users/dylan/Documents/GitHub/math257c/")
+
+(label-numbers ("eq:" . 3))
+
+(bof "/Users/dylan/Documents/GitHub/math257c/april23.tex")
+
+(toc "toc" "    * \\textbf{April 23 (Lie/Dylan)}" "/Users/dylan/Documents/GitHub/math257c/april23.tex" nil 2 "*" "\\section*{\\textbf{April 23 (Lie/Dylan)}}" 1)
+
+("eq:3" "e" nil "/Users/dylan/Documents/GitHub/math257c/april23.tex" nil "")
+
+("eq:2" "e" nil "/Users/dylan/Documents/GitHub/math257c/april23.tex" nil "")
+
+("eq:1" "e" nil "/Users/dylan/Documents/GitHub/math257c/april23.tex" nil "")
+
+(eof "/Users/dylan/Documents/GitHub/math257c/april23.tex")
+))
+
