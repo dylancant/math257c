@@ -56,15 +56,51 @@ we are preoccupied with establishing foundations for the construction
 of the prerequisite moduli spaces.
 \end{clear}
 
-1) Need to construct a Banach bundle $\E\to\P$ where $\P$ is a Banach manifold and a section $s$ and such that $s^{-1}(0)=M(x,y)$.
+\begin{clear}{Strategy for construction of $\mathscr{M}(x,y)$}  
+The idea is to construct a Banach manifold $\mathscr{P}$ so that
 
-$\P$ is a Banach manifold of pathes $x\to y$. The charts of $\P$ looks llike the following:
+$$C^{\infty}_{x,y}(\closure{\R},M)\subset\mathscr{P}\subset
+C^{0}_{x,y}(\closure{\R},M)$$ (where $\closure{\R}\simeq [-1,1]$ via
+$t\mapsto \frac{2}{\pi}\arctan(t)$ is the two point
+compactification of $\R$ with smooth structure inherited from
+$[-1,1]$) with the following properties:
 
-Assume $\gamma:\R\to  M$ smooth for simplicity with some kind of asymptotics condition at $\pm\infty$ which makes them converge to $x$ and $y$.
+(i) Every gradient flow line joining $x$ to $y$ lies in $\mathscr{P}$.
 
-$U\subset X(\gamma^*TM)$ open where $X$ denotes a Banach space containing $C_c(\R;\gamma^*TM)$ (I assume they are dense).
+(ii) The section
+\begin{equation*}
+  s:\gamma \mapsto \bd_{t}\gamma+\grad\circ \gamma
+\end{equation*}
+extends a smooth section of a Banach bundle $\mathscr{E}\to
+\mathscr{P}$, and $s^{-1}(0)$ consists precisely of the gradient flow
+lines joining $x$ to $y$, i.e.\ $s^{-1}(0)=\mathscr{M}(x,y)$.
 
-$\implies U\xrightarrow{arrow}\P$. Moreover the aymptotic condition that $\gamma$ satisfied should also be satified for smooth paths inside the image of $U$.
+(iii) The linearization of $s$ at $s^{-1}(0)$ is Fredholm with index
+equal to $\text{index}(x)-\text{index}(y)$.
+
+(iv) Observe that the section $s$ is actually a family of sections
+parametrized by the underlying Riemannian metric $g$. It can be shown that
+for generic metric $g$, the section $s:\mathscr{P}\to \mathscr{E}$ is
+transverse to the zero section, and hence $s^{-1}(0)$ is a smooth
+submanifold of $\mathscr{P}$ with dimension $\text{index}(x)-\text{index}(y)$.
+\end{clear}
+
+
+
+Our can construct a Banach bundle $\E\to\P$ where $\P$ is a Banach
+manifold and a section $s$ and such that $s^{-1}(0)=M(x,y)$. Here $\P$ 
+$\P$ is a Banach manifold of paths $x\to y$. The charts of $\P$ are 
+
+Assume $\gamma:\R\to M$ smooth for simplicity with some kind of
+asymptotics condition at $\pm\infty$ which makes them converge to $x$
+and $y$.
+
+$U\subset X(\gamma^*TM)$ open where $X$ denotes a Banach space
+containing $C_c(\R;\gamma^*TM)$ (I assume they are dense).
+
+$\implies U\xrightarrow{arrow}\P$. Moreover the aymptotic condition
+that $\gamma$ satisfied should also be satified for smooth paths
+inside the image of $U$.
 
 Two solutions:
 
@@ -72,7 +108,7 @@ Two solutions:
 
 \item Schwarz's book: roughly, replace the domain $\R$ with $[-1,1]$, noting that $(-1,1)$ is diffeomorphic to $\R$ and use the smooth structure on $[-1,1]$, asyptotic condition is now $-1\mapsto x, +1\mapsto y$.
 
-\[
+  \[
 X=H_\R^{1,2}(\gamma^* small enough disk in TM)
 \]
 
