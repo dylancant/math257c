@@ -12,6 +12,9 @@
     "latex2e"
     "amsart"
     "amsart10"
-    "preamble"))
+    "preamble")
+   (LaTeX-add-labels
+    "thm:a251"
+    "xca:a252"))
  :latex)
 

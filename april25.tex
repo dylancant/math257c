@@ -82,76 +82,818 @@ equal to $\text{index}(x)-\text{index}(y)$.
 parametrized by the underlying Riemannian metric $g$. It can be shown that
 for generic metric $g$, the section $s:\mathscr{P}\to \mathscr{E}$ is
 transverse to the zero section, and hence $s^{-1}(0)$ is a smooth
-submanifold of $\mathscr{P}$ with dimension $\text{index}(x)-\text{index}(y)$.
+submanifold of $\mathscr{P}$ with dimension $\text{index}(x)-\text{index}(y)$.\hfill$\lrcorner$
 \end{clear}
 
+To motivate the choice/construction of the path space $\mathscr{P}$,
+we recall the key analytical result which will enable us to establish
+(iii).
+\begin{thm}\label{thm:a251}
+  Let $A:\R\to \R^{n\cross n}$ be a family of matrices so that
+  $A(-\infty)$ and $A(+\infty)$ converge, and $A(-\infty)$,
+  $A(+\infty)$ have no imaginary eigenvalues. Then the differential
+  operator
+  \begin{equation*}\tag{$\ast$}
+    L=\bd_{t}+A(t)
+  \end{equation*}
+  induces a Fredholm operator
+  \begin{equation*}
+    L:W^{1,p}(\R,\R^{n})\to L^{p}(\R,\R^{n}),
+  \end{equation*}
+  whose index equals the spectral flow of the operators $A(t)$.\hfill $\square$
+\end{thm}
+The key here is that this result is stated for the spaces
+$W^{1,p}(\R,\R^{n})$ and \emph{so we want the tangent space
+  $T\mathscr{P}_{\gamma}$ to be isomorphic to
+  $W^{1,p}(\R,\R^{n})$}, because, as we will see later, the linearization of
+$\bd_{t}+\text{grad}$ at a gradient flow line is of the form
+($\ast$).
 
+\begin{clear}{Some ideas used in the construction of $\mathscr{P}$}
+  When discussing ``Banach manifolds of maps,'' Schwarz's book
+  (and Wendl's notes on Holomorphic curves) reference the 1967 paper
+  ``Geometry of Manifolds of Maps'' by Halldor Eliasson. The techincal
+  tool Eliasson introduces is the notion of a \textbf{Manifold model}
+  which should be thought as the necessary data needed to construct a
+  Banach manifold of maps.
 
-Our can construct a Banach bundle $\E\to\P$ where $\P$ is a Banach
-manifold and a section $s$ and such that $s^{-1}(0)=M(x,y)$. Here $\P$ 
-$\P$ is a Banach manifold of paths $x\to y$. The charts of $\P$ are 
+  The definition of ``Manifold model'' we will give below attempts to
+  incorporate asymptotic boundary conditions in some systematic
+  way. For the purposes of constructing a \emph{path space} we should
+  take $\closure{X}=\closure{\R}$.
 
-Assume $\gamma:\R\to M$ smooth for simplicity with some kind of
-asymptotics condition at $\pm\infty$ which makes them converge to $x$
-and $y$.
+  \begin{defn}
+  Let $\closure{X}$ be a compact manifold with boundary and let $X\subset \closure{X}$ be an open set. Let's suppose that $\closure{X}=X\cup \bd X$, for a closed submanifold $\bd X$. Let $C^{\infty}_{0}(\closure{X})$ be the set of continuous functions vanishing on $\bd X$. 
 
-$U\subset X(\gamma^*TM)$ open where $X$ denotes a Banach space
-containing $C_c(\R;\gamma^*TM)$ (I assume they are dense).
+  A \textbf{manifold model} for $(X,\closure{X})$ is a functor $W:\text{Bun}(\closure{X})\to \text{Ban}$ and the data of two natural continuous dense inclusions
+  \begin{equation*}
+    C^{\infty}_{0}(\closure{X},E)\to W(E)\to C^{0}_{0}(\closure{X},E),
+  \end{equation*}
+  where $C^{k}_{0}$ are functions vanishing on $\bd X$. 
 
-$\implies U\xrightarrow{arrow}\P$. Moreover the aymptotic condition
-that $\gamma$ satisfied should also be satified for smooth paths
-inside the image of $U$.
+  (Banach Algebra) We require the continuous multiplication maps
+  \begin{equation*}
+    C^{\infty}_{0}(\closure{X},E_{1})\ocross C^{\infty}(\closure{X},\Hom(E_{1},E_{2}))\to C^{\infty}_{0}(\closure{X},E_{2})
+  \end{equation*}
+  (and similarly with $\infty\mapsto 0$) to induce continuous multiplication maps
+  \begin{equation*}
+    W(E_{1})\ocross W(\Hom(E_{1},E_{2}))\to W(E_{2})\text{ and }W(E_{1})\ocross C^{\infty}(\Hom(E_{1},E_{2}))\to W(E_{2})
+  \end{equation*}
 
-Two solutions:
+  (Composition is continuous) Because of the inclusion into $C^{0}_{0}(U)$, the set $W(U)$ is well-defined and open for any precompact $U\subset E$. Assuming that $C^{0}_{0}(U)$ is non-empty implies that $U$ contains a compactly supported smooth section. 
 
-\begin{enumerate}
+  We require that there are continuous composition maps $f\circ :W(U)\to W(E_{2})$ for every smooth fiber preserving map $\closure{U}\to E_{2}$ which vanishes on $0\cap \bd X$ (where $0$ is the zero section) making the following diagram commute
+  \begin{equation*}
+    \begin{tikzcd}
+      C^{\infty}_{0}(\closure{X},U)\arrow[r]\arrow[d,"f\circ"]& W(U)\arrow[r]\arrow[d,"f\circ"]& C^{0}_{0}(\closure{X},U)\arrow[d,"f\circ "]\\
+      C^{\infty}_{0}(\closure{X},E_{2})\arrow[r]& W(E_{2})\arrow[r]& C^{0}_{0}(\closure{X},E_{2}).
+    \end{tikzcd}
+  \end{equation*}
+\end{defn}
+\begin{defn}
+  Let $M$ be a smooth manifold with Riemannian metric $g$ and any fiberwise convex open neighborhood $\mathscr{D}\subset TM$ of the zero section on which $\exp:TM\to M\cross M$ is an open embedding. For each smooth map $\gamma:\closure{X}\to M$ we can form the pullback $\gamma^{*}\mathscr{D}\subset \closure{X}\cross TM$, which admits an open embedding
+  \begin{equation*}
+    \exp_{\gamma}:\gamma^{*}\mathscr{D}\to \closure{X}\cross M,
+  \end{equation*}
+  obtained by applying $\exp:TM\to M$ to the definition of $\gamma^{*}\mathscr{D}$. We can think of $\exp_{\gamma}$ as a fiber preserving smooth map which sends $0\cap \bd X$ to $\gamma(\bd X)$. Fixing $\gamma|_{\bd X}=b$, we obtain a well-defined inclusion
+  \begin{equation*}
+    \exp_{\gamma}\circ:W(\gamma^{*}\mathscr{D})\to C^{0}_{b}(\closure{X},M),
+  \end{equation*}
+  where $C^{k}_{b}$ denotes functions which agree with $b$ on $\bd
+  X$.
+  
+  We define
+  \begin{equation*}
+    W(\closure{X},M)=\bigcup \set{W(\gamma^{*}\mathscr{D}):\gamma\in C^{\infty}_{b}(\closure{X},M)}.
+  \end{equation*}
+  This set of maps does not depend on the Riemannian metric or the set $\mathscr{D}$.
+\end{defn}
+\begin{thm}
+  For every manifold model $W$, and every smooth map $b:\bd X\to M$, there is a Banach manifold structure on $W(\closure{X},M)$ equipped with dense inclusions
+  \begin{equation*}
+    C^{\infty}_{b}(\closure{X},M)\subset W(\closure{X},M)\subset C^{0}_{b}(\closure{X},M)
+  \end{equation*}
+  and so that for any $\gamma\in C^{\infty}_{b}(\closure{X},M)$, and any choice of Riemannian metric $g$ or open set $\mathscr{D}$ the map
+  \begin{equation*}
+    \exp_{\gamma}:W(\gamma^{*}\mathscr{D})\to W(\closure{X},M)
+  \end{equation*}
+  is a smooth open embedding. 
+\end{thm}
+\begin{clear}{Remark}
+  It follows that we can fix any $g,\mathscr{D}$ and obtain an atlas of smooth coordinate charts on $W(\closure{X},M)$. Indeed, if one knows that $C^{\infty}(\closure{X},M)$ has a countable subset dense in the $C^{0}$, one concludes that $W(\closure{X},M)$ has a countable atlas. 
+\end{clear}
+\begin{xca}
+  Show that $C^{\infty}_{b}(\closure{X},M)$ has a countable subset which is dense in $C^{0}$. Hint: use Arz\'ela-Ascoli and a compact exhaustion of $M$. More Hints: fix a sequence $\epsilon_{n}\to 0$ and define $C^{\infty,\epsilon_{n}}_{b}(\closure{X},K)$ to be the maps whose first derivatives are bounded above by $\epsilon_{n}$. This set has compact closure in $C^{0}_{b}(\closure{X},M)$, and hence we can find a countable dense subset for $C^{\infty,\epsilon_{n}}_{b}(\closure{X},K)$ in $C^{0}$. By taking the union of all these sets, over all $K$ and $\epsilon_{n}$, we obtain a countable dense subset for all of $C^{0}$.
+\end{xca}
+\begin{xca}
+  Prove that any manifold model $W$ is seperable. Hint: it suffices to prove that
+  \begin{equation*}
+    C^{\infty}_{0}(\closure{X},E)\text{ has a countable subset dense in }C^{0}_{0}(\closure{X},E).
+  \end{equation*}
+  For this, use Arz\'ela Ascoli (as above) and a compact exhaustion of $E$ by disk bundles.
+\end{xca}
+\begin{clear}{Remark}
+  The preceding discussion and exercises establish that
+  $W(\closure{X},M)$ has a countable atlas by open subsets of Banach
+  spaces, which is important because it enables us to use Sard's
+  theorem. The seperability of the local charts is not strictly
+  necessary to apply Sard's theorem, but it is still good to know.
+\end{clear}
+\end{clear}
+\begin{clear}{The manifold model Schwarz uses to construct his path
+    space $\mathscr{P}$}
+  As we mentioned above, we really want the tangent spaces to our
+  path space to be the $W^{1,p}(\R,\gamma^{*}TM)$ spaces (the
+  $W^{1,2}$ spaces suffice), because it is for these Banach spaces
+  that Theorem \ref{thm:a251} applies.
 
-\item Schwarz's book: roughly, replace the domain $\R$ with $[-1,1]$, noting that $(-1,1)$ is diffeomorphic to $\R$ and use the smooth structure on $[-1,1]$, asyptotic condition is now $-1\mapsto x, +1\mapsto y$.
+  Here is a detailed construction
+  of Schwarz's manifold model.
+  \begin{defn}
+  Let $\conj{\R}=\R\cup\set{-\infty,+\infty}$ with the differentiable structure induced by the bijection
+  \begin{equation*}
+    \conj{\R}\to [-1,1]\ \ \ \ \varphi:t\mapsto \frac{2}{\pi}\arctan t
+  \end{equation*}
+  We will let $t$ to be the smooth function defined on $\R\subset \conj{\R}$.
 
-  \[
-X=H_\R^{1,2}(\gamma^* small enough disk in TM)
-\]
+  If $u:\conj{\R}\to \R^{n}$ is a $C^{1}$ function, then the derivative $\bd_{t}u$ is defined as usual on $\R$ and is defined to be $0$ on $\pm \infty$. This is a $C^{1}$ function on $\conj{\R}$. To see why, we compute on $(-1,1)$
+  \begin{equation*}
+    \bd_{t}u(\varphi^{-1}(s))=\frac{\bd_{s}(u(\varphi^{-1}(s)))}{\bd_{s}\varphi^{-1}(s)},
+  \end{equation*}
+  and use the fact that
+  \begin{equation*}\tag{$\ast$}
+    \varphi^{-1}(s)=\tan\frac{\pi}{2}s\implies \bd_{s}\varphi^{-1}(s)=\frac{\pi/2}{\cos^{2}(\pi s/2)}=\frac{\pi}{2}(1+\varphi^{-1}(s)^{2})
+  \end{equation*}
+  and thereby deduce for $u:\conj{\R}\to \R^{n}$ smooth we have
+  \begin{equation*}
+    \bd_{t}u(\varphi^{-1}(s))=\frac{2}{\pi}\bd_{s}u(\varphi^{-1}(s)) \cos^{2}(\pi s/2)
+  \end{equation*}
+  so $\bd_{t}u$ extends to to the boundary as a $C^{\infty}$ function. We can conclude from ($\ast$) that if $u$ is $C^{\infty}$ on $\conj{\R}$ then
+  \begin{equation*}
+    \abs{\bd_{t}u}\le \frac{\text{const}}{1+t^{2}}.
+  \end{equation*}
+  In particular, if $u$ is $C^{\infty}$ on $\conj{\R}$, then $\bd_{t}u$ is integrable on $\R$ (with its standard measure $\d t$). If $u$ is $C^{\infty}$ on $\conj{\R}$ and $u(\pm\infty)=0$, then $u$ is in $L^{p}$ for all $p$. To see why, observe that for $t_{1}<0$ we can compute for $t_{0}<t_{1}$
+  \begin{equation*}
+    u(t_{1})-u(t_{0})=\int_{t_{0}}^{t_{1}}\bd_{t}u\,\d t\implies \abs{u(t_{1})}\le \abs{u(t_{0})}+\frac{1}{\abs{t_{1}}}-\frac{1}{\abs{t_{0}}}.
+  \end{equation*}
+  Taking the limit as $t_{0}\to 0$ concludes that $\abs{u(t_{1})}\le \abs{t_{1}}^{-1}$, and hence $u$ is in $L^{p}(\R)$. It follows that $C^{\infty}_{0}(\conj{\R})\subset W^{k,p}(\R)$ for all $p>1$, where we agree to define $$C^{\infty}_{0}(\conj{\R})=\text{smooth functions vanishing at $\pm \infty$}.$$
+\end{defn}
+\begin{defn}
+  Let $\text{Bun}(\conj{\R})$ be the category of bundles $E$ equipped with fiber metrics $\ip{-,-}$ and connections $\nabla$. Every such bundle $E$ is actually isomorphic to the standard bundle $(\R^{n},\d)$, in the sense that there is a flat section of
+  \begin{equation*}
+    g\in \text{O}(E,\R^{n})\subset \Hom(E,\R^{n}),\text{ $n=\dim E$};
+  \end{equation*}
+  such a flat section induces an metric isomorphism of bundles preserving the connections, in the sense that $d\circ g=g\circ \nabla$. To be a bit more precise, observe that
+  \begin{equation*}\tag{$\ast$}
+    h\in \Gamma\Hom(E,\R^{n})\mapsto \d\circ h-h\circ \nabla,
+  \end{equation*}
+  is a connection; this is well-defined 
+  since
+  \begin{equation*}
+    [\d\circ h-h\circ \nabla,f]=[\d,f]\circ h-h\circ [\nabla,f]=\d f\ocross h-\d f\ocross h=0.
+  \end{equation*}
+  Since any connection on any bundle over $[-1,1]$ has flat sections, we conclude a flat section $g$ of $(\ast)$ will satisfy $\d \circ g=g\circ \nabla$.
+  
+  Let NBan be the category of Banach spaces. We will prefer to use $\text{Ban}$ to be the category of ``Banachable'' topological vector spaces.
 
+  Using our previous observations, we can define a functor
+  \begin{equation*}
+    E\in \text{Bun}(\conj{\R})\mapsto W^{k,p}_{\R}(E)\in \text{NBan},
+  \end{equation*}
+  by choosing an isomorphism $\varphi_{E}:(E,\ip{-,-},\nabla)\to (\R^{n},\ip{-,-},\d)$, and defining
+  \begin{equation*}
+    W^{k,p}_{\R}(E)=W^{k,p}(\R^{n}),
+  \end{equation*}
+  and extending to morphisms $\varphi:E_{1}\to E_{2}$ by conjugation
+  \begin{equation*}
+    \varphi_{E_{2}}\circ \varphi\circ \varphi_{E_{1}}^{-1}:W^{k,p}(\R^{n})\to W^{k,p}(\R^{n}).
+  \end{equation*}
+  This functor is well-defined up to natural isomorphism (in the category of normed Banach spaces -- this requires the isomorphisms $\varphi_{E}$ to be flat sections $\Gamma\mathrm{O}(E,\R^{n})$).
 
-\item Floer's approach: Use slightly modified Sobolev norm.
-$W^{k,p,\sigma,\sigma_+}(\R_t,\R):=\{f\in W^{k,p}_{loc}|\norm{f}_{k,p,\sigma,\sigma_+}<\infty\}$
+  Now we make the observation any section of $g\in \mathrm{GL}(E_{1},E_{2})$ induces an isomorphism $$g:W^{k,p}_{\R}(E_{1})\to W^{k,p}_{\R}(E_{2})\text{ in Ban}$$
+  
+  It suffices to prove this when $E_{1}=E_{2}=\R^{n}$. It follows because the $g$ are uniformly bounded in $C^{\infty}$, and hence $g\circ (-)$ induces a bounded invertible transformation $W^{k,p}(\R^{n})\to W^{k,p}(\R^{n})$ for all $k,p$. Finally, note that by our earlier work, there are continuous inclusions, for $k\ge 1$ and $p>1$
+  \begin{equation*}
+    C^{k}_{0}(\conj{\R},E)\to W^{k,p}_{\R}(E),
+  \end{equation*}
+  and for $k\ge 0$ and $p\in (1,\infty)$ a continuous inclusion
+  \begin{equation*}
+    W^{k+1,p}_{\R}(E)\to C^{k}_{0}(\conj{\R},E).
+  \end{equation*}
+\end{defn}
+\begin{clear}{Remark}
+  It is shown in the appendix to this set of notes that $E\mapsto
+  W^{k,p}_{\R}(E)$ is a Manifold model, and hence can be used to set
+  up a path space $\mathscr{P}$ whose tangent spaces at a curve
+  $\gamma$ are precisely $W^{k,p}_{\R}(\gamma^{*}TM)$.
+\end{clear}
+\end{clear}
+\begin{clear}{Remark}
+Recalling our ``outline'' (i)-(iv)
+  of how to construct $\mathscr{M}(x,y)$, we still need to show that
+  gradient flow lines are actually elements inside the Banach manifold
+  $\mathscr{P}=W^{k,p}_{x,y}(\closure{\R},M)$ constructed using
+  Schwarz's manifold model.
 
-$\norm{f}_{k,p,\sigma,\sigma_+}=\norm{exp((\beta(t)\sigma_++\beta(-t)\sigma_-)t)\cdot f}_{k,p}$
+  Since $C^{\infty,p}_{x,y}(\closure{\R},M)\subset \mathscr{P}$, it
+  suffices to show that gradient flow lines $\R\to M$ extend to smooth
+  maps $\closure{\R}\to M$. This is not immediate! It is proved at the
+  end of these notes.
+\end{clear}
 
-This is a Banach space.
+\begin{clear}{Bundles on $\mathscr{P}$}
+  We will merely sketch the results. The way that Schwarz constructs
+  bundles on his path space $\mathscr{P}$ is also taken from
+  Eliasson's paper. The main idea is the following:
+  \begin{defn}
+    A \textbf{section functor} over $W$ will be a functor
+    \begin{equation*}
+      L:\text{Bun}(\closure{X})\to \text{Ban},
+    \end{equation*}
+    equipped with a continuous bilinear maps
+    \begin{equation*}
+      L(E_{1})\ocross W(\Hom(E_{1},E_{2}))\to L(E_{2})\text{ and }L(E_{1})\ocross C^{\infty}(\Hom(E_{1},E_{2}))\to L(E_{2})
+    \end{equation*}
+    which extends the data inherent in the functor (recall the morphisms in $\text{Bun}(\closure{X})$ are smooth sections of $\Hom(E_{1},E_{2})$).
+  \end{defn}
+  \begin{example}
+    The functor $E\mapsto L^{p}_{\R}(E)$ is a section functor over
+    $W_{\R}^{1,p}$. 
+  \end{example}
+    \begin{thm}
+    Given any section functor $L$ and any bundle $E\to M$, there is a smooth Banach bundle $$\mathscr{E}=L(W_{b}(\closure{X},M)^{*}E)\to W_{b}(\closure{X},M),$$
 
-Aymptotic condition near $\pm\infty$ is $\gamma$ should be given by exponentiating a family of vector of at $TM_x$ on $(-\infty, \rho)$. and satisfy true exponential decay condition for some $\sigma_-<0$.
+  If we let $\mathscr{P}=W_{b}(\closure{X},M)$, then we have
+  \begin{equation*}
+    \mathscr{E}=L(\mathscr{P}^{*}E)\to \mathscr{P}.
+  \end{equation*}
 
-The above characterization of chart of Banach space gives tangent spaces of pathes that satisfy the aymptotic condition. (Need Proof).
-
-\end{enumerate}
-
-The vector bundle is locally just $W^{k-1,p,\sigma,\sigma_+}(\R_t,\R)$ and the section goes as $\bd/\bd t+\grad\circ$
-
-2) With a lot of pain, most previous work generalize here. But the linearization is a little more involved because because we are exponentiallly sections not just adding them: the right operator is $\bd/\bd t+\Gamma$ the Christoffel symbols are involved.
-
-3) Consequences of parametric transversality theorem for Banach manifolds.
-
+  Furthermore, for all $u\in W_{b}(\closure{X},M)$ there are canonical identifications
+  \begin{equation*}
+    \mathscr{E}_{u}\to L(u^{*}E).
+  \end{equation*}
+\end{thm}
+\begin{clear}{Remark}
+  The culmination of all this work is that we have a smooth bundle
+  $L^{p}(\mathscr{P}^{*}TM)$ whose fiber at a curve $u$ is
+  $L^{p}(u^{*}TM)$. One can show that the ``gradient flow'' section
+  $\gamma\mapsto \bd_{t} \gamma+\text{grad}\gamma$ (defined for smooth
+  sections) extends to a smooth section of
+  \begin{equation*}
+    L^{p}(\mathscr{P}^{*}TM)\to \mathscr{P},
+  \end{equation*}  
+\end{clear}
 \begin{prop}
-$G,M$ Banach manifolds, $E\to M$ is a Banach space bundle. $\varphi:G\times M\to E$ smooth $G$-parametric sections (Family of sections, try to find a generic one such that intersection with $0$ is a true manifold), there is a countable trivialization, i.e.
-\[
-\{(U,\psi|U\subset M open, \psi:E|_{U}\to E_u\times U\}
-\]
-such that for every member:
-\begin{itemize}
-\item $0$ is a regualr value of $pr\circ\psi\circ\varphi:G\times U\to E_u$
-\item $pr\circ\psi\circ\varphi_g:U\to E_u$ is a Fredholm map of Banach manifold (All tangent map are) of index $r$ for every $g\in G$.
+  Let $M=\R^{n}$, and let $g$ be an arbitrary Riemannian metric on
+  $\R^{n}$. Let $f$ be a Morse function, and let $x,y$ be two critical
+  points. The linearization of the smooth section $\gamma\mapsto
+  \gamma'+\text{grad}\circ \gamma$ at a flow line is the section
+  \begin{equation*}\tag{$\ast$}
+    \eta\in W^{1,p}(\gamma^{*}TM)\mapsto
+    \eta'+\d\text{grad}_{\gamma}\cdot \eta\in L^{p}(\gamma^{*}TM)
+  \end{equation*}
+\end{prop}
+\begin{clear}{Remark}
+  The linearization ($\ast$) of
+  $\gamma\mapsto \gamma'+\text{grad}\circ \gamma$ is precisely the
+  kind of operator we were considering in Theorem \ref{thm:a251}. As a
+  consequence, we conclude: the section $\gamma\mapsto
+  \gamma'+\text{grad}\circ \gamma$ has Fredholm linearizations at the
+  gradient flow lines, and moreover, the index is precisely
+  \begin{equation*}
+    \text{index}=\text{spectral flow of $t\mapsto \d\grad_{\gamma(t)}$}=\text{index}(x)-\text{index}(y).
+  \end{equation*}
+\end{clear}
+\end{clear}
+\begin{clear}{Generic metrics make $\gamma\mapsto
+    \gamma'+\text{grad}\circ \gamma$ a transverse section of
+    $L^{p}(\mathscr{P}^{*}TM)\to \mathscr{P}$}
+  Recalling our outline (i)-(iv), we have still not said anything
+  about how \emph{generic metrics} will ``cut'' $\mathscr{M}(x,y)$
+  transversally. In this section we will introduce an important
+  theorem called the \textbf{parametric transversality theorem}.
 
-\end{itemize}
+  \begin{thm}
+    Let $\mathscr{E}\to \mathscr{P}$ be a smooth Banach bundle over a
+    Banach bundle, and let $\mathscr{G}$ be another Banach
+    manifold. Suppose we are given a smooth map
+    \begin{equation*}
+      \Phi:\mathscr{G}\cross \mathscr{P}\to \mathscr{E}
+    \end{equation*}
+    so that $\Phi_{g}:\set{g}\cross \mathscr{P}\to \mathscr{E}$ is a
+    section for each $g$, i.e.\ $\Phi$ is a ``parametrized family'' of
+    sections. Suppose the following conditions are satisfied:
 
-Then there is a $G$-set (Baire set) $\Sigma\subset G$ such that $Z_g=\{\varphi_g(m)=0\}$ is a closed submanifold of $M$ for $g\in\Sigma$ 
+    (i) In some (countable) atlas of trivializations
+    $(\psi_{i},U_{i})$, $\psi_{i}:\mathscr{E}|_{U_{i}}\to U_{i}\cross
+    E_{i}$, the maps
+    \begin{equation*}
+      \text{pr}\circ \psi_{i}\circ\Phi:\mathscr{G}\cross U_{i}\to E_{i}
+    \end{equation*}
+    have $0\in E_{i}$ as a regular value. 
 
-For us, $G=$ Banach manifold of Riemannian metric, If we choose $G$ large enough, 1 is indeed satified but it is not a general theorem, need to make computations.
+    (ii) The maps $\text{pr}\circ \psi_{i}\circ \Phi_{g}:U_{i}\to
+    E_{i}$ are Fredholm maps with index $r$ (for every $g$). 
 
+    Then the conclusion is that there exists a Baire generic set
+    $\Sigma\subset \mathscr{G}$ so that for all $g\in \Sigma$, the
+    section $\Phi_{g}$ is transverse to the zero section, i.e.\ the
+    vertical differential of $\Phi_{g}$ is surjective on
+    $\Phi_{g}^{-1}(0)$, and consequently $\Phi_{g}^{-1}(0)$ is a
+    smooth submanifold, whose dimension is necessarily $r$.
+  \end{thm}
 
+  \begin{example}
+    Let's apply this theorem to the following set up. Let $M$ be a
+    compact manifold. Define
+    \begin{equation*}
+      \mathscr{G}=\set{C^{k}\text{ Riemannian metrics on $M$}}.
+    \end{equation*}
+    Then $\mathscr{G}$ is a convex open subset of the Banach space
+    \begin{equation*}
+      \mathscr{G}\subset C^{k}(M,\text{Sym}^{2}(T^{*}M)),
+    \end{equation*}
+    and hence $\mathscr{G}$ has a natural Banach manifold
+    structure. Let $\mathscr{P}=W^{1,2}_{x,y}(\closure{R},M)$, and
+    $\mathscr{E}=L^{2}(\mathscr{P}^{*}TM)$, as above. 
 
+    One can show that the map
+    \begin{equation*}
+      \Phi:(g,\gamma)\in \mathscr{G}\cross \mathscr{P}\to
+      \gamma'+\text{grad}_{g}\circ \gamma \in L^{2}(\gamma^{*}TM)
+    \end{equation*}
+    is a smooth family of sections
+    $\Phi:\mathscr{G}\cross \mathscr{P}\to \mathscr{E}$. We claim that
+    the conditions (i) and (ii) are satisfied.
 
+    To see why, let's suppose that $(g,\gamma)\in \Phi^{-1}(0)$. Then
+    $\gamma$ is a flow line joining $x$ to $y$. The linearization of
+    $\Phi$ at $(g,\gamma)$ is a linear map
+    \begin{equation*}
+      \begin{aligned}
+        D\Phi_{(g,\gamma)}&:C^{k}(\text{Sym}^{2}(T^{*}M))\cross
+        W^{1,p}(\gamma^{*}TM)\to L^{2}(\gamma^{*}TM)\\
+        (B,\eta)&\mapsto D_{1}\Phi_{g,\gamma}B+D_{2}\Phi_{g,\gamma}\eta.
+      \end{aligned}
+    \end{equation*}
+    The map $D_{2}\Phi_{g,\gamma}$ is simply the linearization of the
+    section $\gamma\mapsto \gamma'+\text{grad}_{g}\circ \gamma$. We
+    already showed that this was Fredholm of index
+    $\text{index}(x)-\text{index}(y)$. Moreover, the linearization
+    $D_{2}\Phi_{g,\gamma}$ is actually an (elliptic) first order
+    differential operator
+    $W^{1,2}(\gamma^{*}TM)\to L^{2}(\gamma^{*}TM)$, and therefore
+    satisfies unique continuation.
 
-\end{prop} 
+    Since $D_{2}\Phi_{g,\gamma}$ has closed image and finite
+    dimensional cokernel, the map
+    $$(B,\eta)\mapsto D_{1}\Phi_{g,\gamma}B+D_{2}\Phi_{g,\gamma}\eta$$
+    still has closed image and finite dimensional cokernel. We claim
+    that the cokernel is zero dimensional. If not, then we can find
+    $c\in L^{2}$ so that $c\perp \im D\Phi$, in particular $c\in \ker
+    D_{2}\Phi_{g,\gamma}^{*}$, and therefore, by unique continuation
+    for elements in the kernel of a first order elliptic operator on
+    $\R$, we conclude $c$ is everywhere non-zero.
+
+    Now we compute
+    \begin{equation*}
+      D_{1}\Phi_{g,\gamma}B=D_{B}\grad_{g}\circ \gamma,
+    \end{equation*}
+    where
+    \begin{equation*}
+      D_{B}\text{grad}_{g}=\lim_{\epsilon\to 0}\epsilon^{-1}(\text{grad}_{g+\epsilon B}-\text{grad}_{g})
+    \end{equation*}
+    Pick $p\in \gamma(\R)$, and pick coordinates $z_{1},\cdots,z_{n}$
+    near $p$. Write
+    \begin{equation*}
+      \d f=\pd{f}{z_{i}}\d z_{i}\text{ and }g=g_{ij}\d x_{i}\d
+      x_{j}\text{ and }\grad_{g}=a_{i}(g)\bd_{i}
+    \end{equation*}
+    Since
+    \begin{equation*}
+      g_{ij}a_{i}(g)=\pd{f}{z_{j}}\implies a_{i}(g)=(g^{-1})_{ij}\pd{f}{z_{j}},
+    \end{equation*}
+    We compute
+    \begin{equation*}
+      (g+B)^{-1}=g_{ij}^{-1}(1+g_{ij}^{-1}B_{ij})^{-1}=(g^{-1})-(g^{-2})B+O(\abs{B}^{2})\implies
+      D_{B}\text{grad}_{g}=((g^{-2})B)_{ij}\pd{f}{z_{j}}\bd_{i}.
+    \end{equation*}
+    Since $\bd f/\bd z_{j}$ is a non-zero vector, and $B$ is
+    arbitrary, we can choose $B$ so that
+    $((g^{-2})B)_{ij}\pd{f}{z_{j}}\bd_{i}$ so that the pairing
+    $\ip{D_{1}\Phi_{(g,\gamma)},c}\ne 0$, unless $c$ vanishes at
+    $z$. This proves that $c$ must vanish at $z$, and hence $c$ is
+    identically zero, contradicting our assumption that $c\ne
+    0$. Therefore $D\Phi_{(g,\gamma)}$ is surjective, as desired.
+
+    It follows that the family of sections $\Phi:\mathscr{G}\cross
+    \mathscr{P}\to \mathscr{E}$ satisfies the requirements (i) and    (ii) needed to apply the parametric transversality theorem.
+  \end{example}
+\end{clear}
+
+\begin{clear}{Bonus}
+Here are a sequence of exercises culminating in a proof of Theorem \ref{thm:a251}.
+
+\begin{xca}[just for fun]
+  Prove that $L:W^{1,p}(\R,\C^{n})\to L^{p}(\R,\C^{n})$ given by
+
+  $L(u)=\bd_{t}u$ is not Fredholm, even though $\bd_{t}$ and
+  $\bd_{t}^{*}=-\bd_{t}$ have finite dimensional kernels. 
+\end{xca}
+\begin{xca}\label{xca:a252}
+  Prove that $L:W^{1,p}(\R,\C)\to L^{p}(\R,\C)$ given by
+  \begin{equation*}
+    L(u)=\bd_{t}u+\lambda u\text{ for $\lambda\not\in i\R$}.
+  \end{equation*}
+  is Fredholm as follows: for test functions $u$, let $v=L(u)$, we can write
+  \begin{equation*}
+    e^{\lambda t}u(t)-e^{\lambda s}u(s)=\int_{s}^{t}e^{\lambda
+      \tau}v(\tau)\,\d \tau.
+  \end{equation*}
+  If $\text{Re}(\lambda)>0$, take $s\to -\infty$, and conclude
+  \begin{equation*}\tag{$1$}
+    u(t)=\int_{-\infty}^{0}e^{\lambda r}v(t+r)\,\d r.
+  \end{equation*}
+  If $\text{Re}(\lambda)<0$, take $t\to+\infty$, (and then relabel $s\to t$) and conclude
+  \begin{equation*}\tag{$2$}
+    u(t)=-\int_{0}^{\infty}e^{\lambda r}v(t+r)\,\d r.
+  \end{equation*}
+  By pairing $u$ with a test function in $L^{q}$ and integrating,
+  conclude from either (1) or (2) (and recalling $v=Lu$) that
+  \begin{equation*}
+    \norm{u}_{L^{p}}\le \abs{\text{Re}(\lambda)}^{-1}\norm{Lu}_{L^{p}}.
+  \end{equation*}
+  Now estimate
+  \begin{equation*}
+    \begin{aligned}
+      \norm{u}_{W^{1,p}}&=\norm{u}_{L^{p}}+\norm{\bd_{t}u}_{L^{p}}\le
+      (\abs{\text{Re}(\lambda)}^{-1}+1)\norm{Lu}_{L^{p}}+\norm{\lambda
+        u}_{L^{p}}\\
+      &\le (1+(1+\abs{\lambda})
+      \abs{\text{Re}(\lambda)}^{-1})\norm{Lu}_{L^{p}}\\
+      &=C_{\lambda}\norm{Lu}_{L^{p}},
+    \end{aligned}    
+  \end{equation*}
+  where the constant $C_{\lambda}$ blows up as
+  $\text{Re}(\lambda)\to 0$. By density of test functions in
+  $W^{1,p}$, this estimate holds for all elements in
+  $W^{1,p}$. Conclude that $u\mapsto Lu$ is a closed embedding (i.e.\
+  has no kernel and closed image).
+
+  We can prove that $L:W^{1,p}\to L^{p}$ is surjective fairly easily now that we know
+  that $L$ has closed image. Because $\text{im}(L)$ is closed, it
+  suffices to prove that $\text{im}(L)$ is dense. If $\text{im}(L)$ is
+  not dense, then we can find an $L^{q}$ function $\varphi\ne 0$ so that
+  \begin{equation*}
+    \ip{Lu,\varphi}=0\text{ for all $u$}\implies
+    -\bd_{t}\varphi+\lambda \varphi=0\text{ in the sense of distributions}. 
+  \end{equation*}
+  It follows that $\varphi\in W^{1,q}$ and
+  $\bd_{t}\varphi-\lambda\varphi=-L^{*}\varphi=0$. By repeating the
+  argument above, we conclude
+  \begin{equation*}
+    \norm{\varphi}_{1,q}\le C_{\lambda}\norm{L^{*}\varphi}_{q},
+  \end{equation*}
+  which implies $L^{*}\varphi=0\implies \varphi=0$, contradicting the
+  fact that we assumed $\varphi\ne 0$. Therefore $L$ is an
+  isomorphism (and so is certainly Fredholm). 
+\end{xca}
+\begin{xca}
+  Let $A$ be an arbitrary $n\cross n$ matrix with no imaginary
+  eigenvalues. Prove that the differential operator $L=\bd_{t}+A$
+  induces an isomorphism
+  \begin{equation*}
+    L:W^{1,p}\to L^{p},
+  \end{equation*}
+  by arguing as follows: First suppose that $A$ has distinct
+  eigenvalues. It follows that we can choose a frame
+  $e_{1},\cdots,e_{n}$ of eigenvectors so that in this frame $u=\sum u_{i}e_{i}$
+  \begin{equation*}
+    Lu=\sum_{i}(\bd_{t}u_{i}+\lambda_{i}u_{i})e_{i}.
+  \end{equation*}
+  Since we know that maps $u_{i}\mapsto \bd_{t}u_{i}+\lambda_{i}u_{i}$ are
+  isomorphisms, it follows that $L$ is bijective, and hence an
+  isomorphism. Moreover, use the previous results to conclude an estimate
+  \begin{equation*}
+    \norm{u}_{W^{1,p}}\le
+    C(\text{Re}(\lambda_{1}),\cdots,\text{Re}(\lambda_{n}))\norm{Lu}_{L^{p}}=C_{A}\norm{Lu}
+  \end{equation*}
+  where the constant $C_{A}$ is a continuous function of the eigenvalues
+  $\lambda_{1},\cdots,\lambda_{n}\in \C\setminus i\R$.
+
+  Now suppose that $A$ has repeat eigenvalues. For all $A'$ with
+  simple eigenvalues, compute
+  \begin{equation*}
+    \norm{\bd_{t}+A-(\bd_{t}+A')}\le \abs{A-A'},
+  \end{equation*}
+  and so 
+  \begin{equation*}
+    \norm{u}_{W^{1,p}}\le C_{A'}\norm{L'u}_{L^{p}}\implies
+    \norm{u}_{W^{1,p}}\le
+    C_{A'}\norm{Lu}_{L^{p}}+C_{A'}\abs{A-A'}\norm{u}_{W^{1,p}}. 
+  \end{equation*}
+  We claim that we can pick $A'$ so that $C_{A'}\abs{A-A'}<1/2$. This
+  can be achieved since
+  \begin{equation*}
+    C_{A'}\abs{A-A'}\le C_{A}\abs{A-A'}+\underbrace{\abs{C_{A}-C_{A'}}\abs{A'-A}}_{\text{ctns}},
+  \end{equation*}
+  so it suffices to pick $A'$ sufficiently close to $A$. Then we
+  conclude that
+  \begin{equation*}
+    \norm{u}_{W^{1,p}}\le
+    C\norm{Lu}_{L^{p}}.
+  \end{equation*}
+  Arguing as we did above (or differently if you wish), we conclude that $L$ is an isomorphism.  
+\end{xca}
+\begin{xca}
+  Consider a time dependent family of matrices $A(t)$, so that
+  $A(-\infty)$ and $A(+\infty)$ converge to matrices with no
+  imaginary eigenvalues. Prove that $L=\bd_{t}+A(t)$ is Fredholm as
+  follows: let $L_{-}=\bd_{t}+A(-\infty)$,
+  $L_{+}=\bd_{t}+A(+\infty)$. We have shown that there are constants
+  $C_{\pm}$ so that
+  \begin{equation*}
+    \norm{u}_{L^{p}}\le C_{\pm}\norm{L_{\pm}u}_{L^{p}}.
+  \end{equation*}
+  Suppose that $\abs{A(t)-A(-\infty)}<\epsilon$, $t<-R$,
+  $\abs{A(t)-A(\infty)}<\epsilon$, $t>R$, for some constant $\epsilon>0$
+  to be determined as function of $C_{\pm }$ ($R$ depends on $\epsilon$). Consider a partition
+  of unity $\rho_{-},\rho,\rho_{+}$ so that $\rho_{-}$ is supported in
+  $(-\infty,-R)$, $\rho$ in $(-2R,2R)$, and $\rho_{+}$ in
+  $(R,\infty)$. For any $u$ compute
+  \begin{equation*}
+    \begin{aligned}
+      \norm{u}_{L^{p}}&\le \norm{\rho_{-}u}_{L^{p}}+\norm{\rho
+        u}_{L^{p}}+\norm{\rho_{+}u}_{L^{p}}\\
+      &\le C_{-}\norm{L_{-}\rho_{-}u}_{L^{p}}+\norm{\rho
+        u}_{L^{p}}+C_{+}\norm{L_{+}\rho_{+}u}_{L^{p}}\\
+      &\le C_{-}\norm{L\rho_{-}u}_{L^{p}}+\norm{\rho
+        u}_{L^{p}}+C_{+}\norm{L\rho_{+}u}_{L^{p}}+\epsilon(C_{-}+C_{+})\norm{u}_{L^{p}}\\
+      &\le C\left(\,\norm{Lu}_{L^{p}}+\norm{\rho u}_{L^{p}}+\norm{[L,\rho_{-}]u}_{L^{p}}+\norm{[L,\rho_{+}]u}_{L^{p}}\,\right)+\epsilon(C_{-}+C_{+})\norm{u}_{L^{p}},
+    \end{aligned}
+  \end{equation*}
+  where $[L,\rho_{\pm}]=L\rho_{\pm}-\rho_{\pm} L$ is the commutator, which is a zeroth
+  order operator supported in $[-2R,2R]$ (since the derivatives of
+  $\rho_{\pm}$ are supported $[-2R,2R]$). Now let's agree to have
+  picked $\epsilon$ smaller than $2^{-1}(C_{-}+C_{+})^{-1}$, so that
+  we conclude
+  \begin{equation*}
+    \norm{u}_{L^{p}}\le 2C\left(\,\norm{Lu}_{L^{p}}+\norm{\rho u}_{L^{p}}+\norm{[L,\rho_{-}]u}_{L^{p}}+\norm{[L,\rho_{+}]u}_{L^{p}}\,\right).
+  \end{equation*}
+  Consider the continuous map
+  \begin{equation*}
+    K:W^{1,p}(\R)\to W^{1,p}([-2R,2R])^{3}\ \ Ku=(\rho u, [L,\rho_{-}]u,[L,\rho_{+}]u).
+  \end{equation*}
+  Arguing as we did in Exercise \ref{xca:a252}, we conclude a new
+  constant $C$ (independent of $u$) so that
+  \begin{equation*}
+    \norm{u}_{W^{1,p}}\le C\left(\,\norm{Lu}_{L^{p}}+\norm{Ku}_{L^{p}([-2R,2R])^{3}}\,\right).
+  \end{equation*}
+  Since $K:W^{1,p}\to W^{1,p}([-2R,2R])^{3}\to L^{p}([-2R,2R])^{3}$ is
+  a compact operator (since $$W^{1,p}([-2R,2R])\to L^{p}([-2R,2R])$$ is
+  compact by Rellich compactness) conclude that $L$ has closed image and finite dimensional
+  kernel. Since $L^{*}$ is of the same form as $L$, we can repeat the
+  argument to show that $\ker L^{*}$ is finite dimensional.
+
+  Finally, conclude (via a standard argument) that $L$ is Fredholm by
+  showing that $\coker L$ is isomorphic to
+  $(\ker L^{*})^{\text{dual}}$.
+\end{xca}
+\begin{xca}
+  In this final exercise, we will show that the index of
+  \begin{equation*}
+    L=\bd_{t}+A(t),
+  \end{equation*}
+  is equal to the spectral flow of $A(t)$.
+
+  We argue as follows. First, consider a perturbation $A^{s}$ so that
+  $A^{0}=A$ and
+
+  (i) $A^{s}(\pm \infty)$ has no imaginary eigenvalues, for all $s$,
+
+  (ii) $A^{1}(t)$ has distinct eigenvalues for each $t$ (including $\pm\infty$).
+
+  We leave it to the reader to convince themselves that this is
+  possible. The family of operators $L^{s}=\bd_{t}+A^{s}(t)$ is a
+  family of Fredholm operators (by ($i$)) and hence the index does not
+  change during this perturbation. Without loss, suppose that $A(t)$
+  has distinct eigenvalues for all time.
+
+  The space of unit-length eigen-frames for $A(t)$ is discrete (since
+  $A(t)$ has distinct eigenvalues) and hence we can find a traveling
+  family of unit length eigenvectors $e_{1}(t),\cdots,e_{n}(t)$ smooth on $\R$,
+  and continuous on $\closure{\R}$. By writing
+  \begin{equation*}
+    u=\sum_{i}u_{i}e_{i}(t),
+  \end{equation*}
+  we conclude that
+  \begin{equation*}
+    Lu=\sum_{i}(\bd_{t}u_{i}+\lambda_{i}(t)u_{i})e_{i}+\sum e_{i}'(t)u_{i}.
+  \end{equation*}
+  Since $A(\pm\infty)$ converge, $e_{i}'(t)\to 0$ as
+  $t\to\pm\infty$. Hence the family of operators
+  \begin{equation*}
+    L^{s}u=\sum_{i}(\bd_{t}u_{i}+\lambda_{i}(t)u_{i})e_{i}+s\sum e_{i}'(t)u_{i}
+  \end{equation*}
+  is a family of Fredholm operators. The index is unchanged, and so it
+  suffices to prove the case when
+  \begin{equation*}
+    Lu=\sum_{i}(\bd_{t}u_{i}+\lambda_{i}(t)u_{i})e_{i}(t).
+  \end{equation*}
+  Conclude (directly) that in this case
+  \begin{equation*}
+    \text{index}(L)=\sum_{i}\text{index}(\bd_{t}+\lambda_{i}(t)).
+  \end{equation*}
+  This reduces the problem to computing the index of a fairly simple
+  differential operator. We compute
+  \begin{equation*}\tag{$\ast$}
+    \bd_{t}u+\lambda_{i}(t)u=0\iff
+    u(t)=u(0)\exp(-\int_{0}^{t}\lambda_{i}(s)\,\d s).
+  \end{equation*}
+  The only way this can possible converge to an element of $W^{1,p}$
+  is if
+  \begin{equation*}
+    \text{Re}\lambda_{i}(-\infty)<0\text{ and }\text{Re}\lambda_{i}(+\infty)>0,
+  \end{equation*}
+  conversely, if the above is satisfied, conclude that ($\ast$)
+  defines an element of $W^{1,p}$ in the kernel of
+  $\bd_{t}+\lambda_{i}(t)$. Therefore we conclude
+  \begin{equation*}
+    \dim\ker(\bd_{t}+\lambda_{i}(t))=
+    \begin{cases}
+      1&\text{ if }\text{Re}\lambda_{i}(-\infty)<0<\text{Re}\lambda_{i}(+\infty)\\
+      0&\text{ otherwise }.
+    \end{cases}
+  \end{equation*}
+  The adjoint of the differential operator is
+  $(\bd_{t}+\lambda_{i}(t))^{*}=-(\bd_{t}-\lambda_{i}(t))$, and so the same argument shows
+  that
+  \begin{equation*}
+    \dim\ker(\bd_{t}-\lambda_{i}(t))=\begin{cases}
+      1&\text{ if }\text{Re}\lambda_{i}(-\infty)>0>\text{Re}\lambda_{i}(+\infty)\\
+      0&\text{ otherwise }.
+    \end{cases}
+  \end{equation*}
+  Conclude that
+  \begin{equation*}
+    \text{index}(\bd_{t}+\lambda_{i}(t))=\#\text{ eigenvalues which
+      cross the imaginary axis, with signs},
+  \end{equation*}
+  and conclude that
+  \begin{equation*}
+    \text{index}(L)=\#\text{ eigenvalues which
+      cross the imaginary axis, with signs},
+  \end{equation*}
+  as desired.
+\end{xca}  
+\end{clear}
+\begin{clear}{Proof that $W^{k,p}_{\R}$ is a manifold model}
+  
+\begin{lemma}[Banach algebra]
+  The obvious bilinear pairing
+  \begin{equation*}
+    W^{k,p}_{\R}(E_{1})\ocross W^{k,p}_{\R}(\Hom(E_{1},E_{2}))\to W^{k,p}_{\R}(E_{2})
+  \end{equation*}
+  is continuous.   
+\end{lemma}
+\begin{proof}
+  It suffices to prove this for $E_{1}=\R^{n}$, $E_{2}=\R^{m}$, whereby it reduces to the claim that
+  \begin{equation*}
+    W^{k,p}(\R^{n})\ocross W^{k,p}(\Hom(\R^{n},\R^{m}))\to W^{k,p}(\R^{m})
+  \end{equation*}
+  is continuous. This is true because 
+  \begin{equation*}
+    \d^{k}(Au)=\sum_{a+b=k}\d^{a}A\ocross \d^{b}u,
+  \end{equation*}
+  so
+  \begin{equation*}
+    \norm{Au}_{W^{k,p}}\le \sum_{a+b\le k}\norm{A}_{W^{k,p}}\norm{u}_{W^{k,p}},
+  \end{equation*}
+  where we use that $\norm{\d^{b}u}_{C^{0}}\le \norm{u}_{W^{k,p}}$ if $b<k$ and $\norm{\d^{b}u}_{L^{p}}\le \norm{u}_{W^{k,p}}$ for all $b$ (and similarly for $A$). 
+\end{proof}
+
+\begin{defn}
+  Let $U$ be an precompact open subset of $E$ (the total space of $E\to \conj{\R}$), and define $W^{k,p}_{\R}(U)$ to be the set of sections of $W^{k,p}_{\R}(E)$ which lie in $U$. This is open in the $C^{0}$ topology (which is just the compact open topology) and hence is open in $W^{k,p}_{\R}(U)$ since $W^{k,p}_{\R}(U)$ includes into $C^{0}(\conj{\R},E)$.
+
+  Suppose we have two bundles $E_{1},E_{2}$ and an open subset
+  $U\subset E_{1}$. Let $f:U\to E_{2}$ be a fiber preserving smooth
+  function which extends to $\closure{U}$, and which vanishes on
+  $0\cap \bd\conj{\R}$. It is clear that there is a continuous composition map
+  \begin{equation*}
+    f\circ : C^{0}_{0}(U)\to C^{0}_{0}(E_{2})
+  \end{equation*}
+  This morphism is the empty morphism if there are no sections of $E_{1}$ lying in $U$ and vanishing at the endpoints. We can thereby suppose that $U$ contains $\pm\infty$. It will be important to note that $C^{0}_{0}(U)$ is locally convex: if $u\in C^{0}_{0}$, then we can cover the graph of $u$ by finitely many open sets of the form $I\cross B$, where $B$ is a ball in each fiber. Then this open set is convex around $u$. 
+\end{defn}
+\begin{lemma}
+  Let $f:\closure{U}\subset E_{1}\to E_{2}$ be a fiber preserving smooth map. There is a unique continuous composition map making the diagram commute
+  \begin{equation*}
+    \begin{tikzcd}
+      C^{0}_{0}(U)\arrow[r,"f\circ "]&C^{0}_{0}(E_{2})\\
+      W^{k,p}_{\R}(U)\arrow[u,"\subset"]\arrow[r,"f\circ"]&W^{k,p}_{\R}(E_{2})\arrow[u,"\subset"]
+    \end{tikzcd}
+  \end{equation*}  
+\end{lemma}
+\begin{proof}
+  The uniqueness is clear, since the inclusions are injective. Note that $f\circ$ is already well-defined on the dense subspace $C^{\infty}_{0}(U)\subset W^{k,p}_{\R}(U)$. It suffices to show that this function $f\circ $ is continuous on $C^{\infty}_{0}(U)$ in the $W^{k,p}_{\R}(U)$ topology. 
+
+  We can now assume that $E_{1}=\R^{n}$, $E_{2}=\R^{m}$. We introduce some notation. Let $F^{1}f$ denote the fiber derivative of $f$, so that $F^{1}f$ is a function $\closure{U}\to \Hom(\R^{n},\R^{m})$, and let $f_{t}:\closure{U}\to \R^{n}$ be the time derivative.
+  \begin{claim}
+    Let $u\in C^{\infty}_{0}(U)$. There is a constant $C$ depending on $u$ and $f$, so that for each $v$ sufficiently close to $u$, we have
+    \begin{equation*}
+      \norm{f\circ u-f\circ v}_{W^{k,p}}\le C\norm{u-v}_{W^{k,p}}.
+    \end{equation*}
+  \end{claim}
+    We begin by requiring $v$ to lie in a convex open set around $u$ and $\norm{u-v}_{W^{k,p}}\le 1$ and so that we may easily estimate $\norm{v}_{W^{k,p}}\le 1+\norm{u}_{W^{k,p}}$.
+
+    We argue by induction. The base case follows easily, since we can estimate
+    \begin{equation*}
+      \abs{f(t,u(t))-f(t,v(t))}\le \norm{F^{1}f}_{C^{0}}\abs{u(t)-v(t)}.
+    \end{equation*}
+    For the inductive step $k-1\to k$, observe that it suffices to estimate
+    \begin{equation*}
+      \norm{\bd_{t}(f(t,u(t))-f(t,v(t)))}_{W^{k-1,p}}\le p^{k}(\norm{u}_{W^{k,p}})\norm{u-v}_{W^{k,p}}.
+    \end{equation*}
+    We compute
+    \begin{equation*}
+      \bd_{t}(f(t,u(t))=(F^{1}f\circ u)\cdot u+f_{t}\circ u,
+    \end{equation*}
+    and hence
+    \begin{equation*}
+      \begin{aligned}
+        \norm{\bd_{t}(f(t,u(t))-f(t,v(t)))}_{W^{k-1,p}}\le &\norm{F^{1}f\circ u-F^{1}f\circ v}_{W^{k-1,p}}\norm{u}_{W^{k-1,p}}\\
+        &+\norm{F^{1}f\circ v}\norm{u-v}_{W^{k-1,p}}+\norm{f_{t}\circ u-f_{t}\circ v}_{W^{k-1,p}}.
+      \end{aligned}
+    \end{equation*}
+    By the inductive assumption, applied twice, we estimate
+    \begin{equation*}
+      \norm{F^{1}f\circ u-F^{1}f\circ v}_{W^{k-1,p}}\norm{u}_{W^{k-1,p}}+\norm{f_{t}\circ u-f_{t}\circ v}_{W^{k-1,p}}\le C\norm{u-v}_{W^{k,p}},
+    \end{equation*}
+    where we recall that $C$ is allowed to depend on $\norm{u}_{W^{k-1,p}}$.
+    Next, we estimate the term
+    \begin{equation*}
+      \norm{F^{1}f\circ v}\le \norm{F^{1}f\circ v-F^{1}f\circ u}+\norm{F^{1}f\circ u}\le C(1+\norm{F^{1}f\circ u})=C,
+    \end{equation*}
+    and thereby conclude
+    \begin{equation*}
+      \norm{\bd_{t}(f(t,u(t))-f(t,v(t)))}_{W^{k-1,p}}\le C\norm{u-v}_{W^{k,p}},
+    \end{equation*}
+    as desired. This completes the proof of the Claim, and therefore the Lemma.
+\end{proof}
+\end{clear}
+\begin{clear}{Gradient flow lines are elements in Schwarz's path space
+    $\mathscr{P}$}
+  Let $\conj{X}=\conj{\R}$, $X=\R$, and let $W$ be any manifold model. Let $\varphi$ be a Morse function with critical points at $x$ and $y$, and let $\gamma:\R\to M$ be a trajectory of $\text{grad}_{\varphi}$ joining $x$ to $y$. We claim that the continuous extension $\gamma:\conj{\R}\to M$ is smooth, and hence is an element in $\mathscr{P}^{W}_{x,y}$.
+
+  This claim essentially says that $\gamma$ decays ``enough'' at $x$ and $y$ so that it can be smoothly extended to $\conj{\R}$. To prove the claim, we remark that in local coordinates near $x$, and the $s$ coordinate near $-1$ in $[-1,1]$, we know that on $(-1,-1+\epsilon)$ we have
+  \begin{equation*}
+    u=\gamma\circ \varphi^{-1}\text{ satisfies }\bd_{s}u=\frac{\gamma'\circ \varphi^{-1}}{\cos^{2}(\pi/2 s)}
+  \end{equation*}
+  It therefore suffices to prove that
+  \begin{equation*}
+    \abs{\gamma^{(k)}(t)}\le\ \text{const}_{k,n}(1+t^{2})^{-2n}
+  \end{equation*}
+  for all $n$ and $k$, as $t\to \pm \infty$. We first observe that 
+  \begin{equation*}
+    \gamma^{(k)}=\bd_{t}^{k-1}(\text{grad} \circ \gamma)=\bd_{t}^{k-2}(\d \text{grad} \circ \gamma)\gamma'=\cdots=\sum_{a_{1}+\cdots+a_{j}=k-1} (\d^{j}\text{grad}\circ \gamma)(\gamma^{(a_{1})},\cdots,\gamma^{(a_{j})}).
+  \end{equation*}
+  We can estimate this as follows
+  \begin{equation*}
+    \sum_{a_{1}+\cdots+a_{j}=k-1} (\d^{j}\text{grad}\circ \gamma)(\gamma^{(a_{1})},\cdots,\gamma^{(a_{j})})\le \sum\norm{\text{grad}}_{C^{k}}\abs{\gamma^{(a_{1})}}\cdots \abs{\gamma^{(a_{j})}},
+  \end{equation*}
+  so if we prove it when $k=0,1$, it will follow for all higher $k$ by induction. Since $\text{grad}$ vanishes at $x=0$, we can estimate
+  \begin{equation*}
+    \abs{\grad(\gamma(t))}\le \norm{\text{grad}}_{C^{1}}\abs{\gamma(t)},
+  \end{equation*}
+  and so it suffices to prove for $k=0$. To prove it for $k=0$ will require a more careful analysis of the ODE, and will require us to use invertibility of $\d\grad_{x}$.
+
+  \begin{xca}
+    Let $\varphi,\grad,\gamma$ be as above. Suppose that $\gamma(t)$ lies in a coordinate ball around $x$ for $t<T<<0$.
+
+    Prove that for all compactly supported $f$
+    \begin{equation*}
+      \ud{}{t}f(t)\varphi(\gamma(t))=f'(t)\varphi(\gamma(t))+f(t)\abs{\grad(\gamma(t))}^{2},
+    \end{equation*}
+    and hence
+    \begin{equation*}
+      \int_{-\infty}^{T} f(t) \abs{\grad(\gamma(t))}^{2}\d t\le f(T)\abs{\varphi(\gamma(T))}+\int_{-\infty}^{T}\abs{f'(t)}\abs{\varphi(\gamma(t))}\,\d t
+    \end{equation*}
+    By picking $f$ positive and compactly supported so $f(t)=\abs{t}^{k}$ on $[S,T]$, and so $\abs{f'(t)}\le k\abs{t}^{k-1}$ everywhere, conclude that
+    \begin{equation*}
+      \abs{t}^{k-1}\abs{\gamma(t)}^{2}\text{ integrable }\implies \abs{t}^{k}\abs{\grad(\gamma(t))}^{2}\text{ integrable }\implies \abs{t}^{k}\abs{\gamma(t)}^{2}\text{ integrable},
+    \end{equation*}
+    where we have used the fact that $\abs{\gamma(t)}\le \text{const}\abs{\grad(\gamma(t))}$ for $t$ in $(-\infty,T]$, this follows from non-degeneracy of $\d\grad_{x}$. Since $\abs{\grad(\gamma(t))}^{2}$ is integrable, we conclude that $\abs{t}^{k}\abs{\gamma(t)}^{2}$ is integrable for all $k$.
+
+    To prove that $\abs{t}^{k}\abs{\gamma(t)}$ is bounded, compute
+    \begin{equation*}
+      \ud{}{t}(\abs{t}^{k}\gamma(t))=\abs{t}^{k}\text{grad}\circ \gamma+k\abs{t}^{k-1}\gamma(t),
+    \end{equation*}
+    which implies that the first derivatives of $\abs{t}^{k}\gamma(t)$ are integrable for all $k$. It follows that $\abs{t}^{k}\gamma(t)$ is bounded for all $k$, and hence
+    \begin{equation*}
+       \abs{\gamma(t)}\le\ \text{const}_{n}(1+t^{2})^{-2n},\text{ as $t\to\pm \infty$}
+     \end{equation*}
+     for all $n$, as desired. 
+  \end{xca}  
+
+\end{clear}
 
 \end{document}
