@@ -14,7 +14,6 @@
     "amsart10"
     "preamble")
    (LaTeX-add-labels
-    "thm:a251"
-    "xca:a252"))
+    "thm:a251"))
  :latex)
 

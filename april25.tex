@@ -182,23 +182,23 @@ $\bd_{t}+\text{grad}$ at a gradient flow line is of the form
 \begin{clear}{Remark}
   It follows that we can fix any $g,\mathscr{D}$ and obtain an atlas of smooth coordinate charts on $W(\closure{X},M)$. Indeed, if one knows that $C^{\infty}(\closure{X},M)$ has a countable subset dense in the $C^{0}$, one concludes that $W(\closure{X},M)$ has a countable atlas. 
 \end{clear}
-\begin{xca}
-  Show that $C^{\infty}_{b}(\closure{X},M)$ has a countable subset which is dense in $C^{0}$. Hint: use Arz\'ela-Ascoli and a compact exhaustion of $M$. More Hints: fix a sequence $\epsilon_{n}\to 0$ and define $C^{\infty,\epsilon_{n}}_{b}(\closure{X},K)$ to be the maps whose first derivatives are bounded above by $\epsilon_{n}$. This set has compact closure in $C^{0}_{b}(\closure{X},M)$, and hence we can find a countable dense subset for $C^{\infty,\epsilon_{n}}_{b}(\closure{X},K)$ in $C^{0}$. By taking the union of all these sets, over all $K$ and $\epsilon_{n}$, we obtain a countable dense subset for all of $C^{0}$.
-\end{xca}
-\begin{xca}
-  Prove that any manifold model $W$ is seperable. Hint: it suffices to prove that
-  \begin{equation*}
-    C^{\infty}_{0}(\closure{X},E)\text{ has a countable subset dense in }C^{0}_{0}(\closure{X},E).
-  \end{equation*}
-  For this, use Arz\'ela Ascoli (as above) and a compact exhaustion of $E$ by disk bundles.
-\end{xca}
-\begin{clear}{Remark}
-  The preceding discussion and exercises establish that
-  $W(\closure{X},M)$ has a countable atlas by open subsets of Banach
-  spaces, which is important because it enables us to use Sard's
-  theorem. The seperability of the local charts is not strictly
-  necessary to apply Sard's theorem, but it is still good to know.
-\end{clear}
+% \begin{xca}
+%   Show that $C^{\infty}_{b}(\closure{X},M)$ has a countable subset which is dense in $C^{0}$. Hint: use Arz\'ela-Ascoli and a compact exhaustion of $M$. More Hints: fix a sequence $\epsilon_{n}\to 0$ and define $C^{\infty,\epsilon_{n}}_{b}(\closure{X},K)$ to be the maps whose first derivatives are bounded above by $\epsilon_{n}$. This set has compact closure in $C^{0}_{b}(\closure{X},M)$, and hence we can find a countable dense subset for $C^{\infty,\epsilon_{n}}_{b}(\closure{X},K)$ in $C^{0}$. By taking the union of all these sets, over all $K$ and $\epsilon_{n}$, we obtain a countable dense subset for all of $C^{0}$.
+% \end{xca}
+% \begin{xca}
+%   Prove that any manifold model $W$ is seperable. Hint: it suffices to prove that
+%   \begin{equation*}
+%     C^{\infty}_{0}(\closure{X},E)\text{ has a countable subset dense in }C^{0}_{0}(\closure{X},E).
+%   \end{equation*}
+%   For this, use Arz\'ela Ascoli (as above) and a compact exhaustion of $E$ by disk bundles.
+% \end{xca}
+% \begin{clear}{Remark}
+%   The preceding discussion and exercises establish that
+%   $W(\closure{X},M)$ has a countable atlas by open subsets of Banach
+%   spaces, which is important because it enables us to use Sard's
+%   theorem. The seperability of the local charts is not strictly
+%   necessary to apply Sard's theorem, but it is still good to know.
+% \end{clear}
 \end{clear}
 \begin{clear}{The manifold model Schwarz uses to construct his path
     space $\mathscr{P}$}
@@ -207,8 +207,8 @@ $\bd_{t}+\text{grad}$ at a gradient flow line is of the form
   $W^{1,2}$ spaces suffice), because it is for these Banach spaces
   that Theorem \ref{thm:a251} applies.
 
-  Here is a detailed construction
-  of Schwarz's manifold model.
+  % Here is a detailed construction
+  % of Schwarz's manifold model.
   \begin{defn}
   Let $\conj{\R}=\R\cup\set{-\infty,+\infty}$ with the differentiable structure induced by the bijection
   \begin{equation*}
@@ -236,75 +236,86 @@ $\bd_{t}+\text{grad}$ at a gradient flow line is of the form
   \begin{equation*}
     u(t_{1})-u(t_{0})=\int_{t_{0}}^{t_{1}}\bd_{t}u\,\d t\implies \abs{u(t_{1})}\le \abs{u(t_{0})}+\frac{1}{\abs{t_{1}}}-\frac{1}{\abs{t_{0}}}.
   \end{equation*}
-  Taking the limit as $t_{0}\to 0$ concludes that $\abs{u(t_{1})}\le \abs{t_{1}}^{-1}$, and hence $u$ is in $L^{p}(\R)$. It follows that $C^{\infty}_{0}(\conj{\R})\subset W^{k,p}(\R)$ for all $p>1$, where we agree to define $$C^{\infty}_{0}(\conj{\R})=\text{smooth functions vanishing at $\pm \infty$}.$$
+  Taking the limit as $t_{0}\to 0$ concludes that $\abs{u(t_{1})}\le
+  \abs{t_{1}}^{-1}$, and hence $u$ is in $L^{p}(\R)$. It follows that
+  $C^{\infty}_{0}(\conj{\R})\subset W^{k,p}(\R)$ for all $p>1$, where
+  we agree to define $$C^{\infty}_{0}(\conj{\R})=\text{smooth
+    functions vanishing at $\pm \infty$}.$$
+
+  If $E$ is a smooth vector bundle on $\conj{\R}$, we define
+  \begin{equation*}
+    W^{k,p}_{\R}(E)\simeq W^{k,p}(\R^{n})
+  \end{equation*}
+  by choosing any smooth trivialization of $E$ over $\conj{\R}$.
 \end{defn}
-\begin{defn}
-  Let $\text{Bun}(\conj{\R})$ be the category of bundles $E$ equipped with fiber metrics $\ip{-,-}$ and connections $\nabla$. Every such bundle $E$ is actually isomorphic to the standard bundle $(\R^{n},\d)$, in the sense that there is a flat section of
-  \begin{equation*}
-    g\in \text{O}(E,\R^{n})\subset \Hom(E,\R^{n}),\text{ $n=\dim E$};
-  \end{equation*}
-  such a flat section induces an metric isomorphism of bundles preserving the connections, in the sense that $d\circ g=g\circ \nabla$. To be a bit more precise, observe that
-  \begin{equation*}\tag{$\ast$}
-    h\in \Gamma\Hom(E,\R^{n})\mapsto \d\circ h-h\circ \nabla,
-  \end{equation*}
-  is a connection; this is well-defined 
-  since
-  \begin{equation*}
-    [\d\circ h-h\circ \nabla,f]=[\d,f]\circ h-h\circ [\nabla,f]=\d f\ocross h-\d f\ocross h=0.
-  \end{equation*}
-  Since any connection on any bundle over $[-1,1]$ has flat sections, we conclude a flat section $g$ of $(\ast)$ will satisfy $\d \circ g=g\circ \nabla$.
+% \begin{defn}
+%   Let $\text{Bun}(\conj{\R})$ be the category of bundles $E$ equipped with fiber metrics $\ip{-,-}$ and connections $\nabla$. Every such bundle $E$ is actually isomorphic to the standard bundle $(\R^{n},\d)$, in the sense that there is a flat section of
+%   \begin{equation*}
+%     g\in \text{O}(E,\R^{n})\subset \Hom(E,\R^{n}),\text{ $n=\dim E$};
+%   \end{equation*}
+%   such a flat section induces an metric isomorphism of bundles preserving the connections, in the sense that $d\circ g=g\circ \nabla$. To be a bit more precise, observe that
+%   \begin{equation*}\tag{$\ast$}
+%     h\in \Gamma\Hom(E,\R^{n})\mapsto \d\circ h-h\circ \nabla,
+%   \end{equation*}
+%   is a connection; this is well-defined 
+%   since
+%   \begin{equation*}
+%     [\d\circ h-h\circ \nabla,f]=[\d,f]\circ h-h\circ [\nabla,f]=\d f\ocross h-\d f\ocross h=0.
+%   \end{equation*}
+%   Since any connection on any bundle over $[-1,1]$ has flat sections, we conclude a flat section $g$ of $(\ast)$ will satisfy $\d \circ g=g\circ \nabla$.
   
-  Let NBan be the category of Banach spaces. We will prefer to use $\text{Ban}$ to be the category of ``Banachable'' topological vector spaces.
+%   Let NBan be the category of Banach spaces. We will prefer to use $\text{Ban}$ to be the category of ``Banachable'' topological vector spaces.
 
-  Using our previous observations, we can define a functor
-  \begin{equation*}
-    E\in \text{Bun}(\conj{\R})\mapsto W^{k,p}_{\R}(E)\in \text{NBan},
-  \end{equation*}
-  by choosing an isomorphism $\varphi_{E}:(E,\ip{-,-},\nabla)\to (\R^{n},\ip{-,-},\d)$, and defining
-  \begin{equation*}
-    W^{k,p}_{\R}(E)=W^{k,p}(\R^{n}),
-  \end{equation*}
-  and extending to morphisms $\varphi:E_{1}\to E_{2}$ by conjugation
-  \begin{equation*}
-    \varphi_{E_{2}}\circ \varphi\circ \varphi_{E_{1}}^{-1}:W^{k,p}(\R^{n})\to W^{k,p}(\R^{n}).
-  \end{equation*}
-  This functor is well-defined up to natural isomorphism (in the category of normed Banach spaces -- this requires the isomorphisms $\varphi_{E}$ to be flat sections $\Gamma\mathrm{O}(E,\R^{n})$).
+%   Using our previous observations, we can define a functor
+%   \begin{equation*}
+%     E\in \text{Bun}(\conj{\R})\mapsto W^{k,p}_{\R}(E)\in \text{NBan},
+%   \end{equation*}
+%   by choosing an isomorphism $\varphi_{E}:(E,\ip{-,-},\nabla)\to (\R^{n},\ip{-,-},\d)$, and defining
+%   \begin{equation*}
+%     W^{k,p}_{\R}(E)=W^{k,p}(\R^{n}),
+%   \end{equation*}
+%   and extending to morphisms $\varphi:E_{1}\to E_{2}$ by conjugation
+%   \begin{equation*}
+%     \varphi_{E_{2}}\circ \varphi\circ \varphi_{E_{1}}^{-1}:W^{k,p}(\R^{n})\to W^{k,p}(\R^{n}).
+%   \end{equation*}
+%   This functor is well-defined up to natural isomorphism (in the category of normed Banach spaces -- this requires the isomorphisms $\varphi_{E}$ to be flat sections $\Gamma\mathrm{O}(E,\R^{n})$).
 
-  Now we make the observation any section of $g\in \mathrm{GL}(E_{1},E_{2})$ induces an isomorphism $$g:W^{k,p}_{\R}(E_{1})\to W^{k,p}_{\R}(E_{2})\text{ in Ban}$$
+%   Now we make the observation any section of $g\in \mathrm{GL}(E_{1},E_{2})$ induces an isomorphism $$g:W^{k,p}_{\R}(E_{1})\to W^{k,p}_{\R}(E_{2})\text{ in Ban}$$
   
-  It suffices to prove this when $E_{1}=E_{2}=\R^{n}$. It follows because the $g$ are uniformly bounded in $C^{\infty}$, and hence $g\circ (-)$ induces a bounded invertible transformation $W^{k,p}(\R^{n})\to W^{k,p}(\R^{n})$ for all $k,p$. Finally, note that by our earlier work, there are continuous inclusions, for $k\ge 1$ and $p>1$
-  \begin{equation*}
-    C^{k}_{0}(\conj{\R},E)\to W^{k,p}_{\R}(E),
-  \end{equation*}
-  and for $k\ge 0$ and $p\in (1,\infty)$ a continuous inclusion
-  \begin{equation*}
-    W^{k+1,p}_{\R}(E)\to C^{k}_{0}(\conj{\R},E).
-  \end{equation*}
-\end{defn}
+%   It suffices to prove this when $E_{1}=E_{2}=\R^{n}$. It follows because the $g$ are uniformly bounded in $C^{\infty}$, and hence $g\circ (-)$ induces a bounded invertible transformation $W^{k,p}(\R^{n})\to W^{k,p}(\R^{n})$ for all $k,p$. Finally, note that by our earlier work, there are continuous inclusions, for $k\ge 1$ and $p>1$
+%   \begin{equation*}
+%     C^{k}_{0}(\conj{\R},E)\to W^{k,p}_{\R}(E),
+%   \end{equation*}
+%   and for $k\ge 0$ and $p\in (1,\infty)$ a continuous inclusion
+%   \begin{equation*}
+%     W^{k+1,p}_{\R}(E)\to C^{k}_{0}(\conj{\R},E).
+%   \end{equation*}
+% \end{defn}
 \begin{clear}{Remark}
-  It is shown in the appendix to this set of notes that $E\mapsto
-  W^{k,p}_{\R}(E)$ is a Manifold model, and hence can be used to set
-  up a path space $\mathscr{P}$ whose tangent spaces at a curve
-  $\gamma$ are precisely $W^{k,p}_{\R}(\gamma^{*}TM)$.
+  It is not too hard to show that $E\mapsto W^{k,p}_{\R}(E)$ is a
+  Manifold model, and hence can be used to set up a path space
+  $\mathscr{P}$ whose tangent spaces at a curve $\gamma$ are precisely
+  $W^{k,p}_{\R}(\gamma^{*}TM)$.
 \end{clear}
 \end{clear}
-\begin{clear}{Remark}
-Recalling our ``outline'' (i)-(iv)
-  of how to construct $\mathscr{M}(x,y)$, we still need to show that
-  gradient flow lines are actually elements inside the Banach manifold
-  $\mathscr{P}=W^{k,p}_{x,y}(\closure{\R},M)$ constructed using
-  Schwarz's manifold model.
+% \begin{clear}{Remark}
+% Recalling our ``outline'' (i)-(iv)
+%   of how to construct $\mathscr{M}(x,y)$, we still need to show that
+%   gradient flow lines are actually elements inside the Banach manifold
+%   $\mathscr{P}=W^{k,p}_{x,y}(\closure{\R},M)$ constructed using
+%   Schwarz's manifold model.
 
-  Since $C^{\infty,p}_{x,y}(\closure{\R},M)\subset \mathscr{P}$, it
-  suffices to show that gradient flow lines $\R\to M$ extend to smooth
-  maps $\closure{\R}\to M$. This is not immediate! It is proved at the
-  end of these notes.
-\end{clear}
+%   Since $C^{\infty,p}_{x,y}(\closure{\R},M)\subset \mathscr{P}$, it
+%   suffices to show that gradient flow lines $\R\to M$ extend to smooth
+%   maps $\closure{\R}\to M$. This is not immediate! It is proved at the
+%   end of these notes.
+% \end{clear}
 
 \begin{clear}{Bundles on $\mathscr{P}$}
-  We will merely sketch the results. The way that Schwarz constructs
-  bundles on his path space $\mathscr{P}$ is also taken from
-  Eliasson's paper. The main idea is the following:
+  % We will merely sketch the results. The way that Schwarz constructs
+  % bundles on his path space $\mathscr{P}$ is also taken from
+  % Eliasson's paper. 
+  The main idea is the following:
   \begin{defn}
     A \textbf{section functor} over $W$ will be a functor
     \begin{equation*}
@@ -320,7 +331,7 @@ Recalling our ``outline'' (i)-(iv)
     The functor $E\mapsto L^{p}_{\R}(E)$ is a section functor over
     $W_{\R}^{1,p}$. 
   \end{example}
-    \begin{thm}
+  \begin{thm}
     Given any section functor $L$ and any bundle $E\to M$, there is a smooth Banach bundle $$\mathscr{E}=L(W_{b}(\closure{X},M)^{*}E)\to W_{b}(\closure{X},M),$$
 
   If we let $\mathscr{P}=W_{b}(\closure{X},M)$, then we have
@@ -491,409 +502,409 @@ Recalling our ``outline'' (i)-(iv)
   \end{example}
 \end{clear}
 
-\begin{clear}{Bonus}
-Here are a sequence of exercises culminating in a proof of Theorem \ref{thm:a251}.
+% \begin{clear}{Bonus}
+% Here are a sequence of exercises culminating in a proof of Theorem \ref{thm:a251}.
 
-\begin{xca}[just for fun]
-  Prove that $L:W^{1,p}(\R,\C^{n})\to L^{p}(\R,\C^{n})$ given by
+% \begin{xca}[just for fun]
+%   Prove that $L:W^{1,p}(\R,\C^{n})\to L^{p}(\R,\C^{n})$ given by
 
-  $L(u)=\bd_{t}u$ is not Fredholm, even though $\bd_{t}$ and
-  $\bd_{t}^{*}=-\bd_{t}$ have finite dimensional kernels. 
-\end{xca}
-\begin{xca}\label{xca:a252}
-  Prove that $L:W^{1,p}(\R,\C)\to L^{p}(\R,\C)$ given by
-  \begin{equation*}
-    L(u)=\bd_{t}u+\lambda u\text{ for $\lambda\not\in i\R$}.
-  \end{equation*}
-  is Fredholm as follows: for test functions $u$, let $v=L(u)$, we can write
-  \begin{equation*}
-    e^{\lambda t}u(t)-e^{\lambda s}u(s)=\int_{s}^{t}e^{\lambda
-      \tau}v(\tau)\,\d \tau.
-  \end{equation*}
-  If $\text{Re}(\lambda)>0$, take $s\to -\infty$, and conclude
-  \begin{equation*}\tag{$1$}
-    u(t)=\int_{-\infty}^{0}e^{\lambda r}v(t+r)\,\d r.
-  \end{equation*}
-  If $\text{Re}(\lambda)<0$, take $t\to+\infty$, (and then relabel $s\to t$) and conclude
-  \begin{equation*}\tag{$2$}
-    u(t)=-\int_{0}^{\infty}e^{\lambda r}v(t+r)\,\d r.
-  \end{equation*}
-  By pairing $u$ with a test function in $L^{q}$ and integrating,
-  conclude from either (1) or (2) (and recalling $v=Lu$) that
-  \begin{equation*}
-    \norm{u}_{L^{p}}\le \abs{\text{Re}(\lambda)}^{-1}\norm{Lu}_{L^{p}}.
-  \end{equation*}
-  Now estimate
-  \begin{equation*}
-    \begin{aligned}
-      \norm{u}_{W^{1,p}}&=\norm{u}_{L^{p}}+\norm{\bd_{t}u}_{L^{p}}\le
-      (\abs{\text{Re}(\lambda)}^{-1}+1)\norm{Lu}_{L^{p}}+\norm{\lambda
-        u}_{L^{p}}\\
-      &\le (1+(1+\abs{\lambda})
-      \abs{\text{Re}(\lambda)}^{-1})\norm{Lu}_{L^{p}}\\
-      &=C_{\lambda}\norm{Lu}_{L^{p}},
-    \end{aligned}    
-  \end{equation*}
-  where the constant $C_{\lambda}$ blows up as
-  $\text{Re}(\lambda)\to 0$. By density of test functions in
-  $W^{1,p}$, this estimate holds for all elements in
-  $W^{1,p}$. Conclude that $u\mapsto Lu$ is a closed embedding (i.e.\
-  has no kernel and closed image).
+%   $L(u)=\bd_{t}u$ is not Fredholm, even though $\bd_{t}$ and
+%   $\bd_{t}^{*}=-\bd_{t}$ have finite dimensional kernels. 
+% \end{xca}
+% \begin{xca}\label{xca:a252}
+%   Prove that $L:W^{1,p}(\R,\C)\to L^{p}(\R,\C)$ given by
+%   \begin{equation*}
+%     L(u)=\bd_{t}u+\lambda u\text{ for $\lambda\not\in i\R$}.
+%   \end{equation*}
+%   is Fredholm as follows: for test functions $u$, let $v=L(u)$, we can write
+%   \begin{equation*}
+%     e^{\lambda t}u(t)-e^{\lambda s}u(s)=\int_{s}^{t}e^{\lambda
+%       \tau}v(\tau)\,\d \tau.
+%   \end{equation*}
+%   If $\text{Re}(\lambda)>0$, take $s\to -\infty$, and conclude
+%   \begin{equation*}\tag{$1$}
+%     u(t)=\int_{-\infty}^{0}e^{\lambda r}v(t+r)\,\d r.
+%   \end{equation*}
+%   If $\text{Re}(\lambda)<0$, take $t\to+\infty$, (and then relabel $s\to t$) and conclude
+%   \begin{equation*}\tag{$2$}
+%     u(t)=-\int_{0}^{\infty}e^{\lambda r}v(t+r)\,\d r.
+%   \end{equation*}
+%   By pairing $u$ with a test function in $L^{q}$ and integrating,
+%   conclude from either (1) or (2) (and recalling $v=Lu$) that
+%   \begin{equation*}
+%     \norm{u}_{L^{p}}\le \abs{\text{Re}(\lambda)}^{-1}\norm{Lu}_{L^{p}}.
+%   \end{equation*}
+%   Now estimate
+%   \begin{equation*}
+%     \begin{aligned}
+%       \norm{u}_{W^{1,p}}&=\norm{u}_{L^{p}}+\norm{\bd_{t}u}_{L^{p}}\le
+%       (\abs{\text{Re}(\lambda)}^{-1}+1)\norm{Lu}_{L^{p}}+\norm{\lambda
+%         u}_{L^{p}}\\
+%       &\le (1+(1+\abs{\lambda})
+%       \abs{\text{Re}(\lambda)}^{-1})\norm{Lu}_{L^{p}}\\
+%       &=C_{\lambda}\norm{Lu}_{L^{p}},
+%     \end{aligned}    
+%   \end{equation*}
+%   where the constant $C_{\lambda}$ blows up as
+%   $\text{Re}(\lambda)\to 0$. By density of test functions in
+%   $W^{1,p}$, this estimate holds for all elements in
+%   $W^{1,p}$. Conclude that $u\mapsto Lu$ is a closed embedding (i.e.\
+%   has no kernel and closed image).
 
-  We can prove that $L:W^{1,p}\to L^{p}$ is surjective fairly easily now that we know
-  that $L$ has closed image. Because $\text{im}(L)$ is closed, it
-  suffices to prove that $\text{im}(L)$ is dense. If $\text{im}(L)$ is
-  not dense, then we can find an $L^{q}$ function $\varphi\ne 0$ so that
-  \begin{equation*}
-    \ip{Lu,\varphi}=0\text{ for all $u$}\implies
-    -\bd_{t}\varphi+\lambda \varphi=0\text{ in the sense of distributions}. 
-  \end{equation*}
-  It follows that $\varphi\in W^{1,q}$ and
-  $\bd_{t}\varphi-\lambda\varphi=-L^{*}\varphi=0$. By repeating the
-  argument above, we conclude
-  \begin{equation*}
-    \norm{\varphi}_{1,q}\le C_{\lambda}\norm{L^{*}\varphi}_{q},
-  \end{equation*}
-  which implies $L^{*}\varphi=0\implies \varphi=0$, contradicting the
-  fact that we assumed $\varphi\ne 0$. Therefore $L$ is an
-  isomorphism (and so is certainly Fredholm). 
-\end{xca}
-\begin{xca}
-  Let $A$ be an arbitrary $n\cross n$ matrix with no imaginary
-  eigenvalues. Prove that the differential operator $L=\bd_{t}+A$
-  induces an isomorphism
-  \begin{equation*}
-    L:W^{1,p}\to L^{p},
-  \end{equation*}
-  by arguing as follows: First suppose that $A$ has distinct
-  eigenvalues. It follows that we can choose a frame
-  $e_{1},\cdots,e_{n}$ of eigenvectors so that in this frame $u=\sum u_{i}e_{i}$
-  \begin{equation*}
-    Lu=\sum_{i}(\bd_{t}u_{i}+\lambda_{i}u_{i})e_{i}.
-  \end{equation*}
-  Since we know that maps $u_{i}\mapsto \bd_{t}u_{i}+\lambda_{i}u_{i}$ are
-  isomorphisms, it follows that $L$ is bijective, and hence an
-  isomorphism. Moreover, use the previous results to conclude an estimate
-  \begin{equation*}
-    \norm{u}_{W^{1,p}}\le
-    C(\text{Re}(\lambda_{1}),\cdots,\text{Re}(\lambda_{n}))\norm{Lu}_{L^{p}}=C_{A}\norm{Lu}
-  \end{equation*}
-  where the constant $C_{A}$ is a continuous function of the eigenvalues
-  $\lambda_{1},\cdots,\lambda_{n}\in \C\setminus i\R$.
+%   We can prove that $L:W^{1,p}\to L^{p}$ is surjective fairly easily now that we know
+%   that $L$ has closed image. Because $\text{im}(L)$ is closed, it
+%   suffices to prove that $\text{im}(L)$ is dense. If $\text{im}(L)$ is
+%   not dense, then we can find an $L^{q}$ function $\varphi\ne 0$ so that
+%   \begin{equation*}
+%     \ip{Lu,\varphi}=0\text{ for all $u$}\implies
+%     -\bd_{t}\varphi+\lambda \varphi=0\text{ in the sense of distributions}. 
+%   \end{equation*}
+%   It follows that $\varphi\in W^{1,q}$ and
+%   $\bd_{t}\varphi-\lambda\varphi=-L^{*}\varphi=0$. By repeating the
+%   argument above, we conclude
+%   \begin{equation*}
+%     \norm{\varphi}_{1,q}\le C_{\lambda}\norm{L^{*}\varphi}_{q},
+%   \end{equation*}
+%   which implies $L^{*}\varphi=0\implies \varphi=0$, contradicting the
+%   fact that we assumed $\varphi\ne 0$. Therefore $L$ is an
+%   isomorphism (and so is certainly Fredholm). 
+% \end{xca}
+% \begin{xca}
+%   Let $A$ be an arbitrary $n\cross n$ matrix with no imaginary
+%   eigenvalues. Prove that the differential operator $L=\bd_{t}+A$
+%   induces an isomorphism
+%   \begin{equation*}
+%     L:W^{1,p}\to L^{p},
+%   \end{equation*}
+%   by arguing as follows: First suppose that $A$ has distinct
+%   eigenvalues. It follows that we can choose a frame
+%   $e_{1},\cdots,e_{n}$ of eigenvectors so that in this frame $u=\sum u_{i}e_{i}$
+%   \begin{equation*}
+%     Lu=\sum_{i}(\bd_{t}u_{i}+\lambda_{i}u_{i})e_{i}.
+%   \end{equation*}
+%   Since we know that maps $u_{i}\mapsto \bd_{t}u_{i}+\lambda_{i}u_{i}$ are
+%   isomorphisms, it follows that $L$ is bijective, and hence an
+%   isomorphism. Moreover, use the previous results to conclude an estimate
+%   \begin{equation*}
+%     \norm{u}_{W^{1,p}}\le
+%     C(\text{Re}(\lambda_{1}),\cdots,\text{Re}(\lambda_{n}))\norm{Lu}_{L^{p}}=C_{A}\norm{Lu}
+%   \end{equation*}
+%   where the constant $C_{A}$ is a continuous function of the eigenvalues
+%   $\lambda_{1},\cdots,\lambda_{n}\in \C\setminus i\R$.
 
-  Now suppose that $A$ has repeat eigenvalues. For all $A'$ with
-  simple eigenvalues, compute
-  \begin{equation*}
-    \norm{\bd_{t}+A-(\bd_{t}+A')}\le \abs{A-A'},
-  \end{equation*}
-  and so 
-  \begin{equation*}
-    \norm{u}_{W^{1,p}}\le C_{A'}\norm{L'u}_{L^{p}}\implies
-    \norm{u}_{W^{1,p}}\le
-    C_{A'}\norm{Lu}_{L^{p}}+C_{A'}\abs{A-A'}\norm{u}_{W^{1,p}}. 
-  \end{equation*}
-  We claim that we can pick $A'$ so that $C_{A'}\abs{A-A'}<1/2$. This
-  can be achieved since
-  \begin{equation*}
-    C_{A'}\abs{A-A'}\le C_{A}\abs{A-A'}+\underbrace{\abs{C_{A}-C_{A'}}\abs{A'-A}}_{\text{ctns}},
-  \end{equation*}
-  so it suffices to pick $A'$ sufficiently close to $A$. Then we
-  conclude that
-  \begin{equation*}
-    \norm{u}_{W^{1,p}}\le
-    C\norm{Lu}_{L^{p}}.
-  \end{equation*}
-  Arguing as we did above (or differently if you wish), we conclude that $L$ is an isomorphism.  
-\end{xca}
-\begin{xca}
-  Consider a time dependent family of matrices $A(t)$, so that
-  $A(-\infty)$ and $A(+\infty)$ converge to matrices with no
-  imaginary eigenvalues. Prove that $L=\bd_{t}+A(t)$ is Fredholm as
-  follows: let $L_{-}=\bd_{t}+A(-\infty)$,
-  $L_{+}=\bd_{t}+A(+\infty)$. We have shown that there are constants
-  $C_{\pm}$ so that
-  \begin{equation*}
-    \norm{u}_{L^{p}}\le C_{\pm}\norm{L_{\pm}u}_{L^{p}}.
-  \end{equation*}
-  Suppose that $\abs{A(t)-A(-\infty)}<\epsilon$, $t<-R$,
-  $\abs{A(t)-A(\infty)}<\epsilon$, $t>R$, for some constant $\epsilon>0$
-  to be determined as function of $C_{\pm }$ ($R$ depends on $\epsilon$). Consider a partition
-  of unity $\rho_{-},\rho,\rho_{+}$ so that $\rho_{-}$ is supported in
-  $(-\infty,-R)$, $\rho$ in $(-2R,2R)$, and $\rho_{+}$ in
-  $(R,\infty)$. For any $u$ compute
-  \begin{equation*}
-    \begin{aligned}
-      \norm{u}_{L^{p}}&\le \norm{\rho_{-}u}_{L^{p}}+\norm{\rho
-        u}_{L^{p}}+\norm{\rho_{+}u}_{L^{p}}\\
-      &\le C_{-}\norm{L_{-}\rho_{-}u}_{L^{p}}+\norm{\rho
-        u}_{L^{p}}+C_{+}\norm{L_{+}\rho_{+}u}_{L^{p}}\\
-      &\le C_{-}\norm{L\rho_{-}u}_{L^{p}}+\norm{\rho
-        u}_{L^{p}}+C_{+}\norm{L\rho_{+}u}_{L^{p}}+\epsilon(C_{-}+C_{+})\norm{u}_{L^{p}}\\
-      &\le C\left(\,\norm{Lu}_{L^{p}}+\norm{\rho u}_{L^{p}}+\norm{[L,\rho_{-}]u}_{L^{p}}+\norm{[L,\rho_{+}]u}_{L^{p}}\,\right)+\epsilon(C_{-}+C_{+})\norm{u}_{L^{p}},
-    \end{aligned}
-  \end{equation*}
-  where $[L,\rho_{\pm}]=L\rho_{\pm}-\rho_{\pm} L$ is the commutator, which is a zeroth
-  order operator supported in $[-2R,2R]$ (since the derivatives of
-  $\rho_{\pm}$ are supported $[-2R,2R]$). Now let's agree to have
-  picked $\epsilon$ smaller than $2^{-1}(C_{-}+C_{+})^{-1}$, so that
-  we conclude
-  \begin{equation*}
-    \norm{u}_{L^{p}}\le 2C\left(\,\norm{Lu}_{L^{p}}+\norm{\rho u}_{L^{p}}+\norm{[L,\rho_{-}]u}_{L^{p}}+\norm{[L,\rho_{+}]u}_{L^{p}}\,\right).
-  \end{equation*}
-  Consider the continuous map
-  \begin{equation*}
-    K:W^{1,p}(\R)\to W^{1,p}([-2R,2R])^{3}\ \ Ku=(\rho u, [L,\rho_{-}]u,[L,\rho_{+}]u).
-  \end{equation*}
-  Arguing as we did in Exercise \ref{xca:a252}, we conclude a new
-  constant $C$ (independent of $u$) so that
-  \begin{equation*}
-    \norm{u}_{W^{1,p}}\le C\left(\,\norm{Lu}_{L^{p}}+\norm{Ku}_{L^{p}([-2R,2R])^{3}}\,\right).
-  \end{equation*}
-  Since $K:W^{1,p}\to W^{1,p}([-2R,2R])^{3}\to L^{p}([-2R,2R])^{3}$ is
-  a compact operator (since $$W^{1,p}([-2R,2R])\to L^{p}([-2R,2R])$$ is
-  compact by Rellich compactness) conclude that $L$ has closed image and finite dimensional
-  kernel. Since $L^{*}$ is of the same form as $L$, we can repeat the
-  argument to show that $\ker L^{*}$ is finite dimensional.
+%   Now suppose that $A$ has repeat eigenvalues. For all $A'$ with
+%   simple eigenvalues, compute
+%   \begin{equation*}
+%     \norm{\bd_{t}+A-(\bd_{t}+A')}\le \abs{A-A'},
+%   \end{equation*}
+%   and so 
+%   \begin{equation*}
+%     \norm{u}_{W^{1,p}}\le C_{A'}\norm{L'u}_{L^{p}}\implies
+%     \norm{u}_{W^{1,p}}\le
+%     C_{A'}\norm{Lu}_{L^{p}}+C_{A'}\abs{A-A'}\norm{u}_{W^{1,p}}. 
+%   \end{equation*}
+%   We claim that we can pick $A'$ so that $C_{A'}\abs{A-A'}<1/2$. This
+%   can be achieved since
+%   \begin{equation*}
+%     C_{A'}\abs{A-A'}\le C_{A}\abs{A-A'}+\underbrace{\abs{C_{A}-C_{A'}}\abs{A'-A}}_{\text{ctns}},
+%   \end{equation*}
+%   so it suffices to pick $A'$ sufficiently close to $A$. Then we
+%   conclude that
+%   \begin{equation*}
+%     \norm{u}_{W^{1,p}}\le
+%     C\norm{Lu}_{L^{p}}.
+%   \end{equation*}
+%   Arguing as we did above (or differently if you wish), we conclude that $L$ is an isomorphism.  
+% \end{xca}
+% \begin{xca}
+%   Consider a time dependent family of matrices $A(t)$, so that
+%   $A(-\infty)$ and $A(+\infty)$ converge to matrices with no
+%   imaginary eigenvalues. Prove that $L=\bd_{t}+A(t)$ is Fredholm as
+%   follows: let $L_{-}=\bd_{t}+A(-\infty)$,
+%   $L_{+}=\bd_{t}+A(+\infty)$. We have shown that there are constants
+%   $C_{\pm}$ so that
+%   \begin{equation*}
+%     \norm{u}_{L^{p}}\le C_{\pm}\norm{L_{\pm}u}_{L^{p}}.
+%   \end{equation*}
+%   Suppose that $\abs{A(t)-A(-\infty)}<\epsilon$, $t<-R$,
+%   $\abs{A(t)-A(\infty)}<\epsilon$, $t>R$, for some constant $\epsilon>0$
+%   to be determined as function of $C_{\pm }$ ($R$ depends on $\epsilon$). Consider a partition
+%   of unity $\rho_{-},\rho,\rho_{+}$ so that $\rho_{-}$ is supported in
+%   $(-\infty,-R)$, $\rho$ in $(-2R,2R)$, and $\rho_{+}$ in
+%   $(R,\infty)$. For any $u$ compute
+%   \begin{equation*}
+%     \begin{aligned}
+%       \norm{u}_{L^{p}}&\le \norm{\rho_{-}u}_{L^{p}}+\norm{\rho
+%         u}_{L^{p}}+\norm{\rho_{+}u}_{L^{p}}\\
+%       &\le C_{-}\norm{L_{-}\rho_{-}u}_{L^{p}}+\norm{\rho
+%         u}_{L^{p}}+C_{+}\norm{L_{+}\rho_{+}u}_{L^{p}}\\
+%       &\le C_{-}\norm{L\rho_{-}u}_{L^{p}}+\norm{\rho
+%         u}_{L^{p}}+C_{+}\norm{L\rho_{+}u}_{L^{p}}+\epsilon(C_{-}+C_{+})\norm{u}_{L^{p}}\\
+%       &\le C\left(\,\norm{Lu}_{L^{p}}+\norm{\rho u}_{L^{p}}+\norm{[L,\rho_{-}]u}_{L^{p}}+\norm{[L,\rho_{+}]u}_{L^{p}}\,\right)+\epsilon(C_{-}+C_{+})\norm{u}_{L^{p}},
+%     \end{aligned}
+%   \end{equation*}
+%   where $[L,\rho_{\pm}]=L\rho_{\pm}-\rho_{\pm} L$ is the commutator, which is a zeroth
+%   order operator supported in $[-2R,2R]$ (since the derivatives of
+%   $\rho_{\pm}$ are supported $[-2R,2R]$). Now let's agree to have
+%   picked $\epsilon$ smaller than $2^{-1}(C_{-}+C_{+})^{-1}$, so that
+%   we conclude
+%   \begin{equation*}
+%     \norm{u}_{L^{p}}\le 2C\left(\,\norm{Lu}_{L^{p}}+\norm{\rho u}_{L^{p}}+\norm{[L,\rho_{-}]u}_{L^{p}}+\norm{[L,\rho_{+}]u}_{L^{p}}\,\right).
+%   \end{equation*}
+%   Consider the continuous map
+%   \begin{equation*}
+%     K:W^{1,p}(\R)\to W^{1,p}([-2R,2R])^{3}\ \ Ku=(\rho u, [L,\rho_{-}]u,[L,\rho_{+}]u).
+%   \end{equation*}
+%   Arguing as we did in Exercise \ref{xca:a252}, we conclude a new
+%   constant $C$ (independent of $u$) so that
+%   \begin{equation*}
+%     \norm{u}_{W^{1,p}}\le C\left(\,\norm{Lu}_{L^{p}}+\norm{Ku}_{L^{p}([-2R,2R])^{3}}\,\right).
+%   \end{equation*}
+%   Since $K:W^{1,p}\to W^{1,p}([-2R,2R])^{3}\to L^{p}([-2R,2R])^{3}$ is
+%   a compact operator (since $$W^{1,p}([-2R,2R])\to L^{p}([-2R,2R])$$ is
+%   compact by Rellich compactness) conclude that $L$ has closed image and finite dimensional
+%   kernel. Since $L^{*}$ is of the same form as $L$, we can repeat the
+%   argument to show that $\ker L^{*}$ is finite dimensional.
 
-  Finally, conclude (via a standard argument) that $L$ is Fredholm by
-  showing that $\coker L$ is isomorphic to
-  $(\ker L^{*})^{\text{dual}}$.
-\end{xca}
-\begin{xca}
-  In this final exercise, we will show that the index of
-  \begin{equation*}
-    L=\bd_{t}+A(t),
-  \end{equation*}
-  is equal to the spectral flow of $A(t)$.
+%   Finally, conclude (via a standard argument) that $L$ is Fredholm by
+%   showing that $\coker L$ is isomorphic to
+%   $(\ker L^{*})^{\text{dual}}$.
+% \end{xca}
+% \begin{xca}
+%   In this final exercise, we will show that the index of
+%   \begin{equation*}
+%     L=\bd_{t}+A(t),
+%   \end{equation*}
+%   is equal to the spectral flow of $A(t)$.
 
-  We argue as follows. First, consider a perturbation $A^{s}$ so that
-  $A^{0}=A$ and
+%   We argue as follows. First, consider a perturbation $A^{s}$ so that
+%   $A^{0}=A$ and
 
-  (i) $A^{s}(\pm \infty)$ has no imaginary eigenvalues, for all $s$,
+%   (i) $A^{s}(\pm \infty)$ has no imaginary eigenvalues, for all $s$,
 
-  (ii) $A^{1}(t)$ has distinct eigenvalues for each $t$ (including $\pm\infty$).
+%   (ii) $A^{1}(t)$ has distinct eigenvalues for each $t$ (including $\pm\infty$).
 
-  We leave it to the reader to convince themselves that this is
-  possible. The family of operators $L^{s}=\bd_{t}+A^{s}(t)$ is a
-  family of Fredholm operators (by ($i$)) and hence the index does not
-  change during this perturbation. Without loss, suppose that $A(t)$
-  has distinct eigenvalues for all time.
+%   We leave it to the reader to convince themselves that this is
+%   possible. The family of operators $L^{s}=\bd_{t}+A^{s}(t)$ is a
+%   family of Fredholm operators (by ($i$)) and hence the index does not
+%   change during this perturbation. Without loss, suppose that $A(t)$
+%   has distinct eigenvalues for all time.
 
-  The space of unit-length eigen-frames for $A(t)$ is discrete (since
-  $A(t)$ has distinct eigenvalues) and hence we can find a traveling
-  family of unit length eigenvectors $e_{1}(t),\cdots,e_{n}(t)$ smooth on $\R$,
-  and continuous on $\closure{\R}$. By writing
-  \begin{equation*}
-    u=\sum_{i}u_{i}e_{i}(t),
-  \end{equation*}
-  we conclude that
-  \begin{equation*}
-    Lu=\sum_{i}(\bd_{t}u_{i}+\lambda_{i}(t)u_{i})e_{i}+\sum e_{i}'(t)u_{i}.
-  \end{equation*}
-  Since $A(\pm\infty)$ converge, $e_{i}'(t)\to 0$ as
-  $t\to\pm\infty$. Hence the family of operators
-  \begin{equation*}
-    L^{s}u=\sum_{i}(\bd_{t}u_{i}+\lambda_{i}(t)u_{i})e_{i}+s\sum e_{i}'(t)u_{i}
-  \end{equation*}
-  is a family of Fredholm operators. The index is unchanged, and so it
-  suffices to prove the case when
-  \begin{equation*}
-    Lu=\sum_{i}(\bd_{t}u_{i}+\lambda_{i}(t)u_{i})e_{i}(t).
-  \end{equation*}
-  Conclude (directly) that in this case
-  \begin{equation*}
-    \text{index}(L)=\sum_{i}\text{index}(\bd_{t}+\lambda_{i}(t)).
-  \end{equation*}
-  This reduces the problem to computing the index of a fairly simple
-  differential operator. We compute
-  \begin{equation*}\tag{$\ast$}
-    \bd_{t}u+\lambda_{i}(t)u=0\iff
-    u(t)=u(0)\exp(-\int_{0}^{t}\lambda_{i}(s)\,\d s).
-  \end{equation*}
-  The only way this can possible converge to an element of $W^{1,p}$
-  is if
-  \begin{equation*}
-    \text{Re}\lambda_{i}(-\infty)<0\text{ and }\text{Re}\lambda_{i}(+\infty)>0,
-  \end{equation*}
-  conversely, if the above is satisfied, conclude that ($\ast$)
-  defines an element of $W^{1,p}$ in the kernel of
-  $\bd_{t}+\lambda_{i}(t)$. Therefore we conclude
-  \begin{equation*}
-    \dim\ker(\bd_{t}+\lambda_{i}(t))=
-    \begin{cases}
-      1&\text{ if }\text{Re}\lambda_{i}(-\infty)<0<\text{Re}\lambda_{i}(+\infty)\\
-      0&\text{ otherwise }.
-    \end{cases}
-  \end{equation*}
-  The adjoint of the differential operator is
-  $(\bd_{t}+\lambda_{i}(t))^{*}=-(\bd_{t}-\lambda_{i}(t))$, and so the same argument shows
-  that
-  \begin{equation*}
-    \dim\ker(\bd_{t}-\lambda_{i}(t))=\begin{cases}
-      1&\text{ if }\text{Re}\lambda_{i}(-\infty)>0>\text{Re}\lambda_{i}(+\infty)\\
-      0&\text{ otherwise }.
-    \end{cases}
-  \end{equation*}
-  Conclude that
-  \begin{equation*}
-    \text{index}(\bd_{t}+\lambda_{i}(t))=\#\text{ eigenvalues which
-      cross the imaginary axis, with signs},
-  \end{equation*}
-  and conclude that
-  \begin{equation*}
-    \text{index}(L)=\#\text{ eigenvalues which
-      cross the imaginary axis, with signs},
-  \end{equation*}
-  as desired.
-\end{xca}  
-\end{clear}
-\begin{clear}{Proof that $W^{k,p}_{\R}$ is a manifold model}
+%   The space of unit-length eigen-frames for $A(t)$ is discrete (since
+%   $A(t)$ has distinct eigenvalues) and hence we can find a traveling
+%   family of unit length eigenvectors $e_{1}(t),\cdots,e_{n}(t)$ smooth on $\R$,
+%   and continuous on $\closure{\R}$. By writing
+%   \begin{equation*}
+%     u=\sum_{i}u_{i}e_{i}(t),
+%   \end{equation*}
+%   we conclude that
+%   \begin{equation*}
+%     Lu=\sum_{i}(\bd_{t}u_{i}+\lambda_{i}(t)u_{i})e_{i}+\sum e_{i}'(t)u_{i}.
+%   \end{equation*}
+%   Since $A(\pm\infty)$ converge, $e_{i}'(t)\to 0$ as
+%   $t\to\pm\infty$. Hence the family of operators
+%   \begin{equation*}
+%     L^{s}u=\sum_{i}(\bd_{t}u_{i}+\lambda_{i}(t)u_{i})e_{i}+s\sum e_{i}'(t)u_{i}
+%   \end{equation*}
+%   is a family of Fredholm operators. The index is unchanged, and so it
+%   suffices to prove the case when
+%   \begin{equation*}
+%     Lu=\sum_{i}(\bd_{t}u_{i}+\lambda_{i}(t)u_{i})e_{i}(t).
+%   \end{equation*}
+%   Conclude (directly) that in this case
+%   \begin{equation*}
+%     \text{index}(L)=\sum_{i}\text{index}(\bd_{t}+\lambda_{i}(t)).
+%   \end{equation*}
+%   This reduces the problem to computing the index of a fairly simple
+%   differential operator. We compute
+%   \begin{equation*}\tag{$\ast$}
+%     \bd_{t}u+\lambda_{i}(t)u=0\iff
+%     u(t)=u(0)\exp(-\int_{0}^{t}\lambda_{i}(s)\,\d s).
+%   \end{equation*}
+%   The only way this can possible converge to an element of $W^{1,p}$
+%   is if
+%   \begin{equation*}
+%     \text{Re}\lambda_{i}(-\infty)<0\text{ and }\text{Re}\lambda_{i}(+\infty)>0,
+%   \end{equation*}
+%   conversely, if the above is satisfied, conclude that ($\ast$)
+%   defines an element of $W^{1,p}$ in the kernel of
+%   $\bd_{t}+\lambda_{i}(t)$. Therefore we conclude
+%   \begin{equation*}
+%     \dim\ker(\bd_{t}+\lambda_{i}(t))=
+%     \begin{cases}
+%       1&\text{ if }\text{Re}\lambda_{i}(-\infty)<0<\text{Re}\lambda_{i}(+\infty)\\
+%       0&\text{ otherwise }.
+%     \end{cases}
+%   \end{equation*}
+%   The adjoint of the differential operator is
+%   $(\bd_{t}+\lambda_{i}(t))^{*}=-(\bd_{t}-\lambda_{i}(t))$, and so the same argument shows
+%   that
+%   \begin{equation*}
+%     \dim\ker(\bd_{t}-\lambda_{i}(t))=\begin{cases}
+%       1&\text{ if }\text{Re}\lambda_{i}(-\infty)>0>\text{Re}\lambda_{i}(+\infty)\\
+%       0&\text{ otherwise }.
+%     \end{cases}
+%   \end{equation*}
+%   Conclude that
+%   \begin{equation*}
+%     \text{index}(\bd_{t}+\lambda_{i}(t))=\#\text{ eigenvalues which
+%       cross the imaginary axis, with signs},
+%   \end{equation*}
+%   and conclude that
+%   \begin{equation*}
+%     \text{index}(L)=\#\text{ eigenvalues which
+%       cross the imaginary axis, with signs},
+%   \end{equation*}
+%   as desired.
+% \end{xca}  
+% \end{clear}
+% \begin{clear}{Proof that $W^{k,p}_{\R}$ is a manifold model}
   
-\begin{lemma}[Banach algebra]
-  The obvious bilinear pairing
-  \begin{equation*}
-    W^{k,p}_{\R}(E_{1})\ocross W^{k,p}_{\R}(\Hom(E_{1},E_{2}))\to W^{k,p}_{\R}(E_{2})
-  \end{equation*}
-  is continuous.   
-\end{lemma}
-\begin{proof}
-  It suffices to prove this for $E_{1}=\R^{n}$, $E_{2}=\R^{m}$, whereby it reduces to the claim that
-  \begin{equation*}
-    W^{k,p}(\R^{n})\ocross W^{k,p}(\Hom(\R^{n},\R^{m}))\to W^{k,p}(\R^{m})
-  \end{equation*}
-  is continuous. This is true because 
-  \begin{equation*}
-    \d^{k}(Au)=\sum_{a+b=k}\d^{a}A\ocross \d^{b}u,
-  \end{equation*}
-  so
-  \begin{equation*}
-    \norm{Au}_{W^{k,p}}\le \sum_{a+b\le k}\norm{A}_{W^{k,p}}\norm{u}_{W^{k,p}},
-  \end{equation*}
-  where we use that $\norm{\d^{b}u}_{C^{0}}\le \norm{u}_{W^{k,p}}$ if $b<k$ and $\norm{\d^{b}u}_{L^{p}}\le \norm{u}_{W^{k,p}}$ for all $b$ (and similarly for $A$). 
-\end{proof}
+% \begin{lemma}[Banach algebra]
+%   The obvious bilinear pairing
+%   \begin{equation*}
+%     W^{k,p}_{\R}(E_{1})\ocross W^{k,p}_{\R}(\Hom(E_{1},E_{2}))\to W^{k,p}_{\R}(E_{2})
+%   \end{equation*}
+%   is continuous.   
+% \end{lemma}
+% \begin{proof}
+%   It suffices to prove this for $E_{1}=\R^{n}$, $E_{2}=\R^{m}$, whereby it reduces to the claim that
+%   \begin{equation*}
+%     W^{k,p}(\R^{n})\ocross W^{k,p}(\Hom(\R^{n},\R^{m}))\to W^{k,p}(\R^{m})
+%   \end{equation*}
+%   is continuous. This is true because 
+%   \begin{equation*}
+%     \d^{k}(Au)=\sum_{a+b=k}\d^{a}A\ocross \d^{b}u,
+%   \end{equation*}
+%   so
+%   \begin{equation*}
+%     \norm{Au}_{W^{k,p}}\le \sum_{a+b\le k}\norm{A}_{W^{k,p}}\norm{u}_{W^{k,p}},
+%   \end{equation*}
+%   where we use that $\norm{\d^{b}u}_{C^{0}}\le \norm{u}_{W^{k,p}}$ if $b<k$ and $\norm{\d^{b}u}_{L^{p}}\le \norm{u}_{W^{k,p}}$ for all $b$ (and similarly for $A$). 
+% \end{proof}
 
-\begin{defn}
-  Let $U$ be an precompact open subset of $E$ (the total space of $E\to \conj{\R}$), and define $W^{k,p}_{\R}(U)$ to be the set of sections of $W^{k,p}_{\R}(E)$ which lie in $U$. This is open in the $C^{0}$ topology (which is just the compact open topology) and hence is open in $W^{k,p}_{\R}(U)$ since $W^{k,p}_{\R}(U)$ includes into $C^{0}(\conj{\R},E)$.
+% \begin{defn}
+%   Let $U$ be an precompact open subset of $E$ (the total space of $E\to \conj{\R}$), and define $W^{k,p}_{\R}(U)$ to be the set of sections of $W^{k,p}_{\R}(E)$ which lie in $U$. This is open in the $C^{0}$ topology (which is just the compact open topology) and hence is open in $W^{k,p}_{\R}(U)$ since $W^{k,p}_{\R}(U)$ includes into $C^{0}(\conj{\R},E)$.
 
-  Suppose we have two bundles $E_{1},E_{2}$ and an open subset
-  $U\subset E_{1}$. Let $f:U\to E_{2}$ be a fiber preserving smooth
-  function which extends to $\closure{U}$, and which vanishes on
-  $0\cap \bd\conj{\R}$. It is clear that there is a continuous composition map
-  \begin{equation*}
-    f\circ : C^{0}_{0}(U)\to C^{0}_{0}(E_{2})
-  \end{equation*}
-  This morphism is the empty morphism if there are no sections of $E_{1}$ lying in $U$ and vanishing at the endpoints. We can thereby suppose that $U$ contains $\pm\infty$. It will be important to note that $C^{0}_{0}(U)$ is locally convex: if $u\in C^{0}_{0}$, then we can cover the graph of $u$ by finitely many open sets of the form $I\cross B$, where $B$ is a ball in each fiber. Then this open set is convex around $u$. 
-\end{defn}
-\begin{lemma}
-  Let $f:\closure{U}\subset E_{1}\to E_{2}$ be a fiber preserving smooth map. There is a unique continuous composition map making the diagram commute
-  \begin{equation*}
-    \begin{tikzcd}
-      C^{0}_{0}(U)\arrow[r,"f\circ "]&C^{0}_{0}(E_{2})\\
-      W^{k,p}_{\R}(U)\arrow[u,"\subset"]\arrow[r,"f\circ"]&W^{k,p}_{\R}(E_{2})\arrow[u,"\subset"]
-    \end{tikzcd}
-  \end{equation*}  
-\end{lemma}
-\begin{proof}
-  The uniqueness is clear, since the inclusions are injective. Note that $f\circ$ is already well-defined on the dense subspace $C^{\infty}_{0}(U)\subset W^{k,p}_{\R}(U)$. It suffices to show that this function $f\circ $ is continuous on $C^{\infty}_{0}(U)$ in the $W^{k,p}_{\R}(U)$ topology. 
+%   Suppose we have two bundles $E_{1},E_{2}$ and an open subset
+%   $U\subset E_{1}$. Let $f:U\to E_{2}$ be a fiber preserving smooth
+%   function which extends to $\closure{U}$, and which vanishes on
+%   $0\cap \bd\conj{\R}$. It is clear that there is a continuous composition map
+%   \begin{equation*}
+%     f\circ : C^{0}_{0}(U)\to C^{0}_{0}(E_{2})
+%   \end{equation*}
+%   This morphism is the empty morphism if there are no sections of $E_{1}$ lying in $U$ and vanishing at the endpoints. We can thereby suppose that $U$ contains $\pm\infty$. It will be important to note that $C^{0}_{0}(U)$ is locally convex: if $u\in C^{0}_{0}$, then we can cover the graph of $u$ by finitely many open sets of the form $I\cross B$, where $B$ is a ball in each fiber. Then this open set is convex around $u$. 
+% \end{defn}
+% \begin{lemma}
+%   Let $f:\closure{U}\subset E_{1}\to E_{2}$ be a fiber preserving smooth map. There is a unique continuous composition map making the diagram commute
+%   \begin{equation*}
+%     \begin{tikzcd}
+%       C^{0}_{0}(U)\arrow[r,"f\circ "]&C^{0}_{0}(E_{2})\\
+%       W^{k,p}_{\R}(U)\arrow[u,"\subset"]\arrow[r,"f\circ"]&W^{k,p}_{\R}(E_{2})\arrow[u,"\subset"]
+%     \end{tikzcd}
+%   \end{equation*}  
+% \end{lemma}
+% \begin{proof}
+%   The uniqueness is clear, since the inclusions are injective. Note that $f\circ$ is already well-defined on the dense subspace $C^{\infty}_{0}(U)\subset W^{k,p}_{\R}(U)$. It suffices to show that this function $f\circ $ is continuous on $C^{\infty}_{0}(U)$ in the $W^{k,p}_{\R}(U)$ topology. 
 
-  We can now assume that $E_{1}=\R^{n}$, $E_{2}=\R^{m}$. We introduce some notation. Let $F^{1}f$ denote the fiber derivative of $f$, so that $F^{1}f$ is a function $\closure{U}\to \Hom(\R^{n},\R^{m})$, and let $f_{t}:\closure{U}\to \R^{n}$ be the time derivative.
-  \begin{claim}
-    Let $u\in C^{\infty}_{0}(U)$. There is a constant $C$ depending on $u$ and $f$, so that for each $v$ sufficiently close to $u$, we have
-    \begin{equation*}
-      \norm{f\circ u-f\circ v}_{W^{k,p}}\le C\norm{u-v}_{W^{k,p}}.
-    \end{equation*}
-  \end{claim}
-    We begin by requiring $v$ to lie in a convex open set around $u$ and $\norm{u-v}_{W^{k,p}}\le 1$ and so that we may easily estimate $\norm{v}_{W^{k,p}}\le 1+\norm{u}_{W^{k,p}}$.
+%   We can now assume that $E_{1}=\R^{n}$, $E_{2}=\R^{m}$. We introduce some notation. Let $F^{1}f$ denote the fiber derivative of $f$, so that $F^{1}f$ is a function $\closure{U}\to \Hom(\R^{n},\R^{m})$, and let $f_{t}:\closure{U}\to \R^{n}$ be the time derivative.
+%   \begin{claim}
+%     Let $u\in C^{\infty}_{0}(U)$. There is a constant $C$ depending on $u$ and $f$, so that for each $v$ sufficiently close to $u$, we have
+%     \begin{equation*}
+%       \norm{f\circ u-f\circ v}_{W^{k,p}}\le C\norm{u-v}_{W^{k,p}}.
+%     \end{equation*}
+%   \end{claim}
+%     We begin by requiring $v$ to lie in a convex open set around $u$ and $\norm{u-v}_{W^{k,p}}\le 1$ and so that we may easily estimate $\norm{v}_{W^{k,p}}\le 1+\norm{u}_{W^{k,p}}$.
 
-    We argue by induction. The base case follows easily, since we can estimate
-    \begin{equation*}
-      \abs{f(t,u(t))-f(t,v(t))}\le \norm{F^{1}f}_{C^{0}}\abs{u(t)-v(t)}.
-    \end{equation*}
-    For the inductive step $k-1\to k$, observe that it suffices to estimate
-    \begin{equation*}
-      \norm{\bd_{t}(f(t,u(t))-f(t,v(t)))}_{W^{k-1,p}}\le p^{k}(\norm{u}_{W^{k,p}})\norm{u-v}_{W^{k,p}}.
-    \end{equation*}
-    We compute
-    \begin{equation*}
-      \bd_{t}(f(t,u(t))=(F^{1}f\circ u)\cdot u+f_{t}\circ u,
-    \end{equation*}
-    and hence
-    \begin{equation*}
-      \begin{aligned}
-        \norm{\bd_{t}(f(t,u(t))-f(t,v(t)))}_{W^{k-1,p}}\le &\norm{F^{1}f\circ u-F^{1}f\circ v}_{W^{k-1,p}}\norm{u}_{W^{k-1,p}}\\
-        &+\norm{F^{1}f\circ v}\norm{u-v}_{W^{k-1,p}}+\norm{f_{t}\circ u-f_{t}\circ v}_{W^{k-1,p}}.
-      \end{aligned}
-    \end{equation*}
-    By the inductive assumption, applied twice, we estimate
-    \begin{equation*}
-      \norm{F^{1}f\circ u-F^{1}f\circ v}_{W^{k-1,p}}\norm{u}_{W^{k-1,p}}+\norm{f_{t}\circ u-f_{t}\circ v}_{W^{k-1,p}}\le C\norm{u-v}_{W^{k,p}},
-    \end{equation*}
-    where we recall that $C$ is allowed to depend on $\norm{u}_{W^{k-1,p}}$.
-    Next, we estimate the term
-    \begin{equation*}
-      \norm{F^{1}f\circ v}\le \norm{F^{1}f\circ v-F^{1}f\circ u}+\norm{F^{1}f\circ u}\le C(1+\norm{F^{1}f\circ u})=C,
-    \end{equation*}
-    and thereby conclude
-    \begin{equation*}
-      \norm{\bd_{t}(f(t,u(t))-f(t,v(t)))}_{W^{k-1,p}}\le C\norm{u-v}_{W^{k,p}},
-    \end{equation*}
-    as desired. This completes the proof of the Claim, and therefore the Lemma.
-\end{proof}
-\end{clear}
-\begin{clear}{Gradient flow lines are elements in Schwarz's path space
-    $\mathscr{P}$}
-  Let $\conj{X}=\conj{\R}$, $X=\R$, and let $W$ be any manifold model. Let $\varphi$ be a Morse function with critical points at $x$ and $y$, and let $\gamma:\R\to M$ be a trajectory of $\text{grad}_{\varphi}$ joining $x$ to $y$. We claim that the continuous extension $\gamma:\conj{\R}\to M$ is smooth, and hence is an element in $\mathscr{P}^{W}_{x,y}$.
+%     We argue by induction. The base case follows easily, since we can estimate
+%     \begin{equation*}
+%       \abs{f(t,u(t))-f(t,v(t))}\le \norm{F^{1}f}_{C^{0}}\abs{u(t)-v(t)}.
+%     \end{equation*}
+%     For the inductive step $k-1\to k$, observe that it suffices to estimate
+%     \begin{equation*}
+%       \norm{\bd_{t}(f(t,u(t))-f(t,v(t)))}_{W^{k-1,p}}\le p^{k}(\norm{u}_{W^{k,p}})\norm{u-v}_{W^{k,p}}.
+%     \end{equation*}
+%     We compute
+%     \begin{equation*}
+%       \bd_{t}(f(t,u(t))=(F^{1}f\circ u)\cdot u+f_{t}\circ u,
+%     \end{equation*}
+%     and hence
+%     \begin{equation*}
+%       \begin{aligned}
+%         \norm{\bd_{t}(f(t,u(t))-f(t,v(t)))}_{W^{k-1,p}}\le &\norm{F^{1}f\circ u-F^{1}f\circ v}_{W^{k-1,p}}\norm{u}_{W^{k-1,p}}\\
+%         &+\norm{F^{1}f\circ v}\norm{u-v}_{W^{k-1,p}}+\norm{f_{t}\circ u-f_{t}\circ v}_{W^{k-1,p}}.
+%       \end{aligned}
+%     \end{equation*}
+%     By the inductive assumption, applied twice, we estimate
+%     \begin{equation*}
+%       \norm{F^{1}f\circ u-F^{1}f\circ v}_{W^{k-1,p}}\norm{u}_{W^{k-1,p}}+\norm{f_{t}\circ u-f_{t}\circ v}_{W^{k-1,p}}\le C\norm{u-v}_{W^{k,p}},
+%     \end{equation*}
+%     where we recall that $C$ is allowed to depend on $\norm{u}_{W^{k-1,p}}$.
+%     Next, we estimate the term
+%     \begin{equation*}
+%       \norm{F^{1}f\circ v}\le \norm{F^{1}f\circ v-F^{1}f\circ u}+\norm{F^{1}f\circ u}\le C(1+\norm{F^{1}f\circ u})=C,
+%     \end{equation*}
+%     and thereby conclude
+%     \begin{equation*}
+%       \norm{\bd_{t}(f(t,u(t))-f(t,v(t)))}_{W^{k-1,p}}\le C\norm{u-v}_{W^{k,p}},
+%     \end{equation*}
+%     as desired. This completes the proof of the Claim, and therefore the Lemma.
+% \end{proof}
+% \end{clear}
+% \begin{clear}{Gradient flow lines are elements in Schwarz's path space
+%     $\mathscr{P}$}
+%   Let $\conj{X}=\conj{\R}$, $X=\R$, and let $W$ be any manifold model. Let $\varphi$ be a Morse function with critical points at $x$ and $y$, and let $\gamma:\R\to M$ be a trajectory of $\text{grad}_{\varphi}$ joining $x$ to $y$. We claim that the continuous extension $\gamma:\conj{\R}\to M$ is smooth, and hence is an element in $\mathscr{P}^{W}_{x,y}$.
 
-  This claim essentially says that $\gamma$ decays ``enough'' at $x$ and $y$ so that it can be smoothly extended to $\conj{\R}$. To prove the claim, we remark that in local coordinates near $x$, and the $s$ coordinate near $-1$ in $[-1,1]$, we know that on $(-1,-1+\epsilon)$ we have
-  \begin{equation*}
-    u=\gamma\circ \varphi^{-1}\text{ satisfies }\bd_{s}u=\frac{\gamma'\circ \varphi^{-1}}{\cos^{2}(\pi/2 s)}
-  \end{equation*}
-  It therefore suffices to prove that
-  \begin{equation*}
-    \abs{\gamma^{(k)}(t)}\le\ \text{const}_{k,n}(1+t^{2})^{-2n}
-  \end{equation*}
-  for all $n$ and $k$, as $t\to \pm \infty$. We first observe that 
-  \begin{equation*}
-    \gamma^{(k)}=\bd_{t}^{k-1}(\text{grad} \circ \gamma)=\bd_{t}^{k-2}(\d \text{grad} \circ \gamma)\gamma'=\cdots=\sum_{a_{1}+\cdots+a_{j}=k-1} (\d^{j}\text{grad}\circ \gamma)(\gamma^{(a_{1})},\cdots,\gamma^{(a_{j})}).
-  \end{equation*}
-  We can estimate this as follows
-  \begin{equation*}
-    \sum_{a_{1}+\cdots+a_{j}=k-1} (\d^{j}\text{grad}\circ \gamma)(\gamma^{(a_{1})},\cdots,\gamma^{(a_{j})})\le \sum\norm{\text{grad}}_{C^{k}}\abs{\gamma^{(a_{1})}}\cdots \abs{\gamma^{(a_{j})}},
-  \end{equation*}
-  so if we prove it when $k=0,1$, it will follow for all higher $k$ by induction. Since $\text{grad}$ vanishes at $x=0$, we can estimate
-  \begin{equation*}
-    \abs{\grad(\gamma(t))}\le \norm{\text{grad}}_{C^{1}}\abs{\gamma(t)},
-  \end{equation*}
-  and so it suffices to prove for $k=0$. To prove it for $k=0$ will require a more careful analysis of the ODE, and will require us to use invertibility of $\d\grad_{x}$.
+%   This claim essentially says that $\gamma$ decays ``enough'' at $x$ and $y$ so that it can be smoothly extended to $\conj{\R}$. To prove the claim, we remark that in local coordinates near $x$, and the $s$ coordinate near $-1$ in $[-1,1]$, we know that on $(-1,-1+\epsilon)$ we have
+%   \begin{equation*}
+%     u=\gamma\circ \varphi^{-1}\text{ satisfies }\bd_{s}u=\frac{\gamma'\circ \varphi^{-1}}{\cos^{2}(\pi/2 s)}
+%   \end{equation*}
+%   It therefore suffices to prove that
+%   \begin{equation*}
+%     \abs{\gamma^{(k)}(t)}\le\ \text{const}_{k,n}(1+t^{2})^{-2n}
+%   \end{equation*}
+%   for all $n$ and $k$, as $t\to \pm \infty$. We first observe that 
+%   \begin{equation*}
+%     \gamma^{(k)}=\bd_{t}^{k-1}(\text{grad} \circ \gamma)=\bd_{t}^{k-2}(\d \text{grad} \circ \gamma)\gamma'=\cdots=\sum_{a_{1}+\cdots+a_{j}=k-1} (\d^{j}\text{grad}\circ \gamma)(\gamma^{(a_{1})},\cdots,\gamma^{(a_{j})}).
+%   \end{equation*}
+%   We can estimate this as follows
+%   \begin{equation*}
+%     \sum_{a_{1}+\cdots+a_{j}=k-1} (\d^{j}\text{grad}\circ \gamma)(\gamma^{(a_{1})},\cdots,\gamma^{(a_{j})})\le \sum\norm{\text{grad}}_{C^{k}}\abs{\gamma^{(a_{1})}}\cdots \abs{\gamma^{(a_{j})}},
+%   \end{equation*}
+%   so if we prove it when $k=0,1$, it will follow for all higher $k$ by induction. Since $\text{grad}$ vanishes at $x=0$, we can estimate
+%   \begin{equation*}
+%     \abs{\grad(\gamma(t))}\le \norm{\text{grad}}_{C^{1}}\abs{\gamma(t)},
+%   \end{equation*}
+%   and so it suffices to prove for $k=0$. To prove it for $k=0$ will require a more careful analysis of the ODE, and will require us to use invertibility of $\d\grad_{x}$.
 
-  \begin{xca}
-    Let $\varphi,\grad,\gamma$ be as above. Suppose that $\gamma(t)$ lies in a coordinate ball around $x$ for $t<T<<0$.
+%   \begin{xca}
+%     Let $\varphi,\grad,\gamma$ be as above. Suppose that $\gamma(t)$ lies in a coordinate ball around $x$ for $t<T<<0$.
 
-    Prove that for all compactly supported $f$
-    \begin{equation*}
-      \ud{}{t}f(t)\varphi(\gamma(t))=f'(t)\varphi(\gamma(t))+f(t)\abs{\grad(\gamma(t))}^{2},
-    \end{equation*}
-    and hence
-    \begin{equation*}
-      \int_{-\infty}^{T} f(t) \abs{\grad(\gamma(t))}^{2}\d t\le f(T)\abs{\varphi(\gamma(T))}+\int_{-\infty}^{T}\abs{f'(t)}\abs{\varphi(\gamma(t))}\,\d t
-    \end{equation*}
-    By picking $f$ positive and compactly supported so $f(t)=\abs{t}^{k}$ on $[S,T]$, and so $\abs{f'(t)}\le k\abs{t}^{k-1}$ everywhere, conclude that
-    \begin{equation*}
-      \abs{t}^{k-1}\abs{\gamma(t)}^{2}\text{ integrable }\implies \abs{t}^{k}\abs{\grad(\gamma(t))}^{2}\text{ integrable }\implies \abs{t}^{k}\abs{\gamma(t)}^{2}\text{ integrable},
-    \end{equation*}
-    where we have used the fact that $\abs{\gamma(t)}\le \text{const}\abs{\grad(\gamma(t))}$ for $t$ in $(-\infty,T]$, this follows from non-degeneracy of $\d\grad_{x}$. Since $\abs{\grad(\gamma(t))}^{2}$ is integrable, we conclude that $\abs{t}^{k}\abs{\gamma(t)}^{2}$ is integrable for all $k$.
+%     Prove that for all compactly supported $f$
+%     \begin{equation*}
+%       \ud{}{t}f(t)\varphi(\gamma(t))=f'(t)\varphi(\gamma(t))+f(t)\abs{\grad(\gamma(t))}^{2},
+%     \end{equation*}
+%     and hence
+%     \begin{equation*}
+%       \int_{-\infty}^{T} f(t) \abs{\grad(\gamma(t))}^{2}\d t\le f(T)\abs{\varphi(\gamma(T))}+\int_{-\infty}^{T}\abs{f'(t)}\abs{\varphi(\gamma(t))}\,\d t
+%     \end{equation*}
+%     By picking $f$ positive and compactly supported so $f(t)=\abs{t}^{k}$ on $[S,T]$, and so $\abs{f'(t)}\le k\abs{t}^{k-1}$ everywhere, conclude that
+%     \begin{equation*}
+%       \abs{t}^{k-1}\abs{\gamma(t)}^{2}\text{ integrable }\implies \abs{t}^{k}\abs{\grad(\gamma(t))}^{2}\text{ integrable }\implies \abs{t}^{k}\abs{\gamma(t)}^{2}\text{ integrable},
+%     \end{equation*}
+%     where we have used the fact that $\abs{\gamma(t)}\le \text{const}\abs{\grad(\gamma(t))}$ for $t$ in $(-\infty,T]$, this follows from non-degeneracy of $\d\grad_{x}$. Since $\abs{\grad(\gamma(t))}^{2}$ is integrable, we conclude that $\abs{t}^{k}\abs{\gamma(t)}^{2}$ is integrable for all $k$.
 
-    To prove that $\abs{t}^{k}\abs{\gamma(t)}$ is bounded, compute
-    \begin{equation*}
-      \ud{}{t}(\abs{t}^{k}\gamma(t))=\abs{t}^{k}\text{grad}\circ \gamma+k\abs{t}^{k-1}\gamma(t),
-    \end{equation*}
-    which implies that the first derivatives of $\abs{t}^{k}\gamma(t)$ are integrable for all $k$. It follows that $\abs{t}^{k}\gamma(t)$ is bounded for all $k$, and hence
-    \begin{equation*}
-       \abs{\gamma(t)}\le\ \text{const}_{n}(1+t^{2})^{-2n},\text{ as $t\to\pm \infty$}
-     \end{equation*}
-     for all $n$, as desired. 
-  \end{xca}  
+%     To prove that $\abs{t}^{k}\abs{\gamma(t)}$ is bounded, compute
+%     \begin{equation*}
+%       \ud{}{t}(\abs{t}^{k}\gamma(t))=\abs{t}^{k}\text{grad}\circ \gamma+k\abs{t}^{k-1}\gamma(t),
+%     \end{equation*}
+%     which implies that the first derivatives of $\abs{t}^{k}\gamma(t)$ are integrable for all $k$. It follows that $\abs{t}^{k}\gamma(t)$ is bounded for all $k$, and hence
+%     \begin{equation*}
+%        \abs{\gamma(t)}\le\ \text{const}_{n}(1+t^{2})^{-2n},\text{ as $t\to\pm \infty$}
+%      \end{equation*}
+%      for all $n$, as desired. 
+%   \end{xca}  
 
-\end{clear}
+% \end{clear}
 
 \end{document}
