@@ -1,0 +1,30 @@
+\documentclass{amsart}
+
+\usepackage{preamble}
+
+\begin{document}
+\section{Elliptic differential operators}
+\begin{defn}
+  Let $E_{1},E_{2}$ be complex vector bundles over $Y$.
+  
+  A first order differential operator is a $\C$-linear map
+  \begin{equation*}
+    L:\Gamma(E_{1})\to \Gamma(E_{2})
+  \end{equation*}
+  with the property that for all $\C$-valued functions $f$
+  \begin{equation*}
+    [L,f]=L\circ f-f\circ L:\Gamma(E_{1})\to \Gamma(E_{2})
+  \end{equation*}
+  is given by a tensor, i.e.\ is induced by a section of $\Hom_{\C}(E_{1},E_{2})$.
+\end{defn}
+\begin{xca}
+  Prove that first order differential operators are \textbf{local} in the sense that if $s\in \Gamma(E_{1})$ is supported in a closed set $K$, then $L(s)$ is also supported in $K$.
+\end{xca}
+\begin{example}
+  A (linear) \textbf{connection} on $E\to Y$ is a first order differential operator $\nabla:E\to \Hom(TY,E)$ satisfying
+  \begin{equation*}
+    [\nabla,f]u=\d f\cross u.
+  \end{equation*}
+\end{example}
+
+\end{document}

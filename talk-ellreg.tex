@@ -1,0 +1,68 @@
+\documentclass{amsart}
+
+\usepackage{preamble}
+
+\begin{document}
+\section{Elliptic differential operators}
+\begin{defn}
+  Let $E_{1},E_{2}$ be complex vector bundles over $Y$.
+  
+  A first order differential operator is a $\C$-linear map
+  \begin{equation*}
+    L:\Gamma(E_{1})\to \Gamma(E_{2})
+  \end{equation*}
+  with the property that for all $\C$-valued functions $f$
+  \begin{equation*}
+    [L,f]=L\circ f-f\circ L:\Gamma(E_{1})\to \Gamma(E_{2})
+  \end{equation*}
+  is given by a tensor, i.e.\ is induced by a section of $\Hom_{\C}(E_{1},E_{2})$.
+\end{defn}
+\begin{xca}
+  Prove that first order differential operators are \textbf{local} in the sense that if $s$ is supported in a closed set $K$, then $L(s)$ is also supported in $K$.
+\end{xca}
+\begin{example}
+  A (linear) \textbf{connection} on $E\to Y$ is a first order differential operator 
+  \begin{equation*}
+\nabla:E\to \Hom(TY,E).
+\end{equation*}
+ satisfying
+  \begin{equation*}
+    [\nabla,f]u=\d f\ocross u.\text{ Notice that $u\mapsto \d f\ocross u$ is a tensor.}
+  \end{equation*}
+  Interestingly, we define a connection by specifying the tensor we get by commutating with functions, $[\nabla,f]$.
+\end{example}
+\begin{xca}
+  Let $E_{1},E_{2}\to Y$ be two vector bundles over $Y$. Let $L$ be a first order linear differential operator. Let $\nabla$ be a connection on $E_{1}$. Then there are two tensors
+  \begin{equation*}
+    A:\Hom(TY,E_{1})\to E_{2}\text{ and }B:E_{1}\to E_{2}
+  \end{equation*}
+  so that
+  \begin{equation*}
+    L(u)=A(\nabla u)+B(u).
+  \end{equation*}
+  Moreover, $A$ and $B$ are uniquely determined by $L$.
+\end{xca}
+\begin{defn}
+  Let $E_{i}\to Y$, $i=1,2$, be vector bundles over $Y$. Given a differential operator $L:E_{1}\to E_{2}$, we can consider the assignment
+  \begin{equation*}
+    f\in \Gamma(\C)\mapsto [L,f]\in \Gamma\Hom(E_{1},E_{2}).
+  \end{equation*}
+  This assignment is actually a first-order linear differential operator $\C\to \Hom(E_{1},E_{2})$. Since $\d$ is a connection on the trivial bundle $\C$, we know that we can express
+    \begin{equation*}
+      [L,f]=A(\d f)+B(f)
+    \end{equation*}
+    for some tensors $A$ and $B$. Use this to prove that $B=0$.
+
+    We said that $A:T^{*}Y\to \Hom(E_{1},E_{2})$ and $B:\C\to \Hom(E_{1},E_{2})$ are uniquely determined by $L$. Conclude that there is unique tensor $\sigma$ so that $[L,f]=\sigma(\d f)$. This tensor $\sigma$ is called the \textbf{}
+\end{defn}
+
+
+
+
+
+
+
+
+
+
+\end{document}
